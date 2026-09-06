@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tesla Branch Tree v0.09 beta</title>
+  <title>Tesla Branch Tree v1.00</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     :root {
@@ -76,6 +76,7 @@
     #tree-container.hidden { display: none; }
     .table-toolbar { padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--panel); }
     .table-toolbar .filter-row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+    .table-toolbar .filter-divider { width: 1px; align-self: stretch; min-height: 28px; background: var(--border); margin: 0 4px; }
     .table-toolbar label { font-size: 0.75rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
     .table-toolbar select, .table-toolbar input { width: auto; margin: 0; min-width: 90px; }
     table.versions th .sort { margin-left: 6px; font-size: 0.7rem; color: var(--muted); }
@@ -281,7 +282,7 @@
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
       <h1>Tesla Branch Tree</h1>
-      <span class="app-ver">v0.09 beta</span>
+      <span class="app-ver">v1.00</span>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -337,13 +338,13 @@
         <h3>View Options</h3>
         <label class="check-row">
           <input type="checkbox" id="grey-unrelated" checked />
-          <span>Grey out unrelated branches</span>
+          <span>Grey out branches unrelated to car</span>
         </label>
         <label class="check-row">
           <input type="checkbox" id="show-only-path" />
           <span>Show only my path</span>
         </label>
-        <label class="field" style="margin-top:10px">Watch countries (max 5 ISO codes)</label>
+        <label class="field" style="margin-top:10px">Countries to view (max 5 ISO codes)</label>
         <div id="cc-slots" style="display:flex;gap:4px;margin-bottom:6px"></div>
         <a href="https://www.iso.org/obp/ui/#search/code/" target="_blank" rel="noopener" style="font-size:0.72rem;color:var(--accent)">Official ISO country codes</a>
       </div>
@@ -363,7 +364,7 @@
 
       <div class="card" style="font-size:0.72rem;color:var(--muted);line-height:1.45">
         <h3>About this data</h3>
-        Reconstructed snapshot from Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and Teslascope/X — not Tesla official. In-app Refresh cannot live-scrape those sites (due to browser CORS). Fleet labels such as “phasing out” are global tracker status. HW tags mean that version has been <em>observed</em> on that computer, not that every car globally with that computer received it.
+        Data courtesy Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and X. Fleet labels such as “phasing out” are global tracker status. A HW tag next to a firmware version means that version has been observed on that Tesla car computer and not that every car globally with that computer has received that firmware.
       </div>
     </aside>
 
@@ -395,13 +396,14 @@
               <option value="mine">My path only</option>
             </select>
           </label>
-          <span id="table-count" style="font-size:0.75rem;color:var(--muted)"></span>
           <label>HW
             <select id="f-hw"><option value="">Any</option><option value="3">HW3</option><option value="4">HW4</option></select>
           </label>
           <label>Version contains
             <input type="text" id="f-ver" placeholder="EG. 2026.20" />
           </label>
+          <span class="filter-divider" aria-hidden="true"></span>
+          <span id="table-count" style="font-size:0.75rem;color:var(--muted);white-space:nowrap"></span>
         </div>
       </div>
       <div class="table-scroll">
@@ -441,7 +443,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "0.09 beta";
+    const APP_VERSION = "1.00";
     let DATA_SNAPSHOT = "2026-09-03";
     const BAKED_SNAPSHOT = "2026-09-03";
 
