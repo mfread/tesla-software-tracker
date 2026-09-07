@@ -1,16 +1,25 @@
-# tesla branch tree
+# tesla software tracker
 * Displays a tree (with branches and leaves) or a table view of Tesla car firmware end-points.
 * Data comes from various apps, including Teslascope, Tessie, Not A Tesla, TeslaFi, TeslAnt, X and Grok. Credit for the data goes to these organisations.
 * Not all the countries where Tesla cars are sold into is captured (as this would slow down the UI). Countries included in the nightly data refresh are:
+  - AE: United Arab Emirates
+  - AT: Austria
   - AU: Australia
   - BE: Belgium
   - CA: Canada
+  - CH: Switzerland
+  - CN: China
+  - DE: Germany 
   - DK: Denmark
+  - FR: France 
   - GB: Great Britain
   - KR: Korea (South)
   - MX: Mexico
   - NL: Netherlands
+  - NO: Norway 
   - NZ: New Zealand
+  - SE: Sweden
+  - TW: Taiwan 
   - US: USA
 * snapshot.json updated 5am Australian Eastern Standard Time.
 
