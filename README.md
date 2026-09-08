@@ -35,6 +35,7 @@ I developed this web app so I could merge and visualise the dozens of code branc
 * The Tree view can be zoomed in or out of. However over the leaves to reveal the info panel about that firmware you are viewing.
 * The Table view has filters to focus on the data you wish to see, and sortable columns.
 * The Predicted Next section under each car is based on the firmware history of the car when matched to all other cars with the same history and what software version they jumped next to. Not 100% accurate but provides a weighted guess which is typically accurate. If you do not provide the car's firmware history then the Predicted Next version will be less accurate.
+* When switching between Tree and Table views, be sure to click on the Refresh Data button.
 
 # data security
 * All data entered by you stays on your device and not on a central server somewhere. So if you run this webapp on multiple devices you'll need to enter each car's details and firmware history again.
