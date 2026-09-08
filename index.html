@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tesla Branch Tree v1.00</title>
+  <title>Tesla Branch Tree v1.01</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     :root {
@@ -282,7 +282,7 @@
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
       <h1>Tesla Branch Tree</h1>
-      <span class="app-ver">v1.00</span>
+      <span class="app-ver">v1.01</span>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -443,7 +443,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "1.00";
+    const APP_VERSION = "1.01";
     let DATA_SNAPSHOT = "2026-09-03";
     const BAKED_SNAPSHOT = "2026-09-03";
 
@@ -455,10 +455,10 @@
       "2026.14.6.11": { first: "2026-06-15", fleet: "~4%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "Teslascope sample is HW4 100% (US/CA). Not an AU/NZ or HW3 Lite build." },
       "2026.14.6.12": { first: "2026-06-23", fleet: "~3%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "Follow-on US+CA HW4 v14.3.4 point release." },
       "2026.14.13": { first: "2026-08-01", fleet: "<0.1%", fsd: "—", regions: "Limited / Tessie only", hw: "Mixed", note: "Tiny leftover on Tessie. Teslascope page 404 — treat as unverified." },
-      "2026.20": { first: "2026-05-30", fleet: "phasing out", fsd: "none on trunk", regions: "US/CA/GB/EU (AU not in Teslascope sample)", hw: "HW3 + HW4", note: "Parental Controls, Dashcam encryption, Hey Grok. Lite is NOT on this parent — first Lite is 2026.20.5.1 (US HW3 EAP)." },
+      "2026.20": { first: "2026-05-30", fleet: "phasing out", fsd: "none on trunk", regions: "Global feature set (Tesla App notes in AU; Teslascope sample US/EU-heavy)", hw: "HW3 + HW4", note: "2026.20 feature family (Parental Controls, Dashcam encryption, Hey Grok). Tesla App Release Notes on AU cars list this family even when the installed point was 2026.20.3 / 2026.20.6.x. Teslascope exact-page sample omits AU (small US/EU set). Lite is NOT on this parent — first Lite is 2026.20.5.1 (US HW3 EAP)." },
       "2026.20.3": { first: "2026-06-17", fleet: "phasing out", fsd: "none", regions: "Global incl. AU 0.94% / NZ 0.19%", hw: "HW3 + HW4", note: "Blind-spot-while-parked + security. No Lite. Common hop before 2026.20.6.1." },
       "2026.20.5.1": { first: "2026-06-29", fleet: "early access", fsd: "HW3 v14 Lite", regions: "United States", hw: "HW3", note: "First public Lite build — US HW3 early access only. Not AU/NZ." },
-      "2026.20.6": { first: "2026-06-29", fleet: "phasing out", fsd: "none — security only", regions: "US/GB/EU (no AU/NZ/CA in Teslascope sample)", hw: "HW3 + HW4", note: "Security point release only. Lite is on 2026.20.6.10 / .6.11 (US+CA), not on .6 itself. Having .6 does not mean you have Lite." },
+      "2026.20.6": { first: "2026-06-29", fleet: "phasing out", fsd: "none — security only", regions: "US/GB/EU + AU owners (Tesla App); Teslascope public table missed AU", hw: "HW3 + HW4", note: "Security point release. Teslascope country table (~60 cars) is US/GB/EU and omits AU, but AU Tesla App Release Notes and AU hops 2026.20.3 → 2026.20.6.1 confirm the 2026.20.6 family reached Australia (incl. older Model S/X). Lite is on 2026.20.6.10 / .6.11 (US+CA), not on .6 itself." },
       "2026.20.6.1": { first: "2026-07-02", fleet: "~8%", fsd: "none on this exact build", regions: "Global incl. AU 1.19% / NZ 0.48%", hw: "HW3 + HW4", note: "Wide production / minor fixes. Teslascope lists AU+NZ installs but no Lite/v14 payload. AU HW3 often sat here then moved to 2026.20.6.9." },
       "2026.20.6.6": { first: "2026-07-13", fleet: "~4%", fsd: "HW4 v14.3.5", regions: "North America", hw: "HW4", note: "US+CA HW4 v14.3.5. AU/NZ HW4 twin of this stack is 2026.20.10 (FSD v14.3.5 Down Under)." },
       "2026.20.6.9": { first: "2026-07-29", fleet: "3.3%", fsd: "none — minor fixes only", regions: "Australia / New Zealand", hw: "HW3", note: "AU/NZ HW3 regional (~99% HW3). Not Lite. Tesla AU email 28 Aug: v14 Lite in active development for AU/NZ — not shipping on this build. US+CA Lite is 2026.20.6.10/.6.11 then 2026.26.6.5." },
@@ -488,10 +488,10 @@
       "2026.14.6.11": ["US","CA"],
       "2026.14.6.12": ["US","CA"],
       "2026.14.13": [],
-      "2026.20": ["US","CA","GB"],
+      "2026.20": ["US","CA","GB","DE","FR","NL","NO","SE","AU"],
       "2026.20.3": ["US","CA","GB","AU","NZ"],
       "2026.20.5.1": ["US"],
-      "2026.20.6": ["US","GB"],
+      "2026.20.6": ["US","GB","DE","FR","NO","AU"],
       "2026.20.6.1": ["US","CA","GB","AU","NZ"],
       "2026.20.6.6": ["US","CA"],
       "2026.20.6.9": ["AU","NZ"],
@@ -1117,7 +1117,10 @@
           .style("display", showOnlyPath && !keep ? "none" : null);
 
         d3.select(this).selectAll("text.badge").remove();
-        if (isCur) {
+        const isLeaf = d.data.type === "point" || !d.children;
+        if (!isLeaf) {
+          /* NOW / #n only on version leaves — not trunk parents like "2026.20 Feature + Lite" */
+        } else if (isCur) {
           d3.select(this).append("text")
             .attr("class", "badge")
             .attr("x", 12)
