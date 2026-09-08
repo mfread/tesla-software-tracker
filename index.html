@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tesla Branch Tree v1.01</title>
+  <title>Tesla Branch Tree v1.02</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     :root {
@@ -282,7 +282,7 @@
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
       <h1>Tesla Branch Tree</h1>
-      <span class="app-ver">v1.01</span>
+      <span class="app-ver">v1.02</span>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -299,7 +299,7 @@
   <main>
     <aside id="sidebar">
       <div class="card">
-        <h3>My Cars (up to 3)</h3>
+        <h3>My Cars (up to 5)</h3>
         <div class="car-list" id="car-list"></div>
         <button class="btn small" id="add-car-btn" style="width:100%;margin-top:8px">+ Add Car</button>
       </div>
@@ -443,7 +443,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "1.01";
+    const APP_VERSION = "1.02";
     let DATA_SNAPSHOT = "2026-09-03";
     const BAKED_SNAPSHOT = "2026-09-03";
 
@@ -1467,7 +1467,7 @@
     };
     document.getElementById("save-car-btn").onclick = saveActiveCar;
     document.getElementById("add-car-btn").onclick = () => {
-      if (cars.length >= 3) return toast("Maximum 3 cars");
+      if (cars.length >= 5) return toast("Maximum 5 cars");
       const id = Date.now().toString();
       cars.push({ id, name: "New Car", model: "Y", build: "", variant: "", hw: "3", current: "", history: [] });
       activeCarId = id;
