@@ -29,6 +29,7 @@ I developed this web app so I could merge and visualise the dozens of code branc
 # how to use
 * Simply add up to 5 cars via the left hand panel and the versions of software you've had over the past few months / years (if you don't keep track of this info, open your Tesla app on your smartphone, scroll down to the bottom and click on Release Notes).
 * Select the car you'd like to view data on. What you see in the Tree or Table view can be influenced by the View Options in the left pane.
+* Cars collection can be exported to a csv file.
 * Also under View Options select up to 5 countries you'd like to see data for. For example I live in Australia so I'm keen to see what firmwares have been seen by the trackers in Australia, and I'll also include US as this is the source of most firmware releases. These 2 letter ISO codes must come from the list above.
 * The left side panel can be hidden by clicking/tapping on the top left < icon. Click/tap on the > icon to reveal the side panel.
 * Click on the Tree or Table button along the top ribbon bar.
