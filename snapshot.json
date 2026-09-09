@@ -1,20 +1,21 @@
 {
-  "snapshot": "2026-09-09",
+  "snapshot": "2026-09-10",
   "source": "grok-automation",
-  "generatedAt": "2026-09-08T19:10:00Z",
+  "generatedAt": "2026-09-09T19:15:00Z",
   "sourcesUsed": ["Teslascope", "Tessie", "Not a Tesla App", "Teslascope/X", "AU owner Tesla App notes"],
   "meta": {
     "2026.20": {"first": "2026-05-30", "fleet": "phasing out", "fsd": "none on trunk", "regions": "Global feature family; Tesla App notes in AU", "hw": "HW3 + HW4", "note": "Tesla App Release Notes on AU cars list 2026.20 even when installed point was 2026.20.3 / 2026.20.6.x. Teslascope exact-page sample is US/EU-heavy and omits AU."},
     "2026.20.6": {"first": "2026-06-29", "fleet": "phasing out", "fsd": "none - security only", "regions": "US/GB/EU + AU (app/owners); Teslascope table missed AU", "hw": "HW3 + HW4", "note": "Teslascope ~60-car sample omits AU. AU Tesla App notes and AU hops 2026.20.3 to 2026.20.6.1 confirm the family reached Australia including older S/X. Not Lite."},
     "2026.20.6.9": {"first": "2026-07-29", "fleet": "3.2% (Tessie)", "fsd": "none - minor fixes only", "regions": "Australia / New Zealand", "hw": "HW3", "note": "AU/NZ HW3 regional. Not Lite. Tesla AU 28 Aug: v14 Lite in active development for AU/NZ."},
     "2026.20.10": {"first": "2026-07-28", "fleet": "1.7% (Tessie)", "fsd": "HW4 v14.3.5 Down Under", "regions": "Australia / New Zealand", "hw": "HW4", "note": "NATA: Oceania FSD v14.3.5. Not Lite."},
-    "2026.21.6": {"first": "2026-08-09", "fleet": "2.5% phasing out (Tessie)", "fsd": "HW3 v14.1 Lite + HW4 v14.3.7", "regions": "US+CA", "hw": "HW3 + HW4", "note": "Previous US+CA FSD dual-stack. Hopping to 2026.26.6.5. Not AU/NZ Lite."},
-    "2026.26.6.1": {"first": "2026-08-14", "fleet": "47.4% (Tessie)", "fsd": "none new - production Summer", "regions": "Global incl. AU", "hw": "HW3 + HW4", "note": "Dominant non-FSD Summer production. US+CA FSD merge is 2026.26.6.5. Teslascope countries include AU."},
-    "2026.26.6.5": {"first": "2026-08-26", "fleet": "24.9% rolling out (Tessie)", "fsd": "HW3 v14.1 Lite + HW4 v14.3.8", "regions": "US+CA (MX tiny)", "hw": "HW3 + HW4", "note": "NATA/Teslascope: N. America FSD 14.1 Lite and 14.3.8. No AU/NZ in Teslascope sample."},
+    "2026.21.6": {"first": "2026-08-09", "fleet": "2.3% phasing out (Tessie)", "fsd": "HW3 v14.1 Lite + HW4 v14.3.7", "regions": "US+CA", "hw": "HW3 + HW4", "note": "Previous US+CA FSD dual-stack. Hopping to 2026.26.6.5. Not AU/NZ Lite."},
+    "2026.26.6.1": {"first": "2026-08-14", "fleet": "47.5% (Tessie)", "fsd": "none new - production Summer", "regions": "Global incl. AU", "hw": "HW3 + HW4", "note": "Dominant non-FSD Summer production. US+CA FSD merge is 2026.26.6.5. Teslascope countries include AU."},
+    "2026.26.6.5": {"first": "2026-08-26", "fleet": "25.1% rolling out (Tessie)", "fsd": "HW3 v14.1 Lite + HW4 v14.3.8", "regions": "US+CA (MX tiny)", "hw": "HW3 + HW4", "note": "NATA/Teslascope: N. America FSD 14.1 Lite and 14.3.8. No AU/NZ in Teslascope sample."},
     "2026.26.200": {"first": "2026-09-02", "fleet": "<0.1% (Tessie)", "fsd": "none - minor fixes", "regions": "unknown / limited", "hw": "unknown", "note": "Tessie latest; minor fixes only."},
     "2026.27.200": {"first": "2026-09-01", "fleet": "1.1% (Tessie / NATA)", "fsd": "FSD 14.2.2.6 Europe (NATA)", "regions": "NL / BE / Europe", "hw": "HW4", "note": "NATA Europe Summer / factory. Not AU/NZ or US customer OTA."},
+    "2026.27.6": {"first": "2026-09-08", "fleet": "<0.1% rolling out (Tessie)", "fsd": "HW3 v14.2 Lite + HW4 v14.3.9", "regions": "US (N. America)", "hw": "HW3 + HW4", "note": "NATA/Teslascope: N. America FSD 14.2 Lite & 14.3.9. Countries sample 100% US so far. Not AU/NZ."},
     "2026.20.5.1": {"first": "2026-06-29", "fleet": "early access", "fsd": "HW3 v14 Lite", "regions": "United States", "hw": "HW3", "note": "First public Lite - US HW3 EAP only. Not AU/NZ."},
-    "2026.20.6.1": {"first": "2026-07-02", "fleet": "5.1% phasing out (Tessie)", "fsd": "none on this exact build", "regions": "Global incl. AU/NZ", "hw": "HW3 + HW4", "note": "Wide production. No Lite payload."},
+    "2026.20.6.1": {"first": "2026-07-02", "fleet": "5% phasing out (Tessie)", "fsd": "none on this exact build", "regions": "Global incl. AU/NZ", "hw": "HW3 + HW4", "note": "Wide production. No Lite payload. Teslascope countries include Australia and New Zealand."},
     "2026.20.6.11": {"first": "2026-07-21", "fleet": "1.2% phasing out (Tessie)", "fsd": "HW3 v14 Lite + HW4 v14.3.6", "regions": "US+CA", "hw": "HW3 + HW4", "note": "US+CA dual-stack. Not AU/NZ fleet."},
     "2026.26.6.2": {"first": "2026-08-22", "fleet": "6.3% (Tessie)", "fsd": "none", "regions": "Mostly EU + some US/GB", "hw": "HW4 + some HW3", "note": "Minor-fix wave after .6.1."},
     "2026.27.100.1": {"first": "2026-08-24", "fleet": "0.3% (Tessie)", "fsd": "FSD 14.2.2.6 Europe (NATA)", "regions": "NL / BE / DK", "hw": "HW4", "note": "Factory EU branch. Not AU/US customer OTA."}
@@ -29,6 +30,7 @@
     "2026.26.6.5": ["US", "CA", "MX"],
     "2026.26.200": [],
     "2026.27.200": ["NL", "BE", "DK"],
+    "2026.27.6": ["US"],
     "2026.20.5.1": ["US"],
     "2026.20.6.1": ["US", "CA", "GB", "DE", "AU", "NZ", "KR", "FR", "NL", "CH", "AT", "DK", "SE", "NO", "BE", "TW"],
     "2026.20.6.11": ["US", "CA", "MX"],
@@ -45,7 +47,7 @@
       {"name": "2026.20 Feature + Lite", "type": "feature", "version": "2026.20", "children": [{"name": "2026.20", "type": "point", "version": "2026.20"}, {"name": "2026.20.3", "type": "point", "version": "2026.20.3"}, {"name": "2026.20.5.1", "type": "point", "version": "2026.20.5.1"}, {"name": "2026.20.6", "type": "point", "version": "2026.20.6"}, {"name": "2026.20.6.1", "type": "point", "version": "2026.20.6.1"}, {"name": "2026.20.6.6", "type": "point", "version": "2026.20.6.6"}, {"name": "2026.20.6.9", "type": "point", "version": "2026.20.6.9"}, {"name": "2026.20.6.10", "type": "point", "version": "2026.20.6.10"}, {"name": "2026.20.6.11", "type": "point", "version": "2026.20.6.11"}, {"name": "2026.20.10", "type": "point", "version": "2026.20.10"}, {"name": "2026.20.7.5", "type": "point", "version": "2026.20.7.5"}]},
       {"name": "2026.21 FSD dual", "type": "fsd", "version": "2026.21", "children": [{"name": "2026.21.5", "type": "point", "version": "2026.21.5"}, {"name": "2026.21.6", "type": "point", "version": "2026.21.6"}, {"name": "2026.21.300", "type": "point", "version": "2026.21.300"}]},
       {"name": "2026.26 Summer", "type": "feature", "version": "2026.26", "children": [{"name": "2026.26", "type": "point", "version": "2026.26"}, {"name": "2026.26.1", "type": "point", "version": "2026.26.1"}, {"name": "2026.26.6", "type": "point", "version": "2026.26.6"}, {"name": "2026.26.6.1", "type": "point", "version": "2026.26.6.1"}, {"name": "2026.26.6.2", "type": "point", "version": "2026.26.6.2"}, {"name": "2026.26.6.5", "type": "point", "version": "2026.26.6.5"}, {"name": "2026.26.200", "type": "point", "version": "2026.26.200"}]},
-      {"name": "2026.27 Factory / EU", "type": "factory", "version": "2026.27", "children": [{"name": "2026.27.100.1", "type": "point", "version": "2026.27.100.1"}, {"name": "2026.27.200", "type": "point", "version": "2026.27.200"}]}
+      {"name": "2026.27 Factory / EU", "type": "factory", "version": "2026.27", "children": [{"name": "2026.27.100.1", "type": "point", "version": "2026.27.100.1"}, {"name": "2026.27.200", "type": "point", "version": "2026.27.200"}, {"name": "2026.27.6", "type": "point", "version": "2026.27.6"}]}
     ]
   },
   "nextMap": {
