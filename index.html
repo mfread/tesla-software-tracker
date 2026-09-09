@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tesla Branch Tree v1.02</title>
+  <title>Tesla Branch Tree v1.1</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     :root {
@@ -125,6 +125,8 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
+    .card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .card-head h3 { margin-bottom: 0; }
     label.field { font-size: 0.8rem; color: var(--muted); display: block; margin-bottom: 2px; }
     input[type="text"], input[type="search"], select, textarea {
       width: 100%;
@@ -282,7 +284,7 @@
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
       <h1>Tesla Branch Tree</h1>
-      <span class="app-ver">v1.02</span>
+      <span class="app-ver">v1.1</span>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -299,7 +301,10 @@
   <main>
     <aside id="sidebar">
       <div class="card">
-        <h3>My Cars (up to 5)</h3>
+        <div class="card-head">
+          <h3>My Cars (up to 5)</h3>
+          <button class="btn small" id="export-cars-btn" type="button">Export</button>
+        </div>
         <div class="car-list" id="car-list"></div>
         <button class="btn small" id="add-car-btn" style="width:100%;margin-top:8px">+ Add Car</button>
       </div>
@@ -443,7 +448,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "1.02";
+    const APP_VERSION = "1.1";
     let DATA_SNAPSHOT = "2026-09-03";
     const BAKED_SNAPSHOT = "2026-09-03";
 
@@ -1303,6 +1308,56 @@
       }
     }
 
+    function modelLabel(code) {
+      const map = { Y: "Model Y", "3": "Model 3", S: "Model S", X: "Model X", CT: "Cybertruck" };
+      return map[code] || (code ? "Model " + code : "");
+    }
+
+    function hwLabel(hw) {
+      const h = String(hw || "").replace(/^HW/i, "");
+      return h ? "HW" + h : "";
+    }
+
+    function previousVersions(car) {
+      const cur = (car.current || "").trim();
+      return (car.history || []).map(v => String(v || "").trim()).filter(Boolean).filter(v => v !== cur);
+    }
+
+    function csvCell(val) {
+      const s = String(val == null ? "" : val);
+      if (/[",\n\r]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+      return s;
+    }
+
+    function exportCarsCsv() {
+      if (!cars.length) return toast("No cars to export");
+      const prevLists = cars.map(previousVersions);
+      const maxPrev = Math.max(4, ...prevLists.map(p => p.length));
+      const headers = ["Model", "Build", "Variant", "Hardware", "Current Vsn"];
+      for (let i = 1; i <= maxPrev; i++) headers.push("Previous" + i);
+      const lines = [headers.map(csvCell).join(",")];
+      cars.forEach((car, i) => {
+        const row = [
+          modelLabel(car.model),
+          car.build || "",
+          car.variant || "",
+          hwLabel(car.hw),
+          car.current || "",
+          ...prevLists[i]
+        ];
+        while (row.length < headers.length) row.push("");
+        lines.push(row.map(csvCell).join(","));
+      });
+      const blob = new Blob(["\uFEFF" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
+      const a = document.createElement("a");
+      const day = new Date().toISOString().slice(0, 10);
+      a.download = "tesla-cars-" + day + ".csv";
+      a.href = URL.createObjectURL(blob);
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+      toast("Cars CSV downloaded");
+    }
+
     function exportPathText() {
       const car = getActiveCar();
       if (!car) return;
@@ -1479,6 +1534,7 @@
       renderHistory([...readHistoryFromUI(), ""]);
     };
     document.getElementById("refresh-btn").onclick = refreshData;
+    document.getElementById("export-cars-btn").onclick = exportCarsCsv;
     document.getElementById("export-txt").onclick = exportPathText;
     document.getElementById("export-png").onclick = exportPng;
     document.getElementById("grey-unrelated").onchange = () => { updateTreeHighlights(); if (currentView === "table") renderTable(); };
