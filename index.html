@@ -1324,9 +1324,8 @@
     }
 
     function csvCell(val) {
-      const s = String(val == null ? "" : val);
-      if (/[",\n\r]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
-      return s;
+      const s = String(val == null ? "" : val).replace(/"/g, '""');
+      return `"=""${s}"""`;
     }
 
     function exportCarsCsv() {
