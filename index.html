@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tesla Branch Tree v1.1</title>
+  <title>Tesla Software Tracker</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     :root {
@@ -283,8 +283,8 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Branch Tree</h1>
-      <span class="app-ver">v1.1</span>
+      <h1>Tesla Software Tracker</h1>
+      <span class="app-ver">v1.2</span>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -448,7 +448,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "1.1";
+    const APP_VERSION = "1.2";
     let DATA_SNAPSHOT = "2026-09-03";
     const BAKED_SNAPSHOT = "2026-09-03";
 
@@ -706,9 +706,10 @@
       if (raw) {
         const d = JSON.parse(raw);
         const mins = Math.round((Date.now() - (d.cachedAt || 0)) / 60000);
-        el.textContent = mins < 2
-          ? `Snapshot ${DATA_SNAPSHOT} · just now`
-          : `Snapshot ${DATA_SNAPSHOT} · ${mins}m ago`;
+        //el.textContent = mins < 2
+        //  ? `Snapshot ${DATA_SNAPSHOT} · just now`
+        //  : `Snapshot ${DATA_SNAPSHOT} · ${mins}m ago`;
+        el.textContent = `${DATA_SNAPSHOT} Snapshot`
       }
     }
 
@@ -1143,6 +1144,13 @@
         }
       });
 
+      function nodeOnPath(d) {
+        if (!d) return false;
+        if (d.data.type === "root") return true;
+        const exact = vers.some(v => nodeVersion(d) === normVer(v));
+        return exact || ancestorOfHistory(d, vers);
+      }
+
       g.selectAll(".link")
         .classed("path-link", d => {
           const tExact = vers.some(v => nodeVersion(d.target) === normVer(v));
@@ -1152,8 +1160,7 @@
         })
         .style("display", function(d) {
           if (!showOnlyPath) return null;
-          const keep = ancestorOfHistory(d.source, vers) || ancestorOfHistory(d.target, vers);
-          return keep ? null : "none";
+          return nodeOnPath(d.source) && nodeOnPath(d.target) ? null : "none";
         });
     }
 
@@ -1362,7 +1369,7 @@
       const car = getActiveCar();
       if (!car) return;
       const lines = [
-        `Tesla Branch Tree v${APP_VERSION}`,
+        `Tesla Software Tracker v${APP_VERSION}`,
         `Car: ${car.name} · ${car.model} ${car.variant} ${car.build} HW${car.hw}`,
         `Current: ${car.current || "—"}`,
         `History (newest first):`,
