@@ -311,7 +311,7 @@
 
       <div class="card" id="active-car-panel">
         <h3>Active Car</h3>
-        <label class="field">Name / Label</label>
+        <label class="field">Label</label>
         <input type="text" id="car-name" placeholder="e.g. 2023 Model Y RWD" />
         <label class="field">Model</label>
         <select id="car-model">
@@ -1333,11 +1333,12 @@
       if (!cars.length) return toast("No cars to export");
       const prevLists = cars.map(previousVersions);
       const maxPrev = Math.max(4, ...prevLists.map(p => p.length));
-      const headers = ["Model", "Build", "Variant", "Hardware", "Current Vsn"];
+      const headers = ["Label", "Model", "Build", "Variant", "Hardware", "Current Vsn"];
       for (let i = 1; i <= maxPrev; i++) headers.push("Previous" + i);
       const lines = [headers.map(csvCell).join(",")];
       cars.forEach((car, i) => {
         const row = [
+          car.name || "",
           modelLabel(car.model),
           car.build || "",
           car.variant || "",
