@@ -1,0 +1,268 @@
+{
+  "snapshot": "2026-09-10",
+  "year": 2021,
+  "live": false,
+  "note": "Locked archive. FSD Beta 10.x on HW3.",
+  "tree": {
+    "name": "Tesla 2021",
+    "type": "root",
+    "version": "2021",
+    "children": [
+      {
+        "name": "2021.4",
+        "type": "feature",
+        "version": "2021.4",
+        "children": [
+          {
+            "name": "2021.4.11",
+            "type": "point",
+            "version": "2021.4.11"
+          },
+          {
+            "name": "2021.4.18",
+            "type": "point",
+            "version": "2021.4.18"
+          }
+        ]
+      },
+      {
+        "name": "2021.12",
+        "type": "feature",
+        "version": "2021.12",
+        "children": [
+          {
+            "name": "2021.12.25",
+            "type": "point",
+            "version": "2021.12.25"
+          }
+        ]
+      },
+      {
+        "name": "2021.24",
+        "type": "feature",
+        "version": "2021.24",
+        "children": [
+          {
+            "name": "2021.24.12",
+            "type": "point",
+            "version": "2021.24.12"
+          }
+        ]
+      },
+      {
+        "name": "2021.32",
+        "type": "feature",
+        "version": "2021.32",
+        "children": [
+          {
+            "name": "2021.32.20",
+            "type": "point",
+            "version": "2021.32.20"
+          }
+        ]
+      },
+      {
+        "name": "2021.36",
+        "type": "feature",
+        "version": "2021.36",
+        "children": [
+          {
+            "name": "2021.36.8",
+            "type": "point",
+            "version": "2021.36.8"
+          }
+        ]
+      },
+      {
+        "name": "2021.44 Holiday",
+        "type": "feature",
+        "version": "2021.44",
+        "children": [
+          {
+            "name": "2021.44.25",
+            "type": "point",
+            "version": "2021.44.25"
+          },
+          {
+            "name": "2021.44.30",
+            "type": "point",
+            "version": "2021.44.30"
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "2021.4": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.3",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2021.4.11": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.3",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2021.4.18": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.3",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2021.12": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.4",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2021.12.25": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.4",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2021.24": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.5",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2021.24.12": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.5",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2021.32": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.6",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2021.32.20": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.6",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2021.36": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.8",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2021.36.8": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.8",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2021.44": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.10",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2021.44.25": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.10",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2021.44.30": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.10",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    }
+  },
+  "seenIn": {
+    "2021.4": [
+      "CA",
+      "US"
+    ],
+    "2021.4.11": [
+      "CA",
+      "US"
+    ],
+    "2021.4.18": [
+      "CA",
+      "US"
+    ],
+    "2021.12": [
+      "CA",
+      "US"
+    ],
+    "2021.12.25": [
+      "CA",
+      "US"
+    ],
+    "2021.24": [
+      "CA",
+      "US"
+    ],
+    "2021.24.12": [
+      "CA",
+      "US"
+    ],
+    "2021.32": [
+      "CA",
+      "US"
+    ],
+    "2021.32.20": [
+      "CA",
+      "US"
+    ],
+    "2021.36": [
+      "CA",
+      "US"
+    ],
+    "2021.36.8": [
+      "CA",
+      "US"
+    ],
+    "2021.44": [
+      "CA",
+      "US"
+    ],
+    "2021.44.25": [
+      "CA",
+      "US"
+    ],
+    "2021.44.30": [
+      "CA",
+      "US"
+    ]
+  },
+  "nextMap": {}
+}

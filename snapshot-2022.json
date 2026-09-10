@@ -1,0 +1,387 @@
+{
+  "snapshot": "2026-09-10",
+  "year": 2022,
+  "live": false,
+  "note": "Locked archive. FSD Beta era.",
+  "tree": {
+    "name": "Tesla 2022",
+    "type": "root",
+    "version": "2022",
+    "children": [
+      {
+        "name": "2022.4 FSD Beta 10.11",
+        "type": "fsd",
+        "version": "2022.4",
+        "children": [
+          {
+            "name": "2022.4.5.3",
+            "type": "point",
+            "version": "2022.4.5.3"
+          },
+          {
+            "name": "2022.4.5.17",
+            "type": "point",
+            "version": "2022.4.5.17"
+          },
+          {
+            "name": "2022.4.5.20",
+            "type": "point",
+            "version": "2022.4.5.20"
+          }
+        ]
+      },
+      {
+        "name": "2022.8",
+        "type": "feature",
+        "version": "2022.8",
+        "children": [
+          {
+            "name": "2022.8",
+            "type": "point",
+            "version": "2022.8"
+          },
+          {
+            "name": "2022.8.2",
+            "type": "point",
+            "version": "2022.8.2"
+          }
+        ]
+      },
+      {
+        "name": "2022.12",
+        "type": "feature",
+        "version": "2022.12",
+        "children": [
+          {
+            "name": "2022.12",
+            "type": "point",
+            "version": "2022.12"
+          },
+          {
+            "name": "2022.12.3",
+            "type": "point",
+            "version": "2022.12.3"
+          }
+        ]
+      },
+      {
+        "name": "2022.16",
+        "type": "feature",
+        "version": "2022.16",
+        "children": [
+          {
+            "name": "2022.16",
+            "type": "point",
+            "version": "2022.16"
+          },
+          {
+            "name": "2022.16.3",
+            "type": "point",
+            "version": "2022.16.3"
+          }
+        ]
+      },
+      {
+        "name": "2022.20",
+        "type": "feature",
+        "version": "2022.20",
+        "children": [
+          {
+            "name": "2022.20",
+            "type": "point",
+            "version": "2022.20"
+          },
+          {
+            "name": "2022.20.8",
+            "type": "point",
+            "version": "2022.20.8"
+          }
+        ]
+      },
+      {
+        "name": "2022.24",
+        "type": "feature",
+        "version": "2022.24",
+        "children": [
+          {
+            "name": "2022.24",
+            "type": "point",
+            "version": "2022.24"
+          },
+          {
+            "name": "2022.24.8",
+            "type": "point",
+            "version": "2022.24.8"
+          }
+        ]
+      },
+      {
+        "name": "2022.36",
+        "type": "feature",
+        "version": "2022.36",
+        "children": [
+          {
+            "name": "2022.36",
+            "type": "point",
+            "version": "2022.36"
+          },
+          {
+            "name": "2022.36.6",
+            "type": "point",
+            "version": "2022.36.6"
+          }
+        ]
+      },
+      {
+        "name": "2022.44 Holiday",
+        "type": "feature",
+        "version": "2022.44",
+        "children": [
+          {
+            "name": "2022.44",
+            "type": "point",
+            "version": "2022.44"
+          },
+          {
+            "name": "2022.44.25",
+            "type": "point",
+            "version": "2022.44.25"
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "2022.4": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.11",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2022.4.5.3": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.11",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.4.5.17": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.11",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.4.5.20": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.11",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.8": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.8.2": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.12": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.12",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.12.3": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.12",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.16": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.16.3": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.20": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.69",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.20.8": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.69",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.24": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.24.8": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.36": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.69.3",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.36.6": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.69.3",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.44": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.69.25",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2022.44.25": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v10.69.25",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    }
+  },
+  "seenIn": {
+    "2022.4": [
+      "CA",
+      "US"
+    ],
+    "2022.4.5.3": [
+      "CA",
+      "US"
+    ],
+    "2022.4.5.17": [
+      "CA",
+      "US"
+    ],
+    "2022.4.5.20": [
+      "CA",
+      "US"
+    ],
+    "2022.8": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2022.8.2": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2022.12": [
+      "CA",
+      "US"
+    ],
+    "2022.12.3": [
+      "CA",
+      "US"
+    ],
+    "2022.16": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2022.16.3": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2022.20": [
+      "CA",
+      "US"
+    ],
+    "2022.20.8": [
+      "CA",
+      "US"
+    ],
+    "2022.24": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2022.24.8": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2022.36": [
+      "CA",
+      "US"
+    ],
+    "2022.36.6": [
+      "CA",
+      "US"
+    ],
+    "2022.44": [
+      "CA",
+      "US"
+    ],
+    "2022.44.25": [
+      "CA",
+      "US"
+    ]
+  },
+  "nextMap": {}
+}

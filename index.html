@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tesla Software Tracker</title>
+  <title>Tesla Software Tracker v3</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     :root {
@@ -98,6 +98,15 @@
     .hw-mini.hw3 { color: #f97316; }
     .hw-mini.hw4 { color: #2563eb; }
     .spacer { flex: 1; }
+    .year-wrap { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--muted); }
+    .year-wrap select { width: auto; min-width: 118px; margin: 0; }
+    #year-hint {
+      font-size: 0.78rem; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 6px; padding: 6px 10px; margin: 0 12px 0 0;
+      display: none; max-width: 420px;
+    }
+    #year-hint.visible { display: inline-block; }
     main { flex: 1; display: flex; overflow: hidden; position: relative; }
     #sidebar {
       width: 320px;
@@ -283,12 +292,16 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v1.24</h1>
+      <h1>Tesla Software Tracker v3</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
       <button class="btn small secondary" id="view-table">Table</button>
     </div>
+    <label class="year-wrap">Year
+      <select id="year-select" title="Software year to display"></select>
+    </label>
+    <span id="year-hint"></span>
     <button class="btn small" id="refresh-btn">Refresh Data</button>
     <button class="btn secondary small" id="theme-btn">Theme</button>
     <button class="btn secondary small" id="export-txt">Export path</button>
@@ -368,7 +381,7 @@
 
       <div class="card" style="font-size:0.72rem;color:var(--muted);line-height:1.45">
         <h3>About this data</h3>
-        Data courtesy Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and X. Fleet labels such as “phasing out” are global tracker status. A HW tag next to a firmware version means that version has been observed on that Tesla car computer and not that every car globally with that computer has received that firmware.
+        Data courtesy Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and X. Current year (n) and previous year (n−1) are live overnight snapshots. Older years are locked archives reconstructed from public trackers — not nightly scrapes. A HW tag on an archive/car-only leaf is from saved cars or that archive file, not a claim that every car with that computer received it. Fleet labels such as “phasing out” are global tracker status.
       </div>
     </aside>
 
@@ -447,9 +460,14 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "1.24";
-    let DATA_SNAPSHOT = "2026-09-03";
-    const BAKED_SNAPSHOT = "2026-09-03";
+    const APP_VERSION = "3";
+    const CALENDAR_YEAR = new Date().getFullYear();
+    const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
+    function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
+    let selectedYear = CALENDAR_YEAR;
+    let SNAPSHOT_LIVE = true;
+    let DATA_SNAPSHOT = "2026-09-10";
+    const BAKED_SNAPSHOT = "2026-09-10";
 
     let META = {
       "2026.14": { first: "2026-04-15", fleet: "small leftover", fsd: "none on trunk", regions: "Global", hw: "HW3 + HW4", note: "Spring Update feature trunk. FSD point releases hang off 2026.14.6.x, not this parent." },
@@ -671,6 +689,11 @@
             watchCountries = data.watchCountries.slice(0, 5);
           }
           if (data.currentView === "table" || data.currentView === "tree") currentView = data.currentView;
+          if (data.selectedYear && AVAILABLE_YEARS.includes(Number(data.selectedYear))) {
+            selectedYear = Number(data.selectedYear);
+          } else {
+            selectedYear = CALENDAR_YEAR;
+          }
         }
       } catch (e) { console.warn(e); }
       if (cars.length === 0) {
@@ -696,6 +719,7 @@
         activeCarId,
         watchCountries,
         currentView,
+        selectedYear,
         cachedAt: Date.now(),
         snapshot: DATA_SNAPSHOT
       }));
@@ -711,7 +735,8 @@
         //el.textContent = mins < 2
         //  ? `Snapshot ${DATA_SNAPSHOT} · just now`
         //  : `Snapshot ${DATA_SNAPSHOT} · ${mins}m ago`;
-        el.textContent = `${DATA_SNAPSHOT} Snapshot`
+        const tag = SNAPSHOT_LIVE ? "live" : "archive";
+        el.textContent = `${selectedYear} · ${DATA_SNAPSHOT} (${tag})`;
       }
     }
 
@@ -1064,8 +1089,9 @@
       const have = collectTreeVersions(TREE_DATA, new Set());
       needed.forEach(ver => {
         if (!ver || have.has(ver)) return;
-        const tk = trunkKeyFor(ver);
         const y = yearOfVer(ver);
+        if (y && Number(y) !== Number(selectedYear)) return;
+        const tk = trunkKeyFor(ver);
         let bucket = TREE_DATA;
         if (y && y !== "2026") {
           let yearNode = TREE_DATA.children.find(t => normVer(t.version) === y && (t.children || []).every(ch => yearOfVer(ch.version || ch.name) === y || yearOfVer(ch.version || "") === y));
@@ -1115,6 +1141,7 @@
       ensureCarVersionsOnTree();
       buildTree();
       if (currentView === "table") renderTable();
+      if (typeof updateYearHint === "function") updateYearHint();
     }
 
     function buildTree() {
@@ -1378,11 +1405,11 @@
       if (date && String(date).trim()) DATA_SNAPSHOT = String(date).trim();
       const meta = data.meta || data.META;
       if (meta && typeof meta === "object" && Object.keys(meta).length) {
-        META = Object.assign({}, META, meta);
+        META = Object.assign({}, meta);
       }
       const seen = data.seenIn || data.SEEN_IN;
       if (seen && typeof seen === "object" && Object.keys(seen).length) {
-        SEEN_IN = Object.assign({}, SEEN_IN, seen);
+        SEEN_IN = Object.assign({}, seen);
       }
       const tree = data.tree || data.TREE_DATA;
       if (tree && typeof tree === "object" && (tree.children || tree.name)) {
@@ -1390,32 +1417,90 @@
       }
       const next = data.nextMap || data.NEXT_MAP;
       if (next && typeof next === "object" && Object.keys(next).length) {
-        NEXT_MAP = Object.assign({}, NEXT_MAP, next);
+        NEXT_MAP = next;
       }
+      if (typeof data.live === "boolean") SNAPSHOT_LIVE = data.live;
+      else SNAPSHOT_LIVE = liveYears().includes(Number(selectedYear));
       return true;
     }
 
-    async function loadSnapshotJson() {
-      const res = await fetch("./snapshot.json", { cache: "no-store" });
-      if (!res.ok) throw new Error("HTTP " + res.status);
+    function snapshotUrl(year) {
+      return "./snapshot-" + year + ".json";
+    }
+
+    async function loadSnapshotJson(year) {
+      const y = year || selectedYear;
+      let res = await fetch(snapshotUrl(y), { cache: "no-store" });
+      if (!res.ok && Number(y) === CALENDAR_YEAR) {
+        res = await fetch("./snapshot.json", { cache: "no-store" });
+      }
+      if (!res.ok) throw new Error("HTTP " + res.status + " for " + snapshotUrl(y));
       return res.json();
+    }
+
+    function fillYearSelect() {
+      const sel = document.getElementById("year-select");
+      if (!sel) return;
+      sel.innerHTML = AVAILABLE_YEARS.map(y => {
+        const live = liveYears().includes(y);
+        const label = live ? y + " · live" : y + " · archive";
+        return `<option value="${y}"${Number(y) === Number(selectedYear) ? " selected" : ""}>${label}</option>`;
+      }).join("");
+    }
+
+    function updateYearHint() {
+      const el = document.getElementById("year-hint");
+      if (!el) return;
+      const vers = historyVersions();
+      const other = {};
+      vers.forEach(v => {
+        const y = Number(yearOfVer(v));
+        if (y && y !== Number(selectedYear)) other[y] = (other[y] || 0) + 1;
+      });
+      const bits = Object.keys(other).sort().map(y => other[y] + " on " + y);
+      const car = getActiveCar();
+      const nowY = car && car.current ? Number(yearOfVer(car.current)) : 0;
+      let msg = "";
+      if (nowY && nowY !== Number(selectedYear)) {
+        msg = "NOW (" + car.current + ") is a " + nowY + " build. Switch Year to " + nowY + " to see it on this tree.";
+      }
+      if (bits.length) {
+        const extra = bits.join(", ") + " — switch Year to view.";
+        msg = msg ? msg + " Also " + extra : extra.charAt(0).toUpperCase() + extra.slice(1);
+      }
+      if (!SNAPSHOT_LIVE) {
+        const lock = selectedYear + " is a locked archive (no nightly scrape).";
+        msg = msg ? lock + " " + msg : lock;
+      }
+      el.textContent = msg;
+      el.classList.toggle("visible", !!msg);
+    }
+
+    async function loadYear(year, quiet) {
+      selectedYear = Number(year) || CALENDAR_YEAR;
+      try {
+        const data = await loadSnapshotJson(selectedYear);
+        applySnapshot(data);
+        syncActiveCarFromForm();
+        saveState();
+        fillYearSelect();
+        rebuildVisuals();
+        updateCacheStatus();
+        if (!quiet) toast("Loaded snapshot-" + selectedYear + ".json (" + DATA_SNAPSHOT + ")");
+      } catch (err) {
+        SNAPSHOT_LIVE = liveYears().includes(Number(selectedYear));
+        saveState();
+        fillYearSelect();
+        rebuildVisuals();
+        if (!quiet) toast("No snapshot-" + selectedYear + ".json yet. " + (err && err.message ? err.message : ""));
+      }
     }
 
     async function refreshData() {
       const btn = document.getElementById("refresh-btn");
       btn.textContent = "Refreshing…";
       try {
-        const data = await loadSnapshotJson();
-        const applied = applySnapshot(data);
-        syncActiveCarFromForm();
-        saveState();
-        rebuildVisuals();
-        if (applied) toast("Loaded ./snapshot.json (" + DATA_SNAPSHOT + ")");
-        else toast("snapshot.json is empty — using baked-in data (" + BAKED_SNAPSHOT + ")");
-      } catch (err) {
-        saveState();
-        rebuildVisuals();
-        toast("Could not fetch ./snapshot.json — using baked-in data. " + (err && err.message ? err.message : ""));
+        await loadYear(selectedYear, false);
       } finally {
         btn.textContent = "Refresh Data";
       }
@@ -1683,18 +1768,14 @@
     renderCarList();
     populateActiveForm();
     renderCcSlots();
+    fillYearSelect();
     updateCacheStatus();
     rebuildVisuals();
     fillCountryFilter();
     setView(currentView);
+    document.getElementById("year-select").onchange = (e) => loadYear(e.target.value, false);
     window.addEventListener("resize", () => buildTree());
-    loadSnapshotJson().then((data) => {
-      if (applySnapshot(data)) {
-        saveState();
-        rebuildVisuals();
-        updateCacheStatus();
-      }
-    }).catch(() => {});
+    loadYear(selectedYear, true).catch(() => {});
   </script>
 </body>
 </html>

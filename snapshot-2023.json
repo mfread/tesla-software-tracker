@@ -1,0 +1,362 @@
+{
+  "snapshot": "2026-09-10",
+  "year": 2023,
+  "live": false,
+  "note": "Locked archive. Reconstructed major trunks only.",
+  "tree": {
+    "name": "Tesla 2023",
+    "type": "root",
+    "version": "2023",
+    "children": [
+      {
+        "name": "2023.2",
+        "type": "feature",
+        "version": "2023.2",
+        "children": [
+          {
+            "name": "2023.2",
+            "type": "point",
+            "version": "2023.2"
+          },
+          {
+            "name": "2023.2.8",
+            "type": "point",
+            "version": "2023.2.8"
+          }
+        ]
+      },
+      {
+        "name": "2023.6",
+        "type": "feature",
+        "version": "2023.6",
+        "children": [
+          {
+            "name": "2023.6",
+            "type": "point",
+            "version": "2023.6"
+          },
+          {
+            "name": "2023.6.8",
+            "type": "point",
+            "version": "2023.6.8"
+          }
+        ]
+      },
+      {
+        "name": "2023.12 FSD on prod",
+        "type": "fsd",
+        "version": "2023.12",
+        "children": [
+          {
+            "name": "2023.12",
+            "type": "point",
+            "version": "2023.12"
+          },
+          {
+            "name": "2023.12.10",
+            "type": "point",
+            "version": "2023.12.10"
+          }
+        ]
+      },
+      {
+        "name": "2023.20",
+        "type": "feature",
+        "version": "2023.20",
+        "children": [
+          {
+            "name": "2023.20",
+            "type": "point",
+            "version": "2023.20"
+          },
+          {
+            "name": "2023.20.6",
+            "type": "point",
+            "version": "2023.20.6"
+          }
+        ]
+      },
+      {
+        "name": "2023.26",
+        "type": "feature",
+        "version": "2023.26",
+        "children": [
+          {
+            "name": "2023.26",
+            "type": "point",
+            "version": "2023.26"
+          },
+          {
+            "name": "2023.26.8",
+            "type": "point",
+            "version": "2023.26.8"
+          }
+        ]
+      },
+      {
+        "name": "2023.32",
+        "type": "feature",
+        "version": "2023.32",
+        "children": [
+          {
+            "name": "2023.32",
+            "type": "point",
+            "version": "2023.32"
+          },
+          {
+            "name": "2023.32.6",
+            "type": "point",
+            "version": "2023.32.6"
+          }
+        ]
+      },
+      {
+        "name": "2023.38",
+        "type": "feature",
+        "version": "2023.38",
+        "children": [
+          {
+            "name": "2023.38",
+            "type": "point",
+            "version": "2023.38"
+          },
+          {
+            "name": "2023.38.6",
+            "type": "point",
+            "version": "2023.38.6"
+          }
+        ]
+      },
+      {
+        "name": "2023.44 Holiday",
+        "type": "feature",
+        "version": "2023.44",
+        "children": [
+          {
+            "name": "2023.44",
+            "type": "point",
+            "version": "2023.44"
+          },
+          {
+            "name": "2023.44.30",
+            "type": "point",
+            "version": "2023.44.30"
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "2023.2": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v11.3.6",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.2.8": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v11.3.6",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.6": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.6.8": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.12": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v11.4.x",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.12.10": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v11.4.x",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.20": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.20.6": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.26": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v12.1",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.26.8": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v12.1",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.32": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v12.2",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.32.6": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v12.2",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.38": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v12.3",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.38.6": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v12.3",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.44": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v12.3.x",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2023.44.30": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v12.3.x",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    }
+  },
+  "seenIn": {
+    "2023.2": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2023.2.8": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2023.6": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2023.6.8": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2023.12": [
+      "CA",
+      "US"
+    ],
+    "2023.12.10": [
+      "CA",
+      "US"
+    ],
+    "2023.20": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2023.20.6": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2023.26": [
+      "CA",
+      "US"
+    ],
+    "2023.26.8": [
+      "CA",
+      "US"
+    ],
+    "2023.32": [
+      "CA",
+      "US"
+    ],
+    "2023.32.6": [
+      "CA",
+      "US"
+    ],
+    "2023.38": [
+      "CA",
+      "US"
+    ],
+    "2023.38.6": [
+      "CA",
+      "US"
+    ],
+    "2023.44": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2023.44.30": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ]
+  },
+  "nextMap": {}
+}

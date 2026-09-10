@@ -1,0 +1,224 @@
+{
+  "snapshot": "2026-09-10",
+  "year": 2020,
+  "live": false,
+  "note": "Locked archive. First public FSD Beta (Oct 2020). Sparse trunks only.",
+  "tree": {
+    "name": "Tesla 2020",
+    "type": "root",
+    "version": "2020",
+    "children": [
+      {
+        "name": "2020.4",
+        "type": "feature",
+        "version": "2020.4",
+        "children": [
+          {
+            "name": "2020.4.1",
+            "type": "point",
+            "version": "2020.4.1"
+          }
+        ]
+      },
+      {
+        "name": "2020.12",
+        "type": "feature",
+        "version": "2020.12",
+        "children": [
+          {
+            "name": "2020.12.11",
+            "type": "point",
+            "version": "2020.12.11"
+          }
+        ]
+      },
+      {
+        "name": "2020.20",
+        "type": "feature",
+        "version": "2020.20",
+        "children": [
+          {
+            "name": "2020.20.13",
+            "type": "point",
+            "version": "2020.20.13"
+          }
+        ]
+      },
+      {
+        "name": "2020.36",
+        "type": "feature",
+        "version": "2020.36",
+        "children": [
+          {
+            "name": "2020.36.11",
+            "type": "point",
+            "version": "2020.36.11"
+          }
+        ]
+      },
+      {
+        "name": "2020.48 FSD Beta start",
+        "type": "fsd",
+        "version": "2020.48",
+        "children": [
+          {
+            "name": "2020.48.12",
+            "type": "point",
+            "version": "2020.48.12"
+          },
+          {
+            "name": "2020.48.25",
+            "type": "point",
+            "version": "2020.48.25"
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "2020.4": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2020.4.1": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "US+CA",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2020.12": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2020.12.11": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2020.20": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2020.20.13": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2020.36": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2020.36.11": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "\u2014",
+      "regions": "Global",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2020.48": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v8 / early v10",
+      "regions": "US",
+      "hw": "HW3",
+      "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
+    },
+    "2020.48.12": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v8 / early v10",
+      "regions": "US",
+      "hw": "HW3",
+      "note": "Archive point release."
+    },
+    "2020.48.25": {
+      "first": "\u2014",
+      "fleet": "archive",
+      "fsd": "v8 / early v10",
+      "regions": "US",
+      "hw": "HW3",
+      "note": "Archive point release."
+    }
+  },
+  "seenIn": {
+    "2020.4": [
+      "CA",
+      "US"
+    ],
+    "2020.4.1": [
+      "CA",
+      "US"
+    ],
+    "2020.12": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2020.12.11": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2020.20": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2020.20.13": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2020.36": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2020.36.11": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2020.48": [
+      "US"
+    ],
+    "2020.48.12": [
+      "US"
+    ],
+    "2020.48.25": [
+      "US"
+    ]
+  },
+  "nextMap": {}
+}
