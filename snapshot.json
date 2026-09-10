@@ -1,8 +1,16 @@
 {
-  "snapshot": "2026-09-10",
+  "snapshot": "2026-09-11",
   "year": 2026,
   "live": true,
   "note": "Live year (n). Nightly snapshot target.",
+  "source": "grok-automation",
+  "generatedAt": "2026-09-11T05:09:00+10:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "owner-app-notes"
+  ],
   "tree": {
     "name": "Tesla 2026",
     "type": "root",
@@ -299,15 +307,33 @@
       "GB",
       "AU"
     ],
+    "2026.20.3": [
+      "US",
+      "CA",
+      "AU"
+    ],
     "2026.20.6": [
       "US",
       "CA",
       "AU",
       "NZ"
     ],
+    "2026.20.6.1": [
+      "US",
+      "CA",
+      "AU",
+      "NZ",
+      "GB",
+      "DE"
+    ],
     "2026.20.6.9": [
       "AU",
       "NZ"
+    ],
+    "2026.20.10": [
+      "US",
+      "CA",
+      "AU"
     ],
     "2026.21.6": [
       "US",
