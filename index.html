@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Tesla Software Tracker</title>
+  <title>Tesla Software Tracker v1.24</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     :root {
@@ -284,7 +284,7 @@
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
       <h1>Tesla Software Tracker</h1>
-      <span class="app-ver">v1.2</span>
+      <span class="app-ver">v1.24</span>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -448,12 +448,13 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "1.2";
+    const APP_VERSION = "1.24";
     let DATA_SNAPSHOT = "2026-09-03";
     const BAKED_SNAPSHOT = "2026-09-03";
 
     let META = {
       "2026.14": { first: "2026-04-15", fleet: "small leftover", fsd: "none on trunk", regions: "Global", hw: "HW3 + HW4", note: "Spring Update feature trunk. FSD point releases hang off 2026.14.6.x, not this parent." },
+      "2026.14.3": { first: "2026-04-28", fleet: "phasing out", fsd: "none", regions: "Global incl. AU", hw: "HW3 + HW4", note: "Spring point before 2026.14.6. Observed on HW3 (AU Model Y) and HW4 in tracker samples." },
       "2026.14.6": { first: "2026-05-12", fleet: "~4%", fsd: "none on this exact build", regions: "Global (US/CA/GB/AU in sample)", hw: "HW3 + HW4", note: "Security + minor features. HW4 FSD v14.3.3 is on 2026.14.6.6, not here." },
       "2026.14.6.6": { first: "2026-05-17", fleet: "~4%", fsd: "HW4 v14.3.3", regions: "North America", hw: "HW4", note: "US+CA HW4 FSD v14.3.3. AU/NZ HW4 later used 2026.16.6 then 2026.20.10, not this number." },
       "2026.14.6.10": { first: "2026-06-12", fleet: "~1%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "US+CA HW4 v14.3.4 wave. Same stack later also on 2026.14.6.11 / .12." },
@@ -487,6 +488,7 @@
     // First-seen order among tracked sample (not official Tesla rollout order)
     let SEEN_IN = {
       "2026.14": ["US","CA","GB","DE"],
+      "2026.14.3": ["US","CA","GB","AU"],
       "2026.14.6": ["US","CA","GB","AU"],
       "2026.14.6.6": ["US","CA"],
       "2026.14.6.10": ["US","CA"],
@@ -531,6 +533,7 @@
           type: "feature",
           version: "2026.14",
           children: [
+            { name: "2026.14.3", type: "point", version: "2026.14.3" },
             { name: "2026.14.6", type: "point", version: "2026.14.6" },
             { name: "2026.14.6.6", type: "point", version: "2026.14.6.6" },
             { name: "2026.14.6.10", type: "point", version: "2026.14.6.10" },
@@ -969,25 +972,34 @@
       updatePrediction();
     }
 
-    function saveActiveCar() {
+    function syncActiveCarFromForm() {
       const car = getActiveCar();
       if (!car) return;
-      car.name = document.getElementById("car-name").value.trim() || "Unnamed";
-      car.model = document.getElementById("car-model").value;
+      car.name = document.getElementById("car-name").value.trim() || car.name || "Unnamed";
+      car.model = document.getElementById("car-model").value || car.model;
       car.build = document.getElementById("car-build").value.trim();
       car.variant = document.getElementById("car-variant").value.trim();
-      car.hw = document.getElementById("car-hw").value;
+      car.hw = document.getElementById("car-hw").value || car.hw;
       car.current = document.getElementById("car-current").value.trim();
       car.history = readHistoryFromUI();
       if (car.current && !car.history.includes(car.current)) {
+        car.history.unshift(car.current);
+      }
+    }
+
+    function saveActiveCar() {
+      const car = getActiveCar();
+      if (!car) return;
+      syncActiveCarFromForm();
+      if (car.current && !(car.history || []).includes(car.current)) {
+        car.history = car.history || [];
         car.history.unshift(car.current);
         renderHistory(car.history);
       }
       saveState();
       renderCarList();
-      updateTreeHighlights();
+      rebuildVisuals();
       updatePrediction();
-      if (currentView === "table") renderTable();
       toast("Car saved");
     }
 
@@ -1008,6 +1020,102 @@
           : "HW4 cars are consolidating onto 2026.26.6.x with the latest FSD.";
         box.innerHTML = `<strong>Predicted next:</strong> 2026.26.6.1<br><span style="color:var(--muted)">${hwHint}</span>`;
       }
+    }
+
+    function collectTreeVersions(node, set) {
+      if (!node) return set;
+      const v = normVer(node.version || extractVer(node.name || ""));
+      if (v) set.add(v);
+      (node.children || []).forEach(ch => collectTreeVersions(ch, set));
+      return set;
+    }
+
+    function trunkKeyFor(ver) {
+      const parts = normVer(ver).split(".").filter(Boolean);
+      if (parts.length >= 2) return parts[0] + "." + parts[1];
+      return parts[0] || ver;
+    }
+
+    function yearOfVer(ver) {
+      const m = normVer(ver).match(/^(\d{4})/);
+      return m ? m[1] : "";
+    }
+
+    function ensureCarVersionsOnTree() {
+      syncActiveCarFromForm();
+      const needed = new Set();
+      (cars || []).forEach(car => {
+        if (car && car.current) needed.add(normVer(car.current));
+        (car && car.history || []).forEach(v => {
+          const n = normVer(String(v || "").trim());
+          if (n) needed.add(n);
+        });
+      });
+      try {
+        const curEl = document.getElementById("car-current");
+        if (curEl && curEl.value) needed.add(normVer(curEl.value));
+        readHistoryFromUI().forEach(v => {
+          const n = normVer(String(v || "").trim());
+          if (n) needed.add(n);
+        });
+      } catch (e) {}
+      if (!TREE_DATA.children) TREE_DATA.children = [];
+      const years = [...needed].map(yearOfVer).filter(y => y && y !== "2026");
+      if (years.length) TREE_DATA.name = "Tesla";
+      const have = collectTreeVersions(TREE_DATA, new Set());
+      needed.forEach(ver => {
+        if (!ver || have.has(ver)) return;
+        const tk = trunkKeyFor(ver);
+        const y = yearOfVer(ver);
+        let bucket = TREE_DATA;
+        if (y && y !== "2026") {
+          let yearNode = TREE_DATA.children.find(t => normVer(t.version) === y && (t.children || []).every(ch => yearOfVer(ch.version || ch.name) === y || yearOfVer(ch.version || "") === y));
+          yearNode = TREE_DATA.children.find(t => t.type !== "point" && normVer(t.version) === y);
+          if (!yearNode) {
+            yearNode = { name: y, type: "feature", version: y, children: [] };
+            TREE_DATA.children.unshift(yearNode);
+          }
+          bucket = yearNode;
+        }
+        if (!bucket.children) bucket.children = [];
+        let trunk = bucket.children.find(t =>
+          normVer(t.version) === tk || normVer(extractVer(t.name || "")) === tk
+        );
+        if (!trunk) {
+          trunk = { name: tk, type: "feature", version: tk, children: [] };
+          bucket.children.push(trunk);
+        }
+        if (!trunk.children) trunk.children = [];
+        if (!trunk.children.some(c => normVer(c.version) === ver)) {
+          trunk.children.push({ name: ver, type: "point", version: ver });
+        }
+        have.add(ver);
+        const carHw = [];
+        (cars || []).forEach(c => {
+          const list = [c.current, ...(c.history || [])].map(x => normVer(x));
+          if (list.includes(ver) && c.hw) carHw.push(c.hw === "4" ? "HW4" : "HW3");
+        });
+        const mergedHw = [...new Set(carHw)].join(" + ");
+        if (!META[ver]) {
+          META[ver] = {
+            first: "—",
+            fleet: "from a saved car",
+            fsd: "—",
+            regions: "—",
+            hw: mergedHw || "—",
+            note: "Inserted from a car profile — not in the snapshot tree."
+          };
+        } else if (mergedHw) {
+          const p = parseHw((META[ver].hw || "") + " " + mergedHw);
+          META[ver].hw = [p.hw3 ? "HW3" : null, p.hw4 ? "HW4" : null].filter(Boolean).join(" + ") || mergedHw;
+        }
+      });
+    }
+
+    function rebuildVisuals() {
+      ensureCarVersionsOnTree();
+      buildTree();
+      if (currentView === "table") renderTable();
     }
 
     function buildTree() {
@@ -1300,15 +1408,14 @@
       try {
         const data = await loadSnapshotJson();
         const applied = applySnapshot(data);
+        syncActiveCarFromForm();
         saveState();
-        buildTree();
-        if (currentView === "table") renderTable();
+        rebuildVisuals();
         if (applied) toast("Loaded ./snapshot.json (" + DATA_SNAPSHOT + ")");
         else toast("snapshot.json is empty — using baked-in data (" + BAKED_SNAPSHOT + ")");
       } catch (err) {
         saveState();
-        buildTree();
-        if (currentView === "table") renderTable();
+        rebuildVisuals();
         toast("Could not fetch ./snapshot.json — using baked-in data. " + (err && err.message ? err.message : ""));
       } finally {
         btn.textContent = "Refresh Data";
@@ -1578,15 +1685,14 @@
     populateActiveForm();
     renderCcSlots();
     updateCacheStatus();
-    buildTree();
+    rebuildVisuals();
     fillCountryFilter();
     setView(currentView);
     window.addEventListener("resize", () => buildTree());
     loadSnapshotJson().then((data) => {
       if (applySnapshot(data)) {
         saveState();
-        buildTree();
-        if (currentView === "table") renderTable();
+        rebuildVisuals();
         updateCacheStatus();
       }
     }).catch(() => {});
