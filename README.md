@@ -24,7 +24,7 @@
 * snapshot.json updated 5am Australian Eastern Standard Time.
 
 # why this app?
-I developed this web app so I could merge and visualise the dozens of code branches Tesla has on-the-go at any one time. Yes, I could view this data by visiting several websites that track this information, but I could not find a central location for all this data. So I built one.
+I developed this web app so I could merge and visualise the dozens of code branches Tesla has on-the-go at any one time. Yes, I could view this data by visiting several websites that track this information, but I could not find a central location for all this data. So I built one. The data is not 100% accurate because Tesla does not record or maintain such information.
 
 # how to use
 * Simply add up to 5 cars via the left hand panel and the versions of software you've had over the past few months / years (if you don't keep track of this info, open your Tesla app on your smartphone, scroll down to the bottom and click on Release Notes).
