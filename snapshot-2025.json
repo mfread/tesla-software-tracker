@@ -1,8 +1,16 @@
 {
-  "snapshot": "2026-09-10",
+  "snapshot": "2026-09-14",
   "year": 2025,
   "live": true,
   "note": "Live year (n-1). Nightly snapshot target. Tree is a reconstructed 2025 archive until the nightly job fills more leaves.",
+  "source": "grok-automation",
+  "generatedAt": "2026-09-14T05:05:00+10:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "owner-app-notes"
+  ],
   "tree": {
     "name": "Tesla 2025",
     "type": "root",
@@ -252,7 +260,7 @@
   },
   "meta": {
     "2025.2": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v12.6.4 / v13.2.8",
       "regions": "US+CA",
@@ -260,7 +268,7 @@
       "note": "Archive point release."
     },
     "2025.2.8": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v12.6.4 / v13.2.8",
       "regions": "US+CA",
@@ -268,71 +276,71 @@
       "note": "Archive point release."
     },
     "2025.8": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "Global",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.8.7": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "Global",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.14": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "Global",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.14.3": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "Global",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.14.3.1": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "Global",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.20": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "Global",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.20.3": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "Global",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.20.6": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "Global",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.26": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v13.2.9 AU",
       "regions": "Global",
@@ -340,7 +348,7 @@
       "note": "Archive point release."
     },
     "2025.26.4": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v13.2.9 AU",
       "regions": "Global",
@@ -348,7 +356,7 @@
       "note": "Archive point release."
     },
     "2025.26.7": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v13.2.9 AU",
       "regions": "Global",
@@ -356,7 +364,7 @@
       "note": "Archive point release."
     },
     "2025.26.7.10": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v13.2.9 AU",
       "regions": "Global",
@@ -364,7 +372,7 @@
       "note": "Archive point release."
     },
     "2025.32": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1",
       "regions": "US+CA",
@@ -372,7 +380,7 @@
       "note": "Archive point release."
     },
     "2025.32.3": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1",
       "regions": "US+CA",
@@ -380,7 +388,7 @@
       "note": "Archive point release."
     },
     "2025.32.3.1": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1",
       "regions": "US+CA",
@@ -388,7 +396,7 @@
       "note": "Archive point release."
     },
     "2025.32.6": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1",
       "regions": "US+CA",
@@ -396,7 +404,7 @@
       "note": "Archive point release."
     },
     "2025.32.8": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1",
       "regions": "US+CA",
@@ -404,7 +412,7 @@
       "note": "Archive point release."
     },
     "2025.32.8.5": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1",
       "regions": "US+CA",
@@ -412,7 +420,7 @@
       "note": "Archive point release."
     },
     "2025.38": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1.5",
       "regions": "US+CA",
@@ -420,7 +428,7 @@
       "note": "Archive point release."
     },
     "2025.38.8.5": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1.5",
       "regions": "US+CA",
@@ -428,7 +436,7 @@
       "note": "Archive point release."
     },
     "2025.38.9.6": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.1.5",
       "regions": "US+CA",
@@ -436,7 +444,7 @@
       "note": "Archive point release."
     },
     "2025.44": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2",
       "regions": "US+CA",
@@ -444,7 +452,7 @@
       "note": "Archive point release."
     },
     "2025.44.3": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2",
       "regions": "US+CA",
@@ -452,7 +460,7 @@
       "note": "Archive point release."
     },
     "2025.44.25.5": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2",
       "regions": "US+CA",
@@ -460,7 +468,7 @@
       "note": "Archive point release."
     },
     "2025.44.100": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2",
       "regions": "US+CA",
@@ -468,7 +476,7 @@
       "note": "Archive point release."
     },
     "2025.44.200": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2",
       "regions": "US+CA",
@@ -476,7 +484,7 @@
       "note": "Archive point release."
     },
     "2025.45": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2.2",
       "regions": "US+CA",
@@ -484,7 +492,7 @@
       "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
     },
     "2025.45.5": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2.2",
       "regions": "US+CA",
@@ -492,7 +500,7 @@
       "note": "Archive point release."
     },
     "2025.45.6": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2.2",
       "regions": "US+CA",
@@ -500,7 +508,7 @@
       "note": "Archive point release."
     },
     "2025.45.7": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2.2",
       "regions": "US+CA",
@@ -508,7 +516,7 @@
       "note": "Archive point release."
     },
     "2025.45.8": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
       "fsd": "v14.2.2",
       "regions": "US+CA",
@@ -516,25 +524,25 @@
       "note": "Archive point release."
     },
     "2025.47": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "US+CA",
       "hw": "HW3 + HW4",
       "note": "Locked archive reconstructed from NATA / Teslascope / Tessie / public notes. Not a live nightly scrape."
     },
     "2025.47.5": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "US+CA",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
     },
     "2025.47.6": {
-      "first": "\u2014",
+      "first": "—",
       "fleet": "archive",
-      "fsd": "\u2014",
+      "fsd": "—",
       "regions": "US+CA",
       "hw": "HW3 + HW4",
       "note": "Archive point release."
