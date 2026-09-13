@@ -292,7 +292,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v13.2</h1>
+      <h1>Tesla Software Tracker v13.3</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -432,7 +432,7 @@
               <th data-sort="fsd">FSD <span class="sort">↕</span></th>
               <th data-sort="fleet">Fleet <span class="sort">↕</span></th>
               <th data-sort="first">First seen <span class="sort">↕</span></th>
-              <th data-sort="seen">Seen in (watched) <span class="sort">↕</span></th>
+              <th data-sort="seen">Seen in <span class="sort">↕</span></th>
               <th data-sort="note">Notes <span class="sort">↕</span></th>
             </tr>
           </thead>
@@ -459,7 +459,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "13.2";
+    const APP_VERSION = "13.3";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -747,12 +747,28 @@
       return watchCountries.map(c => (c || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2)).filter(c => c.length === 2);
     }
 
+    function seenCodes(version) {
+      const raw = SEEN_IN[version] || [];
+      const out = [];
+      raw.forEach(c => {
+        const code = String(c || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2);
+        if (code.length === 2 && !out.includes(code)) out.push(code);
+      });
+      return out;
+    }
+
+    function allSnapshotCountries() {
+      const set = {};
+      Object.keys(SEEN_IN || {}).forEach(ver => {
+        seenCodes(ver).forEach(c => { set[c] = true; });
+      });
+      return Object.keys(set).sort();
+    }
+
     function seenLines(version) {
-      const seen = (SEEN_IN[version] || []).map(c => c.toUpperCase());
-      const watch = watchedList();
-      const yes = watch.filter(c => seen.includes(c));
+      const yes = seenCodes(version);
       if (yes.length) return `Seen in ${yes.join(", ")}`;
-      return "Seen in — (none of your watched countries in this snapshot)";
+      return "Seen in — (no country samples in this snapshot)";
     }
 
     function setView(view) {
@@ -798,7 +814,7 @@
       const sel = document.getElementById("f-cc");
       if (!sel) return;
       const keep = sel.value;
-      const codes = watchedList();
+      const codes = allSnapshotCountries();
       sel.innerHTML = `<option value="">Any</option>` + codes.map(c => `<option value="${c}">${c}</option>`).join("");
       if (keep && [...sel.options].some(o => o.value === keep)) sel.value = keep;
     }
@@ -816,12 +832,10 @@
         if (hw === "3" && !tags.hw3) return false;
         if (hw === "4" && !tags.hw4) return false;
         if (verQ && !(r.version + " " + r.trunk).toLowerCase().includes(verQ)) return false;
-        const seenList = (SEEN_IN[r.version] || []).map(c => c.toUpperCase());
+        const seenList = seenCodes(r.version);
         if (cc) {
-          const has = seenList.includes(cc);
-          if (seen === "yes" && !has) return false;
-          if (!seen && !has) return false;
-        } else if (seen === "yes" && !watchedList().some(c => seenList.includes(c))) return false;
+          if (!seenList.includes(cc)) return false;
+        } else if (seen === "yes" && !seenList.length) return false;
         const fl = (r.fsd || "").toLowerCase();
         const none = !fl || fl === "—" || /none/.test(fl);
         if (fsd === "none" && !none) return false;
@@ -1327,7 +1341,7 @@
           <dt>Approx. fleet share</dt><dd>${m.fleet || "—"}</dd>
           <dt>FSD build</dt><dd>${m.fsd || "—"}</dd>
           <dt>Observed on</dt><dd>${m.hw || "—"} (tracker observations, not a guarantee for every car)</dd>
-          <dt>Watched countries</dt><dd>${seenLines(version)}</dd>
+          <dt>Seen in</dt><dd>${seenLines(version)}</dd>
           <dt>Regions</dt><dd>${m.regions || "—"}</dd>
           ${m.note ? `<dt>Notes</dt><dd>${m.note}</dd>` : ""}
         </dl>
