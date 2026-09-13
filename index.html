@@ -292,7 +292,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v3</h1>
+      <h1>Tesla Software Tracker v3.1</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -359,7 +359,7 @@
         </label>
         <label class="check-row">
           <input type="checkbox" id="show-only-path" />
-          <span>Show only car's path</span>
+          <span>Show only my path</span>
         </label>
         <label class="field" style="margin-top:10px">Countries to view (max 5 ISO codes)</label>
         <div id="cc-slots" style="display:flex;gap:4px;margin-bottom:6px"></div>
@@ -381,7 +381,7 @@
 
       <div class="card" style="font-size:0.72rem;color:var(--muted);line-height:1.45">
         <h3>About this data</h3>
-        Data courtesy Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and X. Current year (n) and previous year (n−1) are live overnight snapshots. Older years are locked archives reconstructed from public trackers. A HW tag on an archive/car-only leaf is from saved cars or that archive file, not a claim that every car with that computer received the firmware. Fleet labels such as “phasing out” are global tracker status.
+        Data courtesy Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and X. Current year (n) and previous year (n−1) are live overnight snapshots. Older years are locked archives reconstructed from public trackers — not nightly scrapes. A HW tag on an archive/car-only leaf is from saved cars or that archive file, not a claim that every car with that computer received it. Fleet labels such as “phasing out” are global tracker status.
       </div>
     </aside>
 
@@ -1286,12 +1286,7 @@
       }
 
       g.selectAll(".link")
-        .classed("path-link", d => {
-          const tExact = vers.some(v => nodeVersion(d.target) === normVer(v));
-          const sExact = vers.some(v => nodeVersion(d.source) === normVer(v));
-          const tTrunk = ancestorOfHistory(d.target, vers);
-          return tExact || (sExact && tTrunk) || (ancestorOfHistory(d.source, vers) && tExact);
-        })
+        .classed("path-link", d => ancestorOfHistory(d.target, vers))
         .style("display", function(d) {
           if (!showOnlyPath) return null;
           return nodeOnPath(d.source) && nodeOnPath(d.target) ? null : "none";
