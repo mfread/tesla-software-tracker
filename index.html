@@ -292,7 +292,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v3.1</h1>
+      <h1>Tesla Software Tracker v13.2</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -395,7 +395,6 @@
             <select id="f-seen">
               <option value="">Any</option>
               <option value="yes">Seen</option>
-              <option value="no">Not seen</option>
             </select>
           </label>
           <label>FSD
@@ -460,7 +459,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "3";
+    const APP_VERSION = "13.2";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -752,12 +751,8 @@
       const seen = (SEEN_IN[version] || []).map(c => c.toUpperCase());
       const watch = watchedList();
       const yes = watch.filter(c => seen.includes(c));
-      const no = watch.filter(c => !seen.includes(c));
-      let html = "";
-      if (yes.length) html += `Seen in ${yes.join(", ")}`;
-      else html += "Seen in — (none of your watched countries in this snapshot)";
-      if (no.length) html += `<br>Not seen in ${no.join(", ")}`;
-      return html;
+      if (yes.length) return `Seen in ${yes.join(", ")}`;
+      return "Seen in — (none of your watched countries in this snapshot)";
     }
 
     function setView(view) {
@@ -825,10 +820,8 @@
         if (cc) {
           const has = seenList.includes(cc);
           if (seen === "yes" && !has) return false;
-          if (seen === "no" && has) return false;
           if (!seen && !has) return false;
         } else if (seen === "yes" && !watchedList().some(c => seenList.includes(c))) return false;
-        else if (seen === "no" && watchedList().every(c => seenList.includes(c))) return false;
         const fl = (r.fsd || "").toLowerCase();
         const none = !fl || fl === "—" || /none/.test(fl);
         if (fsd === "none" && !none) return false;
