@@ -292,7 +292,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v13.3</h1>
+      <h1>Tesla Software Tracker v13.4</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -459,7 +459,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "13.3";
+    const APP_VERSION = "13.4";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -934,8 +934,8 @@
           saveState();
           populateActiveForm();
           renderCarList();
-          updateTreeHighlights();
           updatePrediction();
+          refreshData();
         };
         div.querySelector("button").onclick = (e) => {
           e.stopPropagation();
@@ -1034,6 +1034,22 @@
       toast("Car saved");
     }
 
+    function verCmp(a, b) {
+      const pa = normVer(a).split(".").map(n => parseInt(n, 10) || 0);
+      const pb = normVer(b).split(".").map(n => parseInt(n, 10) || 0);
+      const n = Math.max(pa.length, pb.length);
+      for (let i = 0; i < n; i++) {
+        const d = (pa[i] || 0) - (pb[i] || 0);
+        if (d) return d;
+      }
+      return 0;
+    }
+
+    function firstVerInText(text) {
+      const m = String(text || "").match(/20\d{2}(?:\.\d+){1,4}/);
+      return m ? m[0] : "";
+    }
+
     function updatePrediction() {
       const car = getActiveCar();
       const box = document.getElementById("pred-box");
@@ -1041,16 +1057,17 @@
         box.innerHTML = "Enter a current version to see a predicted next hop.";
         return;
       }
-      const key = `${car.current}|${car.hw}`;
-      const hit = NEXT_MAP[key] || NEXT_MAP[`${extractVer(car.current)}|${car.hw}`];
-      if (hit) {
-        box.innerHTML = `<strong>Predicted next:</strong> ${hit.next}<br><span style="color:var(--muted)">${hit.why}</span>`;
-      } else {
-        const hwHint = car.hw === "3"
-          ? "HW3 cars on 2026.20.x typically move to 2026.21.6 (if FSD) or 2026.26.6.1 (Summer production)."
-          : "HW4 cars are consolidating onto 2026.26.6.x with the latest FSD.";
-        box.innerHTML = `<strong>Predicted next:</strong> 2026.26.6.1<br><span style="color:var(--muted)">${hwHint}</span>`;
+      const current = extractVer(car.current) || car.current;
+      const key = current + "|" + car.hw;
+      const hit = NEXT_MAP[key] || NEXT_MAP[car.current + "|" + car.hw];
+      const nextRaw = hit ? hit.next : "";
+      const nextVer = firstVerInText(nextRaw);
+      const newer = nextVer && verCmp(nextVer, current) > 0;
+      if (hit && newer) {
+        box.innerHTML = "<strong>Predicted next:</strong> " + hit.next + "<br><span style=\"color:var(--muted)\">" + (hit.why || "") + "</span>";
+        return;
       }
+      box.innerHTML = "<strong>Predicted next:</strong> not known<br><span style=\"color:var(--muted)\">No newer hop recorded from " + current + " (HW" + (car.hw || "?") + ") in the snapshot / tracker map.</span>";
     }
 
     function collectTreeVersions(node, set) {
