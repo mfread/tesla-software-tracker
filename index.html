@@ -1069,7 +1069,7 @@
         box.innerHTML = "<strong>Predicted next:</strong> " + hit.next + "<br><span style=\"color:var(--muted)\">" + (hit.why || "") + "</span>";
         return;
       }
-      box.innerHTML = "<strong>Predicted next:</strong> not known<br><span style=\"color:var(--muted)\">No newer hop recorded from " + current + " (HW" + (car.hw || "?") + ") in the snapshot / tracker map.</span>";
+      box.innerHTML = "<strong>Predicted next:</strong> not known<br><span style=\"color:var(--muted)\">Trackers show no newer hop recorded from " + current + " (HW" + (car.hw || "?") + ")</span>";
     }
 
     function collectTreeVersions(node, set) {
