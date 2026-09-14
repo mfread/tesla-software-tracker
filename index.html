@@ -333,7 +333,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v14.2</h1>
+      <h1>Tesla Software Tracker v4.21</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -366,7 +366,7 @@
       <div class="card" id="active-car-panel">
         <div class="card-head">
           <h3>Active Car</h3>
-          <button class="btn small" id="toggle-active-car" type="button">Collapse</button>
+          <button class="btn small" id="toggle-active-car" type="button">Expand</button>
         </div>
         <div id="active-car-body">
         <label class="field">Label</label>
@@ -509,7 +509,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "14.2";
+    const APP_VERSION = "14.21";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -586,7 +586,7 @@
     };
 
     let currentView = "tree";
-    let activeCarCollapsed = false;
+    let activeCarCollapsed = true;
     let tableSort = { key: "version", dir: 1 };
 
     let TREE_DATA = {
