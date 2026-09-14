@@ -292,7 +292,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v13.4</h1>
+      <h1>Tesla Software Tracker v4.0</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small active" id="view-tree">Tree</button>
@@ -342,6 +342,9 @@
           <option value="3">HW3</option>
           <option value="4">HW4 / AI4</option>
         </select>
+        <label class="field">Resides in country</label>
+        <input type="text" id="car-cc" maxlength="2" placeholder="AU" style="text-transform:uppercase" title="ISO-2 code for where the car lives, not where it was built" />
+        <a href="https://www.iso.org/obp/ui/#search/code/" target="_blank" rel="noopener" style="font-size:0.72rem;color:var(--accent);margin:-4px 0 8px">ISO country codes</a>
         <label class="field">Current Version</label>
         <input type="text" id="car-current" placeholder="2026.20.6.9" />
         <label class="field">Last versions received (newest first — drag to reorder)</label>
@@ -361,9 +364,6 @@
           <input type="checkbox" id="show-only-path" />
           <span>Show only my path (Tree view only)</span>
         </label>
-        <label class="field" style="margin-top:10px">Countries to view (max 5 ISO codes)</label>
-        <div id="cc-slots" style="display:flex;gap:4px;margin-bottom:6px"></div>
-        <a href="https://www.iso.org/obp/ui/#search/code/" target="_blank" rel="noopener" style="font-size:0.72rem;color:var(--accent)">Official ISO country codes</a>
       </div>
 
       <div class="card">
@@ -459,7 +459,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "13.4";
+    const APP_VERSION = "14.0";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -535,7 +535,6 @@
       "2026.27.200": ["NL","BE"]
     };
 
-    let watchCountries = ["AU","NZ","US","CA","GB"];
     let currentView = "tree";
     let tableSort = { key: "version", dir: 1 };
 
@@ -684,9 +683,6 @@
           const data = JSON.parse(raw);
           cars = data.cars || [];
           activeCarId = data.activeCarId || (cars[0] && cars[0].id) || null;
-          if (Array.isArray(data.watchCountries) && data.watchCountries.length) {
-            watchCountries = data.watchCountries.slice(0, 5);
-          }
           if (data.currentView === "table" || data.currentView === "tree") currentView = data.currentView;
           if (data.selectedYear && AVAILABLE_YEARS.includes(Number(data.selectedYear))) {
             selectedYear = Number(data.selectedYear);
@@ -704,6 +700,7 @@
           build: "2023/10",
           variant: "RWD",
           hw: "3",
+          country: "AU",
           current: "2026.20.6.9",
           history: ["2026.20.6.9", "2026.20.6.1", "2026.14.6.11"]
         });
@@ -716,7 +713,6 @@
       localStorage.setItem("teslaBranchTree", JSON.stringify({
         cars,
         activeCarId,
-        watchCountries,
         currentView,
         selectedYear,
         cachedAt: Date.now(),
@@ -743,15 +739,32 @@
       return cars.find(c => c.id === activeCarId) || null;
     }
 
-    function watchedList() {
-      return watchCountries.map(c => (c || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2)).filter(c => c.length === 2);
+    function iso2(s) {
+      return String(s || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2);
+    }
+
+    function carCountry(car) {
+      return iso2(car && car.country);
+    }
+
+    function ownerCountriesFor(version) {
+      const out = [];
+      (cars || []).forEach(car => {
+        const cc = carCountry(car);
+        if (!cc) return;
+        const vers = [car.current].concat(car.history || []);
+        if (vers.some(v => versionsMatch(v, version))) {
+          if (!out.includes(cc)) out.push(cc);
+        }
+      });
+      return out;
     }
 
     function seenCodes(version) {
       const raw = SEEN_IN[version] || [];
       const out = [];
-      raw.forEach(c => {
-        const code = String(c || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2);
+      raw.concat(ownerCountriesFor(version)).forEach(c => {
+        const code = iso2(c);
         if (code.length === 2 && !out.includes(code)) out.push(code);
       });
       return out;
@@ -762,13 +775,22 @@
       Object.keys(SEEN_IN || {}).forEach(ver => {
         seenCodes(ver).forEach(c => { set[c] = true; });
       });
+      (cars || []).forEach(car => {
+        const cc = carCountry(car);
+        if (cc) set[cc] = true;
+      });
       return Object.keys(set).sort();
     }
 
     function seenLines(version) {
       const yes = seenCodes(version);
-      if (yes.length) return `Seen in ${yes.join(", ")}`;
-      return "Seen in — (no country samples in this snapshot)";
+      const owners = ownerCountriesFor(version);
+      if (yes.length) {
+        let html = "Seen in " + yes.join(", ");
+        if (owners.length) html += " <span style=\"color:var(--muted)\">(includes saved-car residences)</span>";
+        return html;
+      }
+      return "Seen in — (no country samples in this snapshot or saved cars)";
     }
 
     function setView(view) {
@@ -899,27 +921,6 @@
       });
     }
 
-    function renderCcSlots() {
-      const wrap = document.getElementById("cc-slots");
-      if (!wrap) return;
-      wrap.innerHTML = "";
-      for (let i = 0; i < 5; i++) {
-        const inp = document.createElement("input");
-        inp.type = "text";
-        inp.maxLength = 2;
-        inp.placeholder = "—";
-        inp.value = watchCountries[i] || "";
-        inp.style.cssText = "width:42px;text-align:center;text-transform:uppercase;margin:0";
-        inp.addEventListener("change", () => {
-          const next = [...document.querySelectorAll("#cc-slots input")].map(el => el.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2));
-          watchCountries = next;
-          saveState();
-          fillCountryFilter();
-          if (currentView === "table") renderTable();
-        });
-        wrap.appendChild(inp);
-      }
-    }
 
     function renderCarList() {
       const list = document.getElementById("car-list");
@@ -998,6 +999,7 @@
       document.getElementById("car-build").value = car.build || "";
       document.getElementById("car-variant").value = car.variant || "";
       document.getElementById("car-hw").value = car.hw || "3";
+      document.getElementById("car-cc").value = car.country || "";
       document.getElementById("car-current").value = car.current || "";
       renderHistory(car.history || []);
       updatePrediction();
@@ -1011,6 +1013,7 @@
       car.build = document.getElementById("car-build").value.trim();
       car.variant = document.getElementById("car-variant").value.trim();
       car.hw = document.getElementById("car-hw").value || car.hw;
+      car.country = iso2(document.getElementById("car-cc").value);
       car.current = document.getElementById("car-current").value.trim();
       car.history = readHistoryFromUI();
       if (car.current && !car.history.includes(car.current)) {
@@ -1424,11 +1427,17 @@
       if (date && String(date).trim()) DATA_SNAPSHOT = String(date).trim();
       const meta = data.meta || data.META;
       if (meta && typeof meta === "object" && Object.keys(meta).length) {
-        META = Object.assign({}, meta);
+        META = Object.assign({}, META, meta);
       }
       const seen = data.seenIn || data.SEEN_IN;
       if (seen && typeof seen === "object" && Object.keys(seen).length) {
-        SEEN_IN = Object.assign({}, seen);
+        const merged = Object.assign({}, SEEN_IN);
+        Object.keys(seen).forEach(k => {
+          const a = Array.isArray(merged[k]) ? merged[k] : [];
+          const b = Array.isArray(seen[k]) ? seen[k] : [];
+          merged[k] = [...new Set(a.concat(b).map(iso2).filter(c => c.length === 2))];
+        });
+        SEEN_IN = merged;
       }
       const tree = data.tree || data.TREE_DATA;
       if (tree && typeof tree === "object" && (tree.children || tree.name)) {
@@ -1549,7 +1558,7 @@
       if (!cars.length) return toast("No cars to export");
       const prevLists = cars.map(previousVersions);
       const maxPrev = Math.max(4, ...prevLists.map(p => p.length));
-      const headers = ["Label", "Model", "Build", "Variant", "Hardware", "Current Vsn"];
+      const headers = ["Label", "Model", "Build", "Variant", "Hardware", "Resides", "Current Vsn"];
       for (let i = 1; i <= maxPrev; i++) headers.push("Previous" + i);
       const lines = [headers.map(csvCell).join(",")];
       cars.forEach((car, i) => {
@@ -1559,6 +1568,7 @@
           car.build || "",
           car.variant || "",
           hwLabel(car.hw),
+          car.country || "",
           car.current || "",
           ...prevLists[i]
         ];
@@ -1741,7 +1751,7 @@
     document.getElementById("add-car-btn").onclick = () => {
       if (cars.length >= 5) return toast("Maximum 5 cars");
       const id = Date.now().toString();
-      cars.push({ id, name: "New Car", model: "Y", build: "", variant: "", hw: "3", current: "", history: [] });
+      cars.push({ id, name: "New Car", model: "Y", build: "", variant: "", hw: "3", country: "", current: "", history: [] });
       activeCarId = id;
       saveState();
       populateActiveForm();
@@ -1786,7 +1796,6 @@
     loadState();
     renderCarList();
     populateActiveForm();
-    renderCcSlots();
     fillYearSelect();
     updateCacheStatus();
     rebuildVisuals();
