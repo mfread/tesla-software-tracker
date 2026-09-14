@@ -284,19 +284,14 @@
     }
 
     #help-panel {
-      position: fixed;
-      inset: 56px 16px 16px 16px;
-      z-index: 45;
+      flex: 1;
       display: none;
-      background: var(--panel);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
-      overflow: hidden;
       flex-direction: column;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
     }
-    #help-panel.open { display: flex; }
+    #help-panel.visible { display: flex; }
     #help-panel header {
       display: flex;
       align-items: center;
@@ -331,7 +326,6 @@
     @media (max-width: 768px) {
       #sidebar { position: absolute; left: 0; top: 0; bottom: 0; z-index: 40; box-shadow: 4px 0 16px rgba(0,0,0,0.4); }
       #details-panel { width: calc(100% - 24px); left: 12px; right: 12px; }
-      #help-panel { inset: 8px; }
     }
   </style>
 </head>
@@ -339,7 +333,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.1</h1>
+      <h1>Tesla Software Tracker v4.11</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -497,24 +491,20 @@
         <button id="zoom-path" title="Zoom to my path">◎</button>
       </div>
     </div>
+    <div id="help-panel">
+      <div class="help-status" id="help-status" style="padding:8px 16px 0"></div>
+      <div class="help-body" id="help-body">Loading README…</div>
+    </div>
     <div id="details-panel">
       <span class="close" id="close-details">✕</span>
       <h3 id="details-title">Version</h3>
       <div id="details-body"></div>
     </div>
   </main>
-  <div id="help-panel" role="dialog" aria-label="Help">
-    <header>
-      <h2>Help</h2>
-      <span class="help-status" id="help-status"></span>
-      <span class="close" id="close-help" style="cursor:pointer;color:var(--muted);font-size:1.1rem">✕</span>
-    </header>
-    <div class="help-body" id="help-body">Loading README…</div>
-  </div>
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.1";
+    const APP_VERSION = "4.11";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -738,7 +728,7 @@
           const data = JSON.parse(raw);
           cars = data.cars || [];
           activeCarId = data.activeCarId || (cars[0] && cars[0].id) || null;
-          if (data.currentView === "table" || data.currentView === "tree") currentView = data.currentView;
+          if (data.currentView === "table" || data.currentView === "tree" || data.currentView === "help") currentView = data.currentView;
           if (data.selectedYear && AVAILABLE_YEARS.includes(Number(data.selectedYear))) {
             selectedYear = Number(data.selectedYear);
           } else {
@@ -849,15 +839,21 @@
     }
 
     function setView(view) {
-      currentView = view === "table" ? "table" : "tree";
-      document.getElementById("tree-container").classList.toggle("hidden", currentView === "table");
+      currentView = (view === "table" || view === "help") ? view : "tree";
+      document.getElementById("tree-container").classList.toggle("hidden", currentView !== "tree");
       document.getElementById("table-wrap").classList.toggle("visible", currentView === "table");
-      document.getElementById("view-tree").classList.toggle("active", currentView === "tree");
-      document.getElementById("view-table").classList.toggle("active", currentView === "table");
-      document.getElementById("view-tree").classList.toggle("secondary", currentView !== "tree");
-      document.getElementById("view-table").classList.toggle("secondary", currentView !== "table");
+      const help = document.getElementById("help-panel");
+      if (help) help.classList.toggle("visible", currentView === "help");
+      ["tree","table","help"].forEach(v => {
+        const btn = document.getElementById("view-" + v);
+        if (!btn) return;
+        const on = currentView === v;
+        btn.classList.toggle("active", on);
+        btn.classList.toggle("secondary", !on);
+      });
       saveState();
       if (currentView === "table") renderTable();
+      else if (currentView === "help") loadHelp();
       else setTimeout(() => { if (typeof zoomFit === "function") zoomFit(); }, 40);
     }
 
@@ -1889,15 +1885,7 @@
       status.textContent = "offline / blocked";
     }
 
-    function openHelp() {
-      document.getElementById("help-panel").classList.add("open");
-      loadHelp();
-    }
-    function closeHelp() {
-      document.getElementById("help-panel").classList.remove("open");
-    }
-    document.getElementById("view-help").onclick = openHelp;
-    document.getElementById("close-help").onclick = closeHelp;
+    document.getElementById("view-help").onclick = () => setView("help");
     document.getElementById("view-tree").onclick = () => setView("tree");
     document.getElementById("view-table").onclick = () => setView("table");
     ["f-hw","f-ver","f-cc","f-seen","f-fsd","f-path"].forEach(id => {
