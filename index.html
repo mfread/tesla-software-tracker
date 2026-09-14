@@ -333,7 +333,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.11</h1>
+      <h1>Tesla Software Tracker v14.2</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -364,7 +364,11 @@
       </div>
 
       <div class="card" id="active-car-panel">
-        <h3>Active Car</h3>
+        <div class="card-head">
+          <h3>Active Car</h3>
+          <button class="btn small" id="toggle-active-car" type="button">Collapse</button>
+        </div>
+        <div id="active-car-body">
         <label class="field">Label</label>
         <input type="text" id="car-name" placeholder="e.g. 2023 Model Y RWD" />
         <label class="field">Model</label>
@@ -393,6 +397,7 @@
         <button class="btn small secondary" id="add-hist-btn" style="width:100%;margin-bottom:8px">+ Add version to history</button>
         <button class="btn" id="save-car-btn" style="width:100%">Save Active Car</button>
         <div class="pred" id="pred-box">Save the car to see a predicted next version.</div>
+        </div>
       </div>
 
       <div class="card">
@@ -422,7 +427,7 @@
 
       <div class="card" style="font-size:0.72rem;color:var(--muted);line-height:1.45">
         <h3>About this data</h3>
-        Data courtesy Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and X. Current year (n) and previous year (n−1) are live overnight snapshots. Older years are locked archives reconstructed from public trackers — not nightly scrapes. A HW tag on an archive/car-only leaf is from saved cars or that archive file, not a claim that every car with that computer received it. Fleet labels such as “phasing out” are from the global trackers.
+        Data courtesy Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and X. Current year (n) and previous year (n−1) are live overnight snapshots. Older years are locked archives reconstructed from public trackers — not nightly scrapes. A HW tag on an archive/car-only leaf is from saved cars or that archive file, not a claim that every car with that computer received it. Fleet labels such as “phasing out” are global tracker status.
       </div>
     </aside>
 
@@ -504,7 +509,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.11";
+    const APP_VERSION = "14.2";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -581,6 +586,7 @@
     };
 
     let currentView = "tree";
+    let activeCarCollapsed = false;
     let tableSort = { key: "version", dir: 1 };
 
     let TREE_DATA = {
@@ -729,6 +735,7 @@
           cars = data.cars || [];
           activeCarId = data.activeCarId || (cars[0] && cars[0].id) || null;
           if (data.currentView === "table" || data.currentView === "tree" || data.currentView === "help") currentView = data.currentView;
+          if (typeof data.activeCarCollapsed === "boolean") activeCarCollapsed = data.activeCarCollapsed;
           if (data.selectedYear && AVAILABLE_YEARS.includes(Number(data.selectedYear))) {
             selectedYear = Number(data.selectedYear);
           } else {
@@ -759,6 +766,7 @@
         cars,
         activeCarId,
         currentView,
+        activeCarCollapsed,
         selectedYear,
         cachedAt: Date.now(),
         snapshot: DATA_SNAPSHOT
@@ -838,6 +846,14 @@
       return "Seen in — (no country samples in this snapshot or saved cars)";
     }
 
+
+    function applyActiveCarCollapsed() {
+      const body = document.getElementById("active-car-body");
+      const btn = document.getElementById("toggle-active-car");
+      if (!body || !btn) return;
+      body.style.display = activeCarCollapsed ? "none" : "block";
+      btn.textContent = activeCarCollapsed ? "Expand" : "Collapse";
+    }
     function setView(view) {
       currentView = (view === "table" || view === "help") ? view : "tree";
       document.getElementById("tree-container").classList.toggle("hidden", currentView !== "tree");
@@ -1885,6 +1901,11 @@
       status.textContent = "offline / blocked";
     }
 
+    document.getElementById("toggle-active-car").onclick = () => {
+      activeCarCollapsed = !activeCarCollapsed;
+      applyActiveCarCollapsed();
+      saveState();
+    };
     document.getElementById("view-help").onclick = () => setView("help");
     document.getElementById("view-tree").onclick = () => setView("tree");
     document.getElementById("view-table").onclick = () => setView("table");
@@ -1914,6 +1935,7 @@
       document.documentElement.setAttribute("data-theme", "light");
     }
     loadState();
+    applyActiveCarCollapsed();
     renderCarList();
     populateActiveForm();
     fillYearSelect();
