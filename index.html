@@ -282,9 +282,56 @@
       z-index: 50;
       display: none;
     }
+
+    #help-panel {
+      position: fixed;
+      inset: 56px 16px 16px 16px;
+      z-index: 45;
+      display: none;
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+      overflow: hidden;
+      flex-direction: column;
+    }
+    #help-panel.open { display: flex; }
+    #help-panel header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: var(--panel);
+    }
+    #help-panel header h2 { margin: 0; font-size: 1rem; font-weight: 600; }
+    #help-panel .help-body {
+      flex: 1;
+      overflow: auto;
+      padding: 16px 20px 28px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    #help-panel .help-body h1 { font-size: 1.25rem; margin: 0 0 10px; }
+    #help-panel .help-body h2 { font-size: 1.05rem; margin: 22px 0 8px; }
+    #help-panel .help-body h3 { font-size: 0.95rem; margin: 16px 0 6px; }
+    #help-panel .help-body p { margin: 0 0 10px; }
+    #help-panel .help-body ul, #help-panel .help-body ol { margin: 0 0 12px 1.2rem; }
+    #help-panel .help-body li { margin: 4px 0; }
+    #help-panel .help-body a { color: var(--accent); }
+    #help-panel .help-body code {
+      font-size: 0.85em;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+    #help-panel .help-status { font-size: 0.75rem; color: var(--muted); margin-left: auto; }
     @media (max-width: 768px) {
       #sidebar { position: absolute; left: 0; top: 0; bottom: 0; z-index: 40; box-shadow: 4px 0 16px rgba(0,0,0,0.4); }
       #details-panel { width: calc(100% - 24px); left: 12px; right: 12px; }
+      #help-panel { inset: 8px; }
     }
   </style>
 </head>
@@ -292,9 +339,10 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.01</h1>
+      <h1>Tesla Software Tracker v4.1</h1>
     </div>
     <div class="view-toggle">
+      <button class="btn small secondary" id="view-help">Help</button>
       <button class="btn small active" id="view-tree">Tree</button>
       <button class="btn small secondary" id="view-table">Table</button>
     </div>
@@ -455,10 +503,18 @@
       <div id="details-body"></div>
     </div>
   </main>
+  <div id="help-panel" role="dialog" aria-label="Help">
+    <header>
+      <h2>Help</h2>
+      <span class="help-status" id="help-status"></span>
+      <span class="close" id="close-help" style="cursor:pointer;color:var(--muted);font-size:1.1rem">✕</span>
+    </header>
+    <div class="help-body" id="help-body">Loading README…</div>
+  </div>
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.01";
+    const APP_VERSION = "4.1";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -470,7 +526,7 @@
     let META = {
       "2026.14": { first: "2026-04-15", fleet: "small leftover", fsd: "none on trunk", regions: "Global", hw: "HW3 + HW4", note: "Spring Update feature trunk. FSD point releases hang off 2026.14.6.x, not this parent." },
       "2026.14.3": { first: "2026-04-28", fleet: "phasing out", fsd: "none", regions: "Global incl. AU", hw: "HW3 + HW4", note: "Spring point before 2026.14.6. Observed on HW3 (AU Model Y) and HW4 in tracker samples." },
-      "2026.14.6": { first: "2026-05-12", fleet: "~4%", fsd: "none on this exact build", regions: "Global (US/CA/GB/AU in sample)", hw: "HW3 + HW4", note: "Security + minor features. HW4 FSD v14.3.3 is on 2026.14.6.6, not here." },
+      "2026.14.6": { first: "2026-05-12", fleet: "~4%", fsd: "No FSD found in this exact build", regions: "Global (US/CA/GB/AU in sample)", hw: "HW3 + HW4", note: "Security + minor features. HW4 FSD v14.3.3 is on 2026.14.6.6, not here." },
       "2026.14.6.6": { first: "2026-05-17", fleet: "~4%", fsd: "HW4 v14.3.3", regions: "North America", hw: "HW4", note: "US+CA HW4 FSD v14.3.3. AU/NZ HW4 later used 2026.16.6 then 2026.20.10, not this number." },
       "2026.14.6.10": { first: "2026-06-12", fleet: "~1%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "US+CA HW4 v14.3.4 wave. Same stack later also on 2026.14.6.11 / .12." },
       "2026.14.6.11": { first: "2026-06-15", fleet: "~4%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "Teslascope sample is HW4 100% (US/CA). Not an AU/NZ or HW3 Lite build." },
@@ -480,7 +536,7 @@
       "2026.20.3": { first: "2026-06-17", fleet: "phasing out", fsd: "none", regions: "Global incl. AU 0.94% / NZ 0.19%", hw: "HW3 + HW4", note: "Blind-spot-while-parked + security. No Lite. Common hop before 2026.20.6.1." },
       "2026.20.5.1": { first: "2026-06-29", fleet: "early access", fsd: "HW3 v14 Lite", regions: "United States", hw: "HW3", note: "First public Lite build — US HW3 early access only. Not AU/NZ." },
       "2026.20.6": { first: "2026-06-29", fleet: "phasing out", fsd: "none — security only", regions: "US/GB/EU + AU owners (Tesla App); Teslascope public table missed AU", hw: "HW3 + HW4", note: "Security point release. Teslascope country table (~60 cars) is US/GB/EU and omits AU, but AU Tesla App Release Notes and AU hops 2026.20.3 → 2026.20.6.1 confirm the 2026.20.6 family reached Australia (incl. older Model S/X). Lite is on 2026.20.6.10 / .6.11 (US+CA), not on .6 itself." },
-      "2026.20.6.1": { first: "2026-07-02", fleet: "~8%", fsd: "none on this exact build", regions: "Global incl. AU 1.19% / NZ 0.48%", hw: "HW3 + HW4", note: "Wide production / minor fixes. Teslascope lists AU+NZ installs but no Lite/v14 payload. AU HW3 often sat here then moved to 2026.20.6.9." },
+      "2026.20.6.1": { first: "2026-07-02", fleet: "~8%", fsd: "No FSD found in this exact build", regions: "Global incl. AU 1.19% / NZ 0.48%", hw: "HW3 + HW4", note: "Wide production / minor fixes. Teslascope lists AU+NZ installs but no Lite/v14 payload. AU HW3 often sat here then moved to 2026.20.6.9." },
       "2026.20.6.6": { first: "2026-07-13", fleet: "~4%", fsd: "HW4 v14.3.5", regions: "North America", hw: "HW4", note: "US+CA HW4 v14.3.5. AU/NZ HW4 twin of this stack is 2026.20.10 (FSD v14.3.5 Down Under)." },
       "2026.20.6.9": { first: "2026-07-29", fleet: "3.3%", fsd: "none — minor fixes only", regions: "Australia / New Zealand", hw: "HW3", note: "AU/NZ HW3 regional (~99% HW3). Not Lite. Tesla AU email 28 Aug: v14 Lite in active development for AU/NZ — not shipping on this build. US+CA Lite is 2026.20.6.10/.6.11 then 2026.26.6.5." },
       "2026.20.6.10": { first: "2026-07-20", fleet: "small", fsd: "HW3 v14 Lite", regions: "United States", hw: "HW3", note: "US HW3 Lite (wide-prep). Canada/AU/NZ not in Teslascope sample. Next US+CA dual-stack is 2026.20.6.11." },
@@ -1765,6 +1821,83 @@
     document.getElementById("export-png").onclick = exportPng;
     document.getElementById("grey-unrelated").onchange = () => { updateTreeHighlights(); if (currentView === "table") renderTable(); };
     document.getElementById("show-only-path").onchange = updateTreeHighlights;
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function renderMarkdown(md) {
+      const lines = String(md || "").replace(/\r\n/g, "\n").split("\n");
+      let html = "", list = null;
+      const flush = () => {
+        if (list) { html += list === "ul" ? "</ul>" : "</ol>"; list = null; }
+      };
+      const inline = (t) => {
+        t = escapeHtml(t);
+        t = t.replace(/`([^`]+)`/g, "<code>$1</code>");
+        t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        t = t.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+        t = t.replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+        return t;
+      };
+      lines.forEach(line => {
+        const t = line.trimEnd();
+        if (/^\s*[-*]\s+/.test(t)) {
+          if (list !== "ul") { flush(); html += "<ul>"; list = "ul"; }
+          html += "<li>" + inline(t.replace(/^\s*[-*]\s+/, "")) + "</li>";
+          return;
+        }
+        if (/^\s*\d+\.\s+/.test(t)) {
+          if (list !== "ol") { flush(); html += "<ol>"; list = "ol"; }
+          html += "<li>" + inline(t.replace(/^\s*\d+\.\s+/, "")) + "</li>";
+          return;
+        }
+        flush();
+        if (!t.trim()) return;
+        if (/^###\s+/.test(t)) html += "<h3>" + inline(t.replace(/^###\s+/, "")) + "</h3>";
+        else if (/^##\s+/.test(t)) html += "<h2>" + inline(t.replace(/^##\s+/, "")) + "</h2>";
+        else if (/^#\s+/.test(t)) html += "<h1>" + inline(t.replace(/^#\s+/, "")) + "</h1>";
+        else html += "<p>" + inline(t) + "</p>";
+      });
+      flush();
+      return html || "<p>README was empty.</p>";
+    }
+
+    async function loadHelp() {
+      const body = document.getElementById("help-body");
+      const status = document.getElementById("help-status");
+      body.textContent = "Loading README…";
+      status.textContent = "";
+      const urls = [
+        "./README.md",
+        "https://raw.githubusercontent.com/mfread/tesla-software-tracker/main/README.md"
+      ];
+      let lastErr = null;
+      for (const url of urls) {
+        try {
+          const res = await fetch(url, { cache: "no-store" });
+          if (!res.ok) throw new Error(url + " " + res.status);
+          const md = await res.text();
+          if (!md.trim()) throw new Error("empty");
+          body.innerHTML = renderMarkdown(md);
+          status.textContent = url.startsWith("./") ? "from Pages" : "from GitHub";
+          return;
+        } catch (e) { lastErr = e; }
+      }
+      body.innerHTML = "<p>Could not load README.md.</p><p style='color:var(--muted)'>" + escapeHtml(String(lastErr || "")) + "</p>";
+      status.textContent = "offline / blocked";
+    }
+
+    function openHelp() {
+      document.getElementById("help-panel").classList.add("open");
+      loadHelp();
+    }
+    function closeHelp() {
+      document.getElementById("help-panel").classList.remove("open");
+    }
+    document.getElementById("view-help").onclick = openHelp;
+    document.getElementById("close-help").onclick = closeHelp;
     document.getElementById("view-tree").onclick = () => setView("tree");
     document.getElementById("view-table").onclick = () => setView("table");
     ["f-hw","f-ver","f-cc","f-seen","f-fsd","f-path"].forEach(id => {
