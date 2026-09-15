@@ -333,7 +333,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.21</h1>
+      <h1>Tesla Software Tracker v4.23</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -509,7 +509,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "14.21";
+    const APP_VERSION = "4.23";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -663,14 +663,58 @@
 
     // Observed typical next hops by current version + HW
     let NEXT_MAP = {
-      "2026.20.6.9|3": { next: "2026.26.6.1", why: "AU/NZ HW3 cars on the 2026.20 regional build are most often jumping to the Summer production line." },
-      "2026.20.6.1|3": { next: "2026.21.6 or 2026.26.6.1", why: "FSD subscribers often go 2026.21.6; others merge onto Summer 2026.26.6.1." },
-      "2026.20.6.11|3": { next: "2026.21.6", why: "Observed US+CA HW3 hop from Lite dual-stack into 2026.21.6." },
-      "2026.21.6|3": { next: "2026.26.6.5", why: "Observed US+CA hop: 2026.21.6 → 2026.26.6.5 with HW3 v14.1 Lite still on that firmware." },
-      "2026.21.6|4": { next: "2026.26.6.5", why: "Observed US+CA hop: 2026.21.6 → 2026.26.6.5 with FSD v14.3.8." },
-      "2026.26.6.1|3": { next: "2026.26.6.2", why: "On the main production line; next is the current point-fix wave." },
-      "2026.26.6.1|4": { next: "2026.26.6.2 / .6.5", why: "HW4 may skip to the FSD-merged .6.5." }
+      "2026.20.6.9|3": { next: "2026.26.6.1", why: "AU/NZ HW3 production line onto Summer." },
+      "2026.20.6.1|3": { next: "2026.26.6.1", why: "Teslascope: 97 installs of 2026.26.6.1 came from 2026.20.6.1." },
+      "2026.20.6.11|3": { next: "2026.21.6", why: "US+CA HW3 Lite dual-stack into 2026.21.6." },
+      "2026.21.6|3": { next: "2026.26.6.5", why: "US+CA HW3 FSD merge onto 2026.26.6.5." },
+      "2026.21.6|4": { next: "2026.26.6.5", why: "US+CA HW4 FSD merge onto 2026.26.6.5." },
+      "2026.26.6.5|3": { next: "2026.27.6", why: "Teslascope: nearly all 2026.27.6 installs came from 2026.26.6.5." },
+      "2026.26.6.5|4": { next: "2026.27.6", why: "Teslascope: nearly all 2026.27.6 installs came from 2026.26.6.5." },
+      "2026.26.6.1|3": { next: "2026.32.3", why: "Teslascope: ~90% of 2026.32.3 came from 2026.26.6.1 (mostly HW3)." },
+      "2026.26.6.1|4": { next: "2026.32.3", why: "Teslascope also shows HW4 hops 2026.26.6.1 → 2026.32.3." }
     };
+
+    let BAKED_HOPS = null;
+    let HOPS = [
+      { from: "2026.20.6.9", to: "2026.26.6.1", model: "Y", variant: "SR RWD", year: 2023, hw: "3", cc: "AU", n: 3 },
+      { from: "2026.20.6.9", to: "2026.26.6.1", model: "Y", variant: "SR RWD", year: 2022, hw: "3", cc: "AU", n: 2 },
+      { from: "2026.20.6.9", to: "2026.26.6.1", model: "3", variant: "SR", year: 2021, hw: "3", cc: "AU", n: 2 },
+      { from: "2026.20.6.9", to: "2026.26.6.1", model: "3", variant: "RWD", year: 2021, hw: "3", cc: "NZ", n: 1 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 30 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 28 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "3", cc: "AU", n: 8 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "NZ", n: 6 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "GB", n: 10 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "DE", n: 15 },
+      { from: "2026.26.1", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 80 },
+      { from: "2026.26.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 90 },
+      { from: "2026.26.1", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "4", cc: "US", n: 25 },
+      { from: "2026.26.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "AU", n: 8 },
+      { from: "2026.26.6", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 20 },
+      { from: "2026.26.6", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "GB", n: 12 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 35 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 40 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "S", variant: "", year: 2020, hw: "3", cc: "AU", n: 2 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "S", variant: "", year: 0, hw: "3", cc: "US", n: 8 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "X", variant: "", year: 0, hw: "3", cc: "US", n: 8 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "3", cc: "GB", n: 10 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "3", cc: "DE", n: 10 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "3", variant: "", year: 0, hw: "4", cc: "NO", n: 6 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "4", cc: "US", n: 8 },
+      { from: "2026.26.6.2", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "4", cc: "DE", n: 8 },
+      { from: "2026.26.6.2", to: "2026.32.3", model: "3", variant: "", year: 0, hw: "3", cc: "GB", n: 5 },
+      { from: "2026.21.6", to: "2026.26.6.5", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 20 },
+      { from: "2026.21.6", to: "2026.26.6.5", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 15 },
+      { from: "2026.21.6", to: "2026.26.6.5", model: "Y", variant: "", year: 0, hw: "4", cc: "US", n: 15 },
+      { from: "2026.21.6", to: "2026.26.6.5", model: "3", variant: "", year: 0, hw: "4", cc: "CA", n: 8 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "Y", variant: "", year: 0, hw: "4", cc: "US", n: 120 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "3", variant: "", year: 0, hw: "4", cc: "US", n: 80 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 40 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 30 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "Y", variant: "", year: 0, hw: "4", cc: "CA", n: 15 },
+      { from: "2026.20.6.11", to: "2026.21.6", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 18 },
+      { from: "2026.20.6.11", to: "2026.21.6", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 12 }
+    ];
 
     let cars = [];
     let activeCarId = null;
@@ -1120,6 +1164,92 @@
       return m ? m[0] : "";
     }
 
+    function carYear(car) {
+      const m = String((car && car.build) || "").match(/(20\d{2})/);
+      return m ? parseInt(m[1], 10) : 0;
+    }
+
+    function variantTokens(text) {
+      return String(text || "")
+        .toUpperCase()
+        .split(/[^A-Z0-9+]+/)
+        .filter(t => t.length >= 2);
+    }
+
+    function normHop(h) {
+      if (!h || typeof h !== "object") return null;
+      const from = extractVer(h.from) || h.from || "";
+      const to = extractVer(h.to) || firstVerInText(h.to) || "";
+      if (!from || !to) return null;
+      const model = h.model || (Array.isArray(h.models) && h.models[0]) || "";
+      const cc = iso2(h.cc || (Array.isArray(h.countries) && h.countries[0]) || "");
+      const year = Number(h.year || (Array.isArray(h.years) && h.years[0]) || 0) || 0;
+      const variant = h.variant || (Array.isArray(h.variants) ? h.variants.join(" ") : "") || "";
+      return {
+        from, to,
+        model: String(model),
+        variant: String(variant),
+        year,
+        hw: String(h.hw || "").replace(/^HW/i, ""),
+        cc,
+        n: Number(h.n) || 1,
+        note: h.note || ""
+      };
+    }
+
+    function hopsFromMaps() {
+      const out = (HOPS || []).map(normHop).filter(Boolean);
+      (cars || []).forEach(car => {
+        const seq = [car.current].concat(car.history || []).map(v => extractVer(v) || v).filter(Boolean);
+        const seen = [];
+        seq.forEach(v => { if (!seen.includes(v)) seen.push(v); });
+        for (let i = 0; i < seen.length - 1; i++) {
+          const newer = seen[i], older = seen[i + 1];
+          if (verCmp(newer, older) > 0) {
+            out.push(normHop({
+              from: older, to: newer,
+              model: car.model || "",
+              variant: car.variant || "",
+              year: carYear(car),
+              hw: car.hw || "",
+              cc: car.country || "",
+              n: 2,
+              note: "saved-car"
+            }));
+          }
+        }
+      });
+      return out;
+    }
+
+    function scoreHop(h, car) {
+      let s = 0;
+      const hw = String(car.hw || "").replace(/^HW/i, "");
+      if (h.hw && hw && h.hw === hw) s += 25;
+      else if (h.hw && hw && h.hw !== hw) s -= 20;
+      const cc = iso2(car.country);
+      if (cc && h.cc && h.cc === cc) s += 18;
+      if (car.model && h.model && String(h.model) === String(car.model)) s += 12;
+      const yt = carYear(car);
+      if (yt && h.year && Math.abs(Number(h.year) - yt) <= 2) s += 8;
+      const carToks = variantTokens((car.variant || "") + " " + (car.name || ""));
+      const hopToks = variantTokens(h.variant);
+      if (carToks.length && hopToks.some(t => carToks.includes(t))) s += 8;
+      s += Math.min(Number(h.n) || 1, 80);
+      return s;
+    }
+
+    function bestHopFrom(fromVer, car, used) {
+      const from = normVer(fromVer);
+      const cands = hopsFromMaps()
+        .filter(h => normVer(h.from) === from)
+        .filter(h => verCmp(h.to, fromVer) > 0)
+        .filter(h => !used.has(normVer(h.to)));
+      if (!cands.length) return null;
+      cands.sort((a, b) => scoreHop(b, car) - scoreHop(a, car));
+      return cands[0];
+    }
+
     function updatePrediction() {
       const car = getActiveCar();
       const box = document.getElementById("pred-box");
@@ -1128,16 +1258,27 @@
         return;
       }
       const current = extractVer(car.current) || car.current;
-      const key = current + "|" + car.hw;
-      const hit = NEXT_MAP[key] || NEXT_MAP[car.current + "|" + car.hw];
-      const nextRaw = hit ? hit.next : "";
-      const nextVer = firstVerInText(nextRaw);
-      const newer = nextVer && verCmp(nextVer, current) > 0;
-      if (hit && newer) {
-        box.innerHTML = "<strong>Predicted next:</strong> " + hit.next + "<br><span style=\"color:var(--muted)\">" + (hit.why || "") + "</span>";
+      const used = new Set([normVer(current)]);
+      const chain = [current];
+      const notes = [];
+      let cursor = current;
+      for (let i = 0; i < 3; i++) {
+        const hop = bestHopFrom(cursor, car, used);
+        if (!hop) break;
+        chain.push(hop.to);
+        used.add(normVer(hop.to));
+        notes.push(hop.note || (hop.from + " → " + hop.to));
+        cursor = hop.to;
+      }
+      if (chain.length === 1) {
+        box.innerHTML = "<strong>Predicted next:</strong> not known<br><span style=\"color:var(--muted)\">No newer hop in tracker samples or saved-car histories for " + current + " (HW" + (car.hw || "?") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + ")</span>";
         return;
       }
-      box.innerHTML = "<strong>Predicted next:</strong> not known<br><span style=\"color:var(--muted)\">Trackers show no newer hop recorded from " + current + " (HW" + (car.hw || "?") + ")</span>";
+      const path = chain.join(" → ");
+      const nextOne = chain[1];
+      const why = notes[0] || "";
+      const extra = chain.length > 2 ? " Then commonly " + chain.slice(1).join(" → ") + "." : "";
+      box.innerHTML = "<strong>Predicted next:</strong> " + path + "<br><span style=\"color:var(--muted)\">Most common next for similar HW" + (car.hw || "") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + " cars: " + nextOne + ". " + why + extra + "</span>";
     }
 
     function collectTreeVersions(node, set) {
@@ -1512,7 +1653,12 @@
       }
       const next = data.nextMap || data.NEXT_MAP;
       if (next && typeof next === "object" && Object.keys(next).length) {
-        NEXT_MAP = next;
+        NEXT_MAP = Object.assign({}, NEXT_MAP, next);
+      }
+      const hopsIn = data.hops || data.HOPS;
+      if (Array.isArray(hopsIn) && hopsIn.length) {
+        if (!BAKED_HOPS) BAKED_HOPS = HOPS.slice();
+        HOPS = hopsIn.map(normHop).filter(Boolean);
       }
       if (typeof data.live === "boolean") SNAPSHOT_LIVE = data.live;
       else SNAPSHOT_LIVE = liveYears().includes(Number(selectedYear));
