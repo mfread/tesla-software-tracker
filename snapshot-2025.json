@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-09-15",
+  "snapshot": "2026-09-16",
   "year": 2025,
   "live": true,
   "note": "Live year (n-1). Nightly snapshot target. Tree is a reconstructed 2025 archive until the nightly job fills more leaves.",
   "source": "grok-automation",
-  "generatedAt": "2026-09-15T05:05:00+10:00",
+  "generatedAt": "2026-09-16T05:16:34+10:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
