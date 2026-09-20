@@ -92,6 +92,7 @@
     table.versions tr.history td { background: rgba(245,158,11,0.08); }
     table.versions tr.greyed td { opacity: 0.45; }
     .pill { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-right: 4px; }
+    .pill.next { background: var(--path); color: #111; }
     .pill.now { background: #22c55e; color: #052e16; }
     .pill.hist { background: #f59e0b; color: #1c1002; }
     .hw-mini { font-size: 0.68rem; font-weight: 700; padding: 1px 4px; border-radius: 3px; border: 1px solid #9aa0a6; background: #0a0a0a; margin-right: 3px; }
@@ -212,8 +213,11 @@
     .node text.hw-tag.hw3 { fill: #f97316; }
     .node text.hw-tag.hw4 { fill: #2563eb; }
     .node .badge { font-size: 8px; fill: var(--path); font-weight: 700; }
+    .node .badge.next { fill: var(--path); }
     .link { fill: none; stroke: var(--border); stroke-width: 1.5px; }
     .link.path-link { stroke: var(--path); stroke-width: 3px; }
+    .link.next-link { stroke: var(--path); stroke-width: 2.5px; stroke-dasharray: 5 4; }
+    .node.next circle { stroke: var(--path); stroke-width: 2.5px; stroke-dasharray: 3 2; }
     .node.greyed circle { fill: var(--grey) !important; opacity: 0.35; }
     .node.greyed text { opacity: 0.35; }
     .node.greyed rect { opacity: 0.35; }
@@ -333,7 +337,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.23</h1>
+      <h1>Tesla Software Tracker v4.24</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -509,7 +513,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.23";
+    const APP_VERSION = "4.24";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -521,7 +525,7 @@
     let META = {
       "2026.14": { first: "2026-04-15", fleet: "small leftover", fsd: "none on trunk", regions: "Global", hw: "HW3 + HW4", note: "Spring Update feature trunk. FSD point releases hang off 2026.14.6.x, not this parent." },
       "2026.14.3": { first: "2026-04-28", fleet: "phasing out", fsd: "none", regions: "Global incl. AU", hw: "HW3 + HW4", note: "Spring point before 2026.14.6. Observed on HW3 (AU Model Y) and HW4 in tracker samples." },
-      "2026.14.6": { first: "2026-05-12", fleet: "~4%", fsd: "No FSD found in this exact build", regions: "Global (US/CA/GB/AU in sample)", hw: "HW3 + HW4", note: "Security + minor features. HW4 FSD v14.3.3 is on 2026.14.6.6, not here." },
+      "2026.14.6": { first: "2026-05-12", fleet: "~4%", fsd: "No new FSD on this build (older FSD e.g. v12.6.4 can remain)", regions: "Global (US/CA/GB/AU in sample)", hw: "HW3 + HW4", note: "Security + minor features. HW4 FSD v14.3.3 is on 2026.14.6.6, not here." },
       "2026.14.6.6": { first: "2026-05-17", fleet: "~4%", fsd: "HW4 v14.3.3", regions: "North America", hw: "HW4", note: "US+CA HW4 FSD v14.3.3. AU/NZ HW4 later used 2026.16.6 then 2026.20.10, not this number." },
       "2026.14.6.10": { first: "2026-06-12", fleet: "~1%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "US+CA HW4 v14.3.4 wave. Same stack later also on 2026.14.6.11 / .12." },
       "2026.14.6.11": { first: "2026-06-15", fleet: "~4%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "Teslascope sample is HW4 100% (US/CA). Not an AU/NZ or HW3 Lite build." },
@@ -531,7 +535,7 @@
       "2026.20.3": { first: "2026-06-17", fleet: "phasing out", fsd: "none", regions: "Global incl. AU 0.94% / NZ 0.19%", hw: "HW3 + HW4", note: "Blind-spot-while-parked + security. No Lite. Common hop before 2026.20.6.1." },
       "2026.20.5.1": { first: "2026-06-29", fleet: "early access", fsd: "HW3 v14 Lite", regions: "United States", hw: "HW3", note: "First public Lite build — US HW3 early access only. Not AU/NZ." },
       "2026.20.6": { first: "2026-06-29", fleet: "phasing out", fsd: "none — security only", regions: "US/GB/EU + AU owners (Tesla App); Teslascope public table missed AU", hw: "HW3 + HW4", note: "Security point release. Teslascope country table (~60 cars) is US/GB/EU and omits AU, but AU Tesla App Release Notes and AU hops 2026.20.3 → 2026.20.6.1 confirm the 2026.20.6 family reached Australia (incl. older Model S/X). Lite is on 2026.20.6.10 / .6.11 (US+CA), not on .6 itself." },
-      "2026.20.6.1": { first: "2026-07-02", fleet: "~8%", fsd: "No FSD found in this exact build", regions: "Global incl. AU 1.19% / NZ 0.48%", hw: "HW3 + HW4", note: "Wide production / minor fixes. Teslascope lists AU+NZ installs but no Lite/v14 payload. AU HW3 often sat here then moved to 2026.20.6.9." },
+      "2026.20.6.1": { first: "2026-07-02", fleet: "~8%", fsd: "No new FSD on this build (older FSD e.g. v12.6.4 can remain)", regions: "Global incl. AU 1.19% / NZ 0.48%", hw: "HW3 + HW4", note: "Wide production / minor fixes. Teslascope lists AU+NZ installs but no Lite/v14 payload. AU HW3 often sat here then moved to 2026.20.6.9." },
       "2026.20.6.6": { first: "2026-07-13", fleet: "~4%", fsd: "HW4 v14.3.5", regions: "North America", hw: "HW4", note: "US+CA HW4 v14.3.5. AU/NZ HW4 twin of this stack is 2026.20.10 (FSD v14.3.5 Down Under)." },
       "2026.20.6.9": { first: "2026-07-29", fleet: "3.3%", fsd: "none — minor fixes only", regions: "Australia / New Zealand", hw: "HW3", note: "AU/NZ HW3 regional (~99% HW3). Not Lite. Tesla AU email 28 Aug: v14 Lite in active development for AU/NZ — not shipping on this build. US+CA Lite is 2026.20.6.10/.6.11 then 2026.26.6.5." },
       "2026.20.6.10": { first: "2026-07-20", fleet: "small", fsd: "HW3 v14 Lite", regions: "United States", hw: "HW3", note: "US HW3 Lite (wide-prep). Canada/AU/NZ not in Teslascope sample. Next US+CA dual-stack is 2026.20.6.11." },
@@ -999,10 +1003,12 @@
       tb.innerHTML = rows.map(r => {
         const exact = hist.some(v => normVer(v) === normVer(r.version));
         const isCur = current && normVer(current) === normVer(r.version);
+        const nextVer = predictedNextVersion(getActiveCar());
+        const isNext = nextVer && normVer(nextVer) === normVer(r.version) && !isCur && !exact;
         const idx = hist.findIndex(v => normVer(v) === normVer(r.version));
         const tags = parseHw(r.hw);
-        const cls = [isCur ? "current" : "", exact && !isCur ? "history" : "", grey && !exact ? "greyed" : ""].filter(Boolean).join(" ");
-        const badge = isCur ? `<span class="pill now">NOW</span>` : (idx >= 0 ? `<span class="pill hist">#${idx + 1}</span>` : "");
+        const cls = [isCur ? "current" : "", exact && !isCur ? "history" : "", isNext ? "next" : "", grey && !exact && !isNext ? "greyed" : ""].filter(Boolean).join(" ");
+        const badge = isCur ? `<span class="pill now">NOW</span>` : (isNext ? `<span class="pill next">NEXT</span>` : (idx >= 0 ? `<span class="pill hist">#${idx + 1}</span>` : ""));
         const hwHtml = (tags.hw3 ? `<span class="hw-mini hw3">HW3</span>` : "") + (tags.hw4 ? `<span class="hw-mini hw4">HW4</span>` : (tags.hw3 ? "" : "—"));
         return `<tr class="${cls}" data-ver="${r.version}">
           <td>${badge}${r.version}</td>
@@ -1250,6 +1256,27 @@
       return cands[0];
     }
 
+    function predictedChain(car) {
+      if (!car || !car.current) return [];
+      const current = extractVer(car.current) || car.current;
+      const used = new Set([normVer(current)]);
+      const chain = [current];
+      let cursor = current;
+      for (let i = 0; i < 3; i++) {
+        const hop = bestHopFrom(cursor, car, used);
+        if (!hop) break;
+        chain.push(hop.to);
+        used.add(normVer(hop.to));
+        cursor = hop.to;
+      }
+      return chain;
+    }
+
+    function predictedNextVersion(car) {
+      const chain = predictedChain(car);
+      return chain.length > 1 ? chain[1] : "";
+    }
+
     function updatePrediction() {
       const car = getActiveCar();
       const box = document.getElementById("pred-box");
@@ -1258,25 +1285,15 @@
         return;
       }
       const current = extractVer(car.current) || car.current;
-      const used = new Set([normVer(current)]);
-      const chain = [current];
+      const chain = predictedChain(car);
       const notes = [];
-      let cursor = current;
-      for (let i = 0; i < 3; i++) {
-        const hop = bestHopFrom(cursor, car, used);
-        if (!hop) break;
-        chain.push(hop.to);
-        used.add(normVer(hop.to));
-        notes.push(hop.note || (hop.from + " → " + hop.to));
-        cursor = hop.to;
-      }
       if (chain.length === 1) {
         box.innerHTML = "<strong>Predicted next:</strong> not known<br><span style=\"color:var(--muted)\">No newer hop in tracker samples or saved-car histories for " + current + " (HW" + (car.hw || "?") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + ")</span>";
         return;
       }
       const path = chain.join(" → ");
       const nextOne = chain[1];
-      const why = notes[0] || "";
+      const why = "";
       const extra = chain.length > 2 ? " Then commonly " + chain.slice(1).join(" → ") + "." : "";
       box.innerHTML = "<strong>Predicted next:</strong> " + path + "<br><span style=\"color:var(--muted)\">Most common next for similar HW" + (car.hw || "") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + " cars: " + nextOne + ". " + why + extra + "</span>";
     }
@@ -1317,6 +1334,8 @@
           const n = normVer(String(v || "").trim());
           if (n) needed.add(n);
         });
+        const nxt = predictedNextVersion(getActiveCar());
+        if (nxt) needed.add(normVer(nxt));
       } catch (e) {}
       if (!TREE_DATA.children) TREE_DATA.children = [];
       const years = [...needed].map(yearOfVer).filter(y => y && y !== "2026");
@@ -1477,30 +1496,41 @@
       const car = getActiveCar();
       const vers = historyVersions();
       const current = car && car.current ? normVer(car.current) : "";
+      const nextVer = predictedNextVersion(car);
+      const nextN = nextVer ? normVer(nextVer) : "";
+      const pathVers = nextN ? vers.concat([nextVer]) : vers;
       const greyUnrelated = document.getElementById("grey-unrelated").checked;
       const showOnlyPath = document.getElementById("show-only-path").checked;
 
       g.selectAll(".node").each(function(d) {
         const exact = vers.some(v => nodeVersion(d) === normVer(v));
         const isCur = current && nodeVersion(d) === current;
-        const onTrunk = ancestorOfHistory(d, vers) || d.data.type === "root";
-        const keep = exact || onTrunk;
+        const isNext = nextN && nodeVersion(d) === nextN && !isCur && !exact;
+        const onTrunk = ancestorOfHistory(d, pathVers) || d.data.type === "root";
+        const keep = exact || isNext || onTrunk;
         d3.select(this)
-          .classed("greyed", greyUnrelated && !exact)
+          .classed("greyed", greyUnrelated && !exact && !isNext)
           .classed("current", !!isCur)
           .classed("history", exact && !isCur)
+          .classed("next", !!isNext)
           .style("display", showOnlyPath && !keep ? "none" : null);
 
         d3.select(this).selectAll("text.badge").remove();
         const isLeaf = d.data.type === "point" || !d.children;
         if (!isLeaf) {
-          /* NOW / #n only on version leaves — not trunk parents like "2026.20 Feature + Lite" */
+          /* NOW / #n / NEXT only on version leaves */
         } else if (isCur) {
           d3.select(this).append("text")
             .attr("class", "badge")
             .attr("x", 12)
             .attr("y", -10)
             .text("NOW");
+        } else if (isNext) {
+          d3.select(this).append("text")
+            .attr("class", "badge next")
+            .attr("x", 12)
+            .attr("y", -10)
+            .text("NEXT");
         } else if (exact) {
           const idx = vers.findIndex(v => nodeVersion(d) === normVer(v));
           if (idx >= 0) {
@@ -1517,11 +1547,16 @@
         if (!d) return false;
         if (d.data.type === "root") return true;
         const exact = vers.some(v => nodeVersion(d) === normVer(v));
-        return exact || ancestorOfHistory(d, vers);
+        const isNext = nextN && nodeVersion(d) === nextN;
+        return exact || isNext || ancestorOfHistory(d, pathVers);
       }
 
       g.selectAll(".link")
-        .classed("path-link", d => ancestorOfHistory(d.target, vers))
+        .classed("path-link", d => ancestorOfHistory(d.target, vers) && !(nextN && nodeVersion(d.target) === nextN))
+        .classed("next-link", d => {
+          if (!nextN) return false;
+          return nodeVersion(d.target) === nextN || (ancestorOfHistory(d.target, [nextVer]) && !ancestorOfHistory(d.target, vers));
+        })
         .style("display", function(d) {
           if (!showOnlyPath) return null;
           return nodeOnPath(d.source) && nodeOnPath(d.target) ? null : "none";
