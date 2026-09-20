@@ -223,8 +223,8 @@
     .node.greyed rect { opacity: 0.35; }
     .node.current circle { stroke: var(--highlight); stroke-width: 3px; }
     .node.history circle { stroke: var(--path); stroke-width: 2.5px; }
-    .node.path-parent circle { fill: var(--path); stroke: var(--path); stroke-width: 2.5px; }
-    .node.path-parent text.lbl { fill: var(--path); font-weight: 700; }
+    .node.path-parent circle { stroke: var(--path); stroke-width: 2.5px; }
+    .node.path-parent text.lbl { fill: var(--text); font-weight: 600; }
     .tooltip {
       position: absolute;
       background: var(--panel);
@@ -339,7 +339,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.27</h1>
+      <h1>Tesla Software Tracker v4.28</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -426,8 +426,8 @@
           <span><i style="background:#64748b"></i> Factory</span>
           <span><i style="background:#22c55e;box-shadow:0 0 0 2px #22c55e"></i> Current</span>
           <span><i style="background:#f59e0b"></i> In my history</span>
-          <span>HW3 = observed on HW3 (orange)</span>
-          <span>HW4 = observed on HW4 (cobalt)</span>
+          <span><span class="hw-mini hw3">HW3</span> means software observed in HW3 cars</span>
+          <span><span class="hw-mini hw4">HW4</span> means software observed in HW4 cars</span>
         </div>
       </div>
 
@@ -515,7 +515,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.27";
+    const APP_VERSION = "4.28";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
