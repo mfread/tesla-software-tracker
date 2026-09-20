@@ -337,7 +337,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.24</h1>
+      <h1>Tesla Software Tracker v4.26</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -513,14 +513,14 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.24";
+    const APP_VERSION = "4.26";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
     let selectedYear = CALENDAR_YEAR;
     let SNAPSHOT_LIVE = true;
-    let DATA_SNAPSHOT = "2026-09-10";
-    const BAKED_SNAPSHOT = "2026-09-10";
+    let DATA_SNAPSHOT = "2026-09-21";
+    const BAKED_SNAPSHOT = "2026-09-21";
 
     let META = {
       "2026.14": { first: "2026-04-15", fleet: "small leftover", fsd: "none on trunk", regions: "Global", hw: "HW3 + HW4", note: "Spring Update feature trunk. FSD point releases hang off 2026.14.6.x, not this parent." },
@@ -824,16 +824,9 @@
 
     function updateCacheStatus() {
       const el = document.getElementById("cache-status");
-      const raw = localStorage.getItem("teslaBranchTree");
-      if (raw) {
-        const d = JSON.parse(raw);
-        const mins = Math.round((Date.now() - (d.cachedAt || 0)) / 60000);
-        //el.textContent = mins < 2
-        //  ? `Snapshot ${DATA_SNAPSHOT} · just now`
-        //  : `Snapshot ${DATA_SNAPSHOT} · ${mins}m ago`;
-        const tag = SNAPSHOT_LIVE ? "live" : "archive";
-        el.textContent = `${selectedYear} · ${DATA_SNAPSHOT} (${tag})`;
-      }
+      if (!el) return;
+      const tag = SNAPSHOT_LIVE ? "live" : "archive";
+      el.textContent = "Snapshot " + DATA_SNAPSHOT + " (" + tag + ")";
     }
 
     function getActiveCar() {
@@ -1033,6 +1026,7 @@
         tr.onclick = () => {
           const ver = tr.getAttribute("data-ver");
           const row = collectLeaves().find(x => x.version === ver);
+          hideTip();
           if (row) showDetails(row.data);
         };
       });
@@ -1425,10 +1419,13 @@
         .join("g")
         .attr("class", "node")
         .attr("transform", d => `translate(${d.y},${d.x})`)
-        .on("click", (event, d) => showDetails(d.data))
-        .on("mouseover", (event, d) => showTip(event, d))
-        .on("mousemove", (event, d) => showTip(event, d))
-        .on("mouseout", () => { document.getElementById("tooltip").style.display = "none"; });
+        .on("click", (event, d) => {
+          hideTip();
+          showDetails(d.data);
+        })
+        .on("mouseover", (event, d) => { if (canHoverTip()) showTip(event, d); })
+        .on("mousemove", (event, d) => { if (canHoverTip()) showTip(event, d); })
+        .on("mouseout", () => hideTip());
 
       node.append("circle")
         .attr("r", d => d.data.type === "point" ? 5.5 : 8)
@@ -1563,7 +1560,18 @@
         });
     }
 
+    function canHoverTip() {
+      return window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    }
+
+    function hideTip() {
+      const tip = document.getElementById("tooltip");
+      if (tip) tip.style.display = "none";
+    }
+
     function showTip(event, d) {
+      if (!canHoverTip()) return;
+
       const m = metaFor(d.data.version || extractVer(d.data.name));
       const tip = document.getElementById("tooltip");
       const wrap = document.getElementById("tree-container");
@@ -1704,14 +1712,32 @@
       return "./snapshot-" + year + ".json";
     }
 
+    async function fetchJson(url) {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status + " " + url);
+      const data = await res.json();
+      if (!data || typeof data !== "object") throw new Error("Not JSON: " + url);
+      return data;
+    }
+
     async function loadSnapshotJson(year) {
       const y = year || selectedYear;
-      let res = await fetch(snapshotUrl(y), { cache: "no-store" });
-      if (!res.ok && Number(y) === CALENDAR_YEAR) {
-        res = await fetch("./snapshot.json", { cache: "no-store" });
+      const urls = [
+        snapshotUrl(y),
+        Number(y) === CALENDAR_YEAR ? "./snapshot.json" : null,
+        "https://mfread.github.io/tesla-software-tracker/snapshot-" + y + ".json",
+        Number(y) === CALENDAR_YEAR ? "https://mfread.github.io/tesla-software-tracker/snapshot.json" : null,
+        "https://raw.githubusercontent.com/mfread/tesla-software-tracker/main/snapshot-" + y + ".json"
+      ].filter(Boolean);
+      let lastErr = null;
+      for (const url of urls) {
+        try {
+          return await fetchJson(url);
+        } catch (err) {
+          lastErr = err;
+        }
       }
-      if (!res.ok) throw new Error("HTTP " + res.status + " for " + snapshotUrl(y));
-      return res.json();
+      throw lastErr || new Error("No snapshot for " + y);
     }
 
     function fillYearSelect() {
@@ -1768,7 +1794,8 @@
         saveState();
         fillYearSelect();
         rebuildVisuals();
-        if (!quiet) toast("No snapshot-" + selectedYear + ".json yet. " + (err && err.message ? err.message : ""));
+        updateCacheStatus();
+        if (!quiet) toast("Snapshot fetch failed: " + (err && err.message ? err.message : err));
       }
     }
 
