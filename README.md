@@ -23,4 +23,4 @@ I developed this web app so I could merge and visualise the dozens of code branc
 All data entered by you stays on your device and not on a central server somewhere. So if you run this webapp on multiple devices you'll need to enter each car's details and firmware history again.
 
 # license
-Australian default copyright applies. Copyright Mark Read. You must ask permission to copy, modify, or republish. You may not commercialize my work.
+Copyright Mark Read (Australian default copyright applies). You must receive written permission from me before you can copy, modify, or republish any file. You may not commercialize my work.
