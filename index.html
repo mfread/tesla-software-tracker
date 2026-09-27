@@ -339,7 +339,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.28</h1>
+      <h1>Tesla Software Tracker v4.29</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -414,7 +414,7 @@
         </label>
         <label class="check-row">
           <input type="checkbox" id="show-only-path" />
-          <span>Show only my path (Tree view only)</span>
+          <span>Show only selected car</span>
         </label>
       </div>
 
@@ -426,8 +426,8 @@
           <span><i style="background:#64748b"></i> Factory</span>
           <span><i style="background:#22c55e;box-shadow:0 0 0 2px #22c55e"></i> Current</span>
           <span><i style="background:#f59e0b"></i> In my history</span>
-          <span><span class="hw-mini hw3">HW3</span> means software observed in HW3 cars</span>
-          <span><span class="hw-mini hw4">HW4</span> means software observed in HW4 cars</span>
+          <span><span class="hw-mini hw3">HW3</span> means sw observed in HW3 cars</span>
+          <span><span class="hw-mini hw4">HW4</span> means sw observed in HW4 cars</span>
         </div>
       </div>
 
@@ -456,12 +456,6 @@
               <option value="lite">Lite</option>
               <option value="v14">v14.x</option>
               <option value="any">Any FSD</option>
-            </select>
-          </label>
-          <label>Path
-            <select id="f-path">
-              <option value="">All</option>
-              <option value="mine">My path only</option>
             </select>
           </label>
           <label>HW
@@ -515,7 +509,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.28";
+    const APP_VERSION = "4.29";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -957,8 +951,6 @@
       const cc = document.getElementById("f-cc").value;
       const seen = document.getElementById("f-seen").value;
       const fsd = document.getElementById("f-fsd").value;
-      const path = document.getElementById("f-path").value;
-      const hist = historyVersions();
       return rows.filter(r => {
         const tags = parseHw(r.hw);
         if (hw === "3" && !tags.hw3) return false;
@@ -974,7 +966,6 @@
         if (fsd === "lite" && !/lite/.test(fl)) return false;
         if (fsd === "v14" && !/v14/.test(fl)) return false;
         if (fsd === "any" && none) return false;
-        if (path === "mine" && !hist.some(v => normVer(v) === normVer(r.version))) return false;
         return true;
       });
     }
@@ -994,15 +985,24 @@
       const hist = historyVersions();
       const current = getActiveCar() && getActiveCar().current;
       const grey = document.getElementById("grey-unrelated").checked;
+      const onlyCar = document.getElementById("show-only-path").checked;
+      const nextVer = predictedNextVersion(getActiveCar());
+      if (onlyCar) {
+        rows = rows.filter(r => {
+          const exact = hist.some(v => normVer(v) === normVer(r.version));
+          const isCur = current && normVer(current) === normVer(r.version);
+          const isNext = nextVer && normVer(nextVer) === normVer(r.version);
+          return exact || isCur || isNext;
+        });
+      }
       const tb = document.getElementById("ver-tbody");
       tb.innerHTML = rows.map(r => {
         const exact = hist.some(v => normVer(v) === normVer(r.version));
         const isCur = current && normVer(current) === normVer(r.version);
-        const nextVer = predictedNextVersion(getActiveCar());
         const isNext = nextVer && normVer(nextVer) === normVer(r.version) && !isCur && !exact;
         const idx = hist.findIndex(v => normVer(v) === normVer(r.version));
         const tags = parseHw(r.hw);
-        const cls = [isCur ? "current" : "", exact && !isCur ? "history" : "", isNext ? "next" : "", grey && !exact && !isNext ? "greyed" : ""].filter(Boolean).join(" ");
+        const cls = [isCur ? "current" : "", exact && !isCur ? "history" : "", isNext ? "next" : "", !onlyCar && grey && !exact && !isNext ? "greyed" : ""].filter(Boolean).join(" ");
         const badge = isCur ? `<span class="pill now">NOW</span>` : (isNext ? `<span class="pill next">NEXT</span>` : (idx >= 0 ? `<span class="pill hist">#${idx + 1}</span>` : ""));
         const hwHtml = (tags.hw3 ? `<span class="hw-mini hw3">HW3</span>` : "") + (tags.hw4 ? `<span class="hw-mini hw4">HW4</span>` : (tags.hw3 ? "" : "—"));
         return `<tr class="${cls}" data-ver="${r.version}">
@@ -2046,7 +2046,7 @@
     document.getElementById("export-txt").onclick = exportPathText;
     document.getElementById("export-png").onclick = exportPng;
     document.getElementById("grey-unrelated").onchange = () => { updateTreeHighlights(); if (currentView === "table") renderTable(); };
-    document.getElementById("show-only-path").onchange = updateTreeHighlights;
+    document.getElementById("show-only-path").onchange = () => { updateTreeHighlights(); if (currentView === "table") renderTable(); };
 
     function escapeHtml(str) {
       return String(str || "")
@@ -2123,7 +2123,7 @@
     document.getElementById("view-help").onclick = () => setView("help");
     document.getElementById("view-tree").onclick = () => setView("tree");
     document.getElementById("view-table").onclick = () => setView("table");
-    ["f-hw","f-ver","f-cc","f-seen","f-fsd","f-path"].forEach(id => {
+    ["f-hw","f-ver","f-cc","f-seen","f-fsd"].forEach(id => {
       document.getElementById(id).addEventListener("input", renderTable);
       document.getElementById(id).addEventListener("change", renderTable);
     });
