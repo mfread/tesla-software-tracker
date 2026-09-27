@@ -339,7 +339,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.29</h1>
+      <h1>Tesla Software Tracker v4.30</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -398,11 +398,11 @@
         <input type="text" id="car-cc" maxlength="2" placeholder="AU" style="text-transform:uppercase" title="ISO-2 code for where the car lives, not where it was built" />
         <label class="field">Current Version (NOW)</label>
         <input type="text" id="car-current" placeholder="2026.20.6.9" />
-        <label class="field">Last versions received (newest first — drag to reorder)</label>
+        <label class="field">Previous versions (newest first — do not repeat Current Version)</label>
         <div class="hist-list" id="hist-list"></div>
         <button class="btn small secondary" id="add-hist-btn" style="width:100%;margin-bottom:8px">+ Add version to history</button>
         <button class="btn" id="save-car-btn" style="width:100%">Save Active Car</button>
-        <div class="pred" id="pred-box">Save the car to see a predicted next version.</div>
+        <div class="pred" id="pred-box">Save the car to see a predicted (next) version.</div>
         </div>
       </div>
 
@@ -509,7 +509,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.29";
+    const APP_VERSION = "4.30";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -787,6 +787,9 @@
           }
         }
       } catch (e) { console.warn(e); }
+      cars.forEach(c => {
+        if (c) c.history = historyWithoutCurrent(c.history || [], c.current);
+      });
       if (cars.length === 0) {
         const id = Date.now().toString();
         cars.push({
@@ -798,7 +801,7 @@
           hw: "3",
           country: "AU",
           current: "2026.20.6.9",
-          history: ["2026.20.6.9", "2026.20.6.1", "2026.14.6.11"]
+          history: ["2026.20.6.1", "2026.14.6.11"]
         });
         activeCarId = id;
         saveState();
@@ -1072,6 +1075,12 @@
         .filter(Boolean);
     }
 
+    function historyWithoutCurrent(list, current) {
+      const cur = normVer(current || "");
+      return (list || []).map(v => String(v || "").trim()).filter(Boolean)
+        .filter(v => !cur || normVer(v) !== cur);
+    }
+
     function renderHistory(list) {
       const wrap = document.getElementById("hist-list");
       wrap.innerHTML = "";
@@ -1114,7 +1123,7 @@
       document.getElementById("car-hw").value = car.hw || "3";
       document.getElementById("car-cc").value = car.country || "";
       document.getElementById("car-current").value = car.current || "";
-      renderHistory(car.history || []);
+      renderHistory(historyWithoutCurrent(car.history || [], car.current));
       updatePrediction();
     }
 
@@ -1128,21 +1137,14 @@
       car.hw = document.getElementById("car-hw").value || car.hw;
       car.country = iso2(document.getElementById("car-cc").value);
       car.current = document.getElementById("car-current").value.trim();
-      car.history = readHistoryFromUI();
-      if (car.current && !car.history.includes(car.current)) {
-        car.history.unshift(car.current);
-      }
+      car.history = historyWithoutCurrent(readHistoryFromUI(), car.current);
     }
 
     function saveActiveCar() {
       const car = getActiveCar();
       if (!car) return;
       syncActiveCarFromForm();
-      if (car.current && !(car.history || []).includes(car.current)) {
-        car.history = car.history || [];
-        car.history.unshift(car.current);
-        renderHistory(car.history);
-      }
+      renderHistory(car.history || []);
       saveState();
       renderCarList();
       rebuildVisuals();
@@ -1277,14 +1279,14 @@
       const car = getActiveCar();
       const box = document.getElementById("pred-box");
       if (!car || !car.current) {
-        box.innerHTML = "Enter a current version to see a predicted next hop.";
+        box.innerHTML = "Enter a current version to see a predicted/next hop.";
         return;
       }
       const current = extractVer(car.current) || car.current;
       const chain = predictedChain(car);
       const notes = [];
       if (chain.length === 1) {
-        box.innerHTML = "<strong>Predicted next:</strong> not known<br><span style=\"color:var(--muted)\">No newer hop in tracker samples or saved-car histories for " + current + " (HW" + (car.hw || "?") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + ")</span>";
+        box.innerHTML = "<strong>Predicted (NEXT):</strong> not known<br><span style=\"color:var(--muted)\">No newer hop in tracker samples or saved-car histories for " + current + " (HW" + (car.hw || "?") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + ")</span>";
         return;
       }
       const path = chain.join(" → ");
