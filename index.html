@@ -1293,7 +1293,7 @@
       const nextOne = chain[1];
       const why = "";
       const extra = chain.length > 2 ? " Then commonly " + chain.slice(1).join(" → ") + "." : "";
-      box.innerHTML = "<strong>Predicted next:</strong> " + path + "<br><span style=\"color:var(--muted)\">Most common next for similar HW" + (car.hw || "") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + " cars: " + nextOne + ". " + why + extra + "</span>";
+      box.innerHTML = "<strong>Predicted (NEXT):</strong> " + path + "<br><span style=\"color:var(--muted)\">Most common next for similar HW" + (car.hw || "") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + " cars: " + nextOne + ". " + why + extra + "</span>";
     }
 
     function collectTreeVersions(node, set) {
