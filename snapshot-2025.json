@@ -1,16 +1,17 @@
 {
-  "snapshot": "2026-10-07",
+  "snapshot": "2026-10-08",
   "year": 2025,
   "live": true,
-  "note": "Live year (n-1). Rechecked Teslascope 2025 timeline (111 updates, unchanged), Tessie version explorer, and NATA on 2026-10-07 AEDT. No new 2025 trunk or leaf. 2025.2.8.4 still carried from NATA. 2025.46.5 AU leftover retained. Did not drop any prior trunk or leaf.",
+  "note": "Live year (n-1). X allow-list on 2026-10-08 AEDT named no new 2025.x firmware or FSD payload. Confirmation pass: Teslascope 2025 timeline unchanged at 111 updates, Tessie version explorer, NATA (2025.38.13 still the residual 2025 fleet line at TeslaFi 1.5% / Tessie 2.3%). No new 2025 trunk or leaf. 2025.2.8.4 still carried from NATA. 2025.46.5 AU leftover retained. Did not drop any prior trunk or leaf.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-07T17:21:00+11:00",
+  "generatedAt": "2026-10-08T05:20:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
     "notateslaapp",
     "teslafi",
-    "owner-app-notes"
+    "owner-app-notes",
+    "x-tracker-accounts"
   ],
   "tree": {
     "name": "Tesla 2025",
