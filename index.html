@@ -339,7 +339,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.31</h1>
+      <h1>Tesla Software Tracker v4.32</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -513,7 +513,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.31";
+    const APP_VERSION = "4.32";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -1211,8 +1211,49 @@
       };
     }
 
+    function noteMentionedHops() {
+      const out = [];
+      const meta = (typeof META !== "undefined" && META) || {};
+      function walk(node) {
+        if (!node) return;
+        const to = normVer(node.version || extractVer(node.name || "") || "");
+        if (to) {
+          const m = meta[to] || node.meta || {};
+          const blob = [m.note, node.note, m.fsd, m.fleet].filter(Boolean).join(" ");
+          const year = (to.match(/^(20\d{2})/) || [])[1] || String(selectedYear || "");
+          const hw = (m.hw || node.hw || "");
+          const regions = m.regions || m.seen || "";
+          const found = [];
+          const fullRe = /\b(20\d{2}\.\d+(?:\.\d+){0,3})\b/g;
+          let mm;
+          while ((mm = fullRe.exec(blob))) found.push({ raw: mm[1], idx: mm.index });
+          const shortRe = /(?:from|previous|prior|after)\s+(\d{1,2}\.\d+(?:\.\d+){0,2})\b/gi;
+          while ((mm = shortRe.exec(blob))) found.push({ raw: year + "." + mm[1], idx: mm.index });
+          found.forEach(hit => {
+            const from = normVer(hit.raw);
+            if (!from || from === to || verCmp(to, from) <= 0) return;
+            const window = blob.slice(hit.idx, hit.idx + 80);
+            const pct = window.match(/\((\d+(?:\.\d+)?)%\)/);
+            const n = pct ? Math.max(1, Math.round(Number(pct[1]))) : 4;
+            const minority = /minority/i.test(window);
+            out.push(normHop({
+              from: from, to: to,
+              hw: String(hw).replace(/[^34]/g, "").slice(0, 1),
+              cc: "",
+              n: minority ? Math.max(1, Math.round(n / 4)) : n,
+              note: "release-note",
+              variant: ""
+            }));
+          });
+        }
+        (node.children || []).forEach(walk);
+      }
+      walk(TREE_DATA);
+      return out;
+    }
+
     function hopsFromMaps() {
-      const out = (HOPS || []).map(normHop).filter(Boolean);
+      const out = (HOPS || []).map(normHop).filter(Boolean).concat(noteMentionedHops());
       (cars || []).forEach(car => {
         const seq = [car.current].concat(car.history || []).map(v => extractVer(v) || v).filter(Boolean);
         const seen = [];
@@ -1303,7 +1344,9 @@
       const nextOne = chain[1];
       const why = "";
       const extra = chain.length > 2 ? " Then commonly " + chain.slice(1).join(" → ") + "." : "";
-      box.innerHTML = "<strong>Predicted (NEXT):</strong> " + path + "<br><span style=\"color:var(--muted)\">Most common next for similar HW" + (car.hw || "") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + " cars: " + nextOne + ". " + why + extra + "</span>";
+      const hop = bestHopFrom(current, car, new Set([normVer(current)]));
+      const via = hop && hop.note === "release-note" ? "Newer release notes cite " + current + " as a previous version, most often " + nextOne + ". " : "Most common next for similar HW" + (car.hw || "") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + " cars: " + nextOne + ". ";
+      box.innerHTML = "<strong>Predicted (NEXT):</strong> " + path + "<br><span style=\"color:var(--muted)\">" + via + extra + "</span>";
     }
 
     function collectTreeVersions(node, set) {
