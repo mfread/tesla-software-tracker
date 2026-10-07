@@ -754,11 +754,11 @@
     },
     "2026.26.6.3": {
       "first": "2026-09-22",
-      "fleet": "TeslaFi 2.2%; Tessie 3%",
+      "fleet": "Teslascope 136 installs, 5.4% active; TeslaFi 2.2%; Tessie 3%",
       "fsd": "none",
       "regions": "AU NZ",
-      "hw": "HW3 + HW4",
-      "note": "Australia and New Zealand. Not an FSD Lite build. Rechecked 2026-10-08."
+      "hw": "HW3",
+      "note": "Active AU/NZ HW3 build. Teslascope: 136 installs, all HW3, 94% Australia and 6% New Zealand, last wave 5 Oct. Every recorded arrival came from 2026.20.6.9. No newer build lists this as a previous version. Not an FSD Lite build."
     },
     "2026.26.300": {
       "first": "2026-09-14",
