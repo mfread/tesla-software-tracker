@@ -210,8 +210,9 @@
     .node circle { stroke-width: 2px; cursor: pointer; }
     .node text.lbl { font-size: 11px; fill: var(--text); pointer-events: none; }
     .node text.hw-tag { font-size: 8px; font-weight: 700; pointer-events: none; }
-    .node text.hw-tag.hw3 { fill: #f97316; }
-    .node text.hw-tag.hw4 { fill: #2563eb; }
+    .node text.hw-tag.hw3, .node text.fsd-tag.hw3 { fill: #f97316; }
+    .node text.hw-tag.hw4, .node text.fsd-tag.hw4 { fill: #2563eb; }
+    .node text.fsd-tag { font-size: 8px; font-weight: 700; pointer-events: none; }
     .node .badge { font-size: 8px; fill: var(--path); font-weight: 700; }
     .node .badge.next { fill: var(--path); }
     .link { fill: none; stroke: var(--border); stroke-width: 1.5px; }
@@ -339,7 +340,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.33</h1>
+      <h1>Tesla Software Tracker v4.34</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -428,6 +429,8 @@
           <span><i style="background:#f59e0b"></i> In my history</span>
           <span><span class="hw-mini hw3">HW3</span> means sw observed in HW3 cars</span>
           <span><span class="hw-mini hw4">HW4</span> means sw observed in HW4 cars</span>
+          <span><span class="hw-mini hw3">FSD Lite</span> FSD Lite payload on that HW3 leaf</span>
+          <span><span class="hw-mini hw4">FSD</span> FSD payload on that HW4 leaf</span>
         </div>
       </div>
 
@@ -513,7 +516,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.33";
+    const APP_VERSION = "4.34";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -766,6 +769,30 @@
       if (META[version]) return META[version];
       const key = Object.keys(META).find(k => versionsMatch(k, version));
       return key ? META[key] : {};
+    }
+
+    function parseFsdBadges(fsd, tags) {
+      const raw = String(fsd || "").trim();
+      const low = raw.toLowerCase();
+      if (!raw || low === "—" || /^none\b/.test(low) || /no new fsd|no fsd found|no lite/.test(low)) {
+        return { hw3: "", hw4: "" };
+      }
+      let hw3 = "", hw4 = "";
+      raw.split(/\s*(?:\+|\/| and )\s*/i).forEach(part => {
+        const lite = /lite/i.test(part);
+        const is3 = /hw3|ai3/i.test(part);
+        const is4 = /hw4|ai4/i.test(part);
+        const m = part.match(/v\s*(\d{1,2}(?:\.\d+){0,3})/i) || part.match(/\b(\d{1,2}(?:\.\d+){1,3})\b/);
+        const ver = m ? m[1] : "";
+        if (!ver && !lite) return;
+        const label = lite ? ("FSD Lite" + (ver ? " v" + ver : "")) : ("FSD v" + ver);
+        if (is3 || (lite && !is4)) hw3 = label;
+        else if (is4) hw4 = label;
+        else if (tags.hw4 && !tags.hw3) hw4 = label;
+        else if (tags.hw3 && !tags.hw4) hw3 = label;
+        else if (tags.hw4) hw4 = label;
+      });
+      return { hw3, hw4 };
     }
 
     function parseHw(hw) {
@@ -1504,31 +1531,35 @@
         if (d.data.type === "root" || d.children) return;
         const m = metaFor(d.data.version || extractVer(d.data.name));
         const tags = parseHw(m.hw);
+        const fsd = parseFsdBadges(m.fsd, tags);
         const list = [];
-        if (tags.hw3) list.push({ t: "HW3", c: "#f97316" });
-        if (tags.hw4) list.push({ t: "HW4", c: "#2563eb" });
+        if (tags.hw3) list.push({ t: "HW3", cls: "hw-tag hw3" });
+        if (fsd.hw3) list.push({ t: fsd.hw3, cls: "fsd-tag hw3" });
+        if (tags.hw4) list.push({ t: "HW4", cls: "hw-tag hw4" });
+        if (fsd.hw4) list.push({ t: fsd.hw4, cls: "fsd-tag hw4" });
         if (!list.length) return;
         const isLeft = !!d.children;
         const labelW = (d.data.name || "").length * 6.2;
         let x = isLeft ? -12 - labelW - 4 : 12 + labelW + 8;
         const sel = d3.select(this);
         list.forEach(tag => {
+          const w = Math.max(28, Math.round(tag.t.length * 4.7 + 10));
           sel.append("rect")
             .attr("x", x)
             .attr("y", -7)
-            .attr("width", 28)
+            .attr("width", w)
             .attr("height", 13)
             .attr("rx", 2)
             .attr("fill", "#0a0a0a")
             .attr("stroke", "#9aa0a6")
             .attr("stroke-width", 0.8);
           sel.append("text")
-            .attr("class", "hw-tag " + tag.t.toLowerCase())
-            .attr("x", x + 14)
+            .attr("class", tag.cls)
+            .attr("x", x + w / 2)
             .attr("y", 3)
             .attr("text-anchor", "middle")
             .text(tag.t);
-          x += 32;
+          x += w + 4;
         });
       });
 
