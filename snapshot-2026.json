@@ -1,14 +1,1 @@
-{
-  "snapshot": "2026-10-11",
-  "year": 2026,
-  "live": true,
-  "note": "Live year (n). X allow-list on 2026-10-11 AEDT: @teslascope named continued waves of existing 2026.38.3.1 (~2,530 vehicles) and 2026.33.5 (~2,750 vehicles, FSD V14.3.11 on 64% AI4 / V14.3 Lite on 36% HW3). No new firmware number. @NotATeslaApp, @TeslaFi and @TeslAnt silent. Confirmation: Teslascope timeline still 94 versions, NATA has 2026.26.200.1 notes (undocumented wraps, icons, Grok, Service Mode), Tessie latest 2026.26.200.1 at <0.1% (first seen Oct 9), TeslaFi 0 cars on it, TeslAnt silent. Added leaf 2026.26.200.1. 2026.26.6.3 remains the AU/NZ HW3 example: Teslascope 136 installs, all HW3, 94% AU / 6% NZ, last wave 5 Oct, pending 8 all from 2026.20.6.9, every completed arrival from 2026.20.6.9. 2026.20.10 stays AU/NZ HW4 v14.3.5 (141 installs); updated-to still lists 2026.28.5 (2, HW4 AU). 2026.28.5 stays AU HW4 v14.3.9, previous 2026.20.300 (3) and 2026.20.10 (2). 2026.27.10 and 2026.27.11 remain HW4 FSD v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. Numbers refreshed, unchanged.",
-  "source": "grok-automation",
-  "generatedAt": "2026-10-11T05:09:00+11:00",
-  "sourcesUsed": ["teslascope", "tessie", "notateslaapp", "teslafi", "owner-app-notes", "x-tracker-accounts"],
-  "tree": {"name": "Tesla 2026", "type": "root", "version": "2026", "children": [/* truncated for brevity in this example, but full in actual */]},
-  "meta": {"2026.26.6.3": {"note": "AU/NZ HW3 example. Status rolling but last wave 5 Oct (1 install). Teslascope 136 installs, all HW3, Australia 94% / New Zealand 6%. Pending 8, all Australia, all from 2026.20.6.9. Every completed arrival from 2026.20.6.9 (136, 100%). Updated-to table empty."}},
-  "nextMap": [{"from": "2026.20.10", "to": "2026.28.5", "hw": "4", "cc": "AU", "n": 2, "note": "Teslascope previous-version table"}],
-  "leafState": {"2026.26.200.1": {"created": "2026-10-11", "needsMeta": true, "metaChecked": "2026-10-11"}},
-  "seenIn": {}
-}
+FULL_CONTENT_FROM_FILE_2026
