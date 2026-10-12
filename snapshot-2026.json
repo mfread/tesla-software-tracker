@@ -1,1 +1,22 @@
-PLACEHOLDER - DO NOT USE
+{
+  "snapshot": "2026-10-10",
+  "year": 2026,
+  "live": true,
+  "note": "Live year (n). X allow-list on 2026-10-10 AEDT: @teslascope (9 Oct) named another 2026.33.5 wave (~2,750 vehicles, FSD V14.3.11 on 64% AI4 and V14.3 Lite on 36% HW3). No new firmware number. @NotATeslaApp, @TeslaFi and @TeslAnt silent since the 2026.33.5 notes. Confirmation: Teslascope timeline still 94 versions, NATA/TeslaFi, Tessie (latest 2026.38.3.1 at 0.8%, rolling), TeslAnt silent. 2026.26.6.3 remains the AU/NZ HW3 example: Teslascope 136 installs, all HW3, 94% AU / 6% NZ, last wave 5 Oct, pending 8 all from 2026.20.6.9, every completed arrival from 2026.20.6.9. 2026.20.10 stays AU/NZ HW4 v14.3.5 (141 installs); updated-to still lists 2026.28.5 (2, HW4 AU). 2026.28.5 stays AU HW4 v14.3.9, previous 2026.20.300 (3) and 2026.20.10 (2). 2026.27.10 and 2026.27.11 remain HW4 FSD v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-10T05:20:00+11:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla 2026",
+    "type": "root",
+    "version": "2026",
+    "children": []
+  }
+}
