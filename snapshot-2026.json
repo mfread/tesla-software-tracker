@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-10",
+  "snapshot": "2026-10-12",
   "year": 2026,
   "live": true,
-  "note": "Live year (n). X allow-list on 2026-10-10 AEDT: @teslascope (9 Oct) named another 2026.33.5 wave (~2,750 vehicles, FSD V14.3.11 on 64% AI4 and V14.3 Lite on 36% HW3). No new firmware number. @NotATeslaApp, @TeslaFi and @TeslAnt silent since the 2026.33.5 notes. Confirmation: Teslascope timeline still 94 versions, NATA/TeslaFi, Tessie (latest 2026.38.3.1 at 0.8%, rolling), TeslAnt silent. 2026.26.6.3 remains the AU/NZ HW3 example: Teslascope 136 installs, all HW3, 94% AU / 6% NZ, last wave 5 Oct, pending 8 all from 2026.20.6.9, every completed arrival from 2026.20.6.9. 2026.20.10 stays AU/NZ HW4 v14.3.5 (141 installs); updated-to still lists 2026.28.5 (2, HW4 AU). 2026.28.5 stays AU HW4 v14.3.9, previous 2026.20.300 (3) and 2026.20.10 (2). 2026.27.10 and 2026.27.11 remain HW4 FSD v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ.",
+  "note": "Live year (n). X allow-list on 2026-10-12 AEDT: @teslascope (10 Oct) announced 2026.38.5 first wave with FSD V14.3.12 for AI4 (small wave, US). @NotATeslaApp posted release notes for 2026.38.5 (Halloween Mode + FSD 14.3.12 / 14.3 Lite). @TeslaFi and @TeslAnt silent on new numbers. Confirmation: Teslascope shows 2026.38.5 (11 installs, US 100%, previous mostly 2026.33.5 / 2026.27.11, last wave 12 Oct), 2026.38.3.1 continuing. NATA lists 2026.38.5 new. Tessie shows 2026.38.5. 2026.26.6.3 remains the AU/NZ HW3 example: Teslascope ~136 installs, all HW3, AU/NZ, all from 2026.20.6.9. 2026.20.10 → 2026.28.5 hop kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-10T05:20:00+11:00",
+  "generatedAt": "2026-10-12T15:41:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -391,7 +391,7 @@
           },
           {
             "name": "2026.20.6.10",
-            "type": "point",
+             "type": "point",
             "version": "2026.20.6.10"
           },
           {
@@ -596,7 +596,7 @@
         "children": [
           {
             "name": "2026.32.3",
-            "type": "point",
+            "type" : "point",
             "version": "2026.32.3"
           },
           {
@@ -647,6 +647,11 @@
             "name": "2026.38.3.1",
             "type": "point",
             "version": "2026.38.3.1"
+          },
+          {
+            "name": "2026.38.5",
+            "type": "point",
+            "version": "2026.38.5"
           }
         ]
       }
@@ -820,6 +825,14 @@
       "regions": "DE IE GB TR IT; pending CH PL FR; first X notice CH; TeslaFi also AT. Not AU/NZ",
       "hw": "HW4",
       "note": "Announced on X via @teslascope (Model X AWD 2024, Ticino, Switzerland), then confirmed on Teslascope, NATA and Tessie. Rolling point under 2026.38 (Halloween Mode, security fixes). Teslascope 6 installs, all HW4, last wave 9 Oct. Previous versions: 2026.32.7 (3, 50%) and 2026.38 (3, 50%). Install countries Germany, Ireland, United Kingdom, Turkey, Italy. Pending 4 (DE, CH, PL, FR). Not an FSD build. Not AU/NZ."
+    },
+    "2026.38.5": {
+      "first": "2026-10-10",
+      "fleet": "Teslascope 11 installs; TeslaFi <0.1%; Tessie early",
+      "fsd": "HW4 FSD v14.3.12 and HW3 FSD v14.3 Lite",
+      "regions": "US, North America",
+      "hw": "HW4 + HW3 (mostly HW4)",
+      "note": "New FSD point. Status early rollout, last wave 12 Oct. Teslascope 11 installs, previous mainly 2026.33.5 (54%) and 2026.27.11 (36%), US 100%. Features include Halloween Mode, Automatic Collision Evasion, FSD v14.3.12. Not AU/NZ."
     }
   },
   "seenIn": {
@@ -1323,6 +1336,11 @@
       "created": "2026-10-08",
       "needsMeta": false,
       "metaChecked": "2026-10-10"
+    },
+    "2026.38.5": {
+      "created": "2026-10-10",
+      "needsMeta": false,
+      "metaChecked": "2026-10-12"
     }
   }
 }
