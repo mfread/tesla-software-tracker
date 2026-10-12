@@ -1,0 +1,238 @@
+A",
+      "hw": "HW3 + HW4",
+      "note": "Point after 2025.26.7."
+    },
+    "2025.46": {
+      "first": "2025-12-22",
+      "fleet": "archive leftover",
+      "fsd": "v13.2.9 Down Under",
+      "regions": "AU",
+      "hw": "HW4",
+      "note": "AU leftover."
+    },
+    "2025.46.5": {
+      "first": "2025-12-22",
+      "fleet": "archive leftover",
+      "fsd": "v13.2.9 Down Under",
+      "regions": "AU",
+      "hw": "HW4",
+      "note": "Teslascope AU 100%. No Lite."
+    },
+    "2025.33.5": {
+      "first": "2025-10-15",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "Tessie",
+      "hw": "-",
+      "note": "Added from Tessie version explorer."
+    },
+    "2025.39.6": {
+      "first": "2025-11-27",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "Tessie",
+      "hw": "-",
+      "note": "Added from Tessie version explorer."
+    },
+    "2025.32.8.10": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "Teslascope",
+      "hw": "-",
+      "note": "Added from Teslascope 2025 timeline. Country breakdown not expanded this run."
+    },
+    "2025.2.6.1": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "Teslascope",
+      "hw": "-",
+      "note": "Added from Teslascope 2025 timeline. Country breakdown not expanded this run."
+    }
+  },
+  "seenIn": {
+    "2025.2": [
+      "CA",
+      "US"
+    ],
+    "2025.2.8": [
+      "CA",
+      "US"
+    ],
+    "2025.2.8.4": [],
+    "2025.8": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.8.7": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.14": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.14.3": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.14.3.1": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.20": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.20.3": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.20.6": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.26": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.26.4": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.26.7": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.26.7.10": [
+      "AU",
+      "CA",
+      "GB",
+      "US"
+    ],
+    "2025.26.8": [
+      "CA",
+      "US"
+    ],
+    "2025.32": [
+      "CA",
+      "US"
+    ],
+    "2025.32.3": [
+      "CA",
+      "US"
+    ],
+    "2025.32.3.1": [
+      "CA",
+      "US"
+    ],
+    "2025.32.6": [
+      "CA",
+      "US"
+    ],
+    "2025.32.8": [
+      "CA",
+      "US"
+    ],
+    "2025.32.8.5": [
+      "CA",
+      "US"
+    ],
+    "2025.38": [
+      "CA",
+      "US"
+    ],
+    "2025.38.8.5": [
+      "CA",
+      "US"
+    ],
+    "2025.38.9.6": [
+      "CA",
+      "US"
+    ],
+    "2025.44": [
+      "CA",
+      "US"
+    ],
+    "2025.44.3": [
+      "CA",
+      "US"
+    ],
+    "2025.44.25.5": [
+      "CA",
+      "US"
+    ],
+    "2025.44.100": [
+      "CA",
+      "US"
+    ],
+    "2025.44.200": [
+      "CA",
+      "US"
+    ],
+    "2025.45": [
+      "CA",
+      "US"
+    ],
+    "2025.45.5": [
+      "CA",
+      "US"
+    ],
+    "2025.45.6": [
+      "CA",
+      "US"
+    ],
+    "2025.45.7": [
+      "CA",
+      "US"
+    ],
+    "2025.45.8": [
+      "CA",
+      "US"
+    ],
+    "2025.46": [
+      "AU"
+    ],
+    "2025.46.5": [
+      "AU"
+    ],
+    "2025.47": [
+      "CA",
+      "US"
+    ],
+    "2025.47.5": [
+      "CA",
+      "US"
+    ],
+    "2025.47.6": [
+      "CA",
+      "US"
+    ],
+    "2025.32.8.10": [],
+    "2025.2.6.1": []
+  },
+  "nextMap": {}
+}
