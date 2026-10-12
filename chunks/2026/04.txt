@@ -1,4 +1,4 @@
-o not blank this meta."
+revious table lists 50 from this build (HW4 and HW3, US). Not AU/NZ. Do not blank this meta."
     },
     "2026.33.5": {
       "first": "2026-10-06",
@@ -98,8 +98,8 @@ o not blank this meta."
     },
     "2026.38.5": {
       "first": "2026-10-10",
-      "fleet": "Teslascope 11 installs; TeslaFi <0.1%; Tessie early",
+      "fleet": "Teslascope 14 installs; Tessie 0.2%",
       "fsd": "HW4 FSD v14.3.12 and HW3 FSD v14.3 Lite",
       "regions": "US, North America",
       "hw": "HW4 + HW3 (mostly HW4)",
-      "note": "New FSD point. Status early rollout, last wave 12 Oct. Teslascope 1
+      "note": "New FSD point

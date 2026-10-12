@@ -1,4 +1,7 @@
-: "point",
+en": [
+          {
+            "name": "2026.32.3",
+            "type": "point",
             "version": "2026.32.3"
           },
           {
@@ -130,4 +133,4 @@
       "fsd": "HW4 FSD v14.3.10 and HW3 v14.2 Lite",
       "regions": "US/CA, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "North America only, last wave 9 Oct. Main FSD wave, winding down on Tessie. Updated-to lists 22 cars to 2026.33.5; destination previous table lists 50 from this build (HW4 and HW3, US). Not AU/NZ. D
+      "note": "North America only, last wave 9 Oct. Main FSD wave, winding down on Tessie. Updated-to lists 22 cars to 2026.33.5; destination p

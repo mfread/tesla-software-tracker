@@ -1,4 +1,22 @@
-m": "2026.27.300",
+  "n": 1,
+      "cc": "US",
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.32.7",
+      "to": "2026.38.3",
+      "hw": "4",
+      "n": 3,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.38",
+      "to": "2026.38.3",
+      "n": 4,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.27.300",
       "to": "2026.33.100",
       "hw": "4",
       "n": 30,
@@ -150,6 +168,11 @@ m": "2026.27.300",
       "created": "2026-10-10",
       "needsMeta": false,
       "metaChecked": "2026-10-12"
+    },
+    "2026.26.200.1": {
+      "created": "2026-10-13",
+      "needsMeta": true,
+      "metaChecked": "2026-10-13"
     }
   }
 }

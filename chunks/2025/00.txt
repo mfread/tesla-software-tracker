@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-10",
+  "snapshot": "2026-10-13",
   "year": 2025,
   "live": true,
-  "note": "Live year (n-1). X allow-list on 2026-10-10 AEDT named no new 2025.x firmware or FSD payload (@teslascope, @NotATeslaApp; @TeslaFi and @TeslAnt silent). Confirmation pass: Teslascope 2025 timeline unchanged at 111 updates, Tessie still shows 2025.38.13 at 2.2%, NATA residual 2025 line unchanged. No new 2025 trunk or leaf. 2025.2.8.4 still carried from NATA. 2025.46.5 AU leftover retained. Did not drop any prior trunk or leaf.",
+  "note": "Live year (n-1). X allow-list on 2026-10-13 AEDT named no new 2025.x firmware or FSD payload (@teslascope, @NotATeslaApp; @TeslaFi and @TeslAnt silent). Confirmation pass: Teslascope 2025 timeline unchanged, Tessie still shows 2025.38.13 at ~2.2%. No new 2025 trunk or leaf. Did not drop any prior trunk or leaf.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-10T05:20:00+11:00",
+  "generatedAt": "2026-10-13T05:15:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -190,4 +190,9 @@
           {
             "name": "2025.14.3.2",
             "type": "point",
-            "version": "2025.14.3.
+            "version": "2025.14.3.2"
+          },
+          {
+            "name": "2025.14.6",
+            "type": "point",
+            "version": "202
