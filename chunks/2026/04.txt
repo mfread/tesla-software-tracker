@@ -1,4 +1,4 @@
-revious table lists 50 from this build (HW4 and HW3, US). Not AU/NZ. Do not blank this meta."
+ Main FSD wave, winding down on Tessie. Updated-to lists 22 cars to 2026.33.5; destination previous table lists 50 from this build (HW4 and HW3, US). Not AU/NZ. Do not blank this meta."
     },
     "2026.33.5": {
       "first": "2026-10-06",
@@ -100,6 +100,4 @@ revious table lists 50 from this build (HW4 and HW3, US). Not AU/NZ. Do not blan
       "first": "2026-10-10",
       "fleet": "Teslascope 14 installs; Tessie 0.2%",
       "fsd": "HW4 FSD v14.3.12 and HW3 FSD v14.3 Lite",
-      "regions": "US, North America",
-      "hw": "HW4 + HW3 (mostly HW4)",
-      "note": "New FSD point
+      "regio

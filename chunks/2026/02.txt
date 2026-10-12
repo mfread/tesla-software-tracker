@@ -1,207 +1,209 @@
-0"
+on": "2026.14.300"
           },
           {
-            "name": "2026.20.6.11",
+            "name": "2026.14.200",
             "type": "point",
-            "version": "2026.20.6.11"
+            "version": "2026.14.200"
           },
           {
-            "name": "2026.20.7.5",
+            "name": "2026.14.100",
             "type": "point",
-            "version": "2026.20.7.5"
+            "version": "2026.14.100"
           },
           {
-            "name": "2026.20.10",
+            "name": "2026.14.13",
             "type": "point",
-            "version": "2026.20.10"
+            "version": "2026.14.13"
           },
           {
-            "name": "2026.20.100",
+            "name": "2026.14.6.12",
             "type": "point",
-            "version": "2026.20.100"
+            "version": "2026.14.6.12"
           },
           {
-            "name": "2026.20.200",
+            "name": "2026.14.6.11",
             "type": "point",
-            "version": "2026.20.200"
+            "version": "2026.14.6.11"
           },
           {
-            "name": "2026.20.200.1",
+            "name": "2026.14.6.10",
             "type": "point",
-            "version": "2026.20.200.1"
+            "version": "2026.14.6.10"
           },
           {
-            "name": "2026.20.300",
+            "name": "2026.14.6.7",
             "type": "point",
-            "version": "2026.20.300"
+            "version": "2026.14.6.7"
+          },
+          {
+            "name": "2026.14.6.6",
+            "type": "point",
+            "version": "2026.14.6.6"
+          },
+          {
+            "name": "2026.14.6",
+            "type": "point",
+            "version": "2026.14.6"
+          },
+          {
+            "name": "2026.14.3",
+            "type": "point",
+            "version": "2026.14.3"
+          },
+          {
+            "name": "2026.14.2",
+            "type": "point",
+            "version": "2026.14.2"
+          },
+          {
+            "name": "2026.14.1",
+            "type": "point",
+            "version": "2026.14.1"
+          },
+          {
+            "name": "2026.14",
+            "type": "point",
+            "version": "2026.14"
           }
         ]
       },
       {
-        "name": "2026.21 FSD dual",
-        "type": "fsd",
-        "version": "2026.21",
-        "children": [
-          {
-            "name": "2026.21.5",
-            "type": "point",
-            "version": "2026.21.5"
-          },
-          {
-            "name": "2026.21.6",
-            "type": "point",
-            "version": "2026.21.6"
-          },
-          {
-            "name": "2026.21.100",
-            "type": "point",
-            "version": "2026.21.100"
-          },
-          {
-            "name": "2026.21.300",
-            "type": "point",
-            "version": "2026.21.300"
-          }
-        ]
-      },
-      {
-        "name": "2026.26 Summer",
+        "name": "2026.8",
         "type": "feature",
-        "version": "2026.26",
+        "version": "2026.8",
         "children": [
           {
-            "name": "2026.26",
+            "name": "2026.8.300",
             "type": "point",
-            "version": "2026.26"
+            "version": "2026.8.300"
           },
           {
-            "name": "2026.26.1",
+            "name": "2026.8.200.1",
             "type": "point",
-            "version": "2026.26.1"
+            "version": "2026.8.200.1"
           },
           {
-            "name": "2026.26.6",
+            "name": "2026.8.200",
             "type": "point",
-            "version": "2026.26.6"
+            "version": "2026.8.200"
           },
           {
-            "name": "2026.26.6.1",
+            "name": "2026.8.100",
             "type": "point",
-            "version": "2026.26.6.1"
+            "version": "2026.8.100"
           },
           {
-            "name": "2026.26.6.2",
+            "name": "2026.8.6.1",
             "type": "point",
-            "version": "2026.26.6.2"
+            "version": "2026.8.6.1"
           },
           {
-            "name": "2026.26.6.3",
+            "name": "2026.8.6",
             "type": "point",
-            "version": "2026.26.6.3"
+            "version": "2026.8.6"
           },
           {
-            "name": "2026.26.6.5",
+            "name": "2026.8.3.10",
             "type": "point",
-            "version": "2026.26.6.5"
+            "version": "2026.8.3.10"
           },
           {
-            "name": "2026.26.100.1",
+            "name": "2026.8.3.6",
             "type": "point",
-            "version": "2026.26.100.1"
+            "version": "2026.8.3.6"
           },
           {
-            "name": "2026.26.100.2",
+            "name": "2026.8.3",
             "type": "point",
-            "version": "2026.26.100.2"
+            "version": "2026.8.3"
           },
           {
-            "name": "2026.26.200",
+            "name": "2026.8",
             "type": "point",
-            "version": "2026.26.200"
-          },
-          {
-            "name": "2026.26.200.1",
-            "type": "point",
-            "version": "2026.26.200.1"
-          },
-          {
-            "name": "2026.26.200.11",
-            "type": "point",
-            "version": "2026.26.200.11"
-          },
-          {
-            "name": "2026.26.300",
-            "type": "point",
-            "version": "2026.26.300"
+            "version": "2026.8"
           }
         ]
       },
       {
-        "name": "2026.27 Factory / EU / FSD",
-        "type": "factory",
-        "version": "2026.27",
-        "children": [
-          {
-            "name": "2026.27.5",
-            "type": "point",
-            "version": "2026.27.5"
-          },
-          {
-            "name": "2026.27.6",
-            "type": "point",
-            "version": "2026.27.6"
-          },
-          {
-            "name": "2026.27.6.5",
-            "type": "point",
-            "version": "2026.27.6.5"
-          },
-          {
-            "name": "2026.27.6.15",
-            "type": "point",
-            "version": "2026.27.6.15"
-          },
-          {
-            "name": "2026.27.10",
-            "type": "point",
-            "version": "2026.27.10"
-          },
-          {
-            "name": "2026.27.11",
-            "type": "point",
-            "version": "2026.27.11"
-          },
-          {
-            "name": "2026.27.100.1",
-            "type": "point",
-            "version": "2026.27.100.1"
-          },
-          {
-            "name": "2026.27.200",
-            "type": "point",
-            "version": "2026.27.200"
-          },
-          {
-            "name": "2026.27.300",
-            "type": "point",
-            "version": "2026.27.300"
-          }
-        ]
-      },
-      {
-        "name": "2026.28 FSD Oceania",
-        "type": "fsd",
-        "version": "2026.28",
-        "children": [
-          {
-            "name": "2026.28.5",
-            "type": "point",
-            "version": "2026.28.5"
-          }
-        ]
-      },
-      {
-        "name": "2026.32 Feature / EU recall",
+        "name": "2026.4",
         "type": "feature",
-        "version": "2026.32",
-        "childr
+        "version": "2026.4",
+        "children": [
+          {
+            "name": "2026.4.5",
+            "type": "point",
+            "version": "2026.4.5"
+          }
+        ]
+      },
+      {
+        "name": "2026.3",
+        "type": "feature",
+        "version": "2026.3",
+        "children": [
+          {
+            "name": "2026.3.7",
+            "type": "point",
+            "version": "2026.3.7"
+          },
+          {
+            "name": "2026.3.6",
+            "type": "point",
+            "version": "2026.3.6"
+          }
+        ]
+      },
+      {
+        "name": "2026.2 Holiday / FSD",
+        "type": "feature",
+        "version": "2026.2",
+        "children": [
+          {
+            "name": "2026.2.300",
+            "type": "point",
+            "version": "2026.2.300"
+          },
+          {
+            "name": "2026.2.200.1",
+            "type": "point",
+            "version": "2026.2.200.1"
+          },
+          {
+            "name": "2026.2.200",
+            "type": "point",
+            "version": "2026.2.200"
+          },
+          {
+            "name": "2026.2.100",
+            "type": "point",
+            "version": "2026.2.100"
+          },
+          {
+            "name": "2026.2.11",
+            "type": "point",
+            "version": "2026.2.11"
+          },
+          {
+            "name": "2026.2.9.10",
+            "type": "point",
+            "version": "2026.2.9.10"
+          },
+          {
+            "name": "2026.2.9.9",
+            "type": "point",
+            "version": "2026.2.9.9"
+          },
+          {
+            "name": "2026.2.9.8",
+            "type": "point",
+            "version": "2026.2.9.8"
+          },
+          {
+            "name": "2026.2.9.7",
+            "type": "point",
+            "version": "2026.2.9.7"
+          },
+          {
+            "name": "2026.2.9.6",
+            "type": "point",
+            "version": "2026.2.

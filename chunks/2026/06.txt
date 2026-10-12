@@ -1,4 +1,9 @@
-  "n": 1,
+revious-version table"
+    },
+    {
+      "from": "2026.32.7",
+      "to": "2026.33.5",
+      "n": 1,
       "cc": "US",
       "note": "Teslascope previous-version table"
     },
