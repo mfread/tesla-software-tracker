@@ -1,4 +1,4 @@
-ns": "US, North America",
+      "regions": "US, North America",
       "hw": "HW4 + HW3 (mostly HW4)",
       "note": "New FSD point. Status early rollout <1%, last wave 12 Oct. Teslascope 14 installs, previous mainly 2026.33.5 (50%) and 2026.27.11 (43%), US 100%. Features include Halloween Mode, FSD v14.3.12 for AI4 and v14.3 Lite for HW3. Not AU/NZ."
     },
@@ -343,4 +343,4 @@ ns": "US, North America",
       "hw": "3",
       "cc": "US",
       "n": 7,
-      "note": "Teslascope p
+      "note": "

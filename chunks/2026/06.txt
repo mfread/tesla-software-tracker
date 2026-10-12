@@ -1,4 +1,4 @@
-revious-version table"
+Teslascope previous-version table"
     },
     {
       "from": "2026.32.7",

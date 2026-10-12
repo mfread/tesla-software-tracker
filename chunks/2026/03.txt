@@ -1,64 +1,65 @@
-9.6"
+ "2026.32 Feature / EU recall",
+        "type": "feature",
+        "version": "2026.32",
+        "children": [
+          {
+            "name": "2026.32.3",
+            "type": "point",
+            "version": "2026.32.3"
           },
           {
-            "name": "2026.2.9.5",
+            "name": "2026.32.7",
             "type": "point",
-            "version": "2026.2.9.5"
+            "version": "2026.32.7"
           },
           {
-            "name": "2026.2.9.3",
+            "name": "2026.32.100",
             "type": "point",
-            "version": "2026.2.9.3"
+            "version": "2026.32.100"
+          }
+        ]
+      },
+      {
+        "name": "2026.33",
+        "type": "feature",
+        "version": "2026.33",
+        "children": [
+          {
+            "name": "2026.33.5",
+            "type": "point",
+            "version": "2026.33.5"
           },
           {
-            "name": "2026.2.9.2",
+            "name": "2026.33.100",
             "type": "point",
-            "version": "2026.2.9.2"
+            "version": "2026.33.100"
+          }
+        ]
+      },
+      {
+        "name": "2026.38 Site Maps / Visual",
+        "type": "feature",
+        "version": "2026.38",
+        "children": [
+          {
+            "name": "2026.38",
+            "type": "point",
+            "version": "2026.38"
           },
           {
-            "name": "2026.2.9.1",
+            "name": "2026.38.3",
             "type": "point",
-            "version": "2026.2.9.1"
+            "version": "2026.38.3"
           },
           {
-            "name": "2026.2.9",
+            "name": "2026.38.3.1",
             "type": "point",
-            "version": "2026.2.9"
+            "version": "2026.38.3.1"
           },
           {
-            "name": "2026.2.6.5",
+            "name": "2026.38.5",
             "type": "point",
-            "version": "2026.2.6.5"
-          },
-          {
-            "name": "2026.2.6.1",
-            "type": "point",
-            "version": "2026.2.6.1"
-          },
-          {
-            "name": "2026.2.6",
-            "type": "point",
-            "version": "2026.2.6"
-          },
-          {
-            "name": "2026.2.3.16",
-            "type": "point",
-            "version": "2026.2.3.16"
-          },
-          {
-            "name": "2026.2.3.1",
-            "type": "point",
-            "version": "2026.2.3.1"
-          },
-          {
-            "name": "2026.2.3",
-            "type": "point",
-            "version": "2026.2.3"
-          },
-          {
-            "name": "2026.2",
-            "type": "point",
-            "version": "2026.2"
+            "version": "2026.38.5"
           }
         ]
       }
@@ -135,4 +136,4 @@
       "fsd": "HW4 FSD v14.3.10 and HW3 v14.2 Lite",
       "regions": "US/CA, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "North America only, last wave 9 Oct.
+      "note": "North America only, last
