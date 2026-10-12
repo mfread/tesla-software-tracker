@@ -1,0 +1,76 @@
+name: Assemble Snapshot from Chunks
+
+on:
+  push:
+    paths:
+      - 'chunks/**'
+      - '.github/workflows/assemble-snapshot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Assemble and validate
+        run: |
+          set -euo pipefail
+          for year in 2025 2026; do
+            chunk_dir="chunks/${year}"
+            out="snapshot-${year}.json"
+            if [[ ! -d "$chunk_dir" ]]; then
+              echo "No chunk dir for ${year}"
+              continue
+            fi
+            mapfile -t chunks < <(find "$chunk_dir" -name '*.txt' | sort)
+            if [[ ${#chunks[@]} -eq 0 ]]; then
+              echo "No chunks for ${year}"
+              continue
+            fi
+            echo "Assembling ${out} from ${#chunks[@]} chunks"
+            cat "${chunks[@]}" > "${out}"
+            OUT_PATH="${out}" YEAR="${year}" python3 - << 'PY'
+          import json, os, sys
+          path = os.environ["OUT_PATH"]
+          year = os.environ["YEAR"]
+          with open(path) as f:
+              data = json.load(f)
+          size = os.path.getsize(path)
+          if size < 10000:
+              raise SystemExit(f"FAIL: {path} too small ({size} bytes)")
+          tree = data.get("tree") or {}
+          if "children" not in tree:
+              raise SystemExit("FAIL: missing tree.children")
+          if "meta" not in data:
+              raise SystemExit("FAIL: missing meta")
+          text = open(path).read()
+          if year == "2026" and "2026.26.6.3" not in text:
+              raise SystemExit("FAIL: missing required leaf 2026.26.6.3")
+          print(f"OK {path}: {size} bytes, {len(tree['children'])} children")
+          PY
+            if [[ "${year}" == "2026" ]]; then
+              cp "${out}" snapshot.json
+              echo "Updated snapshot.json from 2026"
+            fi
+          done
+
+      - name: Commit if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f snapshot-2026.json snapshot-2025.json snapshot.json || true
+          if git diff --cached --quiet; then
+            echo "No snapshot changes"
+            exit 0
+          fi
+          git commit -m "Assemble live snapshots from chunks [skip ci]"
+          git push
