@@ -825,11 +825,11 @@
     },
     "2026.38.3.1": {
       "first": "2026-10-08",
-      "fleet": "Teslascope 6 installs; TeslaFi 0.6% (9 today); Tessie 0.8% (rolling)",
+      "fleet": "Teslascope 158 installs; TeslaFi/Tessie still rolling",
       "fsd": "none",
-      "regions": "DE IE GB TR IT; pending CH PL FR; first X notice CH; TeslaFi also AT. Not AU/NZ",
-      "hw": "HW4",
-      "note": "Announced on X via @teslascope (Model X AWD 2024, Ticino, Switzerland), then confirmed on Teslascope, NATA and Tessie. Rolling point under 2026.38 (Halloween Mode, security fixes). Teslascope 6 installs, all HW4, last wave 9 Oct. Previous versions: 2026.32.7 (3, 50%) and 2026.38 (3, 50%). Install countries Germany, Ireland, United Kingdom, Turkey, Italy. Pending 4 (DE, CH, PL, FR). Not an FSD build. Not AU/NZ."
+      "regions": "US GB DE IT and others; AU owner-reported",
+      "hw": "HW3 + HW4",
+      "note": "Halloween point under 2026.38. Teslascope 158 installs: HW3 105 (66.5%), HW4 53 (33.5%). Majority arrived from 2026.32.7 (109, 69%), then 2026.38 (44, 28%). Last wave 13 Oct (55). Owner report: 2021 Model S HW3 in Australia installed 13 Oct. Not yet in the Teslascope AU sample. Not an FSD build."
     },
     "2026.38.5": {
       "first": "2026-10-10",
@@ -1135,6 +1135,7 @@
     "2026.32.100": [],
     "2026.38.3.1": [
       "AT",
+      "AU",
       "CH",
       "DE",
       "FR",
@@ -1142,7 +1143,8 @@
       "IE",
       "IT",
       "PL",
-      "TR"
+      "TR",
+      "US"
     ]
   },
   "nextMap": [
