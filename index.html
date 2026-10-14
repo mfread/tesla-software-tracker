@@ -340,7 +340,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.34</h1>
+      <h1>Tesla Software Tracker v4.35</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -516,7 +516,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.34";
+    const APP_VERSION = "4.35";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -1446,25 +1446,53 @@
           trunk.children.push({ name: ver, type: "point", version: ver });
         }
         have.add(ver);
-        const carHw = [];
-        (cars || []).forEach(c => {
-          const list = [c.current, ...(c.history || [])].map(x => normVer(x));
-          if (list.includes(ver) && c.hw) carHw.push(c.hw === "4" ? "HW4" : "HW3");
-        });
-        const mergedHw = [...new Set(carHw)].join(" + ");
         if (!META[ver]) {
           META[ver] = {
             first: "—",
             fleet: "from a saved car",
             fsd: "—",
             regions: "—",
-            hw: mergedHw || "—",
+            hw: "—",
             note: "Inserted from a car profile — not in the snapshot tree."
           };
-        } else if (mergedHw) {
-          const p = parseHw((META[ver].hw || "") + " " + mergedHw);
-          META[ver].hw = [p.hw3 ? "HW3" : null, p.hw4 ? "HW4" : null].filter(Boolean).join(" + ") || mergedHw;
         }
+      });
+      applyCarEvidence();
+    }
+
+    function applyCarEvidence() {
+      const needed = new Set();
+      (cars || []).forEach(car => {
+        if (car && car.current) needed.add(normVer(car.current));
+        (car && car.history || []).forEach(v => {
+          const n = normVer(String(v || "").trim());
+          if (n) needed.add(n);
+        });
+      });
+      needed.forEach(ver => {
+        if (!ver) return;
+        const hits = (cars || []).filter(c => {
+          const list = [c.current, ...(c.history || [])].map(x => normVer(x));
+          return list.includes(ver);
+        });
+        if (!hits.length) return;
+        const hws = [...new Set(hits.map(c => String(c.hw || "").replace(/^HW/i, "")).filter(h => h === "3" || h === "4").map(h => "HW" + h))];
+        if (!META[ver]) META[ver] = { first: "—", fleet: "from a saved car", fsd: "—", regions: "—", hw: "", note: "" };
+        if (hws.length) {
+          const p = parseHw((META[ver].hw || "") + " " + hws.join(" "));
+          META[ver].hw = [p.hw3 ? "HW3" : null, p.hw4 ? "HW4" : null].filter(Boolean).join(" + ") || hws.join(" + ");
+        }
+        const tag = "Seen in one of your cars" + (hws.length ? " (" + hws.join(", ") + ")" : "") + ".";
+        const note = META[ver].note || "";
+        if (!note.includes("Seen in one of your cars")) {
+          META[ver].note = (note.trim() + (note.trim() ? " " : "") + tag).trim();
+        }
+        hits.forEach(c => {
+          const cc = String(c.country || "").trim().toUpperCase();
+          if (cc && typeof SEEN_IN !== "undefined") {
+            SEEN_IN[ver] = [...new Set([...(SEEN_IN[ver] || []), cc])];
+          }
+        });
       });
     }
 
