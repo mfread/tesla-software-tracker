@@ -1,11 +1,11 @@
 # tesla software tracker
-* Displays a tree (with branches and leaves) or a table view of Tesla car firmware end-points and highlights the selected car's firmware history.
+* Displays a tree (with branches and leaves) or a table view of Tesla car software end-points and highlights the selected car's firmware history.
 * Data comes from various apps, including Teslascope, Tessie, Not A Tesla, TeslaFi, TeslAnt, X and Grok. Credit for the data goes to these organisations.
 * Not all the countries where Tesla cars are sold into is captured (as this would slow down the UI). 
 * snapshot.json updated 5am Australian Eastern Standard Time.
 
 # why this app?
-I developed this web app so I could merge and visualise the dozens of code branches Tesla has on-the-go at any one time. Yes, I could view this data by visiting several websites that track this information (a cumbersome exercise requiring mental gymnastics), but I could not find a central location for all this data. So I built one. The data is not 100% accurate because Tesla does not record or maintain such information.
+I developed this web app so I could merge and visualise the dozens of code branches Tesla has on-the-go at any one time. Yes, I could view this data by visiting several websites that track this information (a cumbersome exercise requiring mental gymnastics), but I could not find a central location for all this data. So I built one. The data is not 100% accurate because Tesla does not record or maintain such information and as such I'm relying on several 3rd party trackers for the info.
 
 # how to use
 * Via the left hand pane simply expand the Active Cars panel and add up to 5 cars. Optionally add in the software version history per car (if you don't keep track of this info, open your Tesla app on your smartphone, scroll down to the bottom and click on Release Notes for the last few versions installed in your car). This information makes it easier to visualise the software the car has had over time.
