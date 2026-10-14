@@ -335,12 +335,20 @@
       #details-panel { width: calc(100% - 24px); left: 12px; right: 12px; }
     }
   </style>
+  <!-- Google Analytics 4. Replace G-XXXXXXXX with your measurement ID. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXX');
+  </script>
 </head>
 <body>
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.37</h1>
+      <h1>Tesla Software Tracker v4.38</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -437,6 +445,7 @@
       <div class="card" style="font-size:0.72rem;color:var(--muted);line-height:1.45">
         <h3>About this data</h3>
         Data courtesy Teslascope, Tessie, Not a Tesla App, TeslaFi, TeslAnt and X. Current year (n) and previous year (n−1) are live overnight snapshots. Older years are locked archives reconstructed from public trackers — not nightly scrapes. A HW tag on an archive/car-only leaf is from saved cars or that archive file, not a claim that every car with that computer received it. Fleet labels such as “phasing out” are global tracker status.
+        <p style="margin:8px 0 0">Ordering a Tesla? <a href="https://ts.la/mark194129" target="_blank" rel="noopener">Use my referral link</a>. Open it before you place the order.</p>
       </div>
     </aside>
 
@@ -516,7 +525,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.37";
+    const APP_VERSION = "4.38";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
