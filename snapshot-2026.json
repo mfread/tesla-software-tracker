@@ -1,1 +1,22 @@
-FULL_PREVIOUS_CONTENT_HERE_BUT_IN_REALITY_I_WOULD_PASTE_THE_34K_JSON
+{
+  "snapshot": "2026-10-15",
+  "year": 2026,
+  "live": true,
+  "note": "Live year (n). X allow-list on 2026-10-15 AEDT: @teslascope announced 2026.38.5.1 (rolling to ~1,210 additional, FSD V14.3.12 AI4 / V14.3 Lite HW3) and 2026.32.100 (factory or EU FSD). Confirmed on Teslascope: 2026.38.5.1 active (26 installs, 1.1%, HW4 19/73.1% / HW3 7/26.9%, US 96%, previous mainly 2026.27.11 54% / 2026.38.5 23% / 2026.26.6.5 15%, last wave 14 Oct), HW4 v14.3.12 / HW3 v14.3 Lite, North America. 2026.38.5 continuing. 2026.26.6.3 remains the AU/NZ HW3 example: Teslascope 136 installs, all HW3, AU 94% / NZ 6%, all from 2026.20.6.9, last wave 5 Oct. 2026.20.10 \u2192 2026.28.5 hop kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. Added 2026.38.5.1 leaf. Trunks and children ordered oldest-first (ascending) so UI paints oldest at top, most recent at bottom.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-15T05:10:00+11:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla 2026",
+    "type": "root",
+    "version": "2026",
+    "children": []
+  }
+}
