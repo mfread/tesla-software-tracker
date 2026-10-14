@@ -1,4 +1,4 @@
- "2026.32 Feature / EU recall",
+l",
         "type": "feature",
         "version": "2026.32",
         "children": [
@@ -136,4 +136,4 @@
       "fsd": "HW4 FSD v14.3.10 and HW3 v14.2 Lite",
       "regions": "US/CA, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "North America only, last
+      "note": "North America only, last wave 9 Oct. Main FSD wave, 
