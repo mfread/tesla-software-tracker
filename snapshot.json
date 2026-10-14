@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-13",
+  "snapshot": "2026-10-15",
   "year": 2026,
   "live": true,
-  "note": "Live year (n). X allow-list on 2026-10-13 AEDT: no new firmware announcements from @teslascope, @NotATeslaApp, @TeslaFi, @TeslAnt since prior snapshot. Confirmation: Teslascope 2026.38.5 continuing (14 installs, US 100%, previous mostly 2026.33.5 / 2026.27.11, last wave 12 Oct), HW4 v14.3.12 / HW3 v14.3 Lite. 2026.38.3.1 still active. 2026.26.6.3 remains the AU/NZ HW3 example: Teslascope 136 installs, all HW3, AU 94% / NZ 6%, all from 2026.20.6.9, last wave 5 Oct. 2026.20.10 → 2026.28.5 hop kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. Added 2026.26.200.1 from Tessie (first seen 9 Oct, <0.1%). Trunks and children ordered oldest-first (ascending) so UI paints oldest at top, most recent at bottom.",
+  "note": "Live year (n). X allow-list on 2026-10-15 AEDT: @teslascope announced 2026.38.5.1 rollout (~1,210 vehicles, FSD v14.3.12 AI4 64% / v14.3 Lite HW3 36%). Confirmed on Teslascope (26 installs, HW4 19 / HW3 7, US ~96%, last wave 14 Oct), NATA, Tessie/TeslaFi. 2026.38.5 continuing (Teslascope active, last wave 14 Oct). 2026.38.3.1 rolling wide (Teslascope ~196 installs, HW3 130 / HW4 66, multi-country including US/EU, last wave 14 Oct). 2026.26.6.3 remains AU/NZ HW3 example (~136 installs, all from 2026.20.6.9). nextMap hop 2026.20.10 → 2026.28.5 kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. Added 2026.38.5.1 under 2026.38 trunk. Trunks and children ordered oldest-first.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-13T07:55:00+11:00",
+  "generatedAt": "2026-10-15T05:56:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
