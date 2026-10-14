@@ -340,7 +340,7 @@
   <header>
     <button class="btn secondary small" id="toggle-sidebar" title="Hide panel">‹</button>
     <div class="brand">
-      <h1>Tesla Software Tracker v4.36</h1>
+      <h1>Tesla Software Tracker v4.37</h1>
     </div>
     <div class="view-toggle">
       <button class="btn small secondary" id="view-help">Help</button>
@@ -516,7 +516,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const APP_VERSION = "4.36";
+    const APP_VERSION = "4.37";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -1496,8 +1496,19 @@
       });
     }
 
+    function sortTreeNodes(node) {
+      if (!node || !node.children || !node.children.length) return;
+      node.children.forEach(sortTreeNodes);
+      node.children.sort((a, b) => {
+        const ak = verKey(a.version || extractVer(a.name || ""));
+        const bk = verKey(b.version || extractVer(b.name || ""));
+        return ak < bk ? -1 : ak > bk ? 1 : 0;
+      });
+    }
+
     function rebuildVisuals() {
       ensureCarVersionsOnTree();
+      sortTreeNodes(TREE_DATA);
       buildTree();
       if (currentView === "table") renderTable();
       if (typeof updateYearHint === "function") updateYearHint();
