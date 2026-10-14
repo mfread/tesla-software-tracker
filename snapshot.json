@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-14",
+  "snapshot": "2026-10-13",
   "year": 2026,
   "live": true,
-  "note": "Live year (n). X allow-list on 2026-10-14 AEDT: no new firmware announcements from @teslascope, @NotATeslaApp, @TeslaFi, @TeslAnt since prior snapshot. Confirmation: Teslascope 2026.38.5 continuing (35 installs, 1.3% active, HW4 30/85.7% / HW3 5/14.3%, US 94%, previous mainly 2026.27.11 63% / 2026.33.5 29% / 2026.26.6.5 9%, last wave 13 Oct), HW4 v14.3.12 / HW3 v14.3 Lite. 2026.38.3.1 still active (5.9%). 2026.26.6.3 remains the AU/NZ HW3 example: Teslascope 136 installs, all HW3, AU 94% / NZ 6%, all from 2026.20.6.9, last wave 5 Oct. 2026.20.10 → 2026.28.5 hop kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. No new trunks or leaves. Trunks and children ordered oldest-first (ascending) so UI paints oldest at top, most recent at bottom.",
+  "note": "Live year (n). X allow-list on 2026-10-13 AEDT: no new firmware announcements from @teslascope, @NotATeslaApp, @TeslaFi, @TeslAnt since prior snapshot. Confirmation: Teslascope 2026.38.5 continuing (14 installs, US 100%, previous mostly 2026.33.5 / 2026.27.11, last wave 12 Oct), HW4 v14.3.12 / HW3 v14.3 Lite. 2026.38.3.1 still active. 2026.26.6.3 remains the AU/NZ HW3 example: Teslascope 136 installs, all HW3, AU 94% / NZ 6%, all from 2026.20.6.9, last wave 5 Oct. 2026.20.10 → 2026.28.5 hop kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. Added 2026.26.200.1 from Tessie (first seen 9 Oct, <0.1%). Trunks and children ordered oldest-first (ascending) so UI paints oldest at top, most recent at bottom.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-14T05:15:00+11:00",
+  "generatedAt": "2026-10-13T07:55:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -825,19 +825,19 @@
     },
     "2026.38.3.1": {
       "first": "2026-10-08",
-      "fleet": "Teslascope 158 installs; TeslaFi/Tessie still rolling",
+      "fleet": "Teslascope 6 installs; TeslaFi 0.6% (9 today); Tessie 0.8% (rolling)",
       "fsd": "none",
-      "regions": "US GB DE IT and others; AU owner-reported",
-      "hw": "HW3 + HW4",
-      "note": "Halloween point under 2026.38. Teslascope 158 installs: HW3 105 (66.5%), HW4 53 (33.5%). Majority arrived from 2026.32.7 (109, 69%), then 2026.38 (44, 28%). Last wave 13 Oct (55). Owner report: 2021 Model S HW3 in Australia installed 13 Oct. Not yet in the Teslascope AU sample. Not an FSD build."
+      "regions": "DE IE GB TR IT; pending CH PL FR; first X notice CH; TeslaFi also AT. Not AU/NZ",
+      "hw": "HW4",
+      "note": "Announced on X via @teslascope (Model X AWD 2024, Ticino, Switzerland), then confirmed on Teslascope, NATA and Tessie. Rolling point under 2026.38 (Halloween Mode, security fixes). Teslascope 6 installs, all HW4, last wave 9 Oct. Previous versions: 2026.32.7 (3, 50%) and 2026.38 (3, 50%). Install countries Germany, Ireland, United Kingdom, Turkey, Italy. Pending 4 (DE, CH, PL, FR). Not an FSD build. Not AU/NZ."
     },
     "2026.38.5": {
       "first": "2026-10-10",
-      "fleet": "Teslascope 35 installs (1.3% active); Tessie 0.6%",
+      "fleet": "Teslascope 14 installs; Tessie 0.2%",
       "fsd": "HW4 FSD v14.3.12 and HW3 FSD v14.3 Lite",
       "regions": "US, North America",
-      "hw": "HW4 30 (85.7%) / HW3 5 (14.3%)",
-      "note": "FSD point continuing. Status early rollout 1.3%, last wave 13 Oct. Teslascope 35 installs, HW4 30 / HW3 5, US 94% / other 6%. Previous: 2026.27.11 (22, 62.9%), 2026.33.5 (10, 28.6%), 2026.26.6.5 (3, 8.6%). Features include Halloween Mode, Arrival Options, FSD v14.3.12 for AI4 and v14.3 Lite for HW3. Not AU/NZ."
+      "hw": "HW4 + HW3 (mostly HW4)",
+      "note": "New FSD point. Status early rollout <1%, last wave 12 Oct. Teslascope 14 installs, previous mainly 2026.33.5 (50%) and 2026.27.11 (43%), US 100%. Features include Halloween Mode, FSD v14.3.12 for AI4 and v14.3 Lite for HW3. Not AU/NZ."
     },
     "2026.26.200.1": {
       "first": "2026-10-09",
@@ -1135,7 +1135,6 @@
     "2026.32.100": [],
     "2026.38.3.1": [
       "AT",
-      "AU",
       "CH",
       "DE",
       "FR",
@@ -1143,8 +1142,7 @@
       "IE",
       "IT",
       "PL",
-      "TR",
-      "US"
+      "TR"
     ]
   },
   "nextMap": [
