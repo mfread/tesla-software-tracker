@@ -3,9 +3,13 @@ name: Assemble Snapshot from Chunks
 on:
   push:
     paths:
-      - 'chunks/**'
+      - 'chunks/STITCH'
       - '.github/workflows/assemble-snapshot.yml'
   workflow_dispatch:
+
+concurrency:
+  group: assemble-snapshot
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -49,7 +53,7 @@ jobs:
           tree = data.get("tree") or {}
           kids = tree.get("children")
           if not isinstance(kids, list) or len(kids) < 5:
-              raise SystemExit(f"FAIL: {path} tree.children missing or too short ({0 if not isinstance(kids, list) else len(kids)})")
+              raise SystemExit(f"FAIL: {path} tree.children missing or too short")
           if year == "2026" and len(kids) < 10:
               raise SystemExit(f"FAIL: 2026 trunk count {len(kids)} < 10")
           if "meta" not in data:
@@ -59,14 +63,13 @@ jobs:
               raise SystemExit("FAIL: placeholder text in snapshot")
           if year == "2026" and "2026.26.6.3" not in text:
               raise SystemExit("FAIL: missing required leaf 2026.26.6.3")
-          # oldest-first check on first vs last trunk
           def verkey(v):
               return ".".join(str(p).zfill(4) for p in str(v or "").split("."))
           first = verkey(kids[0].get("version") or kids[0].get("name"))
           last = verkey(kids[-1].get("version") or kids[-1].get("name"))
           if first > last:
-              raise SystemExit(f"FAIL: trunks not oldest-first ({kids[0].get('version')} before {kids[-1].get('version')})")
-          print(f"OK {path}: {size} bytes, {len(kids)} children, {kids[0].get('version')} .. {kids[-1].get('version')}")
+              raise SystemExit("FAIL: trunks not oldest-first")
+          print(f"OK {path}: {size} bytes, {len(kids)} children")
           PY
             if [[ "${year}" == "2026" ]]; then
               cp "${out}" snapshot.json
