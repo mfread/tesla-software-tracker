@@ -1,1 +1,208 @@
-PLACEHOLDER
+          {
+            "name": "2026.32.6",
+            "type": "point",
+            "version": "2026.32.6"
+          },
+          {
+            "name": "2026.32.6.1",
+            "type": "point",
+            "version": "2026.32.6.1"
+          },
+          {
+            "name": "2026.32.6.5",
+            "type": "point",
+            "version": "2026.32.6.5"
+          },
+          {
+            "name": "2026.32.6.6",
+            "type": "point",
+            "version": "2026.32.6.6"
+          },
+          {
+            "name": "2026.32.6.10",
+            "type": "point",
+            "version": "2026.32.6.10"
+          },
+          {
+            "name": "2026.32.6.11",
+            "type": "point",
+            "version": "2026.32.6.11"
+          },
+          {
+            "name": "2026.32.100",
+            "type": "point",
+            "version": "2026.32.100"
+          },
+          {
+            "name": "2026.32.200",
+            "type": "point",
+            "version": "2026.32.200"
+          },
+          {
+            "name": "2026.32.300",
+            "type": "point",
+            "version": "2026.32.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.38 Feature / FSD",
+        "type": "feature",
+        "version": "2026.38",
+        "children": [
+          {
+            "name": "2026.38",
+            "type": "point",
+            "version": "2026.38"
+          },
+          {
+            "name": "2026.38.3",
+            "type": "point",
+            "version": "2026.38.3"
+          },
+          {
+            "name": "2026.38.3.1",
+            "type": "point",
+            "version": "2026.38.3.1"
+          },
+          {
+            "name": "2026.38.5",
+            "type": "point",
+            "version": "2026.38.5"
+          },
+          {
+            "name": "2026.38.5.1",
+            "type": "point",
+            "version": "2026.38.5.1"
+          },
+          {
+            "name": "2026.38.6",
+            "type": "point",
+            "version": "2026.38.6"
+          },
+          {
+            "name": "2026.38.100",
+            "type": "point",
+            "version": "2026.38.100"
+          },
+          {
+            "name": "2026.38.200",
+            "type": "point",
+            "version": "2026.38.200"
+          },
+          {
+            "name": "2026.38.300",
+            "type": "point",
+            "version": "2026.38.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.44",
+        "type": "feature",
+        "version": "2026.44",
+        "children": [
+          {
+            "name": "2026.44.3",
+            "type": "point",
+            "version": "2026.44.3"
+          },
+          {
+            "name": "2026.44.5",
+            "type": "point",
+            "version": "2026.44.5"
+          },
+          {
+            "name": "2026.44.6",
+            "type": "point",
+            "version": "2026.44.6"
+          },
+          {
+            "name": "2026.44.25",
+            "type": "point",
+            "version": "2026.44.25"
+          },
+          {
+            "name": "2026.44.25.1",
+            "type": "point",
+            "version": "2026.44.25.1"
+          },
+          {
+            "name": "2026.44.25.2",
+            "type": "point",
+            "version": "2026.44.25.2"
+          },
+          {
+            "name": "2026.44.25.5",
+            "type": "point",
+            "version": "2026.44.25.5"
+          },
+          {
+            "name": "2026.44.25.6",
+            "type": "point",
+            "version": "2026.44.25.6"
+          },
+          {
+            "name": "2026.44.25.10",
+            "type": "point",
+            "version": "2026.44.25.10"
+          },
+          {
+            "name": "2026.44.25.11",
+            "type": "point",
+            "version": "2026.44.25.11"
+          },
+          {
+            "name": "2026.44.25.12",
+            "type": "point",
+            "version": "2026.44.25.12"
+          },
+          {
+            "name": "2026.44.25.15",
+            "type": "point",
+            "version": "2026.44.25.15"
+          },
+          {
+            "name": "2026.44.30",
+            "type": "point",
+            "version": "2026.44.30"
+          },
+          {
+            "name": "2026.44.100",
+            "type": "point",
+            "version": "2026.44.100"
+          },
+          {
+            "name": "2026.44.200",
+            "type": "point",
+            "version": "2026.44.200"
+          },
+          {
+            "name": "2026.44.300",
+            "type": "point",
+            "version": "2026.44.300"
+          }
+        ]
+      }
+    ]
+  },
+  "hops": [
+    {
+      "from": "2026.20.10",
+      "to": "2026.28.5",
+      "model": "Model Y",
+      "variant": "Long Range",
+      "year": 2025,
+      "hw": "HW4",
+      "cc": "AU",
+      "n": 2
+    }
+  ],
+  "meta": {
+    "fsd": {
+      "HW3": "v14.2 Lite",
+      "HW4": "v14.3.12"
+    },
+    "metaChecked": "2026-10-13"
+  }
+}
