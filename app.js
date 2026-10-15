@@ -1,0 +1,1768 @@
+const APP_VERSION = "5.0";
+    const CALENDAR_YEAR = new Date().getFullYear();
+    const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
+    function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
+    let selectedYear = CALENDAR_YEAR;
+    let SNAPSHOT_LIVE = true;
+    let DATA_SNAPSHOT = "2026-09-21";
+    const BAKED_SNAPSHOT = "2026-09-21";
+
+    let META = {
+      "2026.14": { first: "2026-04-15", fleet: "small leftover", fsd: "none on trunk", regions: "Global", hw: "HW3 + HW4", note: "Spring Update feature trunk. FSD point releases hang off 2026.14.6.x, not this parent." },
+      "2026.14.3": { first: "2026-04-28", fleet: "phasing out", fsd: "none", regions: "Global incl. AU", hw: "HW3 + HW4", note: "Spring point before 2026.14.6. Observed on HW3 (AU Model Y) and HW4 in tracker samples." },
+      "2026.14.6": { first: "2026-05-12", fleet: "~4%", fsd: "No new FSD on this build (older FSD e.g. v12.6.4 can remain)", regions: "Global (US/CA/GB/AU in sample)", hw: "HW3 + HW4", note: "Security + minor features. HW4 FSD v14.3.3 is on 2026.14.6.6, not here." },
+      "2026.14.6.6": { first: "2026-05-17", fleet: "~4%", fsd: "HW4 v14.3.3", regions: "North America", hw: "HW4", note: "US+CA HW4 FSD v14.3.3. AU/NZ HW4 later used 2026.16.6 then 2026.20.10, not this number." },
+      "2026.14.6.10": { first: "2026-06-12", fleet: "~1%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "US+CA HW4 v14.3.4 wave. Same stack later also on 2026.14.6.11 / .12." },
+      "2026.14.6.11": { first: "2026-06-15", fleet: "~4%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "Teslascope sample is HW4 100% (US/CA). Not an AU/NZ or HW3 Lite build." },
+      "2026.14.6.12": { first: "2026-06-23", fleet: "~3%", fsd: "HW4 v14.3.4", regions: "North America", hw: "HW4", note: "Follow-on US+CA HW4 v14.3.4 point release." },
+      "2026.14.13": { first: "2026-08-01", fleet: "<0.1%", fsd: "—", regions: "Limited / Tessie only", hw: "Mixed", note: "Tiny leftover on Tessie. Teslascope page 404 — treat as unverified." },
+      "2026.20": { first: "2026-05-30", fleet: "phasing out", fsd: "none on trunk", regions: "Global feature set (Tesla App notes in AU; Teslascope sample US/EU-heavy)", hw: "HW3 + HW4", note: "2026.20 feature family (Parental Controls, Dashcam encryption, Hey Grok). Tesla App Release Notes on AU cars list this family even when the installed point was 2026.20.3 / 2026.20.6.x. Teslascope exact-page sample omits AU (small US/EU set). Lite is NOT on this parent — first Lite is 2026.20.5.1 (US HW3 EAP)." },
+      "2026.20.3": { first: "2026-06-17", fleet: "phasing out", fsd: "none", regions: "Global incl. AU 0.94% / NZ 0.19%", hw: "HW3 + HW4", note: "Blind-spot-while-parked + security. No Lite. Common hop before 2026.20.6.1." },
+      "2026.20.5.1": { first: "2026-06-29", fleet: "early access", fsd: "HW3 v14 Lite", regions: "United States", hw: "HW3", note: "First public Lite build — US HW3 early access only. Not AU/NZ." },
+      "2026.20.6": { first: "2026-06-29", fleet: "phasing out", fsd: "none — security only", regions: "US/GB/EU + AU owners (Tesla App); Teslascope public table missed AU", hw: "HW3 + HW4", note: "Security point release. Teslascope country table (~60 cars) is US/GB/EU and omits AU, but AU Tesla App Release Notes and AU hops 2026.20.3 → 2026.20.6.1 confirm the 2026.20.6 family reached Australia (incl. older Model S/X). Lite is on 2026.20.6.10 / .6.11 (US+CA), not on .6 itself." },
+      "2026.20.6.1": { first: "2026-07-02", fleet: "~8%", fsd: "No new FSD on this build (older FSD e.g. v12.6.4 can remain)", regions: "Global incl. AU 1.19% / NZ 0.48%", hw: "HW3 + HW4", note: "Wide production / minor fixes. Teslascope lists AU+NZ installs but no Lite/v14 payload. AU HW3 often sat here then moved to 2026.20.6.9." },
+      "2026.20.6.6": { first: "2026-07-13", fleet: "~4%", fsd: "HW4 v14.3.5", regions: "North America", hw: "HW4", note: "US+CA HW4 v14.3.5. AU/NZ HW4 twin of this stack is 2026.20.10 (FSD v14.3.5 Down Under)." },
+      "2026.20.6.9": { first: "2026-07-29", fleet: "3.3%", fsd: "none — minor fixes only", regions: "Australia / New Zealand", hw: "HW3", note: "AU/NZ HW3 regional (~99% HW3). Not Lite. Tesla AU email 28 Aug: v14 Lite in active development for AU/NZ — not shipping on this build. US+CA Lite is 2026.20.6.10/.6.11 then 2026.26.6.5." },
+      "2026.20.6.10": { first: "2026-07-20", fleet: "small", fsd: "HW3 v14 Lite", regions: "United States", hw: "HW3", note: "US HW3 Lite (wide-prep). Canada/AU/NZ not in Teslascope sample. Next US+CA dual-stack is 2026.20.6.11." },
+      "2026.20.6.11": { first: "2026-07-21", fleet: "~2.6%", fsd: "HW3 v14 Lite + HW4 v14.3.6", regions: "North America", hw: "HW3 + HW4", note: "US+CA dual-stack. Teslascope countries: US 92% / CA 7%. Not an AU/NZ fleet build (isolated AU reports are unconfirmed vs this sample)." },
+      "2026.20.10": { first: "2026-07-28", fleet: "1.7%", fsd: "HW4 v14.3.5 Down Under", regions: "Australia / New Zealand", hw: "HW4", note: "AU/NZ HW4 FSD v14.3.5. Same driving stack as US+CA 2026.20.6.6. Not Lite; Lite is the HW3 distill." },
+      "2026.20.7.5": { first: "2026-08-06", fleet: "0.4%", fsd: "HW3 v14 Lite", regions: "South Korea", hw: "HW3", note: "Korea HW3 Lite early-access wave. Not US/AU/NZ in Teslascope sample." },
+      "2026.21.5": { first: "2026-08-01", fleet: "<0.1%", fsd: "HW4 v14.3.7", regions: "United States", hw: "HW4", note: "US HW4 seed before 2026.21.6 dual-stack." },
+      "2026.21.6": { first: "2026-08-09", fleet: "~6% FSD share (dropping)", fsd: "HW3 v14.1 Lite + HW4 v14.3.7", regions: "US+CA", hw: "HW3 + HW4", note: "Previous US+CA FSD dual-stack. Cars are hopping to 2026.26.6.5. Teslascope sample is US+CA. AU/NZ not in this sample — do not treat as Down Under Lite." },
+      "2026.21.300": { first: "2026-08-10", fleet: "~1%", fsd: "FSD Supervised (factory/EU HW4)", regions: "NL / BE / DK", hw: "HW4", note: "European HW4 factory-style FSD enablement. Not a US/AU build." },
+      "2026.26": { first: "2026-07-26", fleet: "<0.1%", fsd: "none on trunk", regions: "US/CA/GB/EU seed", hw: "HW3 + HW4", note: "Summer Update seed. Feature payload lands on 2026.26.1+." },
+      "2026.26.1": { first: "2026-07-28", fleet: "2.9% phasing out", fsd: "none bundled as a new FSD drop", regions: "Global incl. AU 1.62%", hw: "HW3 + HW4", note: "Summer feature wave (Grok, navigation, traction modes). NZ not listed on Teslascope. FSD merge is later on 2026.26.6.5 (US+CA)." },
+      "2026.26.6": { first: "2026-08-11", fleet: "<0.1%", fsd: "none", regions: "Global incl. AU 2.63%", hw: "HW3 + HW4", note: "Short-lived Summer point before 2026.26.6.1." },
+      "2026.26.6.1": { first: "2026-08-14", fleet: "production Summer (HW3 ~75% of sample)", fsd: "none new — production Summer", regions: "Global incl. AU ~1% (NZ not listed)", hw: "HW3 + HW4", note: "Dominant non-FSD Summer production build. Teslascope still lists AU installs. US+CA FSD merge is 2026.26.6.5, not this number." },
+      "2026.26.6.2": { first: "2026-08-22", fleet: "4.3% rolling out", fsd: "none", regions: "Mostly EU + some US/GB (small sample)", hw: "HW4 + some HW3", note: "Minor-fix wave after .6.1. Teslascope sample is Europe-heavy; AU/NZ/CA not listed." },
+      "2026.26.6.5": { first: "2026-08-26", fleet: "rolling out (~22% of Teslascope in 5 days)", fsd: "HW3 v14.1 Lite + HW4 v14.3.8", regions: "US+CA (MX/PR tiny)", hw: "HW3 + HW4", note: "Dominant US+CA FSD+Summer merge. Teslascope 3 Sep: ~761 installs, US ~92% / CA ~7% / MX ~0.5%. HW ~70% HW4 / ~29% HW3. HW3 gets v14.1 Lite, not v14.3.8. No AU/NZ installs in sample." },
+      "2026.27.100.1": { first: "2026-08-24", fleet: "0.6%", fsd: "FSD Supervised on HW4 (EU factory)", regions: "NL / BE / DK", hw: "HW4", note: "Factory / new-delivery EU branch, not a customer AU/US OTA target." },
+      "2026.27.200": { first: "2026-09-01", fleet: "small EU factory wave", fsd: "factory / EU (not the US+CA Lite merge)", regions: "NL / BE", hw: "HW4", note: "Follow-on EU factory line after 2026.27.100.1. Teslascope hops are Netherlands/Belgium Model Y HW4. Not an AU/NZ or US customer OTA." }
+    };
+
+    // First-seen order among tracked sample (not official Tesla rollout order)
+    let SEEN_IN = {
+      "2026.14": ["US","CA","GB","DE"],
+      "2026.14.3": ["US","CA","GB","AU"],
+      "2026.14.6": ["US","CA","GB","AU"],
+      "2026.14.6.6": ["US","CA"],
+      "2026.14.6.10": ["US","CA"],
+      "2026.14.6.11": ["US","CA"],
+      "2026.14.6.12": ["US","CA"],
+      "2026.14.13": [],
+      "2026.20": ["US","CA","GB","DE","FR","NL","NO","SE","AU"],
+      "2026.20.3": ["US","CA","GB","AU","NZ"],
+      "2026.20.5.1": ["US"],
+      "2026.20.6": ["US","GB","DE","FR","NO","AU"],
+      "2026.20.6.1": ["US","CA","GB","AU","NZ"],
+      "2026.20.6.6": ["US","CA"],
+      "2026.20.6.9": ["AU","NZ"],
+      "2026.20.6.10": ["US"],
+      "2026.20.6.11": ["US","CA"],
+      "2026.20.10": ["AU","NZ"],
+      "2026.20.7.5": ["KR"],
+      "2026.21.5": ["US"],
+      "2026.21.6": ["US","CA"],
+      "2026.21.300": ["NL","BE","DK"],
+      "2026.26": ["US","CA","GB"],
+      "2026.26.1": ["US","CA","GB","AU"],
+      "2026.26.6": ["US","CA","GB","AU"],
+      "2026.26.6.1": ["US","CA","GB","AU"],
+      "2026.26.6.2": ["US","GB"],
+      "2026.26.6.5": ["US","CA","MX"],
+      "2026.27.100.1": ["NL","BE","DK"],
+      "2026.27.200": ["NL","BE"]
+    };
+
+    let currentView = "tree";
+    let activeCarCollapsed = true;
+    let tableSort = { key: "version", dir: 1 };
+
+    let TREE_DATA = {
+      name: "Tesla 2026",
+      type: "root",
+      version: "2026",
+      children: [
+        {
+          name: "2026.14 Spring",
+          type: "feature",
+          version: "2026.14",
+          children: [
+            { name: "2026.14.3", type: "point", version: "2026.14.3" },
+            { name: "2026.14.6", type: "point", version: "2026.14.6" },
+            { name: "2026.14.6.6", type: "point", version: "2026.14.6.6" },
+            { name: "2026.14.6.10", type: "point", version: "2026.14.6.10" },
+            { name: "2026.14.6.11", type: "point", version: "2026.14.6.11" },
+            { name: "2026.14.6.12", type: "point", version: "2026.14.6.12" },
+            { name: "2026.14.13", type: "point", version: "2026.14.13" }
+          ]
+        },
+        {
+          name: "2026.20 Feature + Lite",
+          type: "feature",
+          version: "2026.20",
+          children: [
+            { name: "2026.20", type: "point", version: "2026.20" },
+            { name: "2026.20.3", type: "point", version: "2026.20.3" },
+            { name: "2026.20.5.1", type: "point", version: "2026.20.5.1" },
+            { name: "2026.20.6", type: "point", version: "2026.20.6" },
+            { name: "2026.20.6.1", type: "point", version: "2026.20.6.1" },
+            { name: "2026.20.6.6", type: "point", version: "2026.20.6.6" },
+            { name: "2026.20.6.9", type: "point", version: "2026.20.6.9" },
+            { name: "2026.20.6.10", type: "point", version: "2026.20.6.10" },
+            { name: "2026.20.6.11", type: "point", version: "2026.20.6.11" },
+            { name: "2026.20.10", type: "point", version: "2026.20.10" },
+            { name: "2026.20.7.5", type: "point", version: "2026.20.7.5" }
+          ]
+        },
+        {
+          name: "2026.21 FSD dual",
+          type: "fsd",
+          version: "2026.21",
+          children: [
+            { name: "2026.21.5", type: "point", version: "2026.21.5" },
+            { name: "2026.21.6", type: "point", version: "2026.21.6" },
+            { name: "2026.21.300", type: "point", version: "2026.21.300" }
+          ]
+        },
+        {
+          name: "2026.26 Summer",
+          type: "feature",
+          version: "2026.26",
+          children: [
+            { name: "2026.26", type: "point", version: "2026.26" },
+            { name: "2026.26.1", type: "point", version: "2026.26.1" },
+            { name: "2026.26.6", type: "point", version: "2026.26.6" },
+            { name: "2026.26.6.1", type: "point", version: "2026.26.6.1" },
+            { name: "2026.26.6.2", type: "point", version: "2026.26.6.2" },
+            { name: "2026.26.6.5", type: "point", version: "2026.26.6.5" }
+          ]
+        },
+        {
+          name: "2026.27 Factory / EU",
+          type: "factory",
+          version: "2026.27",
+          children: [
+            { name: "2026.27.100.1", type: "point", version: "2026.27.100.1" },
+            { name: "2026.27.200", type: "point", version: "2026.27.200" }
+          ]
+        }
+      ]
+    };
+
+    // Observed typical next hops by current version + HW
+    let NEXT_MAP = {
+      "2026.20.6.9|3": { next: "2026.26.6.1", why: "AU/NZ HW3 production line onto Summer." },
+      "2026.20.6.1|3": { next: "2026.26.6.1", why: "Teslascope: 97 installs of 2026.26.6.1 came from 2026.20.6.1." },
+      "2026.20.6.11|3": { next: "2026.21.6", why: "US+CA HW3 Lite dual-stack into 2026.21.6." },
+      "2026.21.6|3": { next: "2026.26.6.5", why: "US+CA HW3 FSD merge onto 2026.26.6.5." },
+      "2026.21.6|4": { next: "2026.26.6.5", why: "US+CA HW4 FSD merge onto 2026.26.6.5." },
+      "2026.26.6.5|3": { next: "2026.27.6", why: "Teslascope: nearly all 2026.27.6 installs came from 2026.26.6.5." },
+      "2026.26.6.5|4": { next: "2026.27.6", why: "Teslascope: nearly all 2026.27.6 installs came from 2026.26.6.5." },
+      "2026.26.6.1|3": { next: "2026.32.3", why: "Teslascope: ~90% of 2026.32.3 came from 2026.26.6.1 (mostly HW3)." },
+      "2026.26.6.1|4": { next: "2026.32.3", why: "Teslascope also shows HW4 hops 2026.26.6.1 → 2026.32.3." }
+    };
+
+    let BAKED_HOPS = null;
+    let HOPS = [
+      { from: "2026.20.6.9", to: "2026.26.6.1", model: "Y", variant: "SR RWD", year: 2023, hw: "3", cc: "AU", n: 3 },
+      { from: "2026.20.6.9", to: "2026.26.6.1", model: "Y", variant: "SR RWD", year: 2022, hw: "3", cc: "AU", n: 2 },
+      { from: "2026.20.6.9", to: "2026.26.6.1", model: "3", variant: "SR", year: 2021, hw: "3", cc: "AU", n: 2 },
+      { from: "2026.20.6.9", to: "2026.26.6.1", model: "3", variant: "RWD", year: 2021, hw: "3", cc: "NZ", n: 1 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 30 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 28 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "3", cc: "AU", n: 8 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "NZ", n: 6 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "GB", n: 10 },
+      { from: "2026.20.6.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "DE", n: 15 },
+      { from: "2026.26.1", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 80 },
+      { from: "2026.26.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 90 },
+      { from: "2026.26.1", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "4", cc: "US", n: 25 },
+      { from: "2026.26.1", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "AU", n: 8 },
+      { from: "2026.26.6", to: "2026.26.6.1", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 20 },
+      { from: "2026.26.6", to: "2026.26.6.1", model: "3", variant: "", year: 0, hw: "3", cc: "GB", n: 12 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 35 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 40 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "S", variant: "", year: 2020, hw: "3", cc: "AU", n: 2 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "S", variant: "", year: 0, hw: "3", cc: "US", n: 8 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "X", variant: "", year: 0, hw: "3", cc: "US", n: 8 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "3", cc: "GB", n: 10 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "3", cc: "DE", n: 10 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "3", variant: "", year: 0, hw: "4", cc: "NO", n: 6 },
+      { from: "2026.26.6.1", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "4", cc: "US", n: 8 },
+      { from: "2026.26.6.2", to: "2026.32.3", model: "Y", variant: "", year: 0, hw: "4", cc: "DE", n: 8 },
+      { from: "2026.26.6.2", to: "2026.32.3", model: "3", variant: "", year: 0, hw: "3", cc: "GB", n: 5 },
+      { from: "2026.21.6", to: "2026.26.6.5", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 20 },
+      { from: "2026.21.6", to: "2026.26.6.5", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 15 },
+      { from: "2026.21.6", to: "2026.26.6.5", model: "Y", variant: "", year: 0, hw: "4", cc: "US", n: 15 },
+      { from: "2026.21.6", to: "2026.26.6.5", model: "3", variant: "", year: 0, hw: "4", cc: "CA", n: 8 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "Y", variant: "", year: 0, hw: "4", cc: "US", n: 120 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "3", variant: "", year: 0, hw: "4", cc: "US", n: 80 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 40 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 30 },
+      { from: "2026.26.6.5", to: "2026.27.6", model: "Y", variant: "", year: 0, hw: "4", cc: "CA", n: 15 },
+      { from: "2026.20.6.11", to: "2026.21.6", model: "Y", variant: "", year: 0, hw: "3", cc: "US", n: 18 },
+      { from: "2026.20.6.11", to: "2026.21.6", model: "3", variant: "", year: 0, hw: "3", cc: "US", n: 12 }
+    ];
+
+    let cars = [];
+    let activeCarId = null;
+    let root = null;
+    let svg, g, zoomBehavior;
+    let dragSrc = null;
+
+    function toast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.style.display = "block";
+      setTimeout(() => { t.style.display = "none"; }, 2200);
+    }
+
+    function normVer(s) {
+      return (s || "").toLowerCase().replace(/\s+/g, "").replace(/[^0-9.]/g, "");
+    }
+
+    function extractVer(name) {
+      const m = (name || "").match(/(\d{4}(?:\.\d+){1,4})/);
+      return m ? m[1] : "";
+    }
+
+    function versionsMatch(a, b) {
+      const na = normVer(a), nb = normVer(b);
+      return !!na && na === nb;
+    }
+
+    function nodeVersion(d) {
+      return normVer(d.data.version || extractVer(d.data.name));
+    }
+
+    function nodeMatchesAny(nodeName, versions) {
+      const nv = normVer(extractVer(nodeName) || nodeName);
+      return versions.some(v => nv === normVer(v));
+    }
+
+    function ancestorOfHistory(d, vers) {
+      if (!d) return false;
+      if (nodeMatchesAny(d.data.name, vers) || nodeMatchesAny(d.data.version, vers)) return true;
+      return (d.children || []).some(ch => ancestorOfHistory(ch, vers));
+    }
+
+    function metaFor(version) {
+      if (META[version]) return META[version];
+      const key = Object.keys(META).find(k => versionsMatch(k, version));
+      return key ? META[key] : {};
+    }
+
+    function parseFsdBadges(fsd, tags) {
+      const raw = String(fsd || "").trim();
+      const low = raw.toLowerCase();
+      if (!raw || low === "—" || /^none\b/.test(low) || /no new fsd|no fsd found|no lite/.test(low)) {
+        return { hw3: "", hw4: "" };
+      }
+      let hw3 = "", hw4 = "";
+      raw.split(/\s*(?:\+|\/| and )\s*/i).forEach(part => {
+        const lite = /lite/i.test(part);
+        const is3 = /hw3|ai3/i.test(part);
+        const is4 = /hw4|ai4/i.test(part);
+        const m = part.match(/v\s*(\d{1,2}(?:\.\d+){0,3})/i) || part.match(/\b(\d{1,2}(?:\.\d+){1,3})\b/);
+        const ver = m ? m[1] : "";
+        if (!ver && !lite) return;
+        const label = lite ? ("FSD Lite" + (ver ? " v" + ver : "")) : ("FSD v" + ver);
+        if (is3 || (lite && !is4)) hw3 = label;
+        else if (is4) hw4 = label;
+        else if (tags.hw4 && !tags.hw3) hw4 = label;
+        else if (tags.hw3 && !tags.hw4) hw3 = label;
+        else if (tags.hw4) hw4 = label;
+      });
+      return { hw3, hw4 };
+    }
+
+    function parseHw(hw) {
+      const s = (hw || "").toUpperCase();
+      const hw3 = /HW3|AI3|ALL|MIXED/.test(s);
+      const hw4 = /HW4|AI4|ALL|MIXED/.test(s);
+      return { hw3, hw4, raw: hw || "" };
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem("teslaBranchTree");
+        if (raw) {
+          const data = JSON.parse(raw);
+          cars = data.cars || [];
+          activeCarId = data.activeCarId || (cars[0] && cars[0].id) || null;
+          if (data.currentView === "table" || data.currentView === "tree" || data.currentView === "help") currentView = data.currentView;
+          if (typeof data.activeCarCollapsed === "boolean") activeCarCollapsed = data.activeCarCollapsed;
+          if (data.selectedYear && AVAILABLE_YEARS.includes(Number(data.selectedYear))) {
+            selectedYear = Number(data.selectedYear);
+          } else {
+            selectedYear = CALENDAR_YEAR;
+          }
+        }
+      } catch (e) { console.warn(e); }
+      cars.forEach(c => {
+        if (c) c.history = historyWithoutCurrent(c.history || [], c.current);
+      });
+      if (cars.length === 0) {
+        const id = Date.now().toString();
+        cars.push({
+          id,
+          name: "2023 Model Y RWD HW3",
+          model: "Y",
+          build: "2023/10",
+          variant: "RWD",
+          hw: "3",
+          country: "AU",
+          current: "2026.20.6.9",
+          history: ["2026.20.6.1", "2026.14.6.11"]
+        });
+        activeCarId = id;
+        saveState();
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem("teslaBranchTree", JSON.stringify({
+        cars,
+        activeCarId,
+        currentView,
+        activeCarCollapsed,
+        selectedYear,
+        cachedAt: Date.now(),
+        snapshot: DATA_SNAPSHOT
+      }));
+      updateCacheStatus();
+    }
+
+    function updateCacheStatus() {
+      const el = document.getElementById("cache-status");
+      if (!el) return;
+      const tag = SNAPSHOT_LIVE ? "live" : "archive";
+      el.textContent = "Snapshot " + DATA_SNAPSHOT + " (" + tag + ")";
+    }
+
+    function getActiveCar() {
+      return cars.find(c => c.id === activeCarId) || null;
+    }
+
+    function iso2(s) {
+      return String(s || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2);
+    }
+
+    function carCountry(car) {
+      return iso2(car && car.country);
+    }
+
+    function ownerCountriesFor(version) {
+      const out = [];
+      (cars || []).forEach(car => {
+        const cc = carCountry(car);
+        if (!cc) return;
+        const vers = [car.current].concat(car.history || []);
+        if (vers.some(v => versionsMatch(v, version))) {
+          if (!out.includes(cc)) out.push(cc);
+        }
+      });
+      return out;
+    }
+
+    function seenCodes(version) {
+      const raw = SEEN_IN[version] || [];
+      const out = [];
+      raw.concat(ownerCountriesFor(version)).forEach(c => {
+        const code = iso2(c);
+        if (code.length === 2 && !out.includes(code)) out.push(code);
+      });
+      return out;
+    }
+
+    function allSnapshotCountries() {
+      const set = {};
+      Object.keys(SEEN_IN || {}).forEach(ver => {
+        seenCodes(ver).forEach(c => { set[c] = true; });
+      });
+      (cars || []).forEach(car => {
+        const cc = carCountry(car);
+        if (cc) set[cc] = true;
+      });
+      return Object.keys(set).sort();
+    }
+
+    function seenLines(version) {
+      const yes = seenCodes(version);
+      const owners = ownerCountriesFor(version);
+      if (yes.length) {
+        let html = "Seen in " + yes.join(", ");
+        if (owners.length) html += " <span style=\"color:var(--muted)\">(includes saved-car residences)</span>";
+        return html;
+      }
+      return "Seen in — (no country samples in this snapshot or saved cars)";
+    }
+
+
+    function applyActiveCarCollapsed() {
+      const body = document.getElementById("active-car-body");
+      const btn = document.getElementById("toggle-active-car");
+      if (!body || !btn) return;
+      body.style.display = activeCarCollapsed ? "none" : "block";
+      btn.textContent = activeCarCollapsed ? "Expand" : "Collapse";
+    }
+    function setView(view) {
+      currentView = (view === "table" || view === "help") ? view : "tree";
+      document.getElementById("tree-container").classList.toggle("hidden", currentView !== "tree");
+      document.getElementById("table-wrap").classList.toggle("visible", currentView === "table");
+      const help = document.getElementById("help-panel");
+      if (help) help.classList.toggle("visible", currentView === "help");
+      ["tree","table","help"].forEach(v => {
+        const btn = document.getElementById("view-" + v);
+        if (!btn) return;
+        const on = currentView === v;
+        btn.classList.toggle("active", on);
+        btn.classList.toggle("secondary", !on);
+      });
+      saveState();
+      if (currentView === "table") renderTable();
+      else if (currentView === "help") loadHelp();
+      else setTimeout(() => { if (typeof zoomFit === "function") zoomFit(); }, 40);
+    }
+
+    function collectLeaves() {
+      const rows = [];
+      (TREE_DATA.children || []).forEach(trunk => {
+        (trunk.children || []).forEach(leaf => {
+          const ver = leaf.version || extractVer(leaf.name);
+          const m = metaFor(ver);
+          rows.push({
+            version: ver,
+            name: leaf.name,
+            trunk: trunk.name,
+            hw: m.hw || "",
+            fsd: m.fsd || "—",
+            fleet: m.fleet || "—",
+            first: m.first || "",
+            note: m.note || "",
+            data: leaf
+          });
+        });
+      });
+      return rows;
+    }
+
+    function verKey(v) {
+      return (v || "").split(".").map(n => String(n).padStart(4, "0")).join(".");
+    }
+
+    function fillCountryFilter() {
+      const sel = document.getElementById("f-cc");
+      if (!sel) return;
+      const keep = sel.value;
+      const codes = allSnapshotCountries();
+      sel.innerHTML = `<option value="">Any</option>` + codes.map(c => `<option value="${c}">${c}</option>`).join("");
+      if (keep && [...sel.options].some(o => o.value === keep)) sel.value = keep;
+    }
+
+    function applyTableFilters(rows) {
+      const hw = document.getElementById("f-hw").value;
+      const verQ = (document.getElementById("f-ver").value || "").trim().toLowerCase();
+      const cc = document.getElementById("f-cc").value;
+      const seen = document.getElementById("f-seen").value;
+      const fsd = document.getElementById("f-fsd").value;
+      return rows.filter(r => {
+        const tags = parseHw(r.hw);
+        if (hw === "3" && !tags.hw3) return false;
+        if (hw === "4" && !tags.hw4) return false;
+        if (verQ && !(r.version + " " + r.trunk).toLowerCase().includes(verQ)) return false;
+        const seenList = seenCodes(r.version);
+        if (cc) {
+          if (!seenList.includes(cc)) return false;
+        } else if (seen === "yes" && !seenList.length) return false;
+        const fsdOnly = (r.fsd || "").toLowerCase();
+        const none = !fsdOnly || fsdOnly === "—" || /^none/.test(fsdOnly) || /no new fsd|no lite|no fsd/.test(fsdOnly);
+        const has = (re) => re.test(fsdOnly);
+        if (fsd === "none" && !none) return false;
+        if (fsd === "lite" && !has(/lite/)) return false;
+        if (fsd === "v10" && !has(/v10|\b10\.\d/)) return false;
+        if (fsd === "v11" && !has(/v11|\b11\.\d/)) return false;
+        if (fsd === "v12" && !has(/v12|\b12\.\d/)) return false;
+        if (fsd === "v13" && !has(/v13|\b13\.\d/)) return false;
+        if (fsd === "v14" && !has(/v14|\b14\.\d/)) return false;
+        if (fsd === "any" && none) return false;
+        return true;
+      });
+    }
+
+    function renderTable() {
+      fillCountryFilter();
+      let rows = applyTableFilters(collectLeaves());
+      const key = tableSort.key;
+      rows.sort((a, b) => {
+        let av = a[key] || "", bv = b[key] || "";
+        if (key === "version" || key === "first") {
+          av = key === "version" ? verKey(a.version) : a.first;
+          bv = key === "version" ? verKey(b.version) : b.first;
+        }
+        return av < bv ? -tableSort.dir : av > bv ? tableSort.dir : 0;
+      });
+      const hist = historyVersions();
+      const current = getActiveCar() && getActiveCar().current;
+      const grey = document.getElementById("grey-unrelated").checked;
+      const onlyCar = document.getElementById("show-only-path").checked;
+      const nextVer = predictedNextVersion(getActiveCar());
+      if (onlyCar) {
+        rows = rows.filter(r => {
+          const exact = hist.some(v => normVer(v) === normVer(r.version));
+          const isCur = current && normVer(current) === normVer(r.version);
+          const isNext = nextVer && normVer(nextVer) === normVer(r.version);
+          return exact || isCur || isNext;
+        });
+      }
+      const tb = document.getElementById("ver-tbody");
+      tb.innerHTML = rows.map(r => {
+        const exact = hist.some(v => normVer(v) === normVer(r.version));
+        const isCur = current && normVer(current) === normVer(r.version);
+        const isNext = nextVer && normVer(nextVer) === normVer(r.version) && !isCur && !exact;
+        const idx = hist.findIndex(v => normVer(v) === normVer(r.version));
+        const tags = parseHw(r.hw);
+        const cls = [isCur ? "current" : "", exact && !isCur ? "history" : "", isNext ? "next" : "", !onlyCar && grey && !exact && !isNext ? "greyed" : ""].filter(Boolean).join(" ");
+        const badge = isCur ? `<span class="pill now">NOW</span>` : (isNext ? `<span class="pill next">NEXT</span>` : (idx >= 0 ? `<span class="pill hist">#${idx + 1}</span>` : ""));
+        const hwHtml = (tags.hw3 ? `<span class="hw-mini hw3">HW3</span>` : "") + (tags.hw4 ? `<span class="hw-mini hw4">HW4</span>` : (tags.hw3 ? "" : "—"));
+        return `<tr class="${cls}" data-ver="${r.version}">
+          <td>${badge}${r.version}</td>
+          <td>${r.trunk}</td>
+          <td>${hwHtml}</td>
+          <td>${r.fsd}</td>
+          <td>${r.fleet}</td>
+          <td>${r.first || "—"}</td>
+          <td>${seenLines(r.version)}</td>
+          <td>${r.note || "—"}</td>
+        </tr>`;
+      }).join("");
+      document.getElementById("table-count").textContent = rows.length + " rows";
+      document.querySelectorAll("#ver-table th").forEach(th => {
+        const k = th.getAttribute("data-sort");
+        const on = k === tableSort.key;
+        th.classList.toggle("active-sort", on);
+        const mark = th.querySelector(".sort");
+        if (mark) mark.textContent = on ? (tableSort.dir === 1 ? "↑" : "↓") : "↕";
+      });
+      tb.querySelectorAll("tr").forEach(tr => {
+        tr.onclick = () => {
+          const ver = tr.getAttribute("data-ver");
+          const row = collectLeaves().find(x => x.version === ver);
+          hideTip();
+          if (row) showDetails(row.data);
+        };
+      });
+    }
+
+
+    function renderCarList() {
+      const list = document.getElementById("car-list");
+      list.innerHTML = "";
+      cars.forEach(car => {
+        const div = document.createElement("div");
+        div.className = "car-item" + (car.id === activeCarId ? " active" : "");
+        div.innerHTML = `<span class="name">${car.name || "Unnamed"}</span>
+          <button class="btn small secondary" style="padding:2px 6px">✕</button>`;
+        div.querySelector("span").onclick = () => {
+          activeCarId = car.id;
+          saveState();
+          populateActiveForm();
+          renderCarList();
+          updatePrediction();
+          refreshData();
+        };
+        div.querySelector("button").onclick = (e) => {
+          e.stopPropagation();
+          if (cars.length <= 1) return toast("Keep at least one car");
+          cars = cars.filter(c => c.id !== car.id);
+          if (activeCarId === car.id) activeCarId = cars[0].id;
+          saveState();
+          populateActiveForm();
+          renderCarList();
+          updateTreeHighlights();
+          updatePrediction();
+        };
+        list.appendChild(div);
+      });
+    }
+
+    function readHistoryFromUI() {
+      return [...document.querySelectorAll("#hist-list input")]
+        .map(i => i.value.trim())
+        .filter(Boolean);
+    }
+
+    function historyWithoutCurrent(list, current) {
+      const cur = normVer(current || "");
+      return (list || []).map(v => String(v || "").trim()).filter(Boolean)
+        .filter(v => !cur || normVer(v) !== cur);
+    }
+
+    function renderHistory(list) {
+      const wrap = document.getElementById("hist-list");
+      wrap.innerHTML = "";
+      (list || []).forEach((ver, idx) => {
+        const row = document.createElement("div");
+        row.className = "hist-item";
+        row.draggable = true;
+        row.dataset.idx = idx;
+        row.innerHTML = `<span class="grip" title="Drag">⋮⋮</span>
+          <input type="text" value="${ver}" />
+          <button class="rm" title="Remove">✕</button>`;
+        row.addEventListener("dragstart", (e) => { dragSrc = row; row.style.opacity = "0.5"; e.dataTransfer.effectAllowed = "move"; });
+        row.addEventListener("dragend", () => { row.style.opacity = "1"; dragSrc = null; });
+        row.addEventListener("dragover", (e) => { e.preventDefault(); });
+        row.addEventListener("drop", (e) => {
+          e.preventDefault();
+          if (!dragSrc || dragSrc === row) return;
+          const items = readHistoryFromUI();
+          const from = Number(dragSrc.dataset.idx);
+          const to = Number(row.dataset.idx);
+          const [moved] = items.splice(from, 1);
+          items.splice(to, 0, moved);
+          renderHistory(items);
+        });
+        row.querySelector(".rm").onclick = () => {
+          const items = readHistoryFromUI().filter((_, i) => i !== idx);
+          renderHistory(items);
+        };
+        wrap.appendChild(row);
+      });
+    }
+
+    function populateActiveForm() {
+      const car = getActiveCar();
+      if (!car) return;
+      document.getElementById("car-name").value = car.name || "";
+      document.getElementById("car-model").value = car.model || "Y";
+      document.getElementById("car-build").value = car.build || "";
+      document.getElementById("car-variant").value = car.variant || "";
+      document.getElementById("car-hw").value = car.hw || "3";
+      document.getElementById("car-cc").value = car.country || "";
+      document.getElementById("car-current").value = car.current || "";
+      renderHistory(historyWithoutCurrent(car.history || [], car.current));
+      updatePrediction();
+    }
+
+    function syncActiveCarFromForm() {
+      const car = getActiveCar();
+      if (!car) return;
+      car.name = document.getElementById("car-name").value.trim() || car.name || "Unnamed";
+      car.model = document.getElementById("car-model").value || car.model;
+      car.build = document.getElementById("car-build").value.trim();
+      car.variant = document.getElementById("car-variant").value.trim();
+      car.hw = document.getElementById("car-hw").value || car.hw;
+      car.country = iso2(document.getElementById("car-cc").value);
+      car.current = document.getElementById("car-current").value.trim();
+      car.history = historyWithoutCurrent(readHistoryFromUI(), car.current);
+    }
+
+    function saveActiveCar() {
+      const car = getActiveCar();
+      if (!car) return;
+      syncActiveCarFromForm();
+      renderHistory(car.history || []);
+      saveState();
+      renderCarList();
+      rebuildVisuals();
+      updatePrediction();
+      toast("Car saved");
+    }
+
+    function verCmp(a, b) {
+      const pa = normVer(a).split(".").map(n => parseInt(n, 10) || 0);
+      const pb = normVer(b).split(".").map(n => parseInt(n, 10) || 0);
+      const n = Math.max(pa.length, pb.length);
+      for (let i = 0; i < n; i++) {
+        const d = (pa[i] || 0) - (pb[i] || 0);
+        if (d) return d;
+      }
+      return 0;
+    }
+
+    function firstVerInText(text) {
+      const m = String(text || "").match(/20\d{2}(?:\.\d+){1,4}/);
+      return m ? m[0] : "";
+    }
+
+    function carYear(car) {
+      const m = String((car && car.build) || "").match(/(20\d{2})/);
+      return m ? parseInt(m[1], 10) : 0;
+    }
+
+    function variantTokens(text) {
+      return String(text || "")
+        .toUpperCase()
+        .split(/[^A-Z0-9+]+/)
+        .filter(t => t.length >= 2);
+    }
+
+    function normHop(h) {
+      if (!h || typeof h !== "object") return null;
+      const from = extractVer(h.from) || h.from || "";
+      const to = extractVer(h.to) || firstVerInText(h.to) || "";
+      if (!from || !to) return null;
+      const model = h.model || (Array.isArray(h.models) && h.models[0]) || "";
+      const cc = iso2(h.cc || (Array.isArray(h.countries) && h.countries[0]) || "");
+      const year = Number(h.year || (Array.isArray(h.years) && h.years[0]) || 0) || 0;
+      const variant = h.variant || (Array.isArray(h.variants) ? h.variants.join(" ") : "") || "";
+      return {
+        from, to,
+        model: String(model),
+        variant: String(variant),
+        year,
+        hw: String(h.hw || "").replace(/^HW/i, ""),
+        cc,
+        n: Number(h.n) || 1,
+        note: h.note || ""
+      };
+    }
+
+    function noteMentionedHops() {
+      const out = [];
+      const meta = (typeof META !== "undefined" && META) || {};
+      function walk(node) {
+        if (!node) return;
+        const to = normVer(node.version || extractVer(node.name || "") || "");
+        if (to) {
+          const m = meta[to] || node.meta || {};
+          const blob = [m.note, node.note, m.fsd, m.fleet].filter(Boolean).join(" ");
+          const year = (to.match(/^(20\d{2})/) || [])[1] || String(selectedYear || "");
+          const hw = (m.hw || node.hw || "");
+          const regions = m.regions || m.seen || "";
+          const found = [];
+          const fullRe = /\b(20\d{2}\.\d+(?:\.\d+){0,3})\b/g;
+          let mm;
+          while ((mm = fullRe.exec(blob))) found.push({ raw: mm[1], idx: mm.index });
+          const shortRe = /(?:from|previous|prior|after)\s+(\d{1,2}\.\d+(?:\.\d+){0,2})\b/gi;
+          while ((mm = shortRe.exec(blob))) found.push({ raw: year + "." + mm[1], idx: mm.index });
+          found.forEach(hit => {
+            const from = normVer(hit.raw);
+            if (!from || from === to || verCmp(to, from) <= 0) return;
+            const window = blob.slice(hit.idx, hit.idx + 80);
+            const pct = window.match(/\((\d+(?:\.\d+)?)%\)/);
+            const n = pct ? Math.max(1, Math.round(Number(pct[1]))) : 4;
+            const minority = /minority/i.test(window);
+            out.push(normHop({
+              from: from, to: to,
+              hw: String(hw).replace(/[^34]/g, "").slice(0, 1),
+              cc: "",
+              n: minority ? Math.max(1, Math.round(n / 4)) : n,
+              note: "release-note",
+              variant: ""
+            }));
+          });
+        }
+        (node.children || []).forEach(walk);
+      }
+      walk(TREE_DATA);
+      return out;
+    }
+
+    function hopsFromMaps() {
+      const out = (HOPS || []).map(normHop).filter(Boolean).concat(noteMentionedHops());
+      (cars || []).forEach(car => {
+        const seq = [car.current].concat(car.history || []).map(v => extractVer(v) || v).filter(Boolean);
+        const seen = [];
+        seq.forEach(v => { if (!seen.includes(v)) seen.push(v); });
+        for (let i = 0; i < seen.length - 1; i++) {
+          const newer = seen[i], older = seen[i + 1];
+          if (verCmp(newer, older) > 0) {
+            out.push(normHop({
+              from: older, to: newer,
+              model: car.model || "",
+              variant: car.variant || "",
+              year: carYear(car),
+              hw: car.hw || "",
+              cc: car.country || "",
+              n: 2,
+              note: "saved-car"
+            }));
+          }
+        }
+      });
+      return out;
+    }
+
+    function scoreHop(h, car) {
+      let s = 0;
+      const hw = String(car.hw || "").replace(/^HW/i, "");
+      if (h.hw && hw && h.hw === hw) s += 25;
+      else if (h.hw && hw && h.hw !== hw) s -= 20;
+      const cc = iso2(car.country);
+      if (cc && h.cc && h.cc === cc) s += 18;
+      if (car.model && h.model && String(h.model) === String(car.model)) s += 12;
+      const yt = carYear(car);
+      if (yt && h.year && Math.abs(Number(h.year) - yt) <= 2) s += 8;
+      const carToks = variantTokens((car.variant || "") + " " + (car.name || ""));
+      const hopToks = variantTokens(h.variant);
+      if (carToks.length && hopToks.some(t => carToks.includes(t))) s += 8;
+      s += Math.min(Number(h.n) || 1, 80);
+      return s;
+    }
+
+    function bestHopFrom(fromVer, car, used) {
+      const from = normVer(fromVer);
+      const cands = hopsFromMaps()
+        .filter(h => normVer(h.from) === from)
+        .filter(h => verCmp(h.to, fromVer) > 0)
+        .filter(h => !used.has(normVer(h.to)));
+      if (!cands.length) return null;
+      cands.sort((a, b) => scoreHop(b, car) - scoreHop(a, car));
+      return cands[0];
+    }
+
+    function predictedChain(car) {
+      if (!car || !car.current) return [];
+      const current = extractVer(car.current) || car.current;
+      const used = new Set([normVer(current)]);
+      const chain = [current];
+      let cursor = current;
+      for (let i = 0; i < 3; i++) {
+        const hop = bestHopFrom(cursor, car, used);
+        if (!hop) break;
+        chain.push(hop.to);
+        used.add(normVer(hop.to));
+        cursor = hop.to;
+      }
+      return chain;
+    }
+
+    function predictedNextVersion(car) {
+      const chain = predictedChain(car);
+      return chain.length > 1 ? chain[1] : "";
+    }
+
+    function updatePrediction() {
+      const car = getActiveCar();
+      const box = document.getElementById("pred-box");
+      if (!car || !car.current) {
+        box.innerHTML = "Enter a current version to see a predicted/next hop.";
+        return;
+      }
+      const current = extractVer(car.current) || car.current;
+      const chain = predictedChain(car);
+      const notes = [];
+      if (chain.length === 1) {
+        box.innerHTML = "<strong>Predicted (NEXT):</strong> not known<br><span style=\"color:var(--muted)\">No newer hop in tracker samples or saved-car histories for " + current + " (HW" + (car.hw || "?") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + ")</span>";
+        return;
+      }
+      const path = chain.join(" → ");
+      const nextOne = chain[1];
+      const why = "";
+      const extra = chain.length > 2 ? " Then commonly " + chain.slice(1).join(" → ") + "." : "";
+      const hop = bestHopFrom(current, car, new Set([normVer(current)]));
+      const via = hop && hop.note === "release-note" ? "Newer release notes cite " + current + " as a previous version, most often " + nextOne + ". " : "Most common next for similar HW" + (car.hw || "") + (car.model ? " Model " + car.model : "") + (car.country ? " " + iso2(car.country) : "") + " cars: " + nextOne + ". ";
+      box.innerHTML = "<strong>Predicted (NEXT):</strong> " + path + "<br><span style=\"color:var(--muted)\">" + via + extra + "</span>";
+    }
+
+    function collectTreeVersions(node, set) {
+      if (!node) return set;
+      const v = normVer(node.version || extractVer(node.name || ""));
+      if (v) set.add(v);
+      (node.children || []).forEach(ch => collectTreeVersions(ch, set));
+      return set;
+    }
+
+    function trunkKeyFor(ver) {
+      const parts = normVer(ver).split(".").filter(Boolean);
+      if (parts.length >= 2) return parts[0] + "." + parts[1];
+      return parts[0] || ver;
+    }
+
+    function yearOfVer(ver) {
+      const m = normVer(ver).match(/^(\d{4})/);
+      return m ? m[1] : "";
+    }
+
+    function ensureCarVersionsOnTree() {
+      syncActiveCarFromForm();
+      const needed = new Set();
+      (cars || []).forEach(car => {
+        if (car && car.current) needed.add(normVer(car.current));
+        (car && car.history || []).forEach(v => {
+          const n = normVer(String(v || "").trim());
+          if (n) needed.add(n);
+        });
+      });
+      try {
+        const curEl = document.getElementById("car-current");
+        if (curEl && curEl.value) needed.add(normVer(curEl.value));
+        readHistoryFromUI().forEach(v => {
+          const n = normVer(String(v || "").trim());
+          if (n) needed.add(n);
+        });
+        const nxt = predictedNextVersion(getActiveCar());
+        if (nxt) needed.add(normVer(nxt));
+      } catch (e) {}
+      if (!TREE_DATA.children) TREE_DATA.children = [];
+      const years = [...needed].map(yearOfVer).filter(y => y && y !== "2026");
+      if (years.length) TREE_DATA.name = "Tesla";
+      const have = collectTreeVersions(TREE_DATA, new Set());
+      needed.forEach(ver => {
+        if (!ver || have.has(ver)) return;
+        const y = yearOfVer(ver);
+        if (y && Number(y) !== Number(selectedYear)) return;
+        const tk = trunkKeyFor(ver);
+        let bucket = TREE_DATA;
+        if (y && y !== "2026") {
+          let yearNode = TREE_DATA.children.find(t => normVer(t.version) === y && (t.children || []).every(ch => yearOfVer(ch.version || ch.name) === y || yearOfVer(ch.version || "") === y));
+          yearNode = TREE_DATA.children.find(t => t.type !== "point" && normVer(t.version) === y);
+          if (!yearNode) {
+            yearNode = { name: y, type: "feature", version: y, children: [] };
+            TREE_DATA.children.unshift(yearNode);
+          }
+          bucket = yearNode;
+        }
+        if (!bucket.children) bucket.children = [];
+        let trunk = bucket.children.find(t =>
+          normVer(t.version) === tk || normVer(extractVer(t.name || "")) === tk
+        );
+        if (!trunk) {
+          trunk = { name: tk, type: "feature", version: tk, children: [] };
+          bucket.children.push(trunk);
+        }
+        if (!trunk.children) trunk.children = [];
+        if (!trunk.children.some(c => normVer(c.version) === ver)) {
+          trunk.children.push({ name: ver, type: "point", version: ver });
+        }
+        have.add(ver);
+        if (!META[ver]) {
+          META[ver] = {
+            first: "—",
+            fleet: "from a saved car",
+            fsd: "—",
+            regions: "—",
+            hw: "—",
+            note: "Inserted from a car profile — not in the snapshot tree."
+          };
+        }
+      });
+      applyCarEvidence();
+    }
+
+    function applyCarEvidence() {
+      const needed = new Set();
+      (cars || []).forEach(car => {
+        if (car && car.current) needed.add(normVer(car.current));
+        (car && car.history || []).forEach(v => {
+          const n = normVer(String(v || "").trim());
+          if (n) needed.add(n);
+        });
+      });
+      needed.forEach(ver => {
+        if (!ver) return;
+        const hits = (cars || []).filter(c => {
+          const list = [c.current, ...(c.history || [])].map(x => normVer(x));
+          return list.includes(ver);
+        });
+        if (!hits.length) return;
+        const hws = [...new Set(hits.map(c => String(c.hw || "").replace(/^HW/i, "")).filter(h => h === "3" || h === "4").map(h => "HW" + h))];
+        if (!META[ver]) META[ver] = { first: "—", fleet: "from a saved car", fsd: "—", regions: "—", hw: "", note: "" };
+        if (hws.length) {
+          const p = parseHw((META[ver].hw || "") + " " + hws.join(" "));
+          META[ver].hw = [p.hw3 ? "HW3" : null, p.hw4 ? "HW4" : null].filter(Boolean).join(" + ") || hws.join(" + ");
+        }
+        const tag = "Seen in one of your cars" + (hws.length ? " (" + hws.join(", ") + ")" : "") + ".";
+        const note = META[ver].note || "";
+        if (!note.includes("Seen in one of your cars")) {
+          META[ver].note = (note.trim() + (note.trim() ? " " : "") + tag).trim();
+        }
+        hits.forEach(c => {
+          const cc = String(c.country || "").trim().toUpperCase();
+          if (cc && typeof SEEN_IN !== "undefined") {
+            SEEN_IN[ver] = [...new Set([...(SEEN_IN[ver] || []), cc])];
+          }
+        });
+      });
+    }
+
+    function sortTreeNodes(node) {
+      if (!node || !node.children || !node.children.length) return;
+      node.children.forEach(sortTreeNodes);
+      node.children.sort((a, b) => {
+        const ak = verKey(a.version || extractVer(a.name || ""));
+        const bk = verKey(b.version || extractVer(b.name || ""));
+        return ak < bk ? -1 : ak > bk ? 1 : 0;
+      });
+    }
+
+    function rebuildVisuals() {
+      ensureCarVersionsOnTree();
+      sortTreeNodes(TREE_DATA);
+      buildTree();
+      if (currentView === "table") renderTable();
+      if (typeof updateYearHint === "function") updateYearHint();
+    }
+
+    function buildTree() {
+      d3.select("#tree-svg").selectAll("*").remove();
+      svg = d3.select("#tree-svg");
+      g = svg.append("g");
+
+      zoomBehavior = d3.zoom()
+        .scaleExtent([0.15, 4])
+        .on("zoom", (event) => g.attr("transform", event.transform));
+      svg.call(zoomBehavior);
+
+      const hierarchy = d3.hierarchy(TREE_DATA);
+      const treeLayout = d3.tree().nodeSize([40, 268]);
+      root = treeLayout(hierarchy);
+      const nodes = root.descendants();
+      const links = root.links();
+
+      g.selectAll(".link")
+        .data(links)
+        .join("path")
+        .attr("class", "link")
+        .attr("d", d3.linkHorizontal().x(d => d.y).y(d => d.x));
+
+      const node = g.selectAll(".node")
+        .data(nodes)
+        .join("g")
+        .attr("class", "node")
+        .attr("transform", d => `translate(${d.y},${d.x})`)
+        .on("click", (event, d) => {
+          hideTip();
+          showDetails(d.data);
+        })
+        .on("mouseover", (event, d) => { if (canHoverTip()) showTip(event, d); })
+        .on("mousemove", (event, d) => { if (canHoverTip()) showTip(event, d); })
+        .on("mouseout", () => hideTip());
+
+      node.append("circle")
+        .attr("r", d => d.data.type === "point" ? 5.5 : 8)
+        .attr("fill", d => {
+          if (d.data.type === "fsd") return "#8b5cf6";
+          if (d.data.type === "factory") return "#64748b";
+          if (d.data.type === "root") return "#334155";
+          return "#3b82f6";
+        })
+        .attr("stroke", "var(--bg)");
+
+      node.append("text")
+        .attr("class", "lbl")
+        .attr("dy", "0.32em")
+        .attr("x", d => d.children ? -12 : 12)
+        .attr("text-anchor", d => d.children ? "end" : "start")
+        .text(d => d.data.name);
+
+      node.each(function(d) {
+        if (d.data.type === "root" || d.children) return;
+        const m = metaFor(d.data.version || extractVer(d.data.name));
+        const tags = parseHw(m.hw);
+        const fsd = parseFsdBadges(m.fsd, tags);
+        const list = [];
+        if (tags.hw3) list.push({ t: "HW3", cls: "hw-tag hw3" });
+        if (fsd.hw3) list.push({ t: fsd.hw3, cls: "fsd-tag hw3" });
+        if (tags.hw4) list.push({ t: "HW4", cls: "hw-tag hw4" });
+        if (fsd.hw4) list.push({ t: fsd.hw4, cls: "fsd-tag hw4" });
+        if (!list.length) return;
+        const isLeft = !!d.children;
+        const labelW = (d.data.name || "").length * 6.2;
+        let x = isLeft ? -12 - labelW - 4 : 12 + labelW + 8;
+        const sel = d3.select(this);
+        list.forEach(tag => {
+          const w = Math.max(28, Math.round(tag.t.length * 4.7 + 10));
+          sel.append("rect")
+            .attr("x", x)
+            .attr("y", -7)
+            .attr("width", w)
+            .attr("height", 13)
+            .attr("rx", 2)
+            .attr("fill", "#0a0a0a")
+            .attr("stroke", "#9aa0a6")
+            .attr("stroke-width", 0.8);
+          sel.append("text")
+            .attr("class", tag.cls)
+            .attr("x", x + w / 2)
+            .attr("y", 3)
+            .attr("text-anchor", "middle")
+            .text(tag.t);
+          x += w + 4;
+        });
+      });
+
+      setTimeout(() => zoomFit(), 40);
+      updateTreeHighlights();
+    }
+
+    function historyVersions() {
+      const car = getActiveCar();
+      if (!car) return [];
+      const list = [...(car.history || [])];
+      if (car.current) list.unshift(car.current);
+      return [...new Set(list.map(v => v.trim()).filter(Boolean))];
+    }
+
+    function updateTreeHighlights() {
+      if (!root || !g) return;
+      const car = getActiveCar();
+      const vers = historyVersions();
+      const current = car && car.current ? normVer(car.current) : "";
+      const nextVer = predictedNextVersion(car);
+      const nextN = nextVer ? normVer(nextVer) : "";
+      const pathVers = nextN ? vers.concat([nextVer]) : vers;
+      const greyUnrelated = document.getElementById("grey-unrelated").checked;
+      const showOnlyPath = document.getElementById("show-only-path").checked;
+
+      g.selectAll(".node").each(function(d) {
+        const exact = vers.some(v => nodeVersion(d) === normVer(v));
+        const isCur = current && nodeVersion(d) === current;
+        const isNext = nextN && nodeVersion(d) === nextN && !isCur && !exact;
+        const onTrunk = ancestorOfHistory(d, pathVers) || d.data.type === "root";
+        const isPathParent = onTrunk && !exact && !isCur && !isNext && d.data.type !== "root";
+        const keep = exact || isNext || onTrunk;
+        d3.select(this)
+          .classed("greyed", greyUnrelated && !exact && !isNext && !onTrunk)
+          .classed("current", !!isCur)
+          .classed("history", exact && !isCur)
+          .classed("next", !!isNext)
+          .classed("path-parent", !!isPathParent)
+          .style("display", showOnlyPath && !keep ? "none" : null);
+
+        d3.select(this).selectAll("text.badge").remove();
+        const isLeaf = d.data.type === "point" || !d.children;
+        if (!isLeaf) {
+          /* NOW / #n / NEXT only on version leaves */
+        } else if (isCur) {
+          d3.select(this).append("text")
+            .attr("class", "badge")
+            .attr("x", 12)
+            .attr("y", -10)
+            .text("NOW");
+        } else if (isNext) {
+          d3.select(this).append("text")
+            .attr("class", "badge next")
+            .attr("x", 12)
+            .attr("y", -10)
+            .text("NEXT");
+        } else if (exact) {
+          const idx = vers.findIndex(v => nodeVersion(d) === normVer(v));
+          if (idx >= 0) {
+            d3.select(this).append("text")
+              .attr("class", "badge")
+              .attr("x", 12)
+              .attr("y", -10)
+              .text("#" + (idx + 1));
+          }
+        }
+      });
+
+      function nodeOnPath(d) {
+        if (!d) return false;
+        if (d.data.type === "root") return true;
+        const exact = vers.some(v => nodeVersion(d) === normVer(v));
+        const isNext = nextN && nodeVersion(d) === nextN;
+        return exact || isNext || ancestorOfHistory(d, pathVers);
+      }
+
+      g.selectAll(".link")
+        .classed("path-link", d => ancestorOfHistory(d.target, vers) && !(nextN && nodeVersion(d.target) === nextN))
+        .classed("next-link", d => {
+          if (!nextN) return false;
+          return nodeVersion(d.target) === nextN || (ancestorOfHistory(d.target, [nextVer]) && !ancestorOfHistory(d.target, vers));
+        })
+        .style("display", function(d) {
+          if (!showOnlyPath) return null;
+          return nodeOnPath(d.source) && nodeOnPath(d.target) ? null : "none";
+        });
+    }
+
+    function canHoverTip() {
+      return window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    }
+
+    function hideTip() {
+      const tip = document.getElementById("tooltip");
+      if (tip) tip.style.display = "none";
+    }
+
+    function showTip(event, d) {
+      if (!canHoverTip()) return;
+
+      const m = metaFor(d.data.version || extractVer(d.data.name));
+      const tip = document.getElementById("tooltip");
+      const wrap = document.getElementById("tree-container");
+      const hw = parseHw(m.hw);
+      const hwLine = (hw.hw3 || hw.hw4)
+        ? `<br>Observed on: ${[hw.hw3 ? "HW3" : null, hw.hw4 ? "HW4" : null].filter(Boolean).join(" + ")}${m.hw && /mostly/i.test(m.hw) ? " (" + m.hw + ")" : ""}`
+        : (m.hw ? `<br>Hardware: ${m.hw}` : "");
+      const ver = d.data.version || extractVer(d.data.name);
+      tip.innerHTML = `<strong>${d.data.name}</strong>`
+        + (m.note ? `<br>${m.note}` : "")
+        + (m.fsd ? `<br>FSD: ${m.fsd}` : "")
+        + (m.fleet ? `<br>Fleet: ${m.fleet}` : "")
+        + hwLine
+        + `<br>${seenLines(ver)}`;
+      tip.style.display = "block";
+      const rect = wrap.getBoundingClientRect();
+      const tw = tip.offsetWidth || 220;
+      const th = tip.offsetHeight || 80;
+      let x = event.clientX - rect.left + 14;
+      let y = event.clientY - rect.top - 10;
+      if (x + tw > rect.width - 8) x = event.clientX - rect.left - tw - 14;
+      if (x < 8) x = 8;
+      if (y + th > rect.height - 8) y = rect.height - th - 8;
+      if (y < 8) y = 8;
+      tip.style.left = x + "px";
+      tip.style.top = y + "px";
+    }
+
+    function showDetails(data) {
+      const version = data.version || extractVer(data.name);
+      const m = metaFor(version);
+      const panel = document.getElementById("details-panel");
+      document.getElementById("details-title").textContent = data.name;
+      document.getElementById("details-body").innerHTML = `
+        <dl>
+          <dt>Version</dt><dd>${version || "—"}</dt>
+          <dt>First seen</dt><dd>${m.first || "—"}</dd>
+          <dt>Approx. fleet share globally</dt><dd>${m.fleet || "—"}</dd>
+          <dt>FSD build</dt><dd>${m.fsd || "—"}</dd>
+          <dt>Observed on</dt><dd>${m.hw || "—"} (tracker observations, not a guarantee for every car)</dd>
+          <dt>Seen in</dt><dd>${seenLines(version)}</dd>
+          <dt>Regions</dt><dd>${m.regions || "—"}</dd>
+          ${m.note ? `<dt>Notes</dt><dd>${m.note}</dd>` : ""}
+        </dl>
+        <p style="margin-top:10px;font-size:0.78rem;color:var(--muted)">Observed snapshot ${DATA_SNAPSHOT}. Trackers: Teslascope / Tessie / Not a Tesla App. Not official Tesla data.</p>
+      `;
+      panel.style.display = "block";
+    }
+
+    function zoomFit() {
+      if (!root || !g.node()) return;
+      const bounds = g.node().getBBox();
+      const fullWidth = document.getElementById("tree-container").clientWidth;
+      const fullHeight = document.getElementById("tree-container").clientHeight;
+      if (!bounds.width || !bounds.height) return;
+      const scale = 0.85 / Math.max(bounds.width / fullWidth, bounds.height / fullHeight);
+      const translate = [
+        fullWidth / 2 - scale * (bounds.x + bounds.width / 2),
+        fullHeight / 2 - scale * (bounds.y + bounds.height / 2)
+      ];
+      svg.transition().duration(350).call(
+        zoomBehavior.transform,
+        d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
+      );
+    }
+
+    function zoomToPath() {
+      if (!root) return;
+      const vers = historyVersions();
+      const hits = root.descendants().filter(d => nodeMatchesAny(d.data.name, vers) || nodeMatchesAny(d.data.version, vers));
+      if (!hits.length) return zoomFit();
+      const xs = hits.map(d => d.x), ys = hits.map(d => d.y);
+      const minX = Math.min(...xs) - 40, maxX = Math.max(...xs) + 40;
+      const minY = Math.min(...ys) - 80, maxY = Math.max(...ys) + 180;
+      const fullWidth = document.getElementById("tree-container").clientWidth;
+      const fullHeight = document.getElementById("tree-container").clientHeight;
+      const scale = 0.9 / Math.max((maxY - minY) / fullWidth, (maxX - minX) / fullHeight);
+      const tx = fullWidth / 2 - scale * ((minY + maxY) / 2);
+      const ty = fullHeight / 2 - scale * ((minX + maxX) / 2);
+      svg.transition().duration(400).call(
+        zoomBehavior.transform,
+        d3.zoomIdentity.translate(tx, ty).scale(Math.min(scale, 2.2))
+      );
+    }
+
+    function snapshotHasPayload(data) {
+      if (!data || typeof data !== "object") return false;
+      const meta = data.meta || data.META;
+      const seen = data.seenIn || data.SEEN_IN;
+      const tree = data.tree || data.TREE_DATA;
+      const next = data.nextMap || data.NEXT_MAP;
+      const date = data.snapshot || data.DATA_SNAPSHOT;
+      if (tree && typeof tree === "object" && (tree.name || (tree.children && tree.children.length))) return true;
+      if (meta && typeof meta === "object" && Object.keys(meta).length) return true;
+      if (seen && typeof seen === "object" && Object.keys(seen).length) return true;
+      if (next && typeof next === "object" && Object.keys(next).length) return true;
+      if (date && String(date).trim()) return true;
+      return false;
+    }
+
+    function applySnapshot(data) {
+      if (!snapshotHasPayload(data)) return false;
+      const date = data.snapshot || data.DATA_SNAPSHOT;
+      if (date && String(date).trim()) DATA_SNAPSHOT = String(date).trim();
+      const meta = data.meta || data.META;
+      if (meta && typeof meta === "object" && Object.keys(meta).length) {
+        META = Object.assign({}, META, meta);
+      }
+      const seen = data.seenIn || data.SEEN_IN;
+      if (seen && typeof seen === "object" && Object.keys(seen).length) {
+        const merged = Object.assign({}, SEEN_IN);
+        Object.keys(seen).forEach(k => {
+          const a = Array.isArray(merged[k]) ? merged[k] : [];
+          const b = Array.isArray(seen[k]) ? seen[k] : [];
+          merged[k] = [...new Set(a.concat(b).map(iso2).filter(c => c.length === 2))];
+        });
+        SEEN_IN = merged;
+      }
+      const tree = data.tree || data.TREE_DATA;
+      if (tree && typeof tree === "object" && (tree.children || tree.name)) {
+        TREE_DATA = tree;
+      }
+      const next = data.nextMap || data.NEXT_MAP;
+      if (next && typeof next === "object" && Object.keys(next).length) {
+        NEXT_MAP = Object.assign({}, NEXT_MAP, next);
+      }
+      const hopsIn = data.hops || data.HOPS;
+      if (Array.isArray(hopsIn) && hopsIn.length) {
+        if (!BAKED_HOPS) BAKED_HOPS = HOPS.slice();
+        HOPS = hopsIn.map(normHop).filter(Boolean);
+      }
+      if (typeof data.live === "boolean") SNAPSHOT_LIVE = data.live;
+      else SNAPSHOT_LIVE = liveYears().includes(Number(selectedYear));
+      return true;
+    }
+
+    function snapshotUrl(year) {
+      return "./snapshot-" + year + ".json";
+    }
+
+    async function fetchJson(url) {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status + " " + url);
+      const data = await res.json();
+      if (!data || typeof data !== "object") throw new Error("Not JSON: " + url);
+      return data;
+    }
+
+    async function loadSnapshotJson(year) {
+      const y = year || selectedYear;
+      const urls = [
+        snapshotUrl(y),
+        Number(y) === CALENDAR_YEAR ? "./snapshot.json" : null,
+        "https://mfread.github.io/tesla-software-tracker/snapshot-" + y + ".json",
+        Number(y) === CALENDAR_YEAR ? "https://mfread.github.io/tesla-software-tracker/snapshot.json" : null,
+        "https://raw.githubusercontent.com/mfread/tesla-software-tracker/main/snapshot-" + y + ".json"
+      ].filter(Boolean);
+      let lastErr = null;
+      for (const url of urls) {
+        try {
+          return await fetchJson(url);
+        } catch (err) {
+          lastErr = err;
+        }
+      }
+      throw lastErr || new Error("No snapshot for " + y);
+    }
+
+    function fillYearSelect() {
+      const sel = document.getElementById("year-select");
+      if (!sel) return;
+      sel.innerHTML = AVAILABLE_YEARS.map(y => {
+        const live = liveYears().includes(y);
+        const label = live ? y + " · live" : y + " · archive";
+        return `<option value="${y}"${Number(y) === Number(selectedYear) ? " selected" : ""}>${label}</option>`;
+      }).join("");
+    }
+
+    function updateYearHint() {
+      const el = document.getElementById("year-hint");
+      if (!el) return;
+      const vers = historyVersions();
+      const other = {};
+      vers.forEach(v => {
+        const y = Number(yearOfVer(v));
+        if (y && y !== Number(selectedYear)) other[y] = (other[y] || 0) + 1;
+      });
+      const bits = Object.keys(other).sort().map(y => other[y] + " on " + y);
+      const car = getActiveCar();
+      const nowY = car && car.current ? Number(yearOfVer(car.current)) : 0;
+      let msg = "";
+      if (nowY && nowY !== Number(selectedYear)) {
+        msg = "NOW (" + car.current + ") is a " + nowY + " build. Switch Year to " + nowY + " to see it on this tree.";
+      }
+      if (bits.length) {
+        const extra = bits.join(", ") + " — switch Year to view.";
+        msg = msg ? msg + " Also " + extra : extra.charAt(0).toUpperCase() + extra.slice(1);
+      }
+      if (!SNAPSHOT_LIVE) {
+        const lock = selectedYear + " is a locked archive (no nightly scrape).";
+        msg = msg ? lock + " " + msg : lock;
+      }
+      el.textContent = msg;
+      el.classList.toggle("visible", !!msg);
+    }
+
+    async function loadYear(year, quiet) {
+      selectedYear = Number(year) || CALENDAR_YEAR;
+      try {
+        const data = await loadSnapshotJson(selectedYear);
+        applySnapshot(data);
+        syncActiveCarFromForm();
+        saveState();
+        fillYearSelect();
+        rebuildVisuals();
+        updateCacheStatus();
+        if (!quiet) toast("Loaded snapshot-" + selectedYear + ".json (" + DATA_SNAPSHOT + ")");
+      } catch (err) {
+        SNAPSHOT_LIVE = liveYears().includes(Number(selectedYear));
+        saveState();
+        fillYearSelect();
+        rebuildVisuals();
+        updateCacheStatus();
+        if (!quiet) toast("Snapshot fetch failed: " + (err && err.message ? err.message : err));
+      }
+    }
+
+    async function refreshData() {
+      const btn = document.getElementById("refresh-btn");
+      btn.textContent = "Refreshing…";
+      try {
+        await loadYear(selectedYear, false);
+      } finally {
+        btn.textContent = "Refresh Data";
+      }
+    }
+
+    function modelLabel(code) {
+      const map = { Y: "Model Y", "3": "Model 3", S: "Model S", X: "Model X", CT: "Cybertruck" };
+      return map[code] || (code ? "Model " + code : "");
+    }
+
+    function hwLabel(hw) {
+      const h = String(hw || "").replace(/^HW/i, "");
+      return h ? "HW" + h : "";
+    }
+
+    function previousVersions(car) {
+      const cur = (car.current || "").trim();
+      return (car.history || []).map(v => String(v || "").trim()).filter(Boolean).filter(v => v !== cur);
+    }
+
+    function csvCell(val) {
+      const s = String(val == null ? "" : val).replace(/"/g, '""');
+      return `"=""${s}"""`;
+    }
+
+    function exportCarsCsv() {
+      if (!cars.length) return toast("No cars to export");
+      const prevLists = cars.map(previousVersions);
+      const maxPrev = Math.max(4, ...prevLists.map(p => p.length));
+      const headers = ["Label", "Model", "Build", "Variant", "Hardware", "Resides", "Current Vsn"];
+      for (let i = 1; i <= maxPrev; i++) headers.push("Previous" + i);
+      const lines = [headers.map(csvCell).join(",")];
+      cars.forEach((car, i) => {
+        const row = [
+          car.name || "",
+          modelLabel(car.model),
+          car.build || "",
+          car.variant || "",
+          hwLabel(car.hw),
+          car.country || "",
+          car.current || "",
+          ...prevLists[i]
+        ];
+        while (row.length < headers.length) row.push("");
+        lines.push(row.map(csvCell).join(","));
+      });
+      const blob = new Blob(["\uFEFF" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
+      const a = document.createElement("a");
+      const day = new Date().toISOString().slice(0, 10);
+      a.download = "tesla-cars-" + day + ".csv";
+      a.href = URL.createObjectURL(blob);
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1500);
+      toast("Cars CSV downloaded");
+    }
+
+    function exportPathText() {
+      const car = getActiveCar();
+      if (!car) return;
+      const lines = [
+        `Tesla Software Tracker v${APP_VERSION}`,
+        `Car: ${car.name} · ${car.model} ${car.variant} ${car.build} HW${car.hw}`,
+        `Current: ${car.current || "—"}`,
+        `History (newest first):`,
+        ...(car.history || []).map((v, i) => `  ${i + 1}. ${v}`),
+        document.getElementById("pred-box").innerText
+      ];
+      const text = lines.join("\n");
+      navigator.clipboard.writeText(text).then(() => toast("Path text copied to clipboard")).catch(() => {
+        prompt("Copy path:", text);
+      });
+    }
+
+    function downloadCanvas(canvas, name) {
+      const a = document.createElement("a");
+      a.download = name;
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+      toast("PNG exported");
+    }
+
+    function styleCloneFromLive(liveRoot, cloneRoot) {
+      const live = [liveRoot, ...liveRoot.querySelectorAll("*")];
+      const copy = [cloneRoot, ...cloneRoot.querySelectorAll("*")];
+      const n = Math.min(live.length, copy.length);
+      for (let i = 0; i < n; i++) {
+        const cs = getComputedStyle(live[i]);
+        const el = copy[i];
+        const tag = el.tagName.toLowerCase();
+        if (tag === "svg" || tag === "g") continue;
+        if (cs.fill && cs.fill !== "none") el.setAttribute("fill", cs.fill);
+        if (cs.stroke && cs.stroke !== "none") el.setAttribute("stroke", cs.stroke);
+        else if (tag === "path") el.setAttribute("stroke", cs.stroke || "#4b5563");
+        if (cs.strokeWidth) el.setAttribute("stroke-width", cs.strokeWidth);
+        if (cs.opacity && cs.opacity !== "1") el.setAttribute("opacity", cs.opacity);
+        if (tag === "text") {
+          el.setAttribute("font-size", cs.fontSize);
+          el.setAttribute("font-family", "Arial, Helvetica, sans-serif");
+          el.setAttribute("font-weight", cs.fontWeight);
+        }
+        if (tag === "path") el.setAttribute("fill", "none");
+      }
+    }
+
+    function exportTreePng() {
+      const svgEl = document.getElementById("tree-svg");
+      if (!svgEl || !g || !g.node()) return toast("Tree is not ready to export");
+      const hidden = document.getElementById("tree-container").classList.contains("hidden");
+      if (hidden) document.getElementById("tree-container").classList.remove("hidden");
+      const bbox = g.node().getBBox();
+      if (hidden) document.getElementById("tree-container").classList.add("hidden");
+      const pad = 48;
+      const clone = svgEl.cloneNode(true);
+      clone.removeAttribute("style");
+      clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      const gClone = clone.querySelector("g");
+      if (gClone) gClone.setAttribute("transform", `translate(${pad - bbox.x},${pad - bbox.y})`);
+      styleCloneFromLive(svgEl, clone);
+      const w = Math.ceil(bbox.width + pad * 2);
+      const h = Math.ceil(bbox.height + pad * 2);
+      clone.setAttribute("width", w);
+      clone.setAttribute("height", h);
+      clone.setAttribute("viewBox", `0 0 ${w} ${h}`);
+      const bg = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      bg.setAttribute("x", "0");
+      bg.setAttribute("y", "0");
+      bg.setAttribute("width", String(w));
+      bg.setAttribute("height", String(h));
+      bg.setAttribute("fill", getComputedStyle(document.body).backgroundColor || "#0f1115");
+      clone.insertBefore(bg, clone.firstChild);
+      const xml = new XMLSerializer().serializeToString(clone);
+      const url = URL.createObjectURL(new Blob([xml], { type: "image/svg+xml;charset=utf-8" }));
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = getComputedStyle(document.body).backgroundColor || "#0f1115";
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0);
+        URL.revokeObjectURL(url);
+        downloadCanvas(canvas, "tesla-branch-tree.png");
+      };
+      img.onerror = () => {
+        URL.revokeObjectURL(url);
+        toast("PNG export failed — try Tree view after a refresh");
+      };
+      img.src = url;
+    }
+
+    function exportTablePng() {
+      const table = document.getElementById("ver-table");
+      if (!table) return toast("Table is not ready to export");
+      const rows = [...table.querySelectorAll("tr")].map(tr =>
+        [...tr.children].map(td => td.innerText.replace(/\s+/g, " ").trim())
+      );
+      if (!rows.length) return toast("No table rows to export");
+      const colW = [130, 150, 80, 220, 110, 100, 200, 360];
+      const rowH = 28;
+      const pad = 20;
+      const width = colW.reduce((a, b) => a + b, 0) + pad * 2;
+      const height = rows.length * rowH + pad * 2;
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      const bg = getComputedStyle(document.body).backgroundColor || "#0f1115";
+      const fg = getComputedStyle(document.body).color || "#e8eaed";
+      const muted = getComputedStyle(document.getElementById("cache-status")).color || "#9aa0a6";
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, width, height);
+      ctx.font = "12px Arial, Helvetica, sans-serif";
+      rows.forEach((cols, ri) => {
+        const y = pad + ri * rowH;
+        if (ri === 0) {
+          ctx.fillStyle = getComputedStyle(document.getElementById("table-wrap")).backgroundColor || "#1a1d24";
+          ctx.fillRect(pad, y, width - pad * 2, rowH);
+        }
+        ctx.fillStyle = ri === 0 ? muted : fg;
+        ctx.font = ri === 0 ? "bold 12px Arial, Helvetica, sans-serif" : "12px Arial, Helvetica, sans-serif";
+        let x = pad + 6;
+        cols.forEach((text, ci) => {
+          const max = (colW[ci] || 120) - 10;
+          let t = text || "";
+          while (t.length > 4 && ctx.measureText(t).width > max) t = t.slice(0, -2);
+          if (t !== (text || "") && t.length) t = t.slice(0, -1) + "…";
+          ctx.fillText(t, x, y + 18);
+          x += colW[ci] || 120;
+        });
+        ctx.strokeStyle = "rgba(150,150,150,0.25)";
+        ctx.beginPath();
+        ctx.moveTo(pad, y + rowH);
+        ctx.lineTo(width - pad, y + rowH);
+        ctx.stroke();
+      });
+      downloadCanvas(canvas, "tesla-branch-table.png");
+    }
+
+    function exportPng() {
+      if (currentView === "table") exportTablePng();
+      else exportTreePng();
+    }
+
+    document.getElementById("toggle-sidebar").onclick = () => {
+      const side = document.getElementById("sidebar");
+      side.classList.toggle("collapsed");
+      const hidden = side.classList.contains("collapsed");
+      const btn = document.getElementById("toggle-sidebar");
+      btn.textContent = hidden ? "›" : "‹";
+      btn.title = hidden ? "Show panel" : "Hide panel";
+    };
+    document.getElementById("theme-btn").onclick = () => {
+      const html = document.documentElement;
+      const next = html.getAttribute("data-theme") === "light" ? "dark" : "light";
+      html.setAttribute("data-theme", next === "dark" ? "" : "light");
+      localStorage.setItem("theme", next);
+    };
+    document.getElementById("save-car-btn").onclick = saveActiveCar;
+    document.getElementById("add-car-btn").onclick = () => {
+      if (cars.length >= 5) return toast("Maximum 5 cars");
+      const id = Date.now().toString();
+      cars.push({ id, name: "New Car", model: "Y", build: "", variant: "", hw: "3", country: "", current: "", history: [] });
+      activeCarId = id;
+      activeCarCollapsed = false;
+      applyActiveCarCollapsed();
+      saveState();
+      populateActiveForm();
+      renderCarList();
+    };
+    document.getElementById("add-hist-btn").onclick = () => {
+      renderHistory([...readHistoryFromUI(), ""]);
+    };
+    document.getElementById("refresh-btn").onclick = refreshData;
+    document.getElementById("export-cars-btn").onclick = exportCarsCsv;
+    document.getElementById("export-txt").onclick = exportPathText;
+    document.getElementById("export-png").onclick = exportPng;
+    document.getElementById("grey-unrelated").onchange = () => { updateTreeHighlights(); if (currentView === "table") renderTable(); };
+    document.getElementById("show-only-path").onchange = () => { updateTreeHighlights(); if (currentView === "table") renderTable(); };
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+
+    function renderMarkdown(md) {
+      const lines = String(md || "").replace(/\r\n/g, "\n").split("\n");
+      let html = "", list = null;
+      const flush = () => {
+        if (list) { html += list === "ul" ? "</ul>" : "</ol>"; list = null; }
+      };
+      const inline = (t) => {
+        t = escapeHtml(t);
+        t = t.replace(/`([^`]+)`/g, "<code>$1</code>");
+        t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        t = t.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+        t = t.replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+        return t;
+      };
+      lines.forEach(line => {
+        const t = line.trimEnd();
+        if (/^\s*[-*]\s+/.test(t)) {
+          if (list !== "ul") { flush(); html += "<ul>"; list = "ul"; }
+          html += "<li>" + inline(t.replace(/^\s*[-*]\s+/, "")) + "</li>";
+          return;
+        }
+        if (/^\s*\d+\.\s+/.test(t)) {
+          if (list !== "ol") { flush(); html += "<ol>"; list = "ol"; }
+          html += "<li>" + inline(t.replace(/^\s*\d+\.\s+/, "")) + "</li>";
+          return;
+        }
+        flush();
+        if (!t.trim()) return;
+        if (/^###\s+/.test(t)) html += "<h3>" + inline(t.replace(/^###\s+/, "")) + "</h3>";
+        else if (/^##\s+/.test(t)) html += "<h2>" + inline(t.replace(/^##\s+/, "")) + "</h2>";
+        else if (/^#\s+/.test(t)) html += "<h1>" + inline(t.replace(/^#\s+/, "")) + "</h1>";
+        else html += "<p>" + inline(t) + "</p>";
+      });
+      flush();
+      return html || "<p>README was empty.</p>";
+    }
+
+    async function loadHelp() {
+      const body = document.getElementById("help-body");
+      const status = document.getElementById("help-status");
+      body.textContent = "Loading README…";
+      status.textContent = "";
+      const urls = [
+        "./README.md",
+        "https://raw.githubusercontent.com/mfread/tesla-software-tracker/main/README.md"
+      ];
+      let lastErr = null;
+      for (const url of urls) {
+        try {
+          const res = await fetch(url, { cache: "no-store" });
+          if (!res.ok) throw new Error(url + " " + res.status);
+          const md = await res.text();
+          if (!md.trim()) throw new Error("empty");
+          body.innerHTML = renderMarkdown(md);
+          status.textContent = url.startsWith("./") ? "from Pages" : "from GitHub";
+          return;
+        } catch (e) { lastErr = e; }
+      }
+      body.innerHTML = "<p>Could not load README.md.</p><p style='color:var(--muted)'>" + escapeHtml(String(lastErr || "")) + "</p>";
+      status.textContent = "offline / blocked";
+    }
+
+    document.getElementById("toggle-active-car").onclick = () => {
+      activeCarCollapsed = !activeCarCollapsed;
+      applyActiveCarCollapsed();
+      saveState();
+    };
+    document.getElementById("view-help").onclick = () => setView("help");
+    document.getElementById("view-tree").onclick = () => setView("tree");
+    document.getElementById("view-table").onclick = () => setView("table");
+    ["f-hw","f-ver","f-cc","f-seen","f-fsd"].forEach(id => {
+      document.getElementById(id).addEventListener("input", renderTable);
+      document.getElementById(id).addEventListener("change", renderTable);
+    });
+    document.querySelectorAll("#ver-table th").forEach(th => {
+      th.onclick = () => {
+        const k = th.getAttribute("data-sort");
+        if (tableSort.key === k) tableSort.dir *= -1;
+        else { tableSort.key = k; tableSort.dir = 1; }
+        renderTable();
+      };
+    });
+    document.getElementById("close-details").onclick = () => {
+      document.getElementById("details-panel").style.display = "none";
+    };
+    document.getElementById("zoom-in").onclick = () => svg.transition().call(zoomBehavior.scaleBy, 1.3);
+    document.getElementById("zoom-out").onclick = () => svg.transition().call(zoomBehavior.scaleBy, 0.7);
+    document.getElementById("zoom-fit").onclick = zoomFit;
+    document.getElementById("zoom-path").onclick = zoomToPath;
+    document.getElementById("car-current").addEventListener("change", updatePrediction);
+    document.getElementById("car-hw").addEventListener("change", updatePrediction);
+
+    if (localStorage.getItem("theme") === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+    loadState();
+    applyActiveCarCollapsed();
+    renderCarList();
+    populateActiveForm();
+    fillYearSelect();
+    updateCacheStatus();
+    rebuildVisuals();
+    fillCountryFilter();
+    setView(currentView);
+    document.getElementById("year-select").onchange = (e) => loadYear(e.target.value, false);
+    window.addEventListener("resize", () => buildTree());
+    loadYear(selectedYear, true).catch(() => {});
