@@ -1,13 +1,7 @@
-          {
-            "name": "2026.32.100",
-            "type": "point",
-            "version": "2026.32.100"
-          },
-          {
-            "name": "2026.32.200",
-            "type": "point",
-            "version": "2026.32.200"
-          },
+e": "2026.32 Feature / EU recall",
+        "type": "feature",
+        "version": "2026.32",
+        "children": [
           {
             "name": "2026.32.3",
             "type": "point",
@@ -17,6 +11,28 @@
             "name": "2026.32.7",
             "type": "point",
             "version": "2026.32.7"
+          },
+          {
+            "name": "2026.32.100",
+            "type": "point",
+            "version": "2026.32.100"
+          }
+        ]
+      },
+      {
+        "name": "2026.33",
+        "type": "feature",
+        "version": "2026.33",
+        "children": [
+          {
+            "name": "2026.33.5",
+            "type": "point",
+            "version": "2026.33.5"
+          },
+          {
+            "name": "2026.33.100",
+            "type": "point",
+            "version": "2026.33.100"
           }
         ]
       },
@@ -44,50 +60,80 @@
             "name": "2026.38.5",
             "type": "point",
             "version": "2026.38.5"
-          },
-          {
-            "name": "2026.38.5.1",
-            "type": "point",
-            "version": "2026.38.5.1"
           }
         ]
       }
     ]
   },
   "meta": {
-    "2026.38.5.1": {
-      "first": "2026-10-13",
-      "fleet": "Tessie ~3%, Teslascope 26 installs",
-      "fsd": "v14.3.12 AI4 / v14.3 Lite HW3",
-      "regions": "US mostly",
+    "2026.32.3": {
+      "first": "2026-09-09",
+      "fleet": "Teslascope 3.3% active; TeslaFi 4.8%; Tessie 6.3% (phasing out)",
+      "fsd": "none",
+      "regions": "wide, includes AU NZ",
+      "hw": "HW3 + HW4",
+      "note": "AU retained. Last wave 1 Oct. Completed hops: 2026.38 (12) and 2026.33.100 (3, HW4). Pending on 2026.38.3 still lists this version; completed previous table does not."
+    },
+    "2026.32.7": {
+      "first": "2026-09-22",
+      "fleet": "Teslascope 11.9% active, 351 installs; TeslaFi 33.2%; Tessie 37.8% (rolling)",
+      "fsd": "none",
+      "regions": "wide, not an FSD branch",
+      "hw": "HW3 + HW4",
+      "note": "Fixes branch, still rolling, last wave 9 Oct. Majority arrival from 2026.32.3 (331, 94%). Completed hops onward: 2026.38 (55), 2026.38.3 (3, HW4), 2026.38.3.1 (3, HW4) and 2026.33.5 (1)."
+    },
+    "2026.38": {
+      "first": "2026-09-29",
+      "fleet": "Teslascope 2.4% active, 67 installs; TeslaFi 9.6%; Tessie 6.7%",
+      "fsd": "none",
+      "regions": "AT AU CA CH CZ DE DK ES FR GB IL IT MA NL NO PL TR TW UA US",
+      "hw": "HW3 + HW4",
+      "note": "Feature branch, still rolling, last wave 8 Oct. Previous: 2026.32.7 (55, 82%) and 2026.32.3 (12, 18%). Onward: 2026.38.3 (4) and 2026.38.3.1 (3). HW split HW3 50 / HW4 17. AU retained in seenIn. No FSD payload."
+    },
+    "2026.26.6.1": {
+      "first": "2026-08-14",
+      "fleet": "Teslascope 3.9%",
+      "fsd": "v14.3.x",
+      "regions": "Global incl AU NZ KR",
+      "hw": "HW3 + HW4",
+      "note": "Keep AU. Teslascope active list includes South Korea."
+    },
+    "2026.28.5": {
+      "first": "2026-09-16",
+      "fleet": "Teslascope 5 installs; TeslaFi 0% (rollout today -1); Tessie 0.2%",
+      "fsd": "FSD v14.3.9 Down Under (HW4)",
+      "regions": "AU",
+      "hw": "HW4",
+      "note": "AU HW4 FSD v14.3.9. Teslascope: 5 installs, all HW4, all Australia, last wave 29 Sep. Previous versions: 2026.20.300 (3, 60%) and 2026.20.10 (2, 40%). Updated-to table empty. Hop 2026.20.10 to 2026.28.5 kept."
+    },
+    "2026.33.100": {
+      "first": "2026-10-01",
+      "fleet": "Teslascope 34 installs (1.3% active); TeslaFi 1.6%; Tessie 2.4% (rolling)",
+      "fsd": "v14.2.2.6 Europe (HW4)",
+      "regions": "EU (NL CZ BE DK, also SK EE)",
+      "hw": "HW4",
+      "note": "Europe factory/FSD branch, status rolling, last wave 9 Oct. Teslascope 34 installs, all HW4. Previous versions: 2026.27.300 (30, 88%), 2026.32.3 (3, 9%) and 2026.27.200 (1). NATA FSD 14.2.2.6. Not AU/NZ."
+    },
+    "2026.27.6.15": {
+      "first": "2026-10-04",
+      "fleet": "Tessie 0.1%; TeslaFi 0% (1 car)",
+      "fsd": "v14.2.2.5 (AI4)",
+      "regions": "KR",
+      "hw": "HW4",
+      "note": "Korea AI4 point. Teslascope hop from 2026.15.7. Not AU/NZ. Stats still current on 2026-10-10."
+    },
+    "2026.27.10": {
+      "first": "2026-09-18",
+      "fleet": "Teslascope <1% active; Tessie <0.1%",
+      "fsd": "HW4 FSD v14.3.10 and HW3 v14.2 Lite",
+      "regions": "US/CA, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "Rolling out."
+      "note": "North America only. Teslascope HW4 169 / HW3 1, countries US 92% / CA 8%, last wave 26 Sep. Not AU/NZ. Do not blank this meta."
     },
-    "2026.32.200": {
-      "first": "2026-10-14",
-      "fleet": "<0.1%",
-      "note": "Latest release."
-    },
-    "2026.26.6.3": {
-      "created": "2026-09-22",
-      "needsMeta": false,
-      "metaChecked": "2026-10-10"
-    }
-  },
-  "seenIn": {},
-  "nextMap": {
-    "2026.20.10": "2026.28.5"
-  },
-  "leafState": {
-    "2026.38.5.1": {
-      "created": "2026-10-13",
-      "needsMeta": true,
-      "metaChecked": "2026-10-16"
-    },
-    "2026.32.200": {
-      "created": "2026-10-14",
-      "needsMeta": true,
-      "metaChecked": "2026-10-16"
-    }
-  }
-}
+    "2026.27.11": {
+      "first": "2026-09-22",
+      "fleet": "Teslascope 23.8% active, 647 installs; Tessie 17.4% (phasing out)",
+      "fsd": "HW4 FSD v14.3.10 and HW3 v14.2 Lite",
+      "regions": "US/CA, not AU/NZ",
+      "hw": "HW4 + HW3",
+      "note": "North America only, l
