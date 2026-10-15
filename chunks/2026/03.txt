@@ -1,1 +1,93 @@
-PLACEHOLDER
+          {
+            "name": "2026.32.100",
+            "type": "point",
+            "version": "2026.32.100"
+          },
+          {
+            "name": "2026.32.200",
+            "type": "point",
+            "version": "2026.32.200"
+          },
+          {
+            "name": "2026.32.3",
+            "type": "point",
+            "version": "2026.32.3"
+          },
+          {
+            "name": "2026.32.7",
+            "type": "point",
+            "version": "2026.32.7"
+          }
+        ]
+      },
+      {
+        "name": "2026.38 Site Maps / Visual",
+        "type": "feature",
+        "version": "2026.38",
+        "children": [
+          {
+            "name": "2026.38",
+            "type": "point",
+            "version": "2026.38"
+          },
+          {
+            "name": "2026.38.3",
+            "type": "point",
+            "version": "2026.38.3"
+          },
+          {
+            "name": "2026.38.3.1",
+            "type": "point",
+            "version": "2026.38.3.1"
+          },
+          {
+            "name": "2026.38.5",
+            "type": "point",
+            "version": "2026.38.5"
+          },
+          {
+            "name": "2026.38.5.1",
+            "type": "point",
+            "version": "2026.38.5.1"
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "2026.38.5.1": {
+      "first": "2026-10-13",
+      "fleet": "Tessie ~3%, Teslascope 26 installs",
+      "fsd": "v14.3.12 AI4 / v14.3 Lite HW3",
+      "regions": "US mostly",
+      "hw": "HW4 + HW3",
+      "note": "Rolling out."
+    },
+    "2026.32.200": {
+      "first": "2026-10-14",
+      "fleet": "<0.1%",
+      "note": "Latest release."
+    },
+    "2026.26.6.3": {
+      "created": "2026-09-22",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    }
+  },
+  "seenIn": {},
+  "nextMap": {
+    "2026.20.10": "2026.28.5"
+  },
+  "leafState": {
+    "2026.38.5.1": {
+      "created": "2026-10-13",
+      "needsMeta": true,
+      "metaChecked": "2026-10-16"
+    },
+    "2026.32.200": {
+      "created": "2026-10-14",
+      "needsMeta": true,
+      "metaChecked": "2026-10-16"
+    }
+  }
+}
