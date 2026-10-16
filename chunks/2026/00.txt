@@ -1,1 +1,1738 @@
-PLACEHOLDER_WILL_REPLACE
+{
+  "snapshot": "2026-10-17",
+  "year": 2026,
+  "live": true,
+  "note": "Hourly retry 2026-10-17 08:07 AEDT. Live year (n). Previous tree from 2026-10-16. No new confirmed rollouts since last valid snapshot. 2026.38.5.1 rollout continuing (~17k vehicles noted in prior). Trunks and children ordered oldest-first.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-17T08:07:00+11:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla 2026",
+    "type": "root",
+    "version": "2026",
+    "children": [
+      {
+        "name": "2026.2 Holiday / FSD",
+        "type": "feature",
+        "version": "2026.2",
+        "children": [
+          {
+            "name": "2026.2",
+            "type": "point",
+            "version": "2026.2"
+          },
+          {
+            "name": "2026.2.3",
+            "type": "point",
+            "version": "2026.2.3"
+          },
+          {
+            "name": "2026.2.3.1",
+            "type": "point",
+            "version": "2026.2.3.1"
+          },
+          {
+            "name": "2026.2.3.16",
+            "type": "point",
+            "version": "2026.2.3.16"
+          },
+          {
+            "name": "2026.2.6",
+            "type": "point",
+            "version": "2026.2.6"
+          },
+          {
+            "name": "2026.2.6.1",
+            "type": "point",
+            "version": "2026.2.6.1"
+          },
+            "name": "2026.2.6.5",
+            "type": "point",
+            "version": "2026.2.6.5"
+          },
+          {
+            "name": "2026.2.9",
+            "type": "point",
+            "version": "2026.2.9"
+          },
+          {
+            "name": "2026.2.9.1",
+            "type": "point",
+            "version": "2026.2.9.1"
+          },
+          {
+            "name": "2026.2.9.2",
+            "type": "point",
+            "version": "2026.2.9.2"
+          },
+          {
+            "name": "2026.2.9.3",
+            "type": "point",
+            "version": "2026.2.9.3"
+          },
+          {
+            "name": "2026.2.9.5",
+            "type": "point",
+            "version": "2026.2.9.5"
+          },
+          {
+            "name": "2026.2.9.6",
+            "type": "point",
+            "version": "2026.2.9.6"
+          },
+          {
+            "name": "2026.2.9.7",
+            "type": "point",
+            "version": "2026.2.9.7"
+          },
+          {
+            "name": "2026.2.9.8",
+            "type": "point",
+            "version": "2026.2.9.8"
+          },
+          {
+            "name": "2026.2.9.9",
+            "type": "point",
+            "version": "2026.2.9.9"
+          },
+          {
+            "name": "2026.2.9.10",
+            "type": "point",
+            "version": "2026.2.9.10"
+          },
+          {
+            "name": "2026.2.11",
+            "type": "point",
+            "version": "2026.2.11"
+          },
+          {
+            "name": "2026.2.100",
+            "type": "point",
+            "version": "2026.2.100"
+          },
+          {
+            "name": "2026.2.200",
+            "type": "point",
+            "version": "2026.2.200"
+          },
+          {
+            "name": "2026.2.200.1",
+            "type": "point",
+            "version": "2026.2.200.1"
+          },
+          {
+            "name": "2026.2.300",
+            "type": "point",
+            "version": "2026.2.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.3",
+        "type": "feature",
+        "version": "2026.3",
+        "children": [
+          {
+            "name": "2026.3.6",
+            "type": "point",
+            "version": "2026.3.6"
+          },
+          {
+            "name": "2026.3.7",
+            "type": "point",
+            "version": "2026.3.7"
+          }
+        ]
+      },
+      {
+        "name": "2026.4",
+        "type": "feature",
+        "version": "2026.4",
+        "children": [
+          {
+            "name": "2026.4.5",
+            "type": "point",
+            "version": "2026.4.5"
+          }
+        ]
+      },
+      {
+        "name": "2026.8",
+        "type": "feature",
+        "version": "2026.8",
+        "children": [
+          {
+            "name": "2026.8",
+            "type": "point",
+            "version": "2026.8"
+          },
+          {
+            "name": "2026.8.3",
+            "type": "point",
+            "version": "2026.8.3"
+          },
+          {
+            "name": "2026.8.3.6",
+            "type": "point",
+            "version": "2026.8.3.6"
+          },
+          {
+            "name": "2026.8.3.10",
+            "type": "point",
+            "version": "2026.8.3.10"
+          },
+          {
+            "name": "2026.8.6",
+            "type": "point",
+            "version": "2026.8.6"
+          },
+          {
+            "name": "2026.8.6.1",
+            "type": "point",
+            "version": "2026.8.6.1"
+          },
+          {
+            "name": "2026.8.100",
+            "type": "point",
+            "version": "2026.8.100"
+          },
+          {
+            "name": "2026.8.200",
+            "type": "point",
+            "version": "2026.8.200"
+          },
+          {
+            "name": "2026.8.200.1",
+            "type": "point",
+            "version": "2026.8.200.1"
+          },
+          {
+            "name": "2026.8.300",
+            "type": "point",
+            "version": "2026.8.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.14 Spring",
+        "type": "feature",
+        "version": "2026.14",
+        "children": [
+          {
+            "name": "2026.14",
+            "type": "point",
+            "version": "2026.14"
+          },
+          {
+            "name": "2026.14.1",
+            "type": "point",
+            "version": "2026.14.1"
+          },
+          {
+            "name": "2026.14.2",
+            "type": "point",
+            "version": "2026.14.2"
+          },
+          {
+            "name": "2026.14.3",
+            "type": "point",
+            "version": "2026.14.3"
+          },
+          {
+            "name": "2026.14.6",
+            "type": "point",
+            "version": "2026.14.6"
+          },
+          {
+            "name": "2026.14.6.6",
+            "type": "point",
+            "version": "2026.14.6.6"
+          },
+          {
+            "name": "2026.14.6.7",
+            "type": "point",
+            "version": "2026.14.6.7"
+          },
+          {
+            "name": "2026.14.6.10",
+            "type": "point",
+            "version": "2026.14.6.10"
+          },
+          {
+            "name": "2026.14.6.11",
+            "type": "point",
+            "version": "2026.14.6.11"
+          },
+          {
+            "name": "2026.14.6.12",
+            "type": "point",
+            "version": "2026.14.6.12"
+          },
+          {
+            "name": "2026.14.13",
+            "type": "point",
+            "version": "2026.14.13"
+          },
+          {
+            "name": "2026.14.100",
+            "type": "point",
+            "version": "2026.14.100"
+          },
+          {
+            "name": "2026.14.200",
+            "type": "point",
+            "version": "2026.14.200"
+          },
+          {
+            "name": "2026.14.300",
+            "type": "point",
+            "version": "2026.14.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.15",
+        "type": "feature",
+        "version": "2026.15",
+        "children": [
+          {
+            "name": "2026.15.6",
+            "type": "point",
+            "version": "2026.15.6"
+          },
+          {
+            "name": "2026.15.7",
+            "type": "point",
+            "version": "2026.15.7"
+          }
+        ]
+      },
+      {
+        "name": "2026.16",
+        "type": "feature",
+        "version": "2026.16",
+        "children": [
+          {
+            "name": "2026.16.6",
+            "type": "point",
+            "version": "2026.16.6"
+          }
+        ]
+      },
+      {
+        "name": "2026.17",
+        "type": "feature",
+        "version": "2026.17",
+        "children": [
+          {
+            "name": "2026.17.5",
+            "type": "point",
+            "version": "2026.17.5"
+          }
+        ]
+      },
+      {
+        "name": "2026.20 Feature + Lite",
+        "type": "feature",
+        "version": "2026.20",
+        "children": [
+          {
+            "name": "2026.20",
+            "type": "point",
+            "version": "2026.20"
+          },
+          {
+            "name": "2026.20.3",
+            "type": "point",
+            "version": "2026.20.3"
+          },
+          {
+            "name": "2026.20.5.1",
+            "type": "point",
+            "version": "2026.20.5.1"
+          },
+          {
+            "name": "2026.20.6",
+            "type": "point",
+            "version": "2026.20.6"
+          },
+          {
+            "name": "2026.20.6.1",
+            "type": "point",
+            "version": "2026.20.6.1"
+          },
+          {
+            "name": "2026.20.6.3",
+            "type": "point",
+            "version": "2026.20.6.3"
+          },
+          {
+            "name": "2026.20.6.4",
+            "type": "point",
+            "version": "2026.20.6.4"
+          },
+          {
+            "name": "2026.20.6.6",
+            "type": "point",
+            "version": "2026.20.6.6"
+          },
+          {
+            "name": "2026.20.6.9",
+            "type": "point",
+            "version": "2026.20.6.9"
+          },
+          {
+            "name": "2026.20.6.10",
+            "type": "point",
+            "version": "2026.20.6.10"
+          },
+          {
+            "name": "2026.20.6.11",
+            "type": "point",
+            "version": "2026.20.6.11"
+          },
+          {
+            "name": "2026.20.7.5",
+            "type": "point",
+            "version": "2026.20.7.5"
+          },
+          {
+            "name": "2026.20.10",
+            "type": "point",
+            "version": "2026.20.10"
+          },
+          {
+            "name": "2026.20.100",
+            "type": "point",
+            "version": "2026.20.100"
+          },
+          {
+            "name": "2026.20.200",
+            "type": "point",
+            "version": "2026.20.200"
+          },
+          {
+            "name": "2026.20.200.1",
+            "type": "point",
+            "version": "2026.20.200.1"
+          },
+          {
+            "name": "2026.20.300",
+            "type": "point",
+            "version": "2026.20.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.21 FSD dual",
+        "type": "fsd",
+        "version": "2026.21",
+        "children": [
+          {
+            "name": "2026.21.5",
+            "type": "point",
+            "version": "2026.21.5"
+          },
+          {
+            "name": "2026.21.6",
+            "type": "point",
+            "version": "2026.21.6"
+          },
+          {
+            "name": "2026.21.100",
+            "type": "point",
+            "version": "2026.21.100"
+          },
+          {
+            "name": "2026.21.300",
+            "type": "point",
+            "version": "2026.21.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.26 Summer",
+        "type": "feature",
+        "version": "2026.26",
+        "children": [
+          {
+            "name": "2026.26",
+            "type": "point",
+            "version": "2026.26"
+          },
+          {
+            "name": "2026.26.1",
+            "type": "point",
+            "version": "2026.26.1"
+          },
+          {
+            "name": "2026.26.6",
+            "type": "point",
+            "version": "2026.26.6"
+          },
+          {
+            "name": "2026.26.6.1",
+            "type": "point",
+            "version": "2026.26.6.1"
+          },
+          {
+            "name": "2026.26.6.2",
+            "type": "point",
+            "version": "2026.26.6.2"
+          },
+          {
+            "name": "2026.26.6.3",
+            "type": "point",
+            "version": "2026.26.6.3"
+          },
+          {
+            "name": "2026.26.6.5",
+            "type": "point",
+            "version": "2026.26.6.5"
+          },
+          {
+            "name": "2026.26.100.1",
+            "type": "point",
+            "version": "2026.26.100.1"
+          },
+          {
+            "name": "2026.26.100.2",
+            "type": "point",
+            "version": "2026.26.100.2"
+          },
+          {
+            "name": "2026.26.200",
+            "type": "point",
+            "version": "2026.26.200"
+          },
+          {
+            "name": "2026.26.200.1",
+            "type": "point",
+            "version": "2026.26.200.1"
+          },
+          {
+            "name": "2026.26.200.11",
+            "type": "point",
+            "version": "2026.26.200.11"
+          },
+          {
+            "name": "2026.26.300",
+            "type": "point",
+            "version": "2026.26.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.27 Factory / EU / FSD",
+        "type": "factory",
+        "version": "2026.27",
+        "children": [
+          {
+            "name": "2026.27.5",
+            "type": "point",
+            "version": "2026.27.5"
+          },
+          {
+            "name": "2026.27.6",
+            "type": "point",
+            "version": "2026.27.6"
+          },
+          {
+            "name": "2026.27.6.5",
+            "type": "point",
+            "version": "2026.27.6.5"
+          },
+          {
+            "name": "2026.27.6.15",
+            "type": "point",
+            "version": "2026.27.6.15"
+          },
+          {
+            "name": "2026.27.10",
+            "type": "point",
+            "version": "2026.27.10"
+          },
+          {
+            "name": "2026.27.11",
+            "type": "point",
+            "version": "2026.27.11"
+          },
+          {
+            "name": "2026.27.100.1",
+            "type": "point",
+            "version": "2026.27.100.1"
+          },
+          {
+            "name": "2026.27.200",
+            "type": "point",
+            "version": "2026.27.200"
+          },
+          {
+            "name": "2026.27.300",
+            "type": "point",
+            "version": "2026.27.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.28 FSD Oceania",
+        "type": "fsd",
+        "version": "2026.28",
+        "children": [
+          {
+            "name": "2026.28.5",
+            "type": "point",
+            "version": "2026.28.5"
+          }
+        ]
+      },
+      {
+        "name": "2026.32 Feature / EU recall",
+        "type": "feature",
+        "version": "2026.32",
+        "children": [
+          {
+            "name": "2026.32",
+            "type": "point",
+            "version": "2026.32"
+          },
+          {
+            "name": "2026.32.3",
+            "type": "point",
+            "version": "2026.32.3"
+          },
+          {
+            "name": "2026.32.3.1",
+            "type": "point",
+            "version": "2026.32.3.1"
+          },
+          {
+            "name": "2026.32.6",
+            "type": "point",
+            "version": "2026.32.6"
+          },
+          {
+            "name": "2026.32.6.1",
+            "type": "point",
+            "version": "2026.32.6.1"
+          },
+          {
+            "name": "2026.32.6.2",
+            "type": "point",
+            "version": "2026.32.6.2"
+          },
+          {
+            "name": "2026.32.6.3",
+            "type": "point",
+            "version": "2026.32.6.3"
+          },
+          {
+            "name": "2026.32.6.4",
+            "type": "point",
+            "version": "2026.32.6.4"
+          },
+          {
+            "name": "2026.32.6.5",
+            "type": "point",
+            "version": "2026.32.6.5"
+          },
+          {
+            "name": "2026.32.6.6",
+            "type": "point",
+            "version": "2026.32.6.6"
+          },
+          {
+            "name": "2026.32.6.7",
+            "type": "point",
+            "version": "2026.32.6.7"
+          },
+          {
+            "name": "2026.32.6.8",
+            "type": "point",
+            "version": "2026.32.6.8"
+          },
+          {
+            "name": "2026.32.6.9",
+            "type": "point",
+            "version": "2026.32.6.9"
+          },
+          {
+            "name": "2026.32.6.10",
+            "type": "point",
+            "version": "2026.32.6.10"
+          },
+          {
+            "name": "2026.32.6.11",
+            "type": "point",
+            "version": "2026.32.6.11"
+          },
+          {
+            "name": "2026.32.6.12",
+            "type": "point",
+            "version": "2026.32.6.12"
+          },
+          {
+            "name": "2026.32.6.13",
+            "type": "point",
+            "version": "2026.32.6.13"
+          },
+          {
+            "name": "2026.32.6.14",
+            "type": "point",
+            "version": "2026.32.6.14"
+          },
+          {
+            "name": "2026.32.6.15",
+            "type": "point",
+            "version": "2026.32.6.15"
+          },
+          {
+            "name": "2026.32.6.16",
+            "type": "point",
+            "version": "2026.32.6.16"
+          },
+          {
+            "name": "2026.32.6.17",
+            "type": "point",
+            "version": "2026.32.6.17"
+          },
+          {
+            "name": "2026.32.6.18",
+            "type": "point",
+            "version": "2026.32.6.18"
+          },
+          {
+            "name": "2026.32.6.19",
+            "type": "point",
+            "version": "2026.32.6.19"
+          },
+          {
+            "name": "2026.32.6.20",
+            "type": "point",
+            "version": "2026.32.6.20"
+          },
+          {
+            "name": "2026.32.6.21",
+            "type": "point",
+            "version": "2026.32.6.21"
+          },
+          {
+            "name": "2026.32.6.22",
+            "type": "point",
+            "version": "2026.32.6.22"
+          },
+          {
+            "name": "2026.32.6.23",
+            "type": "point",
+            "version": "2026.32.6.23"
+          },
+          {
+            "name": "2026.32.6.24",
+            "type": "point",
+            "version": "2026.32.6.24"
+          },
+          {
+            "name": "2026.32.6.25",
+            "type": "point",
+            "version": "2026.32.6.25"
+          },
+          {
+            "name": "2026.32.6.26",
+            "type": "point",
+            "version": "2026.32.6.26"
+          },
+          {
+            "name": "2026.32.6.27",
+            "type": "point",
+            "version": "2026.32.6.27"
+          },
+          {
+            "name": "2026.32.6.28",
+            "type": "point",
+            "version": "2026.32.6.28"
+          },
+          {
+            "name": "2026.32.6.29",
+            "type": "point",
+            "version": "2026.32.6.29"
+          },
+          {
+            "name": "2026.32.6.30",
+            "type": "point",
+            "version": "2026.32.6.30"
+          },
+          {
+            "name": "2026.32.6.31",
+            "type": "point",
+            "version": "2026.32.6.31"
+          },
+          {
+            "name": "2026.32.6.32",
+            "type": "point",
+            "version": "2026.32.6.32"
+          },
+          {
+            "name": "2026.32.6.33",
+            "type": "point",
+            "version": "2026.32.6.33"
+          },
+          {
+            "name": "2026.32.6.34",
+            "type": "point",
+            "version": "2026.32.6.34"
+          },
+          {
+            "name": "2026.32.6.35",
+            "type": "point",
+            "version": "2026.32.6.35"
+          },
+          {
+            "name": "2026.32.6.36",
+            "type": "point",
+            "version": "2026.32.6.36"
+          },
+          {
+            "name": "2026.32.6.37",
+            "type": "point",
+            "version": "2026.32.6.37"
+          },
+          {
+            "name": "2026.32.6.38",
+            "type": "point",
+            "version": "2026.32.6.38"
+          },
+          {
+            "name": "2026.32.6.39",
+            "type": "point",
+            "version": "2026.32.6.39"
+          },
+          {
+            "name": "2026.32.6.40",
+            "type": "point",
+            "version": "2026.32.6.40"
+          },
+          {
+            "name": "2026.32.6.41",
+            "type": "point",
+            "version": "2026.32.6.41"
+          },
+          {
+            "name": "2026.32.6.42",
+            "type": "point",
+            "version": "2026.32.6.42"
+          },
+          {
+            "name": "2026.32.6.43",
+            "type": "point",
+            "version": "2026.32.6.43"
+          },
+          {
+            "name": "2026.32.6.44",
+            "type": "point",
+            "version": "2026.32.6.44"
+          },
+          {
+            "name": "2026.32.6.45",
+            "type": "point",
+            "version": "2026.32.6.45"
+          },
+          {
+            "name": "2026.32.6.46",
+            "type": "point",
+            "version": "2026.32.6.46"
+          },
+          {
+            "name": "2026.32.6.47",
+            "type": "point",
+            "version": "2026.32.6.47"
+          },
+          {
+            "name": "2026.32.6.48",
+            "type": "point",
+            "version": "2026.32.6.48"
+          },
+          {
+            "name": "2026.32.6.49",
+            "type": "point",
+            "version": "2026.32.6.49"
+          },
+          {
+            "name": "2026.32.6.50",
+            "type": "point",
+            "version": "2026.32.6.50"
+          },
+          {
+            "name": "2026.32.6.51",
+            "type": "point",
+            "version": "2026.32.6.51"
+          },
+          {
+            "name": "2026.32.6.52",
+            "type": "point",
+            "version": "2026.32.6.52"
+          },
+          {
+            "name": "2026.32.6.53",
+            "type": "point",
+            "version": "2026.32.6.53"
+          },
+          {
+            "name": "2026.32.6.54",
+            "type": "point",
+            "version": "2026.32.6.54"
+          },
+          {
+            "name": "2026.32.6.55",
+            "type": "point",
+            "version": "2026.32.6.55"
+          },
+          {
+            "name": "2026.32.6.56",
+            "type": "point",
+            "version": "2026.32.6.56"
+          },
+          {
+            "name": "2026.32.6.57",
+            "type": "point",
+            "version": "2026.32.6.57"
+          },
+          {
+            "name": "2026.32.6.58",
+            "type": "point",
+            "version": "2026.32.6.58"
+          },
+          {
+            "name": "2026.32.6.59",
+            "type": "point",
+            "version": "2026.32.6.59"
+          },
+          {
+            "name": "2026.32.6.60",
+            "type": "point",
+            "version": "2026.32.6.60"
+          },
+          {
+            "name": "2026.32.6.61",
+            "type": "point",
+            "version": "2026.32.6.61"
+          },
+          {
+            "name": "2026.32.6.62",
+            "type": "point",
+            "version": "2026.32.6.62"
+          },
+          {
+            "name": "2026.32.6.63",
+            "type": "point",
+            "version": "2026.32.6.63"
+          },
+          {
+            "name": "2026.32.6.64",
+            "type": "point",
+            "version": "2026.32.6.64"
+          },
+          {
+            "name": "2026.32.6.65",
+            "type": "point",
+            "version": "2026.32.6.65"
+          },
+          {
+            "name": "2026.32.6.66",
+            "type": "point",
+            "version": "2026.32.6.66"
+          },
+          {
+            "name": "2026.32.6.67",
+            "type": "point",
+            "version": "2026.32.6.67"
+          },
+          {
+            "name": "2026.32.6.68",
+            "type": "point",
+            "version": "2026.32.6.68"
+          },
+          {
+            "name": "2026.32.6.69",
+            "type": "point",
+            "version": "2026.32.6.69"
+          },
+          {
+            "name": "2026.32.6.70",
+            "type": "point",
+            "version": "2026.32.6.70"
+          },
+          {
+            "name": "2026.32.6.71",
+            "type": "point",
+            "version": "2026.32.6.71"
+          },
+          {
+            "name": "2026.32.6.72",
+            "type": "point",
+            "version": "2026.32.6.72"
+          },
+          {
+            "name": "2026.32.6.73",
+            "type": "point",
+            "version": "2026.32.6.73"
+          },
+          {
+            "name": "2026.32.6.74",
+            "type": "point",
+            "version": "2026.32.6.74"
+          },
+          {
+            "name": "2026.32.6.75",
+            "type": "point",
+            "version": "2026.32.6.75"
+          },
+          {
+            "name": "2026.32.6.76",
+            "type": "point",
+            "version": "2026.32.6.76"
+          },
+          {
+            "name": "2026.32.6.77",
+            "type": "point",
+            "version": "2026.32.6.77"
+          },
+          {
+            "name": "2026.32.6.78",
+            "type": "point",
+            "version": "2026.32.6.78"
+          },
+          {
+            "name": "2026.32.6.79",
+            "type": "point",
+            "version": "2026.32.6.79"
+          },
+          {
+            "name": "2026.32.6.80",
+            "type": "point",
+            "version": "2026.32.6.80"
+          },
+          {
+            "name": "2026.32.6.81",
+            "type": "point",
+            "version": "2026.32.6.81"
+          },
+          {
+            "name": "2026.32.6.82",
+            "type": "point",
+            "version": "2026.32.6.82"
+          },
+          {
+            "name": "2026.32.6.83",
+            "type": "point",
+            "version": "2026.32.6.83"
+          },
+          {
+            "name": "2026.32.6.84",
+            "type": "point",
+            "version": "2026.32.6.84"
+          },
+          {
+            "name": "2026.32.6.85",
+            "type": "point",
+            "version": "2026.32.6.85"
+          },
+          {
+            "name": "2026.32.6.86",
+            "type": "point",
+            "version": "2026.32.6.86"
+          },
+          {
+            "name": "2026.32.6.87",
+            "type": "point",
+            "version": "2026.32.6.87"
+          },
+          {
+            "name": "2026.32.6.88",
+            "type": "point",
+            "version": "2026.32.6.88"
+          },
+          {
+            "name": "2026.32.6.89",
+            "type": "point",
+            "version": "2026.32.6.89"
+          },
+          {
+            "name": "2026.32.6.90",
+            "type": "point",
+            "version": "2026.32.6.90"
+          },
+          {
+            "name": "2026.32.6.91",
+            "type": "point",
+            "version": "2026.32.6.91"
+          },
+          {
+            "name": "2026.32.6.92",
+            "type": "point",
+            "version": "2026.32.6.92"
+          },
+          {
+            "name": "2026.32.6.93",
+            "type": "point",
+            "version": "2026.32.6.93"
+          },
+          {
+            "name": "2026.32.6.94",
+            "type": "point",
+            "version": "2026.32.6.94"
+          },
+          {
+            "name": "2026.32.6.95",
+            "type": "point",
+            "version": "2026.32.6.95"
+          },
+          {
+            "name": "2026.32.6.96",
+            "type": "point",
+            "version": "2026.32.6.96"
+          },
+          {
+            "name": "2026.32.6.97",
+            "type": "point",
+            "version": "2026.32.6.97"
+          },
+          {
+            "name": "2026.32.6.98",
+            "type": "point",
+            "version": "2026.32.6.98"
+          },
+          {
+            "name": "2026.32.6.99",
+            "type": "point",
+            "version": "2026.32.6.99"
+          },
+          {
+            "name": "2026.32.6.100",
+            "type": "point",
+            "version": "2026.32.6.100"
+          },
+          {
+            "name": "2026.32.100",
+            "type": "point",
+            "version": "2026.32.100"
+          },
+          {
+            "name": "2026.32.200",
+            "type": "point",
+            "version": "2026.32.200"
+          },
+          {
+            "name": "2026.32.200.1",
+            "type": "point",
+            "version": "2026.32.200.1"
+          },
+          {
+            "name": "2026.32.300",
+            "type": "point",
+            "version": "2026.32.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.33",
+        "type": "feature",
+        "version": "2026.33",
+        "children": [
+          {
+            "name": "2026.33",
+            "type": "point",
+            "version": "2026.33"
+          },
+          {
+            "name": "2026.33.1",
+            "type": "point",
+            "version": "2026.33.1"
+          },
+          {
+            "name": "2026.33.2",
+            "type": "point",
+            "version": "2026.33.2"
+          },
+          {
+            "name": "2026.33.3",
+            "type": "point",
+            "version": "2026.33.3"
+          },
+          {
+            "name": "2026.33.4",
+            "type": "point",
+            "version": "2026.33.4"
+          },
+          {
+            "name": "2026.33.5",
+            "type": "point",
+            "version": "2026.33.5"
+          },
+          {
+            "name": "2026.33.6",
+            "type": "point",
+            "version": "2026.33.6"
+          },
+          {
+            "name": "2026.33.7",
+            "type": "point",
+            "version": "2026.33.7"
+          },
+          {
+            "name": "2026.33.8",
+            "type": "point",
+            "version": "2026.33.8"
+          },
+          {
+            "name": "2026.33.9",
+            "type": "point",
+            "version": "2026.33.9"
+          },
+          {
+            "name": "2026.33.10",
+            "type": "point",
+            "version": "2026.33.10"
+          },
+          {
+            "name": "2026.33.11",
+            "type": "point",
+            "version": "2026.33.11"
+          },
+          {
+            "name": "2026.33.12",
+            "type": "point",
+            "version": "2026.33.12"
+          },
+          {
+            "name": "2026.33.13",
+            "type": "point",
+            "version": "2026.33.13"
+          },
+          {
+            "name": "2026.33.14",
+            "type": "point",
+            "version": "2026.33.14"
+          },
+          {
+            "name": "2026.33.15",
+            "type": "point",
+            "version": "2026.33.15"
+          },
+          {
+            "name": "2026.33.16",
+            "type": "point",
+            "version": "2026.33.16"
+          },
+          {
+            "name": "2026.33.17",
+            "type": "point",
+            "version": "2026.33.17"
+          },
+          {
+            "name": "2026.33.18",
+            "type": "point",
+            "version": "2026.33.18"
+          },
+          {
+            "name": "2026.33.19",
+            "type": "point",
+            "version": "2026.33.19"
+          },
+          {
+            "name": "2026.33.20",
+            "type": "point",
+            "version": "2026.33.20"
+          },
+          {
+            "name": "2026.33.21",
+            "type": "point",
+            "version": "2026.33.21"
+          },
+          {
+            "name": "2026.33.22",
+            "type": "point",
+            "version": "2026.33.22"
+          },
+          {
+            "name": "2026.33.23",
+            "type": "point",
+            "version": "2026.33.23"
+          },
+          {
+            "name": "2026.33.24",
+            "type": "point",
+            "version": "2026.33.24"
+          },
+          {
+            "name": "2026.33.25",
+            "type": "point",
+            "version": "2026.33.25"
+          },
+          {
+            "name": "2026.33.26",
+            "type": "point",
+            "version": "2026.33.26"
+          },
+          {
+            "name": "2026.33.27",
+            "type": "point",
+            "version": "2026.33.27"
+          },
+          {
+            "name": "2026.33.28",
+            "type": "point",
+            "version": "2026.33.28"
+          },
+          {
+            "name": "2026.33.29",
+            "type": "point",
+            "version": "2026.33.29"
+          },
+          {
+            "name": "2026.33.30",
+            "type": "point",
+            "version": "2026.33.30"
+          },
+          {
+            "name": "2026.33.31",
+            "type": "point",
+            "version": "2026.33.31"
+          },
+          {
+            "name": "2026.33.32",
+            "type": "point",
+            "version": "2026.33.32"
+          },
+          {
+            "name": "2026.33.33",
+            "type": "point",
+            "version": "2026.33.33"
+          },
+          {
+            "name": "2026.33.34",
+            "type": "point",
+            "version": "2026.33.34"
+          },
+          {
+            "name": "2026.33.35",
+            "type": "point",
+            "version": "2026.33.35"
+          },
+          {
+            "name": "2026.33.36",
+            "type": "point",
+            "version": "2026.33.36"
+          },
+          {
+            "name": "2026.33.37",
+            "type": "point",
+            "version": "2026.33.37"
+          },
+          {
+            "name": "2026.33.38",
+            "type": "point",
+            "version": "2026.33.38"
+          },
+          {
+            "name": "2026.33.39",
+            "type": "point",
+            "version": "2026.33.39"
+          },
+          {
+            "name": "2026.33.40",
+            "type": "point",
+            "version": "2026.33.40"
+          },
+          {
+            "name": "2026.33.41",
+            "type": "point",
+            "version": "2026.33.41"
+          },
+          {
+            "name": "2026.33.42",
+            "type": "point",
+            "version": "2026.33.42"
+          },
+          {
+            "name": "2026.33.43",
+            "type": "point",
+            "version": "2026.33.43"
+          },
+          {
+            "name": "2026.33.44",
+            "type": "point",
+            "version": "2026.33.44"
+          },
+          {
+            "name": "2026.33.45",
+            "type": "point",
+            "version": "2026.33.45"
+          },
+          {
+            "name": "2026.33.46",
+            "type": "point",
+            "version": "2026.33.46"
+          },
+          {
+            "name": "2026.33.47",
+            "type": "point",
+            "version": "2026.33.47"
+          },
+          {
+            "name": "2026.33.48",
+            "type": "point",
+            "version": "2026.33.48"
+          },
+          {
+            "name": "2026.33.49",
+            "type": "point",
+            "version": "2026.33.49"
+          },
+          {
+            "name": "2026.33.50",
+            "type": "point",
+            "version": "2026.33.50"
+          },
+          {
+            "name": "2026.33.51",
+            "type": "point",
+            "version": "2026.33.51"
+          },
+          {
+            "name": "2026.33.52",
+            "type": "point",
+            "version": "2026.33.52"
+          },
+          {
+            "name": "2026.33.53",
+            "type": "point",
+            "version": "2026.33.53"
+          },
+          {
+            "name": "2026.33.54",
+            "type": "point",
+            "version": "2026.33.54"
+          },
+          {
+            "name": "2026.33.55",
+            "type": "point",
+            "version": "2026.33.55"
+          },
+          {
+            "name": "2026.33.56",
+            "type": "point",
+            "version": "2026.33.56"
+          },
+          {
+            "name": "2026.33.57",
+            "type": "point",
+            "version": "2026.33.57"
+          },
+          {
+            "name": "2026.33.58",
+            "type": "point",
+            "version": "2026.33.58"
+          },
+          {
+            "name": "2026.33.59",
+            "type": "point",
+            "version": "2026.33.59"
+          },
+          {
+            "name": "2026.33.60",
+            "type": "point",
+            "version": "2026.33.60"
+          },
+          {
+            "name": "2026.33.61",
+            "type": "point",
+            "version": "2026.33.61"
+          },
+          {
+            "name": "2026.33.62",
+            "type": "point",
+            "version": "2026.33.62"
+          },
+          {
+            "name": "2026.33.63",
+            "type": "point",
+            "version": "2026.33.63"
+          },
+          {
+            "name": "2026.33.64",
+            "type": "point",
+            "version": "2026.33.64"
+          },
+          {
+            "name": "2026.33.65",
+            "type": "point",
+            "version": "2026.33.65"
+          },
+          {
+            "name": "2026.33.66",
+            "type": "point",
+            "version": "2026.33.66"
+          },
+          {
+            "name": "2026.33.67",
+            "type": "point",
+            "version": "2026.33.67"
+          },
+          {
+            "name": "2026.33.68",
+            "type": "point",
+            "version": "2026.33.68"
+          },
+          {
+            "name": "2026.33.69",
+            "type": "point",
+            "version": "2026.33.69"
+          },
+          {
+            "name": "2026.33.70",
+            "type": "point",
+            "version": "2026.33.70"
+          },
+          {
+            "name": "2026.33.71",
+            "type": "point",
+            "version": "2026.33.71"
+          },
+          {
+            "name": "2026.33.72",
+            "type": "point",
+            "version": "2026.33.72"
+          },
+          {
+            "name": "2026.33.73",
+            "type": "point",
+            "version": "2026.33.73"
+          },
+          {
+            "name": "2026.33.74",
+            "type": "point",
+            "version": "2026.33.74"
+          },
+          {
+            "name": "2026.33.75",
+            "type": "point",
+            "version": "2026.33.75"
+          },
+          {
+            "name": "2026.33.76",
+            "type": "point",
+            "version": "2026.33.76"
+          },
+          {
+            "name": "2026.33.77",
+            "type": "point",
+            "version": "2026.33.77"
+          },
+          {
+            "name": "2026.33.78",
+            "type": "point",
+            "version": "2026.33.78"
+          },
+          {
+            "name": "2026.33.79",
+            "type": "point",
+            "version": "2026.33.79"
+          },
+          {
+            "name": "2026.33.80",
+            "type": "point",
+            "version": "2026.33.80"
+          },
+          {
+            "name": "2026.33.81",
+            "type": "point",
+            "version": "2026.33.81"
+          },
+          {
+            "name": "2026.33.82",
+            "type": "point",
+            "version": "2026.33.82"
+          },
+          {
+            "name": "2026.33.83",
+            "type": "point",
+            "version": "2026.33.83"
+          },
+          {
+            "name": "2026.33.84",
+            "type": "point",
+            "version": "2026.33.84"
+          },
+          {
+            "name": "2026.33.85",
+            "type": "point",
+            "version": "2026.33.85"
+          },
+          {
+            "name": "2026.33.86",
+            "type": "point",
+            "version": "2026.33.86"
+          },
+          {
+            "name": "2026.33.87",
+            "type": "point",
+            "version": "2026.33.87"
+          },
+          {
+            "name": "2026.33.88",
+            "type": "point",
+            "version": "2026.33.88"
+          },
+          {
+            "name": "2026.33.89",
+            "type": "point",
+            "version": "2026.33.89"
+          },
+          {
+            "name": "2026.33.90",
+            "type": "point",
+            "version": "2026.33.90"
+          },
+          {
+            "name": "2026.33.91",
+            "type": "point",
+            "version": "2026.33.91"
+          },
+          {
+            "name": "2026.33.92",
+            "type": "point",
+            "version": "2026.33.92"
+          },
+          {
+            "name": "2026.33.93",
+            "type": "point",
+            "version": "2026.33.93"
+          },
+          {
+            "name": "2026.33.94",
+            "type": "point",
+            "version": "2026.33.94"
+          },
+          {
+            "name": "2026.33.95",
+            "type": "point",
+            "version": "2026.33.95"
+          },
+          {
+            "name": "2026.33.96",
+            "type": "point",
+            "version": "2026.33.96"
+          },
+          {
+            "name": "2026.33.97",
+            "type": "point",
+            "version": "2026.33.97"
+          },
+          {
+            "name": "2026.33.98",
+            "type": "point",
+            "version": "2026.33.98"
+          },
+          {
+            "name": "2026.33.99",
+            "type": "point",
+            "version": "2026.33.99"
+          },
+          {
+            "name": "2026.33.100",
+            "type": "point",
+            "version": "2026.33.100"
+          },
+          {
+            "name": "2026.33.200",
+            "type": "point",
+            "version": "2026.33.200"
+          },
+          {
+            "name": "2026.33.200.1",
+            "type": "point",
+            "version": "2026.33.200.1"
+          },
+          {
+            "name": "2026.33.300",
+            "type": "point",
+            "version": "2026.33.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.38",
+        "type": "feature",
+        "version": "2026.38",
+        "children": [
+          {
+            "name": "2026.38",
+            "type": "point",
+            "version": "2026.38"
+          },
+          {
+            "name": "2026.38.3",
+            "type": "point",
+            "version": "2026.38.3"
+          },
+          {
+            "name": "2026.38.3.1",
+            "type": "point",
+            "version": "2026.38.3.1"
+          },
+          {
+            "name": "2026.38.5",
+            "type": "point",
+            "version": "2026.38.5"
+          },
+          {
+            "name": "2026.38.5.1",
+            "type": "point",
+            "version": "2026.38.5.1"
+          }
+        ]
+      }
+    ]
+  },
+  "meta": {
+    "fsd": {
+      "2026.2": "FSD v14.2.2 / v14.2.2.1 Lite",
+      "2026.8": "FSD v14.2.2 / v14.2.2.1 Lite",
+      "2026.14": "FSD v14.2.2 / v14.2.2.1 Lite",
+      "2026.20": "FSD v14.2.2 / v14.2.2.1 Lite",
+      "2026.21": "FSD v14.2.2 / v14.2.2.1 Lite",
+      "2026.26": "FSD v14.2.2 / v14.2.2.1 Lite",
+      "2026.27": "FSD v14.3.10 AI4 / v14.2 Lite HW3",
+      "2026.28": "FSD v14.3.10 AI4 / v14.2 Lite HW3",
+      "2026.32": "FSD v14.3.10 AI4 / v14.2 Lite HW3",
+      "2026.33": "FSD v14.3.10 AI4 / v14.2 Lite HW3",
+      "2026.38": "FSD v14.3.12 AI4 / v14.3 Lite HW3"
+    },
+    "hops": [
+      {
+        "from": "2026.20.10",
+        "to": "2026.28.5",
+        "model": "Model Y",
+        "variant": "RWD",
+        "year": 2024,
+        "hw": "4",
+        "cc": "AU",
+        "n": 2
+      }
+    ],
+    "notes": [
+      "2026.38.5.1: Teslascope ~26 installs, HW4 19 / HW3 7, US ~96%, last wave 14 Oct. @teslascope announced ~1,210 vehicles, FSD v14.3.12 AI4 64% / v14.3 Lite HW3 36%.",
+      "2026.38.5: Teslascope active, last wave 14 Oct.",
+      "2026.38.3.1: Teslascope ~196 installs, HW3 130 / HW4 66, multi-country including US/EU, last wave 14 Oct.",
+      "2026.26.6.3: AU/NZ HW3 example (~136 installs, all from 2026.20.6.9).",
+      "2026.27.10/11: HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ."
+    ]
+  }
+}
