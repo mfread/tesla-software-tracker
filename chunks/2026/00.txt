@@ -1,1 +1,137 @@
-PLACEHOLDER_WILL_BE_REPLACED
+{
+  "snapshot": "2026-10-17",
+  "year": 2026,
+  "live": true,
+  "note": "Live update 2026-10-17 AEDT. X allow-list: @teslascope reported largest 2026.38.5.1 rollout to date (~17,050-17,710 vehicles, FSD v14.3.12 AI4 ~80-82% / v14.3 Lite HW3 ~18-20%). Confirmed on Teslascope (2026.38.5.1 20.6%, last wave 16 Oct, NA; 2026.38.3.1 278 installs / 10.8%, HW mixed, multi-country incl Europe/Asia, last wave 16 Oct; 2026.38.5 4.9%). NATA continuing. 2026.38.3.1 is HW3 + HW4. Hop 2026.20.10 to 2026.28.5 kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. No new trunks or leaves. Trunks and children ordered oldest-first.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-17T05:10:00+11:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla 2026",
+    "type": "root",
+    "version": "2026",
+    "children": [
+      {
+        "name": "2026.2 Holiday / FSD",
+        "type": "feature",
+        "version": "2026.2",
+        "children": [
+          {
+            "name": "2026.2",
+            "type": "point",
+            "version": "2026.2"
+          },
+          {
+            "name": "2026.2.3",
+            "type": "point",
+            "version": "2026.2.3"
+          },
+          {
+            "name": "2026.2.3.1",
+            "type": "point",
+            "version": "2026.2.3.1"
+          },
+          {
+            "name": "2026.2.3.16",
+            "type": "point",
+            "version": "2026.2.3.16"
+          },
+          {
+            "name": "2026.2.6",
+            "type": "point",
+            "version": "2026.2.6"
+          },
+          {
+            "name": "2026.2.6.1",
+            "type": "point",
+            "version": "2026.2.6.1"
+          },
+          {
+            "name": "2026.2.6.5",
+            "type": "point",
+            "version": "2026.2.6.5"
+          },
+          {
+            "name": "2026.2.9",
+            "type": "point",
+            "version": "2026.2.9"
+          },
+          {
+            "name": "2026.2.9.1",
+            "type": "point",
+            "version": "2026.2.9.1"
+          },
+          {
+            "name": "2026.2.9.2",
+            "type": "point",
+            "version": "2026.2.9.2"
+          },
+          {
+            "name": "2026.2.9.3",
+            "type": "point",
+            "version": "2026.2.9.3"
+          },
+          {
+            "name": "2026.2.9.5",
+            "type": "point",
+            "version": "2026.2.9.5"
+          },
+          {
+            "name": "2026.2.9.6",
+            "type": "point",
+            "version": "2026.2.9.6"
+          },
+          {
+            "name": "2026.2.9.7",
+            "type": "point",
+            "version": "2026.2.9.7"
+          },
+          {
+            "name": "2026.2.9.8",
+            "type": "point",
+            "version": "2026.2.9.8"
+          },
+          {
+            "name": "2026.2.9.9",
+            "type": "point",
+            "version": "2026.2.9.9"
+          },
+          {
+            "name": "2026.2.9.10",
+            "type": "point",
+            "version": "2026.2.9.10"
+          },
+          {
+            "name": "2026.2.11",
+            "type": "point",
+            "version": "2026.2.11"
+          },
+          {
+            "name": "2026.2.100",
+            "type": "point",
+            "version": "2026.2.100"
+          },
+          {
+            "name": "2026.2.200",
+            "type": "point",
+            "version": "2026.2.200"
+          },
+          {
+            "name": "2026.2.200.1",
+            "type": "point",
+            "version": "2026.2.200.1"
+          },
+          {
+            "name": "2026.2.300",
+            "type": "point",
+            "version": "2026.2.300"
+          },
+          {
+            "
