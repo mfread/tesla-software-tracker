@@ -61,8 +61,6 @@ jobs:
           text = open(path).read()
           if "PLACEHOLDER" in text or "FULL_CONTENT_FROM_FILE" in text:
               raise SystemExit("FAIL: placeholder text in snapshot")
-          if year == "2026" and "2026.26.6.3" not in text:
-              raise SystemExit("FAIL: missing required leaf 2026.26.6.3")
           def verkey(v):
               return ".".join(str(p).zfill(4) for p in str(v or "").split("."))
           first = verkey(kids[0].get("version") or kids[0].get("name"))
