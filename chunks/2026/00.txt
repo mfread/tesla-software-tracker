@@ -2,9 +2,9 @@
   "snapshot": "2026-10-17",
   "year": 2026,
   "live": true,
-  "note": "Live update 2026-10-17 AEDT. X allow-list: @teslascope reported largest 2026.38.5.1 rollout to date (~17,050-17,710 vehicles, FSD v14.3.12 AI4 ~80-82% / v14.3 Lite HW3 ~18-20%). Confirmed on Teslascope (2026.38.5.1 20.6%, last wave 16 Oct, NA; 2026.38.3.1 278 installs / 10.8%, HW mixed, multi-country incl Europe/Asia, last wave 16 Oct; 2026.38.5 4.9%). NATA continuing. 2026.38.3.1 is HW3 + HW4. Hop 2026.20.10 to 2026.28.5 kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. No new trunks or leaves. Trunks and children ordered oldest-first.",
+  "note": "Hourly retry 2026-10-17 06:07 AEDT. Live year (n). X allow-list: @teslascope reported largest 2026.38.5.1 rollout to date (~17,050-17,710 vehicles, FSD v14.3.12 AI4 ~80-82% / v14.3 Lite HW3 ~18-20%). Confirmed on Teslascope (2026.38.5.1 20.6%, last wave 16 Oct, NA; 2026.38.3.1 278 installs / 10.8%, HW mixed, multi-country incl Europe/Asia, last wave 16 Oct; 2026.38.5 4.9%). NATA continuing. 2026.38.3.1 is HW3 + HW4. Hop 2026.20.10 to 2026.28.5 kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. No new trunks or leaves. Trunks and children ordered oldest-first.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-17T05:10:00+11:00",
+  "generatedAt": "2026-10-17T06:07:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -132,6 +132,58 @@
             "name": "2026.2.300",
             "type": "point",
             "version": "2026.2.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.3",
+        "type": "feature",
+        "version": "2026.3",
+        "children": [
+          {
+            "name": "2026.3.6",
+            "type": "point",
+            "version": "2026.3.6"
           },
           {
-            "
+            "name": "2026.3.7",
+            "type": "point",
+            "version": "2026.3.7"
+          }
+        ]
+      },
+      {
+        "name": "2026.4",
+        "type": "feature",
+        "version": "2026.4",
+        "children": [
+          {
+            "name": "2026.4.5",
+            "type": "point",
+            "version": "2026.4.5"
+          }
+        ]
+      },
+      {
+        "name": "2026.8",
+        "type": "feature",
+        "version": "2026.8",
+        "children": [
+          {
+            "name": "2026.8",
+            "type": "point",
+            "version": "2026.8"
+          },
+          {
+            "name": "2026.8.3",
+            "type": "point",
+            "version": "2026.8.3"
+          },
+          {
+            "name": "2026.8.3.6",
+            "type": "point",
+            "version": "2026.8.3.6"
+          },
+          {
+            "name": "2026.8.3.10",
+       
