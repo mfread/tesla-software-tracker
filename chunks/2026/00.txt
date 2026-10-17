@@ -2,9 +2,9 @@
   "snapshot": "2026-10-17",
   "year": 2026,
   "live": true,
-  "note": "Hourly retry 2026-10-17 11:08 AEDT. Live year. 2026.38.5.1 rolling out (~13.6% on Tessie), 2026.38.3.1 wide (~36%). Existing good tree from 2026-10-16 updated for today's date. Trunks and children ordered oldest-first.",
+  "note": "Hourly retry 2026-10-17 AEDT. Live year (n). Large 2026.38.5.1 rollout (~17k vehicles reported). Existing tree from 2026-10-16 snapshot retained, date updated. Trunks and children ordered oldest-first.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-17T11:08:00+11:00",
+  "generatedAt": "2026-10-17T12:08:05+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -201,4 +201,6 @@
           },
           {
             "name": "2026.8.100",
-            "type": "poin
+            "type": "point",
+            "version": "2026.8.100"
+          },
