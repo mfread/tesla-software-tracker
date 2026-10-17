@@ -1,10 +1,4 @@
-le"
-    },
-    {
-      "from": "2026.27.300",
-      "to": "2026.33.100",
-      "hw": "4",
-      "n": 30,
+: 30,
       "note": "Teslascope previous-version table"
     },
     {

@@ -1,6 +1,4 @@
-ions": "unknown",
-      "hw": "unknown",
-      "note": "Seen on Tessie first 9 Oct, <0.1% distribution. Needs further Teslascope confirmation. Placeholder details.",
+ion. Needs further Teslascope confirmation. Placeholder details.",
       "needsMeta": true
     }
   },
@@ -355,4 +353,10 @@ ions": "unknown",
       "from": "2026.38",
       "to": "2026.38.3",
       "n": 4,
-      "note": "Teslascope previous-version tab
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.27.300",
+      "to": "2026.33.100",
+      "hw": "4",
+      "n"
