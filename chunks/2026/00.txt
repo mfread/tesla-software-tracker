@@ -1,1 +1,35 @@
-PLACEHOLDER_WILL_BE_REAL
+{
+  "snapshot": "2026-10-18",
+  "year": 2026,
+  "live": true,
+  "note": "Daily snapshot 2026-10-18 05:10 AEDT. Live year. 2026.38.5.1 large rolling (Teslascope ~24.4%, Tessie ~17%). 2026.38.3.1 wide (~11-36%). 2026.32.200 small. Trunks ordered oldest-first. Merged prior tree + current tracker.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-18T05:10:00+11:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla 2026",
+    "type": "root",
+    "version": "2026",
+    "children": [
+      {
+        "name": "2026.2 Holiday / FSD",
+        "type": "feature",
+        "version": "2026.2",
+        "children": [
+          {
+            "name": "2026.2",
+            "type": "point",
+            "version": "2026.2"
+          }
+        ]
+      }
+    ]
+  }
+}
