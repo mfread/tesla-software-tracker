@@ -2,9 +2,9 @@
   "snapshot": "2026-10-18",
   "year": 2026,
   "live": true,
-  "note": "Hourly retry 2026-10-18 06:08 AEDT. Live year. 2026.38.5.1 large rollout continuing (Tessie ~16%, Teslascope active). 2026.38.3.1 wide rollout (~38%). 2026.32.200 latest small. 2026.26.6.3 remains AU/NZ HW3 example. Trunks and children ordered oldest-first. Merged from prior valid 2026-10-17 tree.",
+  "note": "Hourly retry 2026-10-18 06:12 AEDT. Live year. Snapshot date updated to today. 2026.38.5.1 large rollout continuing. Trunks and children ordered oldest-first. Merged from prior valid 2026-10-17 tree.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-18T06:08:00+11:00",
+  "generatedAt": "2026-10-18T06:12:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
