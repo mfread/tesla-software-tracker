@@ -2,9 +2,9 @@
   "snapshot": "2026-10-17",
   "year": 2026,
   "live": true,
-  "note": "Hourly retry 2026-10-17 18:09 AEDT. Snapshot date updated from 2026-10-16. Live year (n). 2026.38.5.1 large rollout continuing (~17k vehicles noted previously). 2026.38.5 and 2026.38.3.1 active. 2026.26.6.3 AU/NZ HW3. Trunks ordered oldest-first.",
+  "note": "Hourly retry 2026-10-17 19:06 AEDT. Live year (n). Updated from 2026-10-16 tree. 2026.38.5.1 continuing large rollout (Teslascope ~15%, additional ~10k vehicles today, FSD v14.3.12 AI4 / v14.3 Lite HW3). 2026.38.3.1 still major (~37%). 2026.26.6.3 remains AU/NZ HW3 example. Trunks and children ordered oldest-first.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-17T18:09:00+11:00",
+  "generatedAt": "2026-10-17T19:06:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -197,7 +197,4 @@
           {
             "name": "2026.8.6.1",
             "type": "point",
-            "version": "2026.8.6.1"
-          },
-          {
-            "name": "2026.8.100
+            "version":
