@@ -2,7 +2,7 @@
   "snapshot": "2026-10-17",
   "year": 2026,
   "live": true,
-  "note": "Hourly retry 2026-10-17 22:10 AEDT. Live year (n). X allow-list on 2026-10-15 AEDT: @teslascope announced 2026.38.5.1 rollout (~1,210 vehicles, FSD v14.3.12 AI4 64% / v14.3 Lite HW3 36%). Confirmed on Teslascope (26 installs, HW4 19 / HW3 7, US ~96%, last wave 14 Oct), NATA, Tessie/TeslaFi. 2026.38.5 continuing (Teslascope active, last wave 14 Oct). 2026.38.3.1 rolling wide (Teslascope ~196 installs, HW3 130 / HW4 66, multi-country including US/EU, last wave 14 Oct). 2026.26.6.3 remains AU/NZ HW3 example (~136 installs, all from 2026.20.6.9). nextMap hop 2026.20.10 → 2026.28.5 kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. Added 2026.38.5.1 under 2026.38 trunk. Trunks and children ordered oldest-first.",
+  "note": "Hourly retry 2026-10-17 22:10 AEDT. Live year (n). X allow-list on 2026-10-15 AEDT: @teslascope announced 2026.38.5.1 rollout (~1,210 vehicles, FSD v14.3.12 AI4 64% / v14.3 Lite HW3 36%). Confirmed on Teslascope (26 installs, HW4 19 / HW3 7, US ~96%, last wave 14 Oct), NATA, Tessie/TeslaFi. 2026.38.5 continuing (Teslascope active, last wave 14 Oct). 2026.38.3.1 rolling wide (Teslascope ~196 installs, HW3 130 / HW4 66, multi-country including US/EU, last wave 14 Oct). 2026.26.6.3 remains AU/NZ HW3 example (~136 installs, all from 2026.20.6.9). nextMap hop 2026.20.10 \u2192 2026.28.5 kept (n=2, HW4, AU). 2026.27.10/11 stay HW4 v14.3.10 and HW3 v14.2 Lite, US/CA, not AU/NZ. Added 2026.38.5.1 under 2026.38 trunk. Trunks and children ordered oldest-first.",
   "source": "grok-automation",
   "generatedAt": "2026-10-17T22:10:00+11:00",
   "sourcesUsed": [
@@ -180,3 +180,4 @@
             "version": "2026.8.3"
           },
           {
+           
