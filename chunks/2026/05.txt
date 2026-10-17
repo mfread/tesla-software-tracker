@@ -1,0 +1,347 @@
+4.3 Lite",
+      "regions": "US, North America",
+      "hw": "HW4 + HW3 (mostly HW4)",
+      "note": "New FSD point. Status early rollout <1%, last wave 12 Oct. Teslascope 14 installs, previous mainly 2026.33.5 (50%) and 2026.27.11 (43%), US 100%. Features include Halloween Mode, FSD v14.3.12 for AI4 and v14.3 Lite for HW3. Not AU/NZ."
+    },
+    "2026.26.200.1": {
+      "first": "2026-10-09",
+      "fleet": "Tessie <0.1%",
+      "fsd": "unknown",
+      "regions": "unknown",
+      "hw": "unknown",
+      "note": "Seen on Tessie first 9 Oct, <0.1% distribution. Needs further Teslascope confirmation. Placeholder details.",
+      "needsMeta": true
+    }
+  },
+  "seenIn": {
+    "2026.14": [
+      "US",
+      "CA",
+      "GB",
+      "DE"
+    ],
+    "2026.14.3": [
+      "US",
+      "CA",
+      "GB",
+      "AU"
+    ],
+    "2026.14.6": [
+      "US",
+      "CA",
+      "GB",
+      "AU"
+    ],
+    "2026.20": [
+      "AU",
+      "CA",
+      "DE",
+      "GB",
+      "NZ",
+      "US"
+    ],
+    "2026.20.3": [
+      "AU",
+      "CA",
+      "GB",
+      "NZ",
+      "US"
+    ],
+    "2026.20.6": [
+      "AU",
+      "CA",
+      "NZ",
+      "US"
+    ],
+    "2026.20.6.1": [
+      "AU",
+      "CA",
+      "DE",
+      "GB",
+      "NZ",
+      "US"
+    ],
+    "2026.20.6.9": [
+      "AU",
+      "NZ"
+    ],
+    "2026.20.10": [
+      "AU",
+      "CA",
+      "NZ",
+      "US"
+    ],
+    "2026.21.6": [
+      "US",
+      "CA"
+    ],
+    "2026.26": [
+      "US",
+      "CA",
+      "GB",
+      "DE"
+    ],
+    "2026.26.1": [
+      "US",
+      "CA",
+      "GB",
+      "DE"
+    ],
+    "2026.26.6": [
+      "US",
+      "CA",
+      "GB",
+      "DE"
+    ],
+    "2026.26.6.1": [
+      "AE",
+      "AU",
+      "CA",
+      "CO",
+      "DE",
+      "GB",
+      "IL",
+      "JP",
+      "KR",
+      "MY",
+      "NZ",
+      "QA",
+      "TW",
+      "US"
+    ],
+    "2026.26.6.2": [
+      "DE",
+      "GB",
+      "US",
+      "TW",
+      "PH",
+      "TH",
+      "SG",
+      "AE",
+      "JP"
+    ],
+    "2026.26.6.3": [
+      "AU",
+      "NZ"
+    ],
+    "2026.26.6.5": [
+      "CA",
+      "UA",
+      "US"
+    ],
+    "2026.26.300": [
+      "NL",
+      "BE"
+    ],
+    "2026.26.200.11": [
+      "CN"
+    ],
+    "2026.27.6": [
+      "US",
+      "CA",
+      "MX"
+    ],
+    "2026.27.6.5": [
+      "KR"
+    ],
+    "2026.27.10": [
+      "CA",
+      "US"
+    ],
+    "2026.27.11": [
+      "CA",
+      "US"
+    ],
+    "2026.27.200": [
+      "NL",
+      "BE",
+      "DK",
+      "LT",
+      "SI"
+    ],
+    "2026.27.300": [
+      "BE",
+      "DK",
+      "LT",
+      "NL",
+      "SI",
+      "SK"
+    ],
+    "2026.28.5": [
+      "AU"
+    ],
+    "2026.32.3": [
+      "AE",
+      "AT",
+      "AU",
+      "BE",
+      "BG",
+      "CA",
+      "CH",
+      "CO",
+      "CZ",
+      "DE",
+      "DK",
+      "ES",
+      "FR",
+      "GB",
+      "GR",
+      "HK",
+      "HU",
+      "IE",
+      "IL",
+      "IT",
+      "JP",
+      "LT",
+      "MX",
+      "MY",
+      "NL",
+      "NO",
+      "NZ",
+      "PH",
+      "PL",
+      "PT",
+      "QA",
+      "RO",
+      "SE",
+      "SG",
+      "SI",
+      "SK",
+      "TH",
+      "TR",
+      "TW",
+      "UA",
+      "US"
+    ],
+    "2026.32.7": [
+      "AE",
+      "AT",
+      "BE",
+      "BG",
+      "CA",
+      "CH",
+      "CO",
+      "CZ",
+      "DE",
+      "DK",
+      "ES",
+      "FR",
+      "GB",
+      "HK",
+      "HU",
+      "IE",
+      "IL",
+      "IT",
+      "MA",
+      "MY",
+      "NL",
+      "NO",
+      "PL",
+      "PT",
+      "QA",
+      "RO",
+      "SE",
+      "SG",
+      "SK",
+      "TR",
+      "TW",
+      "UA",
+      "US"
+    ],
+    "2026.38": [
+      "AT",
+      "AU",
+      "CA",
+      "CH",
+      "CZ",
+      "DE",
+      "DK",
+      "ES",
+      "FR",
+      "GB",
+      "IL",
+      "IT",
+      "MA",
+      "NL",
+      "NO",
+      "PL",
+      "TR",
+      "TW",
+      "UA",
+      "US"
+    ],
+    "2026.33.100": [
+      "BE",
+      "CZ",
+      "DK",
+      "EE",
+      "LT",
+      "NL",
+      "SI",
+      "SK"
+    ],
+    "2026.27.6.15": [
+      "KR"
+    ],
+    "2026.33.5": [
+      "CA",
+      "US"
+    ],
+    "2026.38.3": [
+      "CH",
+      "DE",
+      "ES",
+      "GB",
+      "NO",
+      "TW",
+      "US"
+    ],
+    "2026.32.100": [],
+    "2026.38.3.1": [
+      "AT",
+      "CH",
+      "DE",
+      "FR",
+      "GB",
+      "IE",
+      "IT",
+      "PL",
+      "TR"
+    ]
+  },
+  "nextMap": [
+    {
+      "from": "2026.32.3",
+      "to": "2026.38",
+      "n": 12,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.32.7",
+      "to": "2026.38",
+      "n": 55,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.27.11",
+      "to": "2026.33.5",
+      "hw": "4+3",
+      "cc": "US",
+      "n": 50,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.26.6.1",
+      "to": "2026.33.5",
+      "hw": "3",
+      "cc": "US",
+      "n": 13,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.26.6.5",
+      "to": "2026.33.5",
+      "hw": "3",
+      "cc": "US",
+      "n": 7,
+    
