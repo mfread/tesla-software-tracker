@@ -1,0 +1,17 @@
+{
+  "snapshot": "2026-10-17",
+  "year": 2026,
+  "live": true,
+  "note": "Hourly retry 2026-10-17 17:08 AEDT. Live year (n). Updated date. 2026.38.5.1 large rollout continuing (~17k vehicles reported in prior). Trunks and children ordered oldest-first.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-17T17:08:00+11:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla
