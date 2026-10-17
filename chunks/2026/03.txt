@@ -1,21 +1,4 @@
-    "name": "2026.32 Feature / EU recall",
-        "type": "feature",
-        "version": "2026.32",
-        "children": [
-          {
-            "name": "2026.32.3",
-            "type": "point",
-            "version": "2026.32.3"
-          },
-          {
-            "name": "2026.32.7",
-            "type": "point",
-            "version": "2026.32.7"
-          },
-          {
-            "name": "2026.32.100",
-            "type": "point",
-            "version": "2026.32.100"
+": "2026.32.100"
           }
         ]
       },
@@ -136,4 +119,10 @@
       "fsd": "HW4 FSD v14.3.10 and HW3 v14.2 Lite",
       "regions": "US/CA, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "North America
+      "note": "North America only, last wave 9 Oct. Main FSD wave, winding down on Tessie. Updated-to lists 22 cars to 2026.33.5; destination previous table lists 50 from this build (HW4 and HW3, US). Not AU/NZ. Do not blank this meta."
+    },
+    "2026.33.5": {
+      "first": "2026-10-06",
+      "fleet": "Teslascope 2.7% active, 71 installs; TeslaFi 1.7% (143 today); Tessie 1.2% (rolling)",
+      "fsd": "HW4 FSD v14.3.11 and HW3 FSD v14.3 Lite",
+      "regions": "US, N. America, not A

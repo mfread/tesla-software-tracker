@@ -1,23 +1,4 @@
-},
-          {
-            "name": "2026.20.6.10",
-            "type": "point",
-            "version": "2026.20.6.10"
-          },
-          {
-            "name": "2026.20.6.11",
-            "type": "point",
-            "version": "2026.20.6.11"
-          },
-          {
-            "name": "2026.20.7.5",
-            "type": "point",
-            "version": "2026.20.7.5"
-          },
-          {
-            "name": "2026.20.10",
-            "type": "point",
-            "version": "2026.20.10"
+          "version": "2026.20.10"
           },
           {
             "name": "2026.20.100",
@@ -205,4 +186,21 @@
         ]
       },
       {
-    
+        "name": "2026.32 Feature / EU recall",
+        "type": "feature",
+        "version": "2026.32",
+        "children": [
+          {
+            "name": "2026.32.3",
+            "type": "point",
+            "version": "2026.32.3"
+          },
+          {
+            "name": "2026.32.7",
+            "type": "point",
+            "version": "2026.32.7"
+          },
+          {
+            "name": "2026.32.100",
+            "type": "point",
+            "version

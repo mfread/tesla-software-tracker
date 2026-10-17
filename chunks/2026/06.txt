@@ -1,24 +1,4 @@
-  "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.32.7",
-      "to": "2026.33.5",
-      "n": 1,
-      "cc": "US",
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.32.7",
-      "to": "2026.38.3",
-      "hw": "4",
-      "n": 3,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.38",
-      "to": "2026.38.3",
-      "n": 4,
-      "note": "Teslascope previous-version table"
+le"
     },
     {
       "from": "2026.27.300",

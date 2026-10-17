@@ -1,10 +1,4 @@
- only, last wave 9 Oct. Main FSD wave, winding down on Tessie. Updated-to lists 22 cars to 2026.33.5; destination previous table lists 50 from this build (HW4 and HW3, US). Not AU/NZ. Do not blank this meta."
-    },
-    "2026.33.5": {
-      "first": "2026-10-06",
-      "fleet": "Teslascope 2.7% active, 71 installs; TeslaFi 1.7% (143 today); Tessie 1.2% (rolling)",
-      "fsd": "HW4 FSD v14.3.11 and HW3 FSD v14.3 Lite",
-      "regions": "US, N. America, not AU/NZ",
+U/NZ",
       "hw": "HW4 + HW3",
       "note": "Confirmed on X via @teslascope (9 Oct wave ~2,750; V14.3.11 on 64% AI4, V14.3 Lite on 36% HW3) and @NotATeslaApp, then Teslascope and NATA. Status rolling, last wave 9 Oct. Teslascope 71 installs, HW4 50 / HW3 21, US 97% (CA in pending). Previous: 2026.27.11 (50), 2026.26.6.1 (13), 2026.26.6.5 (7), 2026.32.7 (1). Not AU/NZ."
     },
@@ -99,4 +93,13 @@
     "2026.38.5": {
       "first": "2026-10-10",
       "fleet": "Teslascope 14 installs; Tessie 0.2%",
-      "fsd": "HW4 FSD v14.3.12 and HW3 FSD v1
+      "fsd": "HW4 FSD v14.3.12 and HW3 FSD v14.3 Lite",
+      "regions": "US, North America",
+      "hw": "HW4 + HW3 (mostly HW4)",
+      "note": "New FSD point. Status early rollout <1%, last wave 12 Oct. Teslascope 14 installs, previous mainly 2026.33.5 (50%) and 2026.27.11 (43%), US 100%. Features include Halloween Mode, FSD v14.3.12 for AI4 and v14.3 Lite for HW3. Not AU/NZ."
+    },
+    "2026.26.200.1": {
+      "first": "2026-10-09",
+      "fleet": "Tessie <0.1%",
+      "fsd": "unknown",
+      "reg
