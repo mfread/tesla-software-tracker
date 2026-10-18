@@ -1,4 +1,6 @@
-: 30,
+
+      "hw": "4",
+      "n": 30,
       "note": "Teslascope previous-version table"
     },
     {
