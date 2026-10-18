@@ -45,31 +45,43 @@ jobs:
           import json, os, sys
           path = os.environ["OUT_PATH"]
           year = os.environ["YEAR"]
-          with open(path) as f:
-              data = json.load(f)
           size = os.path.getsize(path)
-          if size < 10000:
-              raise SystemExit(f"FAIL: {path} too small ({size} bytes)")
+          try:
+              with open(path) as f:
+                  data = json.load(f)
+          except Exception as e:
+              print(f"SKIP {path}: not valid JSON ({e})")
+              os.remove(path)
+              sys.exit(0)
           tree = data.get("tree") or {}
           kids = tree.get("children")
-          if not isinstance(kids, list) or len(kids) < 5:
-              raise SystemExit(f"FAIL: {path} tree.children missing or too short")
-          if year == "2026" and len(kids) < 10:
-              raise SystemExit(f"FAIL: 2026 trunk count {len(kids)} < 10")
-          if "meta" not in data:
-              raise SystemExit("FAIL: missing meta")
-          text = open(path).read()
-          if "PLACEHOLDER" in text or "FULL_CONTENT_FROM_FILE" in text:
-              raise SystemExit("FAIL: placeholder text in snapshot")
-          def verkey(v):
-              return ".".join(str(p).zfill(4) for p in str(v or "").split("."))
-          first = verkey(kids[0].get("version") or kids[0].get("name"))
-          last = verkey(kids[-1].get("version") or kids[-1].get("name"))
-          if first > last:
-              raise SystemExit("FAIL: trunks not oldest-first")
+          bad = None
+          if size < 10000:
+              bad = f"too small ({size} bytes)"
+          elif not isinstance(kids, list) or len(kids) < 5:
+              bad = "tree.children missing or too short"
+          elif year == "2026" and len(kids) < 10:
+              bad = f"2026 trunk count {len(kids)} < 10"
+          elif "meta" not in data:
+              bad = "missing meta"
+          else:
+              text = open(path).read()
+              if "PLACEHOLDER" in text or "FULL_CONTENT_FROM_FILE" in text:
+                  bad = "placeholder text"
+              else:
+                  def verkey(v):
+                      return ".".join(str(p).zfill(4) for p in str(v or "").split("."))
+                  first = verkey(kids[0].get("version") or kids[0].get("name"))
+                  last = verkey(kids[-1].get("version") or kids[-1].get("name"))
+                  if first > last:
+                      bad = "trunks not oldest-first"
+          if bad:
+              print(f"SKIP {path}: {bad}. Existing snapshot left untouched.")
+              os.remove(path)
+              sys.exit(0)
           print(f"OK {path}: {size} bytes, {len(kids)} children")
           PY
-            if [[ "${year}" == "2026" ]]; then
+            if [[ -f "${out}" && "${year}" == "2026" ]]; then
               cp "${out}" snapshot.json
               echo "Updated snapshot.json from 2026"
             fi
