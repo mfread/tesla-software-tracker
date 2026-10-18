@@ -1,4 +1,4 @@
-14.3.11 on 64% AI4, V14.3 Lite on 36% HW3) and @NotATeslaApp, then Teslascope and NATA. Status rolling, last wave 9 Oct. Teslascope 71 installs, HW4 50 / HW3 21, US 97% (CA in pending). Previous: 2026.27.11 (50), 2026.26.6.1 (13), 2026.26.6.5 (7), 2026.32.7 (1). Not AU/NZ."
+scope (9 Oct wave ~2,750; V14.3.11 on 64% AI4, V14.3 Lite on 36% HW3) and @NotATeslaApp, then Teslascope and NATA. Status rolling, last wave 9 Oct. Teslascope 71 installs, HW4 50 / HW3 21, US 97% (CA in pending). Previous: 2026.27.11 (50), 2026.26.6.1 (13), 2026.26.6.5 (7), 2026.32.7 (1). Not AU/NZ."
     },
     "2026.38.3": {
       "first": "2026-10-06",
@@ -102,4 +102,4 @@
       "fsd": "unknown",
       "regions": "unknown",
       "hw": "unknown",
-      "note": "Seen on Tessie first 9 Oct, <0.1% distribut
+      "note": "Seen on Tessie f
