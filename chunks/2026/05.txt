@@ -1,4 +1,4 @@
-ion. Needs further Teslascope confirmation. Placeholder details.",
+irst 9 Oct, <0.1% distribution. Needs further Teslascope confirmation. Placeholder details.",
       "needsMeta": true
     }
   },
@@ -358,5 +358,3 @@ ion. Needs further Teslascope confirmation. Placeholder details.",
     {
       "from": "2026.27.300",
       "to": "2026.33.100",
-      "hw": "4",
-      "n"
