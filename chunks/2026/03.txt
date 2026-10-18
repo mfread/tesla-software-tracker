@@ -1,4 +1,5 @@
-"feature",
+"2026.33",
+        "type": "feature",
         "version": "2026.33",
         "children": [
           {
@@ -121,4 +122,4 @@
       "fsd": "HW4 FSD v14.3.11 and HW3 FSD v14.3 Lite",
       "regions": "US, N. America, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "Confirmed on X via @teslascope (9 Oct wave ~2,750; V
+      "note": "Confirmed on X via @tesla
