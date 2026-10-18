@@ -92,7 +92,8 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f snapshot-2026.json snapshot-2025.json snapshot.json || true
+          git add -f snapshot-2026.json snapshot.json 2>/dev/null || true
+          git add -f snapshot-2025.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No snapshot changes"
             exit 0
