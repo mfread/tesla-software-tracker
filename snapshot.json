@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-19",
+  "snapshot": "2026-10-20",
   "year": 2026,
   "live": true,
-  "note": "Hourly retry 2026-10-19 07:09 AEDT. Live year. Snapshot date updated to today. 2026.38.5.1 large rollout continuing (~30% distribution). Trunks and children ordered oldest-first. Merged from prior valid 2026-10-18 tree.",
+  "note": "Hourly retry 2026-10-20 09:06 AEDT. Live year. Snapshot date updated to today. 2026.38.5.1 large rollout continuing (~30% distribution). Trunks and children ordered oldest-first. Merged from prior valid 2026-10-19 tree.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-19T07:10:05.118911+11:00",
+  "generatedAt": "2026-10-20T09:06:00.000000+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
