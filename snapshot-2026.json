@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-20",
+  "snapshot": "2026-10-21",
   "year": 2026,
   "live": true,
-  "note": "Hourly retry 2026-10-20 09:06 AEDT. Live year. Snapshot date updated to today. 2026.38.5.1 large rollout continuing (~30% distribution). Trunks and children ordered oldest-first. Merged from prior valid 2026-10-19 tree.",
+  "note": "Daily snapshot 2026-10-21 05:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. Added 2026.32.200, 2026.38.5.1, 2026.38.5.10. Snapshot date updated to today.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-20T09:06:00.000000+11:00",
+  "generatedAt": "2026-10-21T05:09:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -613,6 +613,11 @@
             "name": "2026.32.100",
             "type": "point",
             "version": "2026.32.100"
+          },
+          {
+            "name": "2026.32.200",
+            "type": "point",
+            "version": "2026.32.200"
           }
         ]
       },
@@ -657,6 +662,16 @@
             "name": "2026.38.5",
             "type": "point",
             "version": "2026.38.5"
+          },
+          {
+            "name": "2026.38.5.1",
+            "type": "point",
+            "version": "2026.38.5.1"
+          },
+          {
+            "name": "2026.38.5.10",
+            "type": "point",
+            "version": "2026.38.5.10"
           }
         ]
       }
@@ -847,6 +862,30 @@
       "hw": "unknown",
       "note": "Seen on Tessie first 9 Oct, <0.1% distribution. Needs further Teslascope confirmation. Placeholder details.",
       "needsMeta": true
+    },
+    "2026.32.200": {
+      "first": "2026-10-14",
+      "fleet": "Tessie <0.1%",
+      "fsd": "none",
+      "regions": "unknown",
+      "hw": "unknown",
+      "note": "Seen on Tessie. Early."
+    },
+    "2026.38.5.1": {
+      "first": "2026-10-13",
+      "fleet": "Tessie 26% rolling out",
+      "fsd": "none",
+      "regions": "wide",
+      "hw": "HW3 + HW4",
+      "note": "Large rollout continuing."
+    },
+    "2026.38.5.10": {
+      "first": "2026-10-20",
+      "fleet": "Tessie <0.1% rolling out",
+      "fsd": "none",
+      "regions": "unknown",
+      "hw": "unknown",
+      "note": "Latest point. Released ~Oct 20."
     }
   },
   "seenIn": {
@@ -1360,6 +1399,21 @@
       "created": "2026-10-13",
       "needsMeta": true,
       "metaChecked": "2026-10-13"
+    },
+    "2026.32.200": {
+      "created": "2026-10-21",
+      "needsMeta": false,
+      "metaChecked": "2026-10-21"
+    },
+    "2026.38.5.1": {
+      "created": "2026-10-21",
+      "needsMeta": false,
+      "metaChecked": "2026-10-21"
+    },
+    "2026.38.5.10": {
+      "created": "2026-10-21",
+      "needsMeta": false,
+      "metaChecked": "2026-10-21"
     }
   }
 }
