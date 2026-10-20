@@ -1,5 +1,37 @@
-irst 9 Oct, <0.1% distribution. Needs further Teslascope confirmation. Placeholder details.",
+ and 2026.27.11 (43%), US 100%. Features include Halloween Mode, FSD v14.3.12 for AI4 and v14.3 Lite for HW3. Not AU/NZ."
+    },
+    "2026.26.200.1": {
+      "first": "2026-10-09",
+      "fleet": "Tessie <0.1%",
+      "fsd": "unknown",
+      "regions": "unknown",
+      "hw": "unknown",
+      "note": "Seen on Tessie first 9 Oct, <0.1% distribution. Needs further Teslascope confirmation. Placeholder details.",
       "needsMeta": true
+    },
+    "2026.32.200": {
+      "first": "2026-10-14",
+      "fleet": "Tessie <0.1%",
+      "fsd": "none",
+      "regions": "unknown",
+      "hw": "unknown",
+      "note": "Seen on Tessie. Early."
+    },
+    "2026.38.5.1": {
+      "first": "2026-10-13",
+      "fleet": "Tessie 26% rolling out",
+      "fsd": "none",
+      "regions": "wide",
+      "hw": "HW3 + HW4",
+      "note": "Large rollout continuing."
+    },
+    "2026.38.5.10": {
+      "first": "2026-10-20",
+      "fleet": "Tessie <0.1% rolling out",
+      "fsd": "none",
+      "regions": "unknown",
+      "hw": "unknown",
+      "note": "Latest point. Released ~Oct 20."
     }
   },
   "seenIn": {
@@ -313,48 +345,3 @@ irst 9 Oct, <0.1% distribution. Needs further Teslascope confirmation. Placehold
     },
     {
       "from": "2026.27.11",
-      "to": "2026.33.5",
-      "hw": "4+3",
-      "cc": "US",
-      "n": 50,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.26.6.1",
-      "to": "2026.33.5",
-      "hw": "3",
-      "cc": "US",
-      "n": 13,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.26.6.5",
-      "to": "2026.33.5",
-      "hw": "3",
-      "cc": "US",
-      "n": 7,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.32.7",
-      "to": "2026.33.5",
-      "n": 1,
-      "cc": "US",
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.32.7",
-      "to": "2026.38.3",
-      "hw": "4",
-      "n": 3,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.38",
-      "to": "2026.38.3",
-      "n": 4,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.27.300",
-      "to": "2026.33.100",

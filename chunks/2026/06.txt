@@ -1,4 +1,49 @@
 
+      "to": "2026.33.5",
+      "hw": "4+3",
+      "cc": "US",
+      "n": 50,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.26.6.1",
+      "to": "2026.33.5",
+      "hw": "3",
+      "cc": "US",
+      "n": 13,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.26.6.5",
+      "to": "2026.33.5",
+      "hw": "3",
+      "cc": "US",
+      "n": 7,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.32.7",
+      "to": "2026.33.5",
+      "n": 1,
+      "cc": "US",
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.32.7",
+      "to": "2026.38.3",
+      "hw": "4",
+      "n": 3,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.38",
+      "to": "2026.38.3",
+      "n": 4,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.27.300",
+      "to": "2026.33.100",
       "hw": "4",
       "n": 30,
       "note": "Teslascope previous-version table"
@@ -154,6 +199,21 @@
       "created": "2026-10-13",
       "needsMeta": true,
       "metaChecked": "2026-10-13"
+    },
+    "2026.32.200": {
+      "created": "2026-10-21",
+      "needsMeta": false,
+      "metaChecked": "2026-10-21"
+    },
+    "2026.38.5.1": {
+      "created": "2026-10-21",
+      "needsMeta": false,
+      "metaChecked": "2026-10-21"
+    },
+    "2026.38.5.10": {
+      "created": "2026-10-21",
+      "needsMeta": false,
+      "metaChecked": "2026-10-21"
     }
   }
 }

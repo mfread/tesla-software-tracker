@@ -1,0 +1,186 @@
+ous",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.38.8.5": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.32.8.10": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.32.6": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.32.3": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.26.7.10": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.33.5": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.44.25.5": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.45.7": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.44.3": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.45.6": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.39.6": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.45.5": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.44.100": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.46.5": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.26.7": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.44": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.26": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.26.4": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.47.5": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.44.200": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.26.8": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.45": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.32.3.1": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-"

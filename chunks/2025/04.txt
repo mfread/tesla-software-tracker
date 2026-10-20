@@ -1,228 +1,183 @@
-te": "AU leftover."
+m prior trunk/leaf."
     },
-    "2025.46.5": {
-      "first": "2025-12-22",
-      "fleet": "archive leftover",
-      "fsd": "v13.2.9 Down Under",
-      "regions": "AU",
-      "hw": "HW4",
-      "note": "Teslascope AU 100%. No Lite."
-    },
-    "2025.33.5": {
-      "first": "2025-10-15",
-      "fleet": "archive leftover",
-      "fsd": "-",
-      "regions": "Tessie",
-      "hw": "-",
-      "note": "Added from Tessie version explorer."
-    },
-    "2025.39.6": {
-      "first": "2025-11-27",
-      "fleet": "archive leftover",
-      "fsd": "-",
-      "regions": "Tessie",
-      "hw": "-",
-      "note": "Added from Tessie version explorer."
-    },
-    "2025.32.8.10": {
+    "2025.14.8": {
       "first": "2025",
       "fleet": "archive leftover",
       "fsd": "-",
-      "regions": "Teslascope",
+      "regions": "various",
       "hw": "-",
-      "note": "Added from Teslascope 2025 timeline. Country breakdown not expanded this run."
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
     },
-    "2025.2.6.1": {
+    "2025.14.9": {
       "first": "2025",
       "fleet": "archive leftover",
       "fsd": "-",
-      "regions": "Teslascope",
+      "regions": "various",
       "hw": "-",
-      "note": "Added from Teslascope 2025 timeline. Country breakdown not expanded this run."
-    }
-  },
-  "seenIn": {
-    "2025.2": [
-      "CA",
-      "US"
-    ],
-    "2025.2.8": [
-      "CA",
-      "US"
-    ],
-    "2025.2.8.4": [],
-    "2025.8": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.8.7": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.14": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.14.3": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.14.3.1": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.20": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.20.3": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.20.6": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.26": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.26.4": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.26.7": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.26.7.10": [
-      "AU",
-      "CA",
-      "GB",
-      "US"
-    ],
-    "2025.26.8": [
-      "CA",
-      "US"
-    ],
-    "2025.32": [
-      "CA",
-      "US"
-    ],
-    "2025.32.3": [
-      "CA",
-      "US"
-    ],
-    "2025.32.3.1": [
-      "CA",
-      "US"
-    ],
-    "2025.32.6": [
-      "CA",
-      "US"
-    ],
-    "2025.32.8": [
-      "CA",
-      "US"
-    ],
-    "2025.32.8.5": [
-      "CA",
-      "US"
-    ],
-    "2025.38": [
-      "CA",
-      "US"
-    ],
-    "2025.38.8.5": [
-      "CA",
-      "US"
-    ],
-    "2025.38.9.6": [
-      "CA",
-      "US"
-    ],
-    "2025.44": [
-      "CA",
-      "US"
-    ],
-    "2025.44.3": [
-      "CA",
-      "US"
-    ],
-    "2025.44.25.5": [
-      "CA",
-      "US"
-    ],
-    "2025.44.100": [
-      "CA",
-      "US"
-    ],
-    "2025.44.200": [
-      "CA",
-      "US"
-    ],
-    "2025.45": [
-      "CA",
-      "US"
-    ],
-    "2025.45.5": [
-      "CA",
-      "US"
-    ],
-    "2025.45.6": [
-      "CA",
-      "US"
-    ],
-    "2025.45.7": [
-      "CA",
-      "US"
-    ],
-    "2025.45.8": [
-      "CA",
-      "US"
-    ],
-    "2025.46": [
-      "AU"
-    ],
-    "2025.46.5": [
-      "AU"
-    ],
-    "2025.47": [
-      "CA",
-      "US"
-    ],
-    "2025.47.5": [
-      "CA",
-      "US"
-    ],
-    "2025.47.6": [
-      "CA",
-      "US"
-    ],
-    "2025.32.8.10": [],
-    "2025.2.6.1": []
-  },
-  "nextMap": {}
-}
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.14.12": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.14.100": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.14.100.1": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.14.200": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.14.200.1": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.14.300": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.14.300.1": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.3": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.6": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.6.1": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.7": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.8": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.100": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.100.1": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.200": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.20.300": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Reconstructed archive entry. Kept from prior trunk/leaf."
+    },
+    "2025.47.6": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.32.8": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.38": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.45.8": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "vari

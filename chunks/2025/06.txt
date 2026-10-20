@@ -1,0 +1,310 @@
+,
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.32": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.46": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.32.8.5": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.38.9.6": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    },
+    "2025.47": {
+      "first": "2025",
+      "fleet": "archive leftover",
+      "fsd": "-",
+      "regions": "various",
+      "hw": "-",
+      "note": "Kept from prior chunks. Added during reconstruction."
+    }
+  },
+  "seenIn": {
+    "2025.2": [
+      "US",
+      "CA"
+    ],
+    "2025.2.3": [
+      "US",
+      "CA"
+    ],
+    "2025.2.3.2": [
+      "US",
+      "CA"
+    ],
+    "2025.2.6": [
+      "US",
+      "CA"
+    ],
+    "2025.2.6.1": [
+      "US",
+      "CA"
+    ],
+    "2025.2.6.2": [
+      "US",
+      "CA"
+    ],
+    "2025.2.8": [
+      "US",
+      "CA"
+    ],
+    "2025.2.8.1": [
+      "US",
+      "CA"
+    ],
+    "2025.2.8.3": [
+      "US",
+      "CA"
+    ],
+    "2025.2.8.4": [
+      "US",
+      "CA"
+    ],
+    "2025.2.9": [
+      "US",
+      "CA"
+    ],
+    "2025.2.100": [
+      "US",
+      "CA"
+    ],
+    "2025.2.200": [
+      "US",
+      "CA"
+    ],
+    "2025.2.200.1": [
+      "US",
+      "CA"
+    ],
+    "2025.2.200.2": [
+      "US",
+      "CA"
+    ],
+    "2025.8": [
+      "US",
+      "CA"
+    ],
+    "2025.8.3": [
+      "US",
+      "CA"
+    ],
+    "2025.8.4": [
+      "US",
+      "CA"
+    ],
+    "2025.8.6": [
+      "US",
+      "CA"
+    ],
+    "2025.8.7": [
+      "US",
+      "CA"
+    ],
+    "2025.8.8": [
+      "US",
+      "CA"
+    ],
+    "2025.8.8.1": [
+      "US",
+      "CA"
+    ],
+    "2025.8.100": [
+      "US",
+      "CA"
+    ],
+    "2025.8.200": [
+      "US",
+      "CA"
+    ],
+    "2025.8.300": [
+      "US",
+      "CA"
+    ],
+    "2025.8.300.1": [
+      "US",
+      "CA"
+    ],
+    "2025.14": [
+      "US",
+      "CA"
+    ],
+    "2025.14.1": [
+      "US",
+      "CA"
+    ],
+    "2025.14.3": [
+      "US",
+      "CA"
+    ],
+    "2025.14.3.1": [
+      "US",
+      "CA"
+    ],
+    "2025.14.3.2": [
+      "US",
+      "CA"
+    ],
+    "2025.14.6": [
+      "US",
+      "CA"
+    ],
+    "2025.14.7": [
+      "US",
+      "CA"
+    ],
+    "2025.14.8": [
+      "US",
+      "CA"
+    ],
+    "2025.14.9": [
+      "US",
+      "CA"
+    ],
+    "2025.14.12": [
+      "US",
+      "CA"
+    ],
+    "2025.14.100": [
+      "US",
+      "CA"
+    ],
+    "2025.14.100.1": [
+      "US",
+      "CA"
+    ],
+    "2025.14.200": [
+      "US",
+      "CA"
+    ],
+    "2025.14.200.1": [
+      "US",
+      "CA"
+    ],
+    "2025.14.300": [
+      "US",
+      "CA"
+    ],
+    "2025.14.300.1": [
+      "US",
+      "CA"
+    ],
+    "2025.20": [
+      "US",
+      "CA"
+    ],
+    "2025.20.3": [
+      "US",
+      "CA"
+    ],
+    "2025.20.6": [
+      "US",
+      "CA"
+    ],
+    "2025.20.6.1": [
+      "US",
+      "CA"
+    ],
+    "2025.20.7": [
+      "US",
+      "CA"
+    ],
+    "2025.20.8": [
+      "US",
+      "CA"
+    ],
+    "2025.20.100": [
+      "US",
+      "CA"
+    ],
+    "2025.20.100.1": [
+      "US",
+      "CA"
+    ],
+    "2025.20.200": [
+      "US",
+      "CA"
+    ],
+    "2025.20.300": [
+      "US",
+      "CA"
+    ]
+  },
+  "nextMap": {},
+  "leafState": {
+    "2025.2": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.3": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.3.2": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.6": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.6.1": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.6.2": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.8": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.8.1": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.8.3": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.8.4": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "2026-10-20"
+    },
+    "2025.2.9": {
+      "created": "2025",
+      "needsMeta": false,
+      "metaChecked": "20
