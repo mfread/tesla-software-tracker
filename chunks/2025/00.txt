@@ -1,1 +1,204 @@
-PLACEHOLDER_TO_REPLACE
+{
+  "snapshot": "2026-10-22",
+  "year": 2025,
+  "live": true,
+  "note": "Daily snapshot 2026-10-22 05:00 AEDT. Live year (n-1). Reconstructed full trunks and leaves from prior chunks and meta. No new 2025.x reported beyond existing. Snapshot date updated.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-22T05:16:00+11:00",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla 2025",
+    "type": "root",
+    "version": "2025",
+    "children": [
+      {
+        "name": "2025.2 leftover",
+        "type": "feature",
+        "version": "2025.2",
+        "children": [
+          {
+            "name": "2025.2",
+            "type": "point",
+            "version": "2025.2"
+          },
+          {
+            "name": "2025.2.3",
+            "type": "point",
+            "version": "2025.2.3"
+          },
+          {
+            "name": "2025.2.3.2",
+            "type": "point",
+            "version": "2025.2.3.2"
+          },
+          {
+            "name": "2025.2.6",
+            "type": "point",
+            "version": "2025.2.6"
+          },
+          {
+            "name": "2025.2.6.1",
+            "type": "point",
+            "version": "2025.2.6.1"
+          },
+          {
+            "name": "2025.2.6.2",
+            "type": "point",
+            "version": "2025.2.6.2"
+          },
+          {
+            "name": "2025.2.8",
+            "type": "point",
+            "version": "2025.2.8"
+          },
+          {
+            "name": "2025.2.8.1",
+            "type": "point",
+            "version": "2025.2.8.1"
+          },
+          {
+            "name": "2025.2.8.3",
+            "type": "point",
+            "version": "2025.2.8.3"
+          },
+          {
+            "name": "2025.2.8.4",
+            "type": "point",
+            "version": "2025.2.8.4"
+          },
+          {
+            "name": "2025.2.9",
+            "type": "point",
+            "version": "2025.2.9"
+          },
+          {
+            "name": "2025.2.100",
+            "type": "point",
+            "version": "2025.2.100"
+          },
+          {
+            "name": "2025.2.200",
+            "type": "point",
+            "version": "2025.2.200"
+          },
+          {
+            "name": "2025.2.200.1",
+            "type": "point",
+            "version": "2025.2.200.1"
+          },
+          {
+            "name": "2025.2.200.2",
+            "type": "point",
+            "version": "2025.2.200.2"
+          }
+        ]
+      },
+      {
+        "name": "2025.8 leftover",
+        "type": "feature",
+        "version": "2025.8",
+        "children": [
+          {
+            "name": "2025.8",
+            "type": "point",
+            "version": "2025.8"
+          },
+          {
+            "name": "2025.8.3",
+            "type": "point",
+            "version": "2025.8.3"
+          },
+          {
+            "name": "2025.8.4",
+            "type": "point",
+            "version": "2025.8.4"
+          },
+          {
+            "name": "2025.8.6",
+            "type": "point",
+            "version": "2025.8.6"
+          },
+          {
+            "name": "2025.8.7",
+            "type": "point",
+            "version": "2025.8.7"
+          },
+          {
+            "name": "2025.8.8",
+            "type": "point",
+            "version": "2025.8.8"
+          },
+          {
+            "name": "2025.8.8.1",
+            "type": "point",
+            "version": "2025.8.8.1"
+          },
+          {
+            "name": "2025.8.100",
+            "type": "point",
+            "version": "2025.8.100"
+          },
+          {
+            "name": "2025.8.200",
+            "type": "point",
+            "version": "2025.8.200"
+          },
+          {
+            "name": "2025.8.300",
+            "type": "point",
+            "version": "2025.8.300"
+          },
+          {
+            "name": "2025.8.300.1",
+            "type": "point",
+            "version": "2025.8.300.1"
+          }
+        ]
+      },
+      {
+        "name": "2025.14 leftover",
+        "type": "feature",
+        "version": "2025.14",
+        "children": [
+          {
+            "name": "2025.14",
+            "type": "point",
+            "version": "2025.14"
+          },
+          {
+            "name": "2025.14.1",
+            "type": "point",
+            "version": "2025.14.1"
+          },
+          {
+            "name": "2025.14.3",
+            "type": "point",
+            "version": "2025.14.3"
+          },
+          {
+            "name": "2025.14.3.1",
+            "type": "point",
+            "version": "2025.14.3.1"
+          },
+          {
+            "name": "2025.14.3.2",
+            "type": "point",
+            "version": "2025.14.3.2"
+          },
+          {
+            "name": "2025.14.6",
+            "type": "point",
+            "version": "2025.14.6"
+          },
+          {
+            "name": "2025.14.7",
+            "type": "point",
+            "version": "2025.14.7"
+          }
