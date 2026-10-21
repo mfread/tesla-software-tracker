@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-21",
+  "snapshot": "2026-10-22",
   "year": 2026,
   "live": true,
-  "note": "Daily snapshot 2026-10-21 05:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. Added 2026.32.200, 2026.38.5.1, 2026.38.5.10. Snapshot date updated to today.",
+  "note": "Daily snapshot 2026-10-22 05:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. Added 2026.38.5.5. Snapshot date updated to today.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-21T05:09:00+11:00",
+  "generatedAt": "2026-10-22T05:20:00+11:00",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -669,6 +669,11 @@
             "version": "2026.38.5.1"
           },
           {
+            "name": "2026.38.5.5",
+            "type": "point",
+            "version": "2026.38.5.5"
+          },
+          {
             "name": "2026.38.5.10",
             "type": "point",
             "version": "2026.38.5.10"
@@ -886,6 +891,14 @@
       "regions": "unknown",
       "hw": "unknown",
       "note": "Latest point. Released ~Oct 20."
+    },
+    "2026.38.5.5": {
+      "first": "2026-10-21",
+      "fleet": "Tessie <0.1% rolling out",
+      "fsd": "FSD 14.3 Lite & 14.3.13 N. America",
+      "regions": "unknown",
+      "hw": "unknown",
+      "note": "Latest point. Released ~Oct 21. Seen on Tessie and NATA."
     }
   },
   "seenIn": {
@@ -1414,6 +1427,11 @@
       "created": "2026-10-21",
       "needsMeta": false,
       "metaChecked": "2026-10-21"
+    },
+    "2026.38.5.5": {
+      "created": "2026-10-22",
+      "needsMeta": false,
+      "metaChecked": "2026-10-22"
     }
   }
 }
