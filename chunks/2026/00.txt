@@ -1,0 +1,208 @@
+{
+  "snapshot": "2026-10-23",
+  "year": 2026,
+  "live": true,
+  "note": "Daily snapshot 2026-10-23 05:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. Added 2026.38.5.5. Snapshot date updated to today.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-23T06:07:29+1100",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla 2026",
+    "type": "root",
+    "version": "2026",
+    "children": [
+      {
+        "name": "2026.2 Holiday / FSD",
+        "type": "feature",
+        "version": "2026.2",
+        "children": [
+          {
+            "name": "2026.2",
+            "type": "point",
+            "version": "2026.2"
+          },
+          {
+            "name": "2026.2.3",
+            "type": "point",
+            "version": "2026.2.3"
+          },
+          {
+            "name": "2026.2.3.1",
+            "type": "point",
+            "version": "2026.2.3.1"
+          },
+          {
+            "name": "2026.2.3.16",
+            "type": "point",
+            "version": "2026.2.3.16"
+          },
+          {
+            "name": "2026.2.6",
+            "type": "point",
+            "version": "2026.2.6"
+          },
+          {
+            "name": "2026.2.6.1",
+            "type": "point",
+            "version": "2026.2.6.1"
+          },
+          {
+            "name": "2026.2.6.5",
+            "type": "point",
+            "version": "2026.2.6.5"
+          },
+          {
+            "name": "2026.2.9",
+            "type": "point",
+            "version": "2026.2.9"
+          },
+          {
+            "name": "2026.2.9.1",
+            "type": "point",
+            "version": "2026.2.9.1"
+          },
+          {
+            "name": "2026.2.9.2",
+            "type": "point",
+            "version": "2026.2.9.2"
+          },
+          {
+            "name": "2026.2.9.3",
+            "type": "point",
+            "version": "2026.2.9.3"
+          },
+          {
+            "name": "2026.2.9.5",
+            "type": "point",
+            "version": "2026.2.9.5"
+          },
+          {
+            "name": "2026.2.9.6",
+            "type": "point",
+            "version": "2026.2.9.6"
+          },
+          {
+            "name": "2026.2.9.7",
+            "type": "point",
+            "version": "2026.2.9.7"
+          },
+          {
+            "name": "2026.2.9.8",
+            "type": "point",
+            "version": "2026.2.9.8"
+          },
+          {
+            "name": "2026.2.9.9",
+            "type": "point",
+            "version": "2026.2.9.9"
+          },
+          {
+            "name": "2026.2.9.10",
+            "type": "point",
+            "version": "2026.2.9.10"
+          },
+          {
+            "name": "2026.2.11",
+            "type": "point",
+            "version": "2026.2.11"
+          },
+          {
+            "name": "2026.2.100",
+            "type": "point",
+            "version": "2026.2.100"
+          },
+          {
+            "name": "2026.2.200",
+            "type": "point",
+            "version": "2026.2.200"
+          },
+          {
+            "name": "2026.2.200.1",
+            "type": "point",
+            "version": "2026.2.200.1"
+          },
+          {
+            "name": "2026.2.300",
+            "type": "point",
+            "version": "2026.2.300"
+          }
+        ]
+      },
+      {
+        "name": "2026.3",
+        "type": "feature",
+        "version": "2026.3",
+        "children": [
+          {
+            "name": "2026.3.6",
+            "type": "point",
+            "version": "2026.3.6"
+          },
+          {
+            "name": "2026.3.7",
+            "type": "point",
+            "version": "2026.3.7"
+          }
+        ]
+      },
+      {
+        "name": "2026.4",
+        "type": "feature",
+        "version": "2026.4",
+        "children": [
+          {
+            "name": "2026.4.5",
+            "type": "point",
+            "version": "2026.4.5"
+          }
+        ]
+      },
+      {
+        "name": "2026.8",
+        "type": "feature",
+        "version": "2026.8",
+        "children": [
+          {
+            "name": "2026.8",
+            "type": "point",
+            "version": "2026.8"
+          },
+          {
+            "name": "2026.8.3",
+            "type": "point",
+            "version": "2026.8.3"
+          },
+          {
+            "name": "2026.8.3.6",
+            "type": "point",
+            "version": "2026.8.3.6"
+          },
+          {
+            "name": "2026.8.3.10",
+            "type": "point",
+            "version": "2026.8.3.10"
+          },
+          {
+            "name": "2026.8.6",
+            "type": "point",
+            "version": "2026.8.6"
+          },
+          {
+            "name": "2026.8.6.1",
+            "type": "point",
+            "version": "2026.8.6.1"
+          },
+          {
+            "name": "2026.8.100",
+            "type": "point",
+            "version": "2026.8.100"
+          },
+          {
+            "name
