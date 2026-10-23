@@ -1,4 +1,4 @@
-const APP_VERSION = "5.0";
+const APP_VERSION = "5.01";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -349,6 +349,26 @@ const APP_VERSION = "5.0";
       return String(s || "").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2);
     }
 
+
+    function clarifyNote(note) {
+      let t = String(note || "");
+      if (!t) return t;
+      const cc = carCountry(getActiveCar());
+      t = t.replace(/\bAI4\b/g, "HW4");
+      t = t.replace(/\bFSD (v[\d.]+) for HW4 and (v[\d.]+) Lite for HW3/gi, "FSD $1 for HW4, and FSD $2 Lite for HW3");
+      t = t.replace(/\bUS 100%/g, "seen only in the US");
+      const notAuNz = /\bNot AU\/NZ(?: Lite)?\b\.?/gi;
+      const clause = cc === "AU" ? "(not available in AU)"
+        : cc === "NZ" ? "(not available in NZ)"
+        : "(not available in AU or NZ)";
+      t = t.replace(notAuNz, clause + ".");
+      if (cc && cc !== "US" && cc !== "CA") {
+        t = t.replace(/\bNorth America only\b/gi, "North America only (not available in " + cc + ")");
+      }
+      t = t.replace(/\.\s*\./g, ".").replace(/\s+/g, " ").trim();
+      return t;
+    }
+
     function carCountry(car) {
       return iso2(car && car.country);
     }
@@ -534,7 +554,7 @@ const APP_VERSION = "5.0";
           <td>${r.fleet}</td>
           <td>${r.first || "—"}</td>
           <td>${seenLines(r.version)}</td>
-          <td>${r.note || "—"}</td>
+          <td>${clarifyNote(r.note) || "—"}</td>
         </tr>`;
       }).join("");
       document.getElementById("table-count").textContent = rows.length + " rows";
@@ -1191,7 +1211,7 @@ const APP_VERSION = "5.0";
         : (m.hw ? `<br>Hardware: ${m.hw}` : "");
       const ver = d.data.version || extractVer(d.data.name);
       tip.innerHTML = `<strong>${d.data.name}</strong>`
-        + (m.note ? `<br>${m.note}` : "")
+        + (m.note ? `<br>${clarifyNote(m.note)}` : "")
         + (m.fsd ? `<br>FSD: ${m.fsd}` : "")
         + (m.fleet ? `<br>Fleet: ${m.fleet}` : "")
         + hwLine
@@ -1224,7 +1244,7 @@ const APP_VERSION = "5.0";
           <dt>Observed on</dt><dd>${m.hw || "—"} (tracker observations, not a guarantee for every car)</dd>
           <dt>Seen in</dt><dd>${seenLines(version)}</dd>
           <dt>Regions</dt><dd>${m.regions || "—"}</dd>
-          ${m.note ? `<dt>Notes</dt><dd>${m.note}</dd>` : ""}
+          ${m.note ? `<dt>Notes</dt><dd>${clarifyNote(m.note)}</dd>` : ""}
         </dl>
         <p style="margin-top:10px;font-size:0.78rem;color:var(--muted)">Observed snapshot ${DATA_SNAPSHOT}. Trackers: Teslascope / Tessie / Not a Tesla App. Not official Tesla data.</p>
       `;
