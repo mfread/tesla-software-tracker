@@ -1,4 +1,4 @@
-const APP_VERSION = "5.02";
+const APP_VERSION = "5.03";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -355,19 +355,44 @@ const APP_VERSION = "5.02";
       let t = String(note || "");
       if (!t) return t;
       const cc = carCountry(getActiveCar());
-      t = t.replace(/\bAI4\b/g, "HW4");
-      t = t.replace(/\bFSD (v[\d.]+) for HW4 and (v[\d.]+) Lite for HW3/gi, "FSD $1 for HW4, and FSD $2 Lite for HW3");
+      t = t.replace(/\bAI4\b/g, "HW4").replace(/\bAI3\b/g, "HW3");
       t = t.replace(/\bUS 100%/g, "seen only in the US");
       const notAuNz = /\bNot AU\/NZ(?: Lite)?\b\.?/gi;
-      const clause = cc === "AU" ? "(not available in AU)"
-        : cc === "NZ" ? "(not available in NZ)"
-        : "(not available in AU or NZ)";
+      const clause = cc === "AU" ? "not available in AU"
+        : cc === "NZ" ? "not available in NZ"
+        : "not available in AU or NZ";
       t = t.replace(notAuNz, clause + ".");
       if (cc && cc !== "US" && cc !== "CA") {
         t = t.replace(/\bNorth America only\b/gi, "North America only (not available in " + cc + ")");
       }
+      t = splitHwFsd(t);
       t = t.replace(/\.\s*\./g, ".").replace(/\s+/g, " ").trim();
       return t;
+    }
+
+    function splitHwFsd(text) {
+      let t = String(text || "");
+      const hw4 = t.match(/FSD\s*(v?[\d.]+)\s*(?:for|on)\s+HW4|HW4\s+(?:has\s+)?FSD\s*(v?[\d.]+)|FSD\s*(v?[\d.]+)[^.()]{0,24}\(HW4\)/i);
+      const hw3 = t.match(/FSD\s*(v?[\d.]+)\s*Lite\s*(?:for|on)\s+HW3|HW3\s+(?:has\s+)?(?:FSD\s*)?(v?[\d.]+)\s*Lite|(v?[\d.]+)\s*Lite\s+for\s+HW3/i);
+      const v4 = hw4 && (hw4[1] || hw4[2] || hw4[3]);
+      const v3 = hw3 && (hw3[1] || hw3[2] || hw3[3]);
+      const clean = v => String(v || "").replace(/^v/i, "");
+      const sentences = [];
+      if (v4) sentences.push("HW4 has FSD v" + clean(v4) + ".");
+      if (v3) sentences.push("HW3 has FSD v" + clean(v3) + " Lite.");
+      if (!sentences.length) return t;
+      t = t
+        .replace(/HW4\s+FSD\s*v?[\d.]+\s+and\s+HW3\s+(?:FSD\s*)?v?[\d.]+\s*Lite\.?/gi, "")
+        .replace(/FSD\s*v?[\d.]+\s+for\s+HW4,?\s+and\s+(?:FSD\s*)?v?[\d.]+\s*Lite\s+for\s+HW3\.?/gi, "")
+        .replace(/AU\/NZ\s+HW4\s+FSD\s*v?[\d.]+\.?/gi, "")
+        .replace(/HW4\s+FSD\s*v?[\d.]+\.?/gi, "")
+        .replace(/FSD\s*v?[\d.]+\s+for\s+HW4\.?/gi, "")
+        .replace(/FSD\s*v?[\d.]+\s+Down Under\s+\(HW4\)\.?/gi, "")
+        .replace(/\s{2,}/g, " ")
+        .replace(/\s+\./g, ".")
+        .trim();
+      t = (t.replace(/\.$/, "") + ". " + sentences.join(" ")).replace(/^\.\s*/, "");
+      return t.replace(/\s+/g, " ").trim();
     }
 
     function carCountry(car) {
@@ -551,7 +576,7 @@ const APP_VERSION = "5.02";
           <td>${badge}${r.version}</td>
           <td>${r.trunk}</td>
           <td>${hwHtml}</td>
-          <td>${r.fsd}</td>
+          <td>${clarifyNote(r.fsd)}</td>
           <td>${r.fleet}</td>
           <td>${r.first || "—"}</td>
           <td>${seenLines(r.version)}</td>
@@ -1241,7 +1266,7 @@ const APP_VERSION = "5.02";
           <dt>Version</dt><dd>${version || "—"}</dt>
           <dt>First seen</dt><dd>${m.first || "—"}</dd>
           <dt>Approx. fleet share globally</dt><dd>${m.fleet || "—"}</dd>
-          <dt>FSD build</dt><dd>${m.fsd || "—"}</dd>
+          <dt>FSD build</dt><dd>${clarifyNote(m.fsd) || "—"}</dd>
           <dt>Observed on</dt><dd>${m.hw || "—"} (tracker observations, not a guarantee for every car)</dd>
           <dt>Seen in</dt><dd>${seenLines(version)}</dd>
           <dt>Regions</dt><dd>${m.regions || "—"}</dd>
