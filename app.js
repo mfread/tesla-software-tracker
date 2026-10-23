@@ -1,4 +1,4 @@
-const APP_VERSION = "5.03";
+const APP_VERSION = "5.04";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -339,7 +339,7 @@ const APP_VERSION = "5.03";
       const el = document.getElementById("cache-status");
       if (!el) return;
       const tag = SNAPSHOT_LIVE ? "live" : "archive";
-      el.textContent = "Snapshot " + DATA_SNAPSHOT + " (" + tag + ")";
+      el.textContent = "Snapshot " + fmtDate(DATA_SNAPSHOT) + " (" + tag + ")";
     }
 
     function getActiveCar() {
@@ -366,6 +366,8 @@ const APP_VERSION = "5.03";
         t = t.replace(/\bNorth America only\b/gi, "North America only (not available in " + cc + ")");
       }
       t = splitHwFsd(t);
+      t = t.replace(/\b(20\d{2})-(\d{2})-(\d{2})\b/g, (all, y, mo, d) => fmtDate(y + "-" + mo + "-" + d));
+      t = t.replace(/\b(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\b/gi, (all, d, mon) => fmtDate(d.padStart(2,"0") + " " + mon + " 2026"));
       t = t.replace(/\.\s*\./g, ".").replace(/\s+/g, " ").trim();
       return t;
     }
@@ -434,15 +436,49 @@ const APP_VERSION = "5.03";
       return Object.keys(set).sort();
     }
 
-    function seenLines(version) {
-      const yes = seenCodes(version);
-      const owners = ownerCountriesFor(version);
-      if (yes.length) {
-        let html = "Seen in " + yes.join(", ");
-        if (owners.length) html += " <span style=\"color:var(--muted)\">(includes saved-car residences)</span>";
-        return html;
+    const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    function fmtDate(s) {
+      const raw = String(s || "").trim();
+      if (!raw) return "";
+      let m = raw.match(/(\d{4})-(\d{2})-(\d{2})/);
+      if (m) return m[3] + "-" + MONTHS[Number(m[2]) - 1] + "-" + m[1].slice(2);
+      m = raw.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{2,4})/);
+      if (m) {
+        const mon = MONTHS.find(x => m[2].toLowerCase().startsWith(x.toLowerCase()));
+        const yy = m[3].length === 4 ? m[3].slice(2) : m[3];
+        if (mon) return String(m[1]).padStart(2, "0") + "-" + mon + "-" + yy;
       }
-      return "Seen in — (no country samples in this snapshot or saved cars)";
+      m = raw.match(/([A-Za-z]{3,})\s+(\d{1,2}),?\s+(\d{2,4})/);
+      if (m) {
+        const mon = MONTHS.find(x => m[1].toLowerCase().startsWith(x.toLowerCase()));
+        const yy = m[3].length === 4 ? m[3].slice(2) : m[3];
+        if (mon) return String(m[2]).padStart(2, "0") + "-" + mon + "-" + yy;
+      }
+      return raw;
+    }
+
+    function seenLines(version) {
+      const m = metaFor(version);
+      const codes = seenCodes(version);
+      const hw = parseHw(m.hw);
+      const by = m.seenByHw || {};
+      const lines = [];
+      function line(label, key, show) {
+        if (!show) return;
+        const info = by[key] || {};
+        const cc = (info.countries && info.countries.length ? info.countries : codes).map(iso2).filter(c => c.length === 2);
+        const d = fmtDate(info.last || m.last || m.first);
+        if (!cc.length && !d) return;
+        lines.push(label + " last seen" + (d ? " on " + d : "") + (cc.length ? " in " + cc.join(", ") : ""));
+      }
+      line("HW4", "hw4", hw.hw4 || by.hw4);
+      line("HW3", "hw3", hw.hw3 || by.hw3);
+      if (!lines.length && (codes.length || m.last || m.first)) {
+        const d = fmtDate(m.last || m.first);
+        lines.push("Last seen" + (d ? " on " + d : "") + (codes.length ? " in " + codes.join(", ") : ""));
+      }
+      if (!lines.length) return "Seen in — (no country samples in this snapshot or saved cars)";
+      return lines.join("<br>");
     }
 
 
@@ -578,7 +614,7 @@ const APP_VERSION = "5.03";
           <td>${hwHtml}</td>
           <td>${clarifyNote(r.fsd)}</td>
           <td>${r.fleet}</td>
-          <td>${r.first || "—"}</td>
+          <td>${fmtDate(r.first) || "—"}</td>
           <td>${seenLines(r.version)}</td>
           <td>${clarifyNote(r.note) || "—"}</td>
         </tr>`;
@@ -1264,7 +1300,7 @@ const APP_VERSION = "5.03";
       document.getElementById("details-body").innerHTML = `
         <dl>
           <dt>Version</dt><dd>${version || "—"}</dt>
-          <dt>First seen</dt><dd>${m.first || "—"}</dd>
+          <dt>First seen</dt><dd>${fmtDate(m.first) || "—"}</dd>
           <dt>Approx. fleet share globally</dt><dd>${m.fleet || "—"}</dd>
           <dt>FSD build</dt><dd>${clarifyNote(m.fsd) || "—"}</dd>
           <dt>Observed on</dt><dd>${m.hw || "—"} (tracker observations, not a guarantee for every car)</dd>
@@ -1272,7 +1308,7 @@ const APP_VERSION = "5.03";
           <dt>Regions</dt><dd>${m.regions || "—"}</dd>
           ${m.note ? `<dt>Notes</dt><dd>${clarifyNote(m.note)}</dd>` : ""}
         </dl>
-        <p style="margin-top:10px;font-size:0.78rem;color:var(--muted)">Observed snapshot ${DATA_SNAPSHOT}. Trackers: Teslascope / Tessie / Not a Tesla App. Not official Tesla data.</p>
+        <p style="margin-top:10px;font-size:0.78rem;color:var(--muted)">Observed snapshot ${fmtDate(DATA_SNAPSHOT)}. Trackers: Teslascope / Tessie / Not a Tesla App. Not official Tesla data.</p>
       `;
       panel.style.display = "block";
     }
