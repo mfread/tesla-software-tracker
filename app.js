@@ -42,6 +42,7 @@ const APP_VERSION = "5.01";
 
     // First-seen order among tracked sample (not official Tesla rollout order)
     let SEEN_IN = {
+      "2026.38.5.5": ["AU","NZ"],
       "2026.14": ["US","CA","GB","DE"],
       "2026.14.3": ["US","CA","GB","AU"],
       "2026.14.6": ["US","CA","GB","AU"],
