@@ -857,7 +857,7 @@
       "fsd": "HW4 FSD v14.3.12 and HW3 FSD v14.3 Lite",
       "regions": "US, North America",
       "hw": "HW4 + HW3 (mostly HW4)",
-      "note": "New FSD point. Status early rollout <1%, last wave 12 Oct. Teslascope 14 installs, previous mainly 2026.33.5 (50%) and 2026.27.11 (43%), US 100%. Features include Halloween Mode, FSD v14.3.12 for AI4 and v14.3 Lite for HW3. Not AU/NZ."
+      "note": "Earlier US early-access point (12 Oct wave, Teslascope 14 installs, US only). FSD v14.3.12 for HW4 and FSD v14.3 Lite for HW3. The Australia and New Zealand rollout is 2026.38.5.5, not this build."
     },
     "2026.26.200.1": {
       "first": "2026-10-09",
@@ -894,11 +894,11 @@
     },
     "2026.38.5.5": {
       "first": "2026-10-21",
-      "fleet": "Tessie <0.1% rolling out",
-      "fsd": "FSD 14.3 Lite & 14.3.13 N. America",
-      "regions": "unknown",
-      "hw": "unknown",
-      "note": "Latest point. Released ~Oct 21. Seen on Tessie and NATA."
+      "fleet": "Teslascope 78 installs, rolling (about 3%)",
+      "fsd": "HW4 FSD v14.3.12",
+      "regions": "Australia, New Zealand",
+      "hw": "HW4",
+      "note": "AU/NZ FSD point. Teslascope first saw it 21 Oct on a Model 3 Performance in the ACT. 78 installs, all HW4, 95% Australia and 5% New Zealand, last wave 22 Oct. Most arrived from 2026.20.10 (74), a few from 2026.28.5 (4). FSD v14.3.12 for HW4. Includes Halloween Mode. This is the Australia and New Zealand build, not the earlier US 2026.38.5 point."
     }
   },
   "seenIn": {
@@ -1195,6 +1195,13 @@
       "IT",
       "PL",
       "TR"
+    ],
+    "2026.38.5.5": [
+      "AU",
+      "NZ"
+    ],
+    "2026.38.5": [
+      "US"
     ]
   },
   "nextMap": [
@@ -1433,5 +1440,24 @@
       "needsMeta": false,
       "metaChecked": "2026-10-22"
     }
-  }
+  },
+  "hops": [
+    {
+      "from": "2026.20.10",
+      "to": "2026.38.5.5",
+      "model": "Y",
+      "hw": "4",
+      "cc": "AU",
+      "n": 74,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.28.5",
+      "to": "2026.38.5.5",
+      "hw": "4",
+      "cc": "AU",
+      "n": 4,
+      "note": "Teslascope previous-version table"
+    }
+  ]
 }
