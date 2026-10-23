@@ -1,0 +1,40 @@
+{
+  "snapshot": "2026-10-24",
+  "year": 2026,
+  "live": true,
+  "note": "Daily snapshot 2026-10-24 06:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. 2026.38.5.5 Oceania and 2026.38.5.10 North America active. Added 2026.38.3.2.",
+  "source": "grok-automation",
+  "generatedAt": "2026-10-24T06:07:00+1100",
+  "sourcesUsed": [
+    "teslascope",
+    "tessie",
+    "notateslaapp",
+    "teslafi",
+    "owner-app-notes",
+    "x-tracker-accounts"
+  ],
+  "tree": {
+    "name": "Tesla 2026",
+    "type": "root",
+    "version": "2026",
+    "children": [
+      {
+        "name": "2026.2 Holiday / FSD",
+        "type": "feature",
+        "version": "2026.2",
+        "children": [
+          {
+            "name": "2026.2",
+            "type": "point",
+            "version": "2026.2"
+          },
+          {
+            "name": "2026.2.3",
+            "type": "point",
+            "version": "2026.2.3"
+          }
+        ]
+      }
+    ]
+  }
+}
