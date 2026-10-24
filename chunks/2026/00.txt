@@ -2,9 +2,9 @@
   "snapshot": "2026-10-25",
   "year": 2026,
   "live": true,
-  "note": "Daily snapshot 2026-10-25 05:00 AEDT. Live year. 2026.38.5.5 AU/NZ FSD v14.3.12 continuing. 2026.38.5.10 North America with FSD v14.3.13 / Lite. 2026.38.3.2 rolling wide. 2026.38.5.1 large rollout.",
+  "note": "Daily snapshot 2026-10-25 06:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. 2026.38.5.5 Oceania and 2026.38.5.10 North America active. Added 2026.38.5.11.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-25T05:09:00+1100",
+  "generatedAt": "2026-10-25T06:06:00+1100",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -204,4 +204,4 @@
             "type": "point",
             "version": "2026.8.100"
           },
-  
+          
