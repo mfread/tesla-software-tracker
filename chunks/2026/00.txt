@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-25",
+  "snapshot": "2026-10-26",
   "year": 2026,
   "live": true,
-  "note": "Daily snapshot 2026-10-25 06:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. 2026.38.5.5 Oceania and 2026.38.5.10 North America active. Added 2026.38.5.11.",
+  "note": "Daily snapshot 2026-10-26 09:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. Added 2026.38.5.6 Oceania and 2026.38.5.11 North America.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-25T06:06:00+1100",
+  "generatedAt": "2026-10-26T09:09:00+1100",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -53,7 +53,6 @@
             "type": "point",
             "version": "2026.2.6.1"
           },
-          {
             "name": "2026.2.6.5",
             "type": "point",
             "version": "2026.2.6.5"
