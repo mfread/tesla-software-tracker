@@ -1,4 +1,9 @@
-1": {
+/CA, not AU/NZ",
+      "hw": "HW4 + HW3",
+      "note": "North America only. Teslascope HW4 169 / HW3 1, countries US 92% / CA 8%, last wave 26 Sep. Not AU/NZ. Do not blank this meta.",
+      "last": "2026-09-18"
+    },
+    "2026.27.11": {
       "first": "2026-09-22",
       "fleet": "Teslascope 23.8% active, 647 installs; Tessie 17.4% (phasing out)",
       "fsd": "HW4 has FSD v14.3.10. HW3 has FSD v14.2 Lite.",
@@ -105,9 +110,4 @@
       "hw": "HW4",
       "note": "AU/NZ HW4 FSD v14.3.5. Teslascope: 141 installs, all HW4, 96% Australia (NZ retained). Updated-to table: 2026.28.5 (2, 1.4%, HW4 AU) and 2025.32.100 (1). No wide next wave.",
       "last": "2026-07-27"
-    },
-    "2026.38.3.1": {
-      "first": "2026-10-08",
-      "fleet": "Teslascope 6 installs; TeslaFi 0.6% (9 today); Tessie 0.8% (rolling)",
-      "fsd": "none",
-      "regions": "DE IE GB TR IT; pending CH PL FR; first X notice CH; Te
+    

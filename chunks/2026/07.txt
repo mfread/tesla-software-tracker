@@ -1,4 +1,79 @@
-eedsMeta": false,
+,
+      "hw": "4",
+      "n": 1,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.32.7",
+      "to": "2026.38.3.1",
+      "hw": "4",
+      "cc": "DE",
+      "n": 3,
+      "note": "Teslascope previous-version table; installs also IE GB TR"
+    },
+    {
+      "from": "2026.38",
+      "to": "2026.38.3.1",
+      "hw": "4",
+      "n": 3,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.20.300",
+      "to": "2026.28.5",
+      "hw": "4",
+      "cc": "AU",
+      "n": 3,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.20.10",
+      "to": "2026.28.5",
+      "hw": "4",
+      "cc": "AU",
+      "n": 2,
+      "note": "Teslascope previous-version table"
+    }
+  ],
+  "leafState": {
+    "2026.33.5": {
+      "created": "2026-10-07",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.38.3": {
+      "created": "2026-10-07",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.32.100": {
+      "created": "2026-10-07",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.33.100": {
+      "created": "2026-10-01",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.38": {
+      "created": "2026-09-29",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.32.3": {
+      "created": "2026-09-09",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.32.7": {
+      "created": "2026-09-22",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.28.5": {
+      "created": "2026-09-16",
+      "needsMeta": false,
       "metaChecked": "2026-10-10"
     },
     "2026.27.10": {

@@ -1,5 +1,3 @@
-32.200"
-          }
         ]
       },
       {
@@ -55,14 +53,24 @@
             "version": "2026.38.5.1"
           },
           {
+            "name": "2026.38.5.10",
+            "type": "point",
+            "version": "2026.38.5.10"
+          },
+          {
+            "name": "2026.38.5.11",
+            "type": "point",
+            "version": "2026.38.5.11"
+          },
+          {
             "name": "2026.38.5.5",
             "type": "point",
             "version": "2026.38.5.5"
           },
           {
-            "name": "2026.38.5.10",
+            "name": "2026.38.5.6",
             "type": "point",
-            "version": "2026.38.5.10"
+            "version": "2026.38.5.6"
           }
         ]
       }
@@ -136,9 +144,4 @@
       "first": "2026-09-18",
       "fleet": "Teslascope <1% active; Tessie <0.1%",
       "fsd": "HW4 has FSD v14.3.10. HW3 has FSD v14.2 Lite.",
-      "regions": "US/CA, not AU/NZ",
-      "hw": "HW4 + HW3",
-      "note": "North America only. Teslascope HW4 169 / HW3 1, countries US 92% / CA 8%, last wave 26 Sep. Not AU/NZ. Do not blank this meta.",
-      "last": "2026-09-18"
-    },
-    "2026.27.1
+      "regions": "US

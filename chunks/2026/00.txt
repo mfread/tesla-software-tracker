@@ -53,6 +53,7 @@
             "type": "point",
             "version": "2026.2.6.1"
           },
+          {
             "name": "2026.2.6.5",
             "type": "point",
             "version": "2026.2.6.5"
@@ -203,4 +204,5 @@
             "type": "point",
             "version": "2026.8.100"
           },
+          {
           
