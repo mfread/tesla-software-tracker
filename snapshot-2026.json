@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-26",
+  "snapshot": "2026-10-27",
   "year": 2026,
   "live": true,
-  "note": "Daily snapshot 2026-10-26 09:00 AEDT. Live year. 2026.38.5.1 continuing large rollout. Added 2026.38.5.6 Oceania and 2026.38.5.11 North America.",
+  "note": "Daily snapshot 2026-10-27 05:00 AEDT. Live year. Refreshed recent leaves. 2026.38.5.6 now 129 installs all HW4 AU/NZ last wave 26-Oct-26. 2026.38.5.11 365 installs HW4/HW3 US last wave 26-Oct-26. 2026.38.5.1 1029 installs. 2026.38.3.2 266 installs.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-26T09:09:00+1100",
+  "generatedAt": "2026-10-27T05:10:00+1100",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -967,15 +967,15 @@
     },
     "2026.38.5.6": {
       "first": "2026-10-24",
-      "fleet": "Teslascope 121 installs (4.6% active); NATA 0.8%",
+      "fleet": "Teslascope 136 installs (5.3% active)",
       "fsd": "HW4 has FSD v14.3.12.",
       "regions": "AU NZ",
       "hw": "HW4",
-      "note": "Oceania HW4 FSD v14.3.12. Teslascope: 121 installs, all HW4, AU 94% NZ 6%, last wave 25-Oct-26. Previous: 2026.38.5.5 (118, 97.5%), 2026.20.10 (2), 2026.28.5 (1).",
-      "last": "2026-10-25",
+      "note": "Oceania HW4 FSD v14.3.12. Teslascope: 136 installs, all HW4, AU 94% NZ 6%, last wave 26-Oct-26. Previous: 2026.38.5.5 (131, 96.3%), 2026.20.10 (4), 2026.28.5 (1).",
+      "last": "2026-10-26",
       "seenByHw": {
         "hw4": {
-          "last": "2026-10-25",
+          "last": "2026-10-26",
           "countries": [
             "AU",
             "NZ"
@@ -989,21 +989,21 @@
     },
     "2026.38.5.11": {
       "first": "2026-10-24",
-      "fleet": "Teslascope 87 installs (3.2% active); NATA 3.2%",
+      "fleet": "Teslascope 365 installs (15.1% active)",
       "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite.",
       "regions": "North America (US)",
       "hw": "HW3 + HW4",
-      "note": "North America. HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite. Teslascope: 87 installs, HW4 41 / HW3 46, US 96%, last wave 25-Oct-26. Previous: 2026.38.5.1 (74, 85%), 2026.38.5.10 (13).",
-      "last": "2026-10-25",
+      "note": "North America. HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite. Teslascope: 365 installs, HW4 204 / HW3 161, US 96%, last wave 26-Oct-26. Previous: 2026.38.5.1 (323, 88.5%), 2026.38.5.10 (42).",
+      "last": "2026-10-26",
       "seenByHw": {
         "hw4": {
-          "last": "2026-10-25",
+          "last": "2026-10-26",
           "countries": [
             "US"
           ]
         },
         "hw3": {
-          "last": "2026-10-25",
+          "last": "2026-10-26",
           "countries": [
             "US"
           ]
