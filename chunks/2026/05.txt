@@ -1,4 +1,9 @@
-},
+",
+      "regions": "AU NZ",
+      "hw": "HW4",
+      "note": "AU/NZ HW4 FSD v14.3.5. Teslascope: 141 installs, all HW4, 96% Australia (NZ retained). Updated-to table: 2026.28.5 (2, 1.4%, HW4 AU) and 2025.32.100 (1). No wide next wave.",
+      "last": "2026-07-27"
+    },
     "2026.38.3.1": {
       "first": "2026-10-08",
       "fleet": "Teslascope 6 installs; TeslaFi 0.6% (9 today); Tessie 0.8% (rolling)",
@@ -87,52 +92,61 @@
       }
     },
     "2026.38.5.6": {
-      "first": "2026-10-24",
-      "fleet": "Teslascope 136 installs (5.3% active)",
-      "fsd": "HW4 has FSD v14.3.12.",
-      "regions": "AU NZ",
-      "hw": "HW4",
-      "note": "Oceania HW4 FSD v14.3.12. Teslascope: 136 installs, all HW4, AU 94% NZ 6%, last wave 26-Oct-26. Previous: 2026.38.5.5 (131, 96.3%), 2026.20.10 (4), 2026.28.5 (1).",
-      "last": "2026-10-26",
+      "created": "2026-10-24",
+      "needsMeta": false,
+      "metaChecked": "2026-10-28",
+      "hw": {
+        "hw4": "FSD v14.3.12"
+      },
+      "installs": 145,
       "seenByHw": {
         "hw4": {
-          "last": "2026-10-26",
+          "last": "2026-10-27",
           "countries": [
             "AU",
             "NZ"
           ]
         }
       },
+      "last": "2026-10-27",
       "seenIn": [
         "AU",
         "NZ"
       ]
     },
     "2026.38.5.11": {
-      "first": "2026-10-24",
-      "fleet": "Teslascope 365 installs (15.1% active)",
-      "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite.",
-      "regions": "North America (US)",
-      "hw": "HW3 + HW4",
-      "note": "North America. HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite. Teslascope: 365 installs, HW4 204 / HW3 161, US 96%, last wave 26-Oct-26. Previous: 2026.38.5.1 (323, 88.5%), 2026.38.5.10 (42).",
-      "last": "2026-10-26",
+      "created": "2026-10-24",
+      "needsMeta": false,
+      "metaChecked": "2026-10-28",
+      "hw": {
+        "hw4": "FSD v14.3.13",
+        "hw3": "FSD v14.3 Lite"
+      },
+      "installs": 629,
       "seenByHw": {
         "hw4": {
-          "last": "2026-10-26",
+          "last": "2026-10-27",
           "countries": [
             "US"
           ]
         },
         "hw3": {
-          "last": "2026-10-26",
+          "last": "2026-10-27",
           "countries": [
             "US"
           ]
         }
       },
+      "last": "2026-10-27",
       "seenIn": [
         "US"
       ]
+    },
+    "2026.32.300": {
+      "created": "2026-10-26",
+      "needsMeta": true,
+      "metaChecked": "2026-10-28",
+      "note": "Factory or EU FSD build, pending installs"
     }
   },
   "seenIn": {
@@ -153,6 +167,3 @@
       "CA",
       "GB",
       "AU"
-    ],
-    "2026.20": [
-      "AU

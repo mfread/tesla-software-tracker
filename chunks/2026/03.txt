@@ -1,3 +1,15 @@
+100"
+          },
+          {
+            "name": "2026.32.200",
+            "type": "point",
+            "version": "2026.32.200"
+          },
+          {
+            "name": "2026.32.300",
+            "type": "point",
+            "version": "2026.32.300"
+          }
         ]
       },
       {
@@ -137,11 +149,4 @@
       "fsd": "v14.2.2.5 (AI4)",
       "regions": "KR",
       "hw": "HW4",
-      "note": "Korea AI4 point. Teslascope hop from 2026.15.7. Not AU/NZ. Stats still current on 2026-10-10.",
-      "last": "2026-10-04"
-    },
-    "2026.27.10": {
-      "first": "2026-09-18",
-      "fleet": "Teslascope <1% active; Tessie <0.1%",
-      "fsd": "HW4 has FSD v14.3.10. HW3 has FSD v14.2 Lite.",
-      "regions": "US
+      "note": "Korea AI4 point. Teslascope hop from 2026.15.7
