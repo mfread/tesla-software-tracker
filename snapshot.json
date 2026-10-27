@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-27",
+  "snapshot": "2026-10-28",
   "year": 2026,
   "live": true,
-  "note": "Daily snapshot 2026-10-27 05:00 AEDT. Live year. Refreshed recent leaves. 2026.38.5.6 now 129 installs all HW4 AU/NZ last wave 26-Oct-26. 2026.38.5.11 365 installs HW4/HW3 US last wave 26-Oct-26. 2026.38.5.1 1029 installs. 2026.38.3.2 266 installs.",
+  "note": "Daily snapshot 2026-10-28 09:10 AEDT. Live year. Refreshed recent leaves. 2026.38.5.6 now 145 installs all HW4 AU/NZ last wave 27-Oct-26. 2026.38.5.11 629 installs HW4/HW3 US last wave 27-Oct-26 FSD v14.3.13 / Lite. Added 2026.32.300 (factory/EU, pending). 2026.38.5.1 and others stable.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-27T05:10:00+1100",
+  "generatedAt": "2026-10-28T09:10:00+1100",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -618,6 +618,11 @@
             "name": "2026.32.200",
             "type": "point",
             "version": "2026.32.200"
+          },
+          {
+            "name": "2026.32.300",
+            "type": "point",
+            "version": "2026.32.300"
           }
         ]
       },
@@ -966,52 +971,61 @@
       }
     },
     "2026.38.5.6": {
-      "first": "2026-10-24",
-      "fleet": "Teslascope 136 installs (5.3% active)",
-      "fsd": "HW4 has FSD v14.3.12.",
-      "regions": "AU NZ",
-      "hw": "HW4",
-      "note": "Oceania HW4 FSD v14.3.12. Teslascope: 136 installs, all HW4, AU 94% NZ 6%, last wave 26-Oct-26. Previous: 2026.38.5.5 (131, 96.3%), 2026.20.10 (4), 2026.28.5 (1).",
-      "last": "2026-10-26",
+      "created": "2026-10-24",
+      "needsMeta": false,
+      "metaChecked": "2026-10-28",
+      "hw": {
+        "hw4": "FSD v14.3.12"
+      },
+      "installs": 145,
       "seenByHw": {
         "hw4": {
-          "last": "2026-10-26",
+          "last": "2026-10-27",
           "countries": [
             "AU",
             "NZ"
           ]
         }
       },
+      "last": "2026-10-27",
       "seenIn": [
         "AU",
         "NZ"
       ]
     },
     "2026.38.5.11": {
-      "first": "2026-10-24",
-      "fleet": "Teslascope 365 installs (15.1% active)",
-      "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite.",
-      "regions": "North America (US)",
-      "hw": "HW3 + HW4",
-      "note": "North America. HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite. Teslascope: 365 installs, HW4 204 / HW3 161, US 96%, last wave 26-Oct-26. Previous: 2026.38.5.1 (323, 88.5%), 2026.38.5.10 (42).",
-      "last": "2026-10-26",
+      "created": "2026-10-24",
+      "needsMeta": false,
+      "metaChecked": "2026-10-28",
+      "hw": {
+        "hw4": "FSD v14.3.13",
+        "hw3": "FSD v14.3 Lite"
+      },
+      "installs": 629,
       "seenByHw": {
         "hw4": {
-          "last": "2026-10-26",
+          "last": "2026-10-27",
           "countries": [
             "US"
           ]
         },
         "hw3": {
-          "last": "2026-10-26",
+          "last": "2026-10-27",
           "countries": [
             "US"
           ]
         }
       },
+      "last": "2026-10-27",
       "seenIn": [
         "US"
       ]
+    },
+    "2026.32.300": {
+      "created": "2026-10-26",
+      "needsMeta": true,
+      "metaChecked": "2026-10-28",
+      "note": "Factory or EU FSD build, pending installs"
     }
   },
   "seenIn": {
@@ -1552,6 +1566,21 @@
       "created": "2026-10-22",
       "needsMeta": false,
       "metaChecked": "2026-10-22"
+    },
+    "2026.38.5.11": {
+      "created": "2026-10-24",
+      "needsMeta": false,
+      "metaChecked": "2026-10-28"
+    },
+    "2026.38.5.6": {
+      "created": "2026-10-24",
+      "needsMeta": false,
+      "metaChecked": "2026-10-28"
+    },
+    "2026.32.300": {
+      "created": "2026-10-26",
+      "needsMeta": true,
+      "metaChecked": "2026-10-28"
     }
   },
   "hops": [
