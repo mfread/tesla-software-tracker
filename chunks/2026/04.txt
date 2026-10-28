@@ -1,4 +1,5 @@
-. Not AU/NZ. Stats still current on 2026-10-10.",
+"hw": "HW4",
+      "note": "Korea AI4 point. Teslascope hop from 2026.15.7. not available in AU or NZ. Stats still current on 2026-10-10.",
       "last": "2026-10-04"
     },
     "2026.27.10": {
@@ -7,7 +8,7 @@
       "fsd": "HW4 has FSD v14.3.10. HW3 has FSD v14.2 Lite.",
       "regions": "US/CA, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "North America only. Teslascope HW4 169 / HW3 1, countries US 92% / CA 8%, last wave 26 Sep. Not AU/NZ. Do not blank this meta.",
+      "note": "North America only. Teslascope HW4 169 / HW3 1, countries US 92% / CA 8%, last wave 26 Sep. not available in AU or NZ. Do not blank this meta.",
       "last": "2026-09-18"
     },
     "2026.27.11": {
@@ -16,7 +17,7 @@
       "fsd": "HW4 has FSD v14.3.10. HW3 has FSD v14.2 Lite.",
       "regions": "US/CA, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "North America only, last wave 9 Oct. Main FSD wave, winding down on Tessie. Updated-to lists 22 cars to 2026.33.5; destination previous table lists 50 from this build (HW4 and HW3, US). Not AU/NZ. Do not blank this meta.",
+      "note": "North America only, last wave 9 Oct. Main FSD wave, winding down on Tessie. Updated-to lists 22 cars to 2026.33.5; destination previous table lists 50 from this build (HW4 and HW3, US). not available in AU or NZ. Do not blank this meta.",
       "last": "2026-09-22"
     },
     "2026.33.5": {
@@ -25,7 +26,7 @@
       "fsd": "HW4 has FSD v14.3.11. HW3 has FSD v14.3 Lite.",
       "regions": "US, N. America, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "Confirmed on X via @teslascope (9 Oct wave ~2,750; V14.3.11 on 64% AI4, V14.3 Lite on 36% HW3) and @NotATeslaApp, then Teslascope and NATA. Status rolling, last wave 9 Oct. Teslascope 71 installs, HW4 50 / HW3 21, US 97% (CA in pending). Previous: 2026.27.11 (50), 2026.26.6.1 (13), 2026.26.6.5 (7), 2026.32.7 (1). Not AU/NZ.",
+      "note": "Confirmed on X via @teslascope (9 Oct wave ~2,750; V14.3.11 on 64% AI4, V14.3 Lite on 36% HW3) and @NotATeslaApp, then Teslascope and NATA. Status rolling, last wave 9 Oct. Teslascope 71 installs, HW4 50 / HW3 21, US 97% (CA in pending). Previous: 2026.27.11 (50), 2026.26.6.1 (13), 2026.26.6.5 (7), 2026.32.7 (1). not available in AU or NZ.",
       "last": "2026-10-09"
     },
     "2026.38.3": {
@@ -34,7 +35,7 @@
       "fsd": "none",
       "regions": "GB ES DE TW NO US; pending also CH",
       "hw": "HW4 6 / HW3 1",
-      "note": "Halloween Mode and security. Rolling, last wave 8 Oct. Teslascope 7 installs, HW4 6 / HW3 1. Previous: 2026.38 (4, 57%) and 2026.32.7 (3, 43%). Pending still lists 2026.32.3 but the completed previous table does not. Not AU/NZ.",
+      "note": "Halloween Mode and security. Rolling, last wave 8 Oct. Teslascope 7 installs, HW4 6 / HW3 1. Previous: 2026.38 (4, 57%) and 2026.32.7 (3, 43%). Pending still lists 2026.32.3 but the completed previous table does not. not available in AU or NZ.",
       "last": "2026-10-08"
     },
     "2026.32.100": {
@@ -52,7 +53,7 @@
       "fsd": "HW4 has FSD v14.3.9. HW3 has FSD v14.2 Lite.",
       "regions": "US/CA/MX, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "North America. Stats still current on 2026-10-10. Not AU/NZ Lite.",
+      "note": "North America. Stats still current on 2026-10-10. not available in AU or NZ Lite.",
       "last": "2026-09-08"
     },
     "2026.26.6.3": {
@@ -79,7 +80,7 @@
       "fsd": "v14.2.2.6 (NATA, Europe)",
       "regions": "EU",
       "hw": "HW4",
-      "note": "Europe. Some cars hopping to 2026.33.100. Not AU/NZ. Stats still current on 2026-10-10.",
+      "note": "Europe. Some cars hopping to 2026.33.100. not available in AU or NZ. Stats still current on 2026-10-10.",
       "last": "2026-09-15"
     },
     "2026.27.6.5": {
@@ -88,7 +89,7 @@
       "fsd": "none",
       "regions": "KR",
       "hw": "unknown",
-      "note": "Korea point. seenIn KR retained. Not AU/NZ. Stats still current on 2026-10-10.",
+      "note": "Korea point. seenIn KR retained. not available in AU or NZ. Stats still current on 2026-10-10.",
       "last": "2026-09-23"
     },
     "2026.26.200": {
@@ -106,10 +107,4 @@
       "fsd": "none",
       "regions": "unknown",
       "hw": "unknown",
-      "note": "Factory/point. Stats still current on 2026-10-10.",
-      "last": "2026-09-16"
-    },
-    "2026.20.10": {
-      "first": "2026-07-27",
-      "fleet": "Teslascope 141 installs; Tessie 1.7%; AI4 v14.3.5",
-      "fsd": "HW4 has FSD v14.3.5.
+      "note": "Factory/point. Stats still current 

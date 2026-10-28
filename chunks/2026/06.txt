@@ -1,4 +1,83 @@
-
+.13. HW3 has FSD v14.3 Lite. North America. 781 installs (HW4 63%, HW3 37%), last wave 28-Oct-26."
+    },
+    "2026.32.300": {
+      "created": "2026-10-26",
+      "needsMeta": true,
+      "metaChecked": "2026-10-29",
+      "note": "Factory or EU FSD build, still pending installs as of 29-Oct-26."
+    },
+    "2026.38.3.2": {
+      "created": "2026-10-22",
+      "needsMeta": false,
+      "metaChecked": "2026-10-29",
+      "hw": {
+        "hw3": "no FSD",
+        "hw4": "no FSD"
+      },
+      "installs": 319,
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-10-28",
+          "countries": [
+            "US",
+            "GB",
+            "DE",
+            "FR",
+            "IT",
+            "JP",
+            "CA",
+            "NZ"
+          ]
+        },
+        "hw3": {
+          "last": "2026-10-28",
+          "countries": [
+            "US",
+            "GB",
+            "DE",
+            "AT",
+            "NL",
+            "CH",
+            "SE"
+          ]
+        }
+      },
+      "last": "2026-10-28",
+      "seenIn": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "AT",
+        "NL",
+        "IT",
+        "CA",
+        "NZ",
+        "JP",
+        "CH",
+        "SE"
+      ],
+      "note": "Security improvements. Wide rollout, 319 installs, HW3 and HW4, last wave 28-Oct-26."
+    }
+  },
+  "seenIn": {
+    "2026.14": [
+      "US",
+      "CA",
+      "GB",
+      "DE"
+    ],
+    "2026.14.3": [
+      "US",
+      "CA",
+      "GB",
+      "AU"
+    ],
+    "2026.14.6": [
+      "US",
+      "CA",
+      "GB",
+      "AU"
     ],
     "2026.20": [
       "AU",
@@ -279,81 +358,4 @@
     "2026.38.5.5": [
       "AU",
       "NZ"
-    ],
-    "2026.38.5": [
-      "US"
-    ]
-  },
-  "nextMap": [
-    {
-      "from": "2026.32.3",
-      "to": "2026.38",
-      "n": 12,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.32.7",
-      "to": "2026.38",
-      "n": 55,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.27.11",
-      "to": "2026.33.5",
-      "hw": "4+3",
-      "cc": "US",
-      "n": 50,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.26.6.1",
-      "to": "2026.33.5",
-      "hw": "3",
-      "cc": "US",
-      "n": 13,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.26.6.5",
-      "to": "2026.33.5",
-      "hw": "3",
-      "cc": "US",
-      "n": 7,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.32.7",
-      "to": "2026.33.5",
-      "n": 1,
-      "cc": "US",
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.32.7",
-      "to": "2026.38.3",
-      "hw": "4",
-      "n": 3,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.38",
-      "to": "2026.38.3",
-      "n": 4,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.27.300",
-      "to": "2026.33.100",
-      "hw": "4",
-      "n": 30,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.32.3",
-      "to": "2026.33.100",
-      "hw": "4",
-      "n": 3,
-      "note": "Teslascope previous-version table"
-    },
-    {
-      "from": "2026.
+    

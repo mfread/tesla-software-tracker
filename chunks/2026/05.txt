@@ -1,4 +1,10 @@
-",
+on 2026-10-10.",
+      "last": "2026-09-16"
+    },
+    "2026.20.10": {
+      "first": "2026-07-27",
+      "fleet": "Teslascope 141 installs; Tessie 1.7%; AI4 v14.3.5",
+      "fsd": "HW4 has FSD v14.3.5.",
       "regions": "AU NZ",
       "hw": "HW4",
       "note": "AU/NZ HW4 FSD v14.3.5. Teslascope: 141 installs, all HW4, 96% Australia (NZ retained). Updated-to table: 2026.28.5 (2, 1.4%, HW4 AU) and 2025.32.100 (1). No wide next wave.",
@@ -10,7 +16,7 @@
       "fsd": "none",
       "regions": "DE IE GB TR IT; pending CH PL FR; first X notice CH; TeslaFi also AT. Not AU/NZ",
       "hw": "HW4",
-      "note": "Announced on X via @teslascope (Model X AWD 2024, Ticino, Switzerland), then confirmed on Teslascope, NATA and Tessie. Rolling point under 2026.38 (Halloween Mode, security fixes). Teslascope 6 installs, all HW4, last wave 9 Oct. Previous versions: 2026.32.7 (3, 50%) and 2026.38 (3, 50%). Install countries Germany, Ireland, United Kingdom, Turkey, Italy. Pending 4 (DE, CH, PL, FR). Not an FSD build. Not AU/NZ.",
+      "note": "Announced on X via @teslascope (Model X AWD 2024, Ticino, Switzerland), then confirmed on Teslascope, NATA and Tessie. Rolling point under 2026.38 (Halloween Mode, security fixes). Teslascope 6 installs, all HW4, last wave 9 Oct. Previous versions: 2026.32.7 (3, 50%) and 2026.38 (3, 50%). Install countries Germany, Ireland, United Kingdom, Turkey, Italy. Pending 4 (DE, CH, PL, FR). Not an FSD build. not available in AU or NZ.",
       "last": "2026-10-22"
     },
     "2026.38.5": {
@@ -94,11 +100,11 @@
     "2026.38.5.6": {
       "created": "2026-10-24",
       "needsMeta": false,
-      "metaChecked": "2026-10-28",
+      "metaChecked": "2026-10-29",
       "hw": {
         "hw4": "FSD v14.3.12"
       },
-      "installs": 145,
+      "installs": 146,
       "seenByHw": {
         "hw4": {
           "last": "2026-10-27",
@@ -112,58 +118,37 @@
       "seenIn": [
         "AU",
         "NZ"
-      ]
+      ],
+      "note": "HW4 has FSD v14.3.12. Australia and New Zealand. 146 installs, all HW4, last wave 27-Oct-26."
     },
     "2026.38.5.11": {
       "created": "2026-10-24",
       "needsMeta": false,
-      "metaChecked": "2026-10-28",
+      "metaChecked": "2026-10-29",
       "hw": {
         "hw4": "FSD v14.3.13",
         "hw3": "FSD v14.3 Lite"
       },
-      "installs": 629,
+      "installs": 781,
       "seenByHw": {
         "hw4": {
-          "last": "2026-10-27",
+          "last": "2026-10-28",
           "countries": [
-            "US"
+            "US",
+            "CA"
           ]
         },
         "hw3": {
-          "last": "2026-10-27",
+          "last": "2026-10-28",
           "countries": [
-            "US"
+            "US",
+            "CA"
           ]
         }
       },
-      "last": "2026-10-27",
+      "last": "2026-10-28",
       "seenIn": [
-        "US"
-      ]
-    },
-    "2026.32.300": {
-      "created": "2026-10-26",
-      "needsMeta": true,
-      "metaChecked": "2026-10-28",
-      "note": "Factory or EU FSD build, pending installs"
-    }
-  },
-  "seenIn": {
-    "2026.14": [
-      "US",
-      "CA",
-      "GB",
-      "DE"
-    ],
-    "2026.14.3": [
-      "US",
-      "CA",
-      "GB",
-      "AU"
-    ],
-    "2026.14.6": [
-      "US",
-      "CA",
-      "GB",
-      "AU"
+        "US",
+        "CA"
+      ],
+      "note": "HW4 has FSD v14.3

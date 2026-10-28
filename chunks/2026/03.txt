@@ -1,4 +1,5 @@
-100"
+         "type": "point",
+            "version": "2026.32.100"
           },
           {
             "name": "2026.32.200",
@@ -140,7 +141,7 @@
       "fsd": "v14.2.2.6 Europe (HW4)",
       "regions": "EU (NL CZ BE DK, also SK EE)",
       "hw": "HW4",
-      "note": "Europe factory/FSD branch, status rolling, last wave 9 Oct. Teslascope 34 installs, all HW4. Previous versions: 2026.27.300 (30, 88%), 2026.32.3 (3, 9%) and 2026.27.200 (1). NATA FSD 14.2.2.6. Not AU/NZ.",
+      "note": "Europe factory/FSD branch, status rolling, last wave 9 Oct. Teslascope 34 installs, all HW4. Previous versions: 2026.27.300 (30, 88%), 2026.32.3 (3, 9%) and 2026.27.200 (1). NATA FSD 14.2.2.6. not available in AU or NZ.",
       "last": "2026-10-01"
     },
     "2026.27.6.15": {
@@ -148,5 +149,4 @@
       "fleet": "Tessie 0.1%; TeslaFi 0% (1 car)",
       "fsd": "v14.2.2.5 (AI4)",
       "regions": "KR",
-      "hw": "HW4",
-      "note": "Korea AI4 point. Teslascope hop from 2026.15.7
+      
