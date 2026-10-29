@@ -1,4 +1,4 @@
-const APP_VERSION = "5.06";
+const APP_VERSION = "5.07";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -644,7 +644,7 @@ const APP_VERSION = "5.06";
           <td>${r.fleet}</td>
           <td>${fmtDate(r.first) || "—"}</td>
           <td>${seenLines(r.version)}</td>
-          <td>${stripFsdSentences(clarifyNote(r.note)) || "—"}</td>
+          <td>${[includesLine(r.version), stripFsdSentences(clarifyNote(r.note))].filter(Boolean).join(" ") || "—"}</td>
         </tr>`;
       }).join("");
       document.getElementById("table-count").textContent = rows.length + " rows";
@@ -1320,6 +1320,23 @@ const APP_VERSION = "5.06";
       tip.style.top = y + "px";
     }
 
+    function includesFor(version) {
+      const m = metaFor(version);
+      const raw = m.includes || [];
+      const out = [];
+      (Array.isArray(raw) ? raw : String(raw).split(",")).forEach(v => {
+        const n = normVer(String(v).trim());
+        if (n && n !== normVer(version) && !out.includes(n)) out.push(n);
+      });
+      return out;
+    }
+
+    function includesLine(version) {
+      const list = includesFor(version);
+      if (!list.length) return "";
+      return "Release notes also cover " + list.join(", ") + ". This is not a version the car installed.";
+    }
+
     function showDetails(data) {
       const version = data.version || extractVer(data.name);
       const m = metaFor(version);
@@ -1334,6 +1351,7 @@ const APP_VERSION = "5.06";
           <dt>Observed on</dt><dd>${m.hw || "—"} (tracker observations, not a guarantee for every car)</dd>
           <dt>Seen in</dt><dd>${seenLines(version)}</dd>
           <dt>Regions</dt><dd>${m.regions || "—"}</dd>
+          ${includesLine(version) ? `<dt>Includes</dt><dd>${includesLine(version)}</dd>` : ""}
           ${m.note ? `<dt>Notes</dt><dd>${stripFsdSentences(clarifyNote(m.note))}</dd>` : ""}
         </dl>
         <p style="margin-top:10px;font-size:0.78rem;color:var(--muted)">Observed snapshot ${fmtDate(DATA_SNAPSHOT)}. Trackers: Teslascope / Tessie / Not a Tesla App. Not official Tesla data.</p>
