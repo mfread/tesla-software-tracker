@@ -974,9 +974,7 @@
       "created": "2026-10-24",
       "needsMeta": false,
       "metaChecked": "2026-10-29",
-      "hw": {
-        "hw4": "FSD v14.3.12"
-      },
+      "hw": "HW4",
       "installs": 146,
       "seenByHw": {
         "hw4": {
@@ -992,16 +990,14 @@
         "AU",
         "NZ"
       ],
-      "note": "HW4 has FSD v14.3.12. Australia and New Zealand. 146 installs, all HW4, last wave 27-Oct-26."
+      "note": "HW4 has FSD v14.3.12. Australia and New Zealand. 146 installs, all HW4, last wave 27-Oct-26.",
+      "fsd": "HW4 has FSD v14.3.12."
     },
     "2026.38.5.11": {
       "created": "2026-10-24",
       "needsMeta": false,
       "metaChecked": "2026-10-29",
-      "hw": {
-        "hw4": "FSD v14.3.13",
-        "hw3": "FSD v14.3 Lite"
-      },
+      "hw": "HW3 + HW4",
       "installs": 781,
       "seenByHw": {
         "hw4": {
@@ -1024,7 +1020,8 @@
         "US",
         "CA"
       ],
-      "note": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite. North America. 781 installs (HW4 63%, HW3 37%), last wave 28-Oct-26."
+      "note": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite. North America. 781 installs (HW4 63%, HW3 37%), last wave 28-Oct-26.",
+      "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite."
     },
     "2026.32.300": {
       "created": "2026-10-26",
@@ -1036,10 +1033,7 @@
       "created": "2026-10-22",
       "needsMeta": false,
       "metaChecked": "2026-10-29",
-      "hw": {
-        "hw3": "no FSD",
-        "hw4": "no FSD"
-      },
+      "hw": "HW3 + HW4",
       "installs": 319,
       "seenByHw": {
         "hw4": {
