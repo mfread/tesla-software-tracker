@@ -1,4 +1,4 @@
-const APP_VERSION = "5.05";
+const APP_VERSION = "5.06";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -279,7 +279,11 @@ const APP_VERSION = "5.05";
     }
 
     function parseHw(hw) {
-      const s = (hw || "").toUpperCase();
+      if (hw && typeof hw === "object") {
+        const keys = Object.keys(hw).map(k => k.toUpperCase());
+        return { hw3: keys.some(k => /HW3|AI3/.test(k)), hw4: keys.some(k => /HW4|AI4/.test(k)), raw: keys.join(" ") };
+      }
+      const s = String(hw || "").toUpperCase();
       const hw3 = /HW3|AI3|ALL|MIXED/.test(s);
       const hw4 = /HW4|AI4|ALL|MIXED/.test(s);
       return { hw3, hw4, raw: hw || "" };
@@ -378,7 +382,7 @@ const APP_VERSION = "5.05";
       const hw3 = t.match(/HW3\s+has\s+FSD\s*v?([\d.]+)\s*Lite|FSD\s*(v?[\d.]+)\s*Lite\s*(?:for|on)\s+HW3|HW3\s+(?:has\s+)?(?:FSD\s*)?(v?[\d.]+)\s*Lite|(v?[\d.]+)\s*Lite\s+for\s+HW3/i);
       const v4 = hw4 && (hw4[1] || hw4[2] || hw4[3] || hw4[4]);
       const v3 = hw3 && (hw3[1] || hw3[2] || hw3[3] || hw3[4]);
-      const clean = v => String(v || "").replace(/^v/i, "");
+      const clean = v => String(v || "").replace(/^v/i, "").replace(/\.+$/, "");
       const out = [];
       if (v4) out.push("HW4 has FSD v" + clean(v4) + ".");
       if (v3) out.push("HW3 has FSD v" + clean(v3) + " Lite.");
@@ -386,25 +390,34 @@ const APP_VERSION = "5.05";
     }
 
     function stripFsdSentences(text) {
-      return String(text || "")
+      let t = String(text || "");
+      t = t
         .replace(/HW4\s+has\s+FSD\s*v?[\d.]+\.?/gi, "")
         .replace(/HW3\s+has\s+FSD\s*v?[\d.]+\s*Lite\.?/gi, "")
         .replace(/HW4\s+FSD\s*v?[\d.]+\s+and\s+HW3\s+(?:FSD\s*)?v?[\d.]+\s*Lite\.?/gi, "")
         .replace(/FSD\s*v?[\d.]+\s+for\s+HW4,?\s+and\s+(?:FSD\s*)?v?[\d.]+\s*Lite\s+for\s+HW3\.?/gi, "")
-        .replace(/AU\/NZ\s+HW4\s+FSD\s*v?[\d.]+\.?/gi, "")
-        .replace(/HW4\s+FSD\s*v?[\d.]+\.?/gi, "")
         .replace(/FSD\s*v?[\d.]+\s+for\s+HW4\.?/gi, "")
-        .replace(/FSD\s*v?[\d.]+\s+Down Under\s+\(HW4\)\.?/gi, "")
-        .replace(/\s{2,}/g, " ")
-        .replace(/\s+\./g, ".")
-        .replace(/^\.\s*/, "")
-        .trim();
+        .replace(/FSD\s*v?[\d.]+\s+Down Under\s+\(HW4\)\.?/gi, "");
+      t = t.replace(/\s{2,}/g, " ").replace(/\s+\./g, ".").replace(/^\.\s*/, "").trim();
+      return t;
     }
 
     function splitHwFsd(text) {
       const sentences = fsdSentences(text);
       if (!sentences.length) return String(text || "");
       return sentences.join(" ");
+    }
+
+    function fsdFromHw(hw, fsd) {
+      const sentences = fsdSentences(fsd);
+      if (sentences.length) return sentences.join(" ");
+      if (hw && typeof hw === "object") {
+        const parts = [];
+        if (hw.hw4 && /fsd/i.test(String(hw.hw4)) && !/no fsd/i.test(String(hw.hw4))) parts.push("HW4 has " + String(hw.hw4).replace(/^FSD\s*/i, "FSD ") + ".");
+        if (hw.hw3 && /fsd|lite/i.test(String(hw.hw3)) && !/no fsd/i.test(String(hw.hw3))) parts.push("HW3 has " + String(hw.hw3).replace(/^FSD\s*/i, "FSD ") + ( /lite/i.test(String(hw.hw3)) ? "" : " Lite") + ".");
+        if (parts.length) return clarifyFsd(parts.join(" "));
+      }
+      return clarifyFsd(fsd);
     }
 
     function clarifyFsd(text) {
@@ -627,7 +640,7 @@ const APP_VERSION = "5.05";
           <td>${badge}${r.version}</td>
           <td>${r.trunk}</td>
           <td>${hwHtml}</td>
-          <td>${clarifyFsd(r.fsd)}</td>
+          <td>${fsdFromHw(r.hw, r.fsd)}</td>
           <td>${r.fleet}</td>
           <td>${fmtDate(r.first) || "—"}</td>
           <td>${seenLines(r.version)}</td>
@@ -1289,7 +1302,7 @@ const APP_VERSION = "5.05";
       const ver = d.data.version || extractVer(d.data.name);
       tip.innerHTML = `<strong>${d.data.name}</strong>`
         + (m.note ? `<br>${stripFsdSentences(clarifyNote(m.note))}` : "")
-        + (m.fsd ? `<br>FSD: ${clarifyFsd(m.fsd)}` : "")
+        + (m.fsd ? `<br>FSD: ${fsdFromHw(m.hw, m.fsd)}` : "")
         + (m.fleet ? `<br>Fleet: ${m.fleet}` : "")
         + hwLine
         + `<br>${seenLines(ver)}`;
@@ -1317,7 +1330,7 @@ const APP_VERSION = "5.05";
           <dt>Version</dt><dd>${version || "—"}</dt>
           <dt>First seen</dt><dd>${fmtDate(m.first) || "—"}</dd>
           <dt>Approx. fleet share globally</dt><dd>${m.fleet || "—"}</dd>
-          <dt>FSD build</dt><dd>${clarifyFsd(m.fsd) || "—"}</dd>
+          <dt>FSD build</dt><dd>${fsdFromHw(m.hw, m.fsd) || "—"}</dd>
           <dt>Observed on</dt><dd>${m.hw || "—"} (tracker observations, not a guarantee for every car)</dd>
           <dt>Seen in</dt><dd>${seenLines(version)}</dd>
           <dt>Regions</dt><dd>${m.regions || "—"}</dd>
