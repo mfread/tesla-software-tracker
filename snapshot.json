@@ -826,8 +826,11 @@
       "fsd": "none",
       "regions": "AU NZ",
       "hw": "HW3",
-      "note": "AU/NZ HW3 example. Status rolling but last wave 5 Oct (1 install). Teslascope 136 installs, all HW3, Australia 94% / New Zealand 6%. Pending 8, all Australia, all from 2026.20.6.9. Every completed arrival from 2026.20.6.9 (136, 100%). Updated-to table empty.",
-      "last": "2026-09-22"
+      "note": "AU/NZ HW3 example. Status rolling but last wave 5 Oct (1 install). Teslascope 136 installs, all HW3, Australia 94% / New Zealand 6%. Pending 8, all Australia, all from 2026.20.6.9. Every completed arrival from 2026.20.6.9 (136, 100%). Updated-to table empty. Release notes also cover 2026.26.6. That is the notes stack, not a version the car installed.",
+      "last": "2026-09-22",
+      "includes": [
+        "2026.26.6"
+      ]
     },
     "2026.26.300": {
       "first": "2026-09-14",
