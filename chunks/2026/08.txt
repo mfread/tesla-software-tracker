@@ -65,12 +65,12 @@
     "2026.38.5.11": {
       "created": "2026-10-24",
       "needsMeta": false,
-      "metaChecked": "2026-10-30"
+      "metaChecked": "2026-10-31"
     },
     "2026.38.5.6": {
       "created": "2026-10-24",
       "needsMeta": false,
-      "metaChecked": "2026-10-30"
+      "metaChecked": "2026-10-31"
     },
     "2026.32.300": {
       "created": "2026-10-26",
@@ -80,17 +80,27 @@
     "2026.38.3.2": {
       "created": "2026-10-22",
       "needsMeta": false,
-      "metaChecked": "2026-10-30"
+      "metaChecked": "2026-10-31"
     },
     "2026.38.6": {
       "created": "2026-10-29",
-      "needsMeta": true,
-      "metaChecked": "2026-10-30"
+      "needsMeta": false,
+      "metaChecked": "2026-10-31"
     },
     "2026.2.3.17": {
       "created": "2026-10-28",
       "needsMeta": true,
-      "metaChecked": "2026-10-30"
+      "metaChecked": "2026-10-31"
+    },
+    "2026.38.6.1": {
+      "created": "2026-10-29",
+      "needsMeta": false,
+      "metaChecked": "2026-10-31"
+    },
+    "2026.39.6": {
+      "created": "2026-10-29",
+      "needsMeta": false,
+      "metaChecked": "2026-10-31"
     }
   },
   "hops": [
