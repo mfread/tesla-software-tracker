@@ -1,4 +1,19 @@
- "fsd": "none",
+till current on 2026-10-10.",
+      "last": "2026-09-15"
+    },
+    "2026.27.6.5": {
+      "first": "2026-09-23",
+      "fleet": "Tessie <0.1%",
+      "fsd": "none",
+      "regions": "KR",
+      "hw": "unknown",
+      "note": "Korea point. seenIn KR retained. not available in AU or NZ. Stats still current on 2026-10-10.",
+      "last": "2026-09-23"
+    },
+    "2026.26.200": {
+      "first": "2026-09-22",
+      "fleet": "Tessie <0.1%",
+      "fsd": "none",
       "regions": "EU sightings",
       "hw": "HW4",
       "note": "Teslascope hop to 2026.32.7 (DE Model Y). Stats still current on 2026-10-10.",
@@ -112,33 +127,16 @@
     "2026.38.5.6": {
       "created": "2026-10-24",
       "needsMeta": false,
-      "metaChecked": "2026-10-30",
+      "metaChecked": "2026-10-31",
       "hw": "HW4",
-      "installs": 113,
+      "installs": 120,
       "seenByHw": {
         "hw4": {
-          "last": "2026-10-27",
+          "last": "2026-10-30",
           "countries": [
             "AU",
             "NZ"
           ]
         }
       },
-      "last": "2026-10-27",
-      "seenIn": [
-        "AU",
-        "NZ"
-      ],
-      "note": "Australia and New Zealand. 113 installs, all HW4, last wave 27-Oct-26.",
-      "fsd": "HW4 has FSD v14.3.12."
-    },
-    "2026.38.5.11": {
-      "created": "2026-10-24",
-      "needsMeta": false,
-      "metaChecked": "2026-10-30",
-      "hw": "HW3 + HW4",
-      "installs": 3664,
-      "seenByHw": {
-        "hw4": {
-          "last": "2026-10-29",
-          "cou
+      "last": "2

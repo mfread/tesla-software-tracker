@@ -1,0 +1,23 @@
+   "from": "2026.38.5.10",
+      "to": "2026.38.5.11",
+      "hw": "4",
+      "cc": "US",
+      "n": 83,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.38.5.5",
+      "to": "2026.38.5.6",
+      "hw": "4",
+      "cc": "AU",
+      "n": 137,
+      "note": "Teslascope previous-version table"
+    },
+    {
+      "from": "2026.38.3.1",
+      "to": "2026.38.3.2",
+      "n": 290,
+      "note": "Teslascope previous-version table"
+    }
+  ]
+}

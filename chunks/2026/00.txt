@@ -43,6 +43,7 @@
             "type": "point",
             "version": "2026.2.3.16"
           },
+          {
             "name": "2026.2.6",
             "type": "point",
             "version": "2026.2.6"
@@ -193,8 +194,3 @@
             "type": "point",
             "version": "2026.8.3.10"
           },
-          {
-            "name": "2026.8.6",
-            "type": "point",
-            "version": "2026.8.6"
-          }

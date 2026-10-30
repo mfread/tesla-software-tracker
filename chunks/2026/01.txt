@@ -1,4 +1,6 @@
-   "type": "point",
+          {
+            "name": "2026.8.6",
+            "type": "point",
             "version": "2026.8.6"
           },
           {
@@ -204,7 +206,4 @@
           {
             "name": "2026.20.6.11",
             "type": "point",
-            "version": "2026.20.6.11"
-          },
-          {
-         
+            "versio
