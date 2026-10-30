@@ -95,6 +95,23 @@
             "name": "2026.38.6",
             "type": "point",
             "version": "2026.38.6"
+          },
+          {
+            "name": "2026.38.6.1",
+            "type": "point",
+            "version": "2026.38.6.1"
+          }
+        ]
+      },
+      {
+        "name": "2026.39 FSD Europe",
+        "type": "feature",
+        "version": "2026.39",
+        "children": [
+          {
+            "name": "2026.39.6",
+            "type": "point",
+            "version": "2026.39.6"
           }
         ]
       }
