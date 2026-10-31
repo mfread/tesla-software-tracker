@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-10-31",
+  "snapshot": "2026-11-01",
   "year": 2026,
   "live": true,
-  "note": "Daily snapshot 2026-10-31 06:09 AEDT. Live year. Refreshed recent leaves. Added 2026.38.6.1 and 2026.39.6. 2026.38.5.11 now ~3900 installs HW3+HW4 North America last wave 30-Oct-26. 2026.38.3.2 ~5100 installs wide last wave 30-Oct-26. 2026.38.5.6 120 installs all HW4 AU/NZ last wave 30-Oct-26. 2026.38.6.1 early AU/NZ. 2026.39.6 early Europe FSD. HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite. Others stable.",
+  "note": "Daily snapshot 2026-11-01 05:10 AEDT. Live year. Refreshed recent leaves. 2026.38.6.1 30 installs all HW3 AU/NZ last wave 31-Oct-26. 2026.38.6 22 installs HW3+HW4 Europe/US last wave 31-Oct-26. 2026.39.6 23 installs all HW4 Europe last wave 31-Oct-26. 2026.38.5.11 951 installs North America last wave 31-Oct-26. HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite. Others stable.",
   "source": "grok-automation",
-  "generatedAt": "2026-10-31T06:09:00+1100",
+  "generatedAt": "2026-11-01T05:10:00+1100",
   "sourcesUsed": [
     "teslascope",
     "tessie",
