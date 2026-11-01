@@ -1,8 +1,4 @@
-.3"
-          },
-          {
-            "name": "2026.32.7",
-            "type": "point",
+ "point",
             "version": "2026.32.7"
           },
           {
@@ -164,4 +160,8 @@
       "regions": "AU",
       "hw": "HW4",
       "note": "AU HW4 FSD v14.3.9. Teslascope: 5 installs, all HW4, all Australia, last wave 29 Sep. Previous versions: 2026.20.300 (3, 60%) and 2026.20.10 (2, 40%). Updated-to table empty. Hop 2026.20.10 to 2026.28.5 kept.",
-      "last": 
+      "last": "2026-09-16"
+    },
+    "2026.33.100": {
+      "first": "2026-10-01",
+      "flee

@@ -1,7 +1,4 @@
-till current on 2026-10-10.",
-      "last": "2026-09-15"
-    },
-    "2026.27.6.5": {
+: {
       "first": "2026-09-23",
       "fleet": "Tessie <0.1%",
       "fsd": "none",
@@ -139,4 +136,9 @@ till current on 2026-10-10.",
           ]
         }
       },
-      "last": "2
+      "last": "2026-10-30",
+      "seenIn": [
+        "AU",
+        "NZ"
+      ],
+      "note": "
