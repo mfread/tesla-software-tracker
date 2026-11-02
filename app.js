@@ -1,4 +1,4 @@
-const APP_VERSION = "5.07";
+const APP_VERSION = "5.08";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -485,6 +485,19 @@ const APP_VERSION = "5.07";
       return raw;
     }
 
+    const MODEL_ORDER = ["MS","MX","M3","MY","CT","CC","Semi"];
+    function modelCodes(list) {
+      const raw = Array.isArray(list) ? list : String(list || "").split(/[,\s]+/);
+      const map = { MS:"MS", S:"MS", "MODEL S":"MS", MX:"MX", X:"MX", "MODEL X":"MX", M3:"M3", "3":"M3", "MODEL 3":"M3", MY:"MY", Y:"MY", "MODEL Y":"MY", CT:"CT", CYBERTRUCK:"CT", CC:"CC", CYBERCAB:"CC", SEMI:"Semi" };
+      const out = [];
+      raw.forEach(item => {
+        const key = String(item || "").trim().toUpperCase();
+        const code = map[key];
+        if (code && !out.includes(code)) out.push(code);
+      });
+      return MODEL_ORDER.filter(c => out.includes(c));
+    }
+
     function seenLines(version) {
       const m = metaFor(version);
       const codes = seenCodes(version);
@@ -497,7 +510,8 @@ const APP_VERSION = "5.07";
         const cc = (info.countries && info.countries.length ? info.countries : codes).map(iso2).filter(c => c.length === 2);
         const d = fmtDate(info.last || m.last || m.first);
         if (!cc.length && !d) return;
-        lines.push(label + " last seen" + (d ? " on " + d : "") + (cc.length ? " in " + cc.join(", ") : ""));
+        const models = modelCodes(info.models || m.models);
+        lines.push(label + " last seen" + (d ? " on " + d : "") + (cc.length ? " in " + cc.join(", ") : "") + (models.length ? " on " + models.join(", ") : ""));
       }
       line("HW4", "hw4", hw.hw4 || by.hw4);
       line("HW3", "hw3", hw.hw3 || by.hw3);
