@@ -1,4 +1,4 @@
-const APP_VERSION = "5.10";
+const APP_VERSION = "5.11";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -528,7 +528,7 @@ const APP_VERSION = "5.10";
         const only4m = a.models.filter(c => !b.models.includes(c));
         const only3m = b.models.filter(c => !a.models.includes(c));
         const sharedDate = (a.d && a.d === b.d) ? a.d : "";
-        const shared = phrase("HW3+HW4", sharedDate, sharedCc, sharedModels);
+        const shared = phrase("HW4+HW3", sharedDate, sharedCc, sharedModels);
         if (shared) lines.push(shared);
         if (only4cc.length || only4m.length) {
           const l4 = phrase("HW4", a.d, only4cc, only4m);
