@@ -1,0 +1,232 @@
+   "note": "AU/NZ FSD point. Teslascope first saw it 21 Oct on a Model 3 Performance in the ACT. 78 installs, all HW4, 95% Australia and 5% New Zealand, last wave 22 Oct. Most arrived from 2026.20.10 (74), a few from 2026.28.5 (4). FSD v14.3.12 for HW4. Includes Halloween Mode. This is the Australia and New Zealand build, not the earlier US 2026.38.5 point. Refreshed 26-Oct-26.",
+      "last": "2026-10-24",
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-10-22",
+          "countries": [
+            "AU",
+            "NZ"
+          ],
+          "models": [
+            "M3",
+            "MY"
+          ]
+        }
+      },
+      "models": [
+        "M3",
+        "MY"
+      ]
+    },
+    "2026.38.5.6": {
+      "created": "2026-10-24",
+      "needsMeta": false,
+      "metaChecked": "2026-10-31",
+      "hw": "HW4",
+      "installs": 120,
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-10-30",
+          "countries": [
+            "AU",
+            "NZ"
+          ],
+          "models": [
+            "M3",
+            "MY"
+          ]
+        }
+      },
+      "last": "2026-10-30",
+      "seenIn": [
+        "AU",
+        "NZ"
+      ],
+      "note": "Australia and New Zealand. 120 installs, all HW4, last wave 30-Oct-26.",
+      "fsd": "HW4 has FSD v14.3.12.",
+      "models": [
+        "M3",
+        "MY"
+      ]
+    },
+    "2026.38.5.11": {
+      "created": "2026-10-24",
+      "needsMeta": false,
+      "metaChecked": "2026-11-02",
+      "hw": "HW3 + HW4",
+      "installs": 968,
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-11-02",
+          "cc": [
+            "US",
+            "CA"
+          ],
+          "models": [
+            "MY",
+            "M3",
+            "MS",
+            "CT"
+          ]
+        },
+        "hw3": {
+          "last": "2026-11-02",
+          "cc": [
+            "US",
+            "CA"
+          ],
+          "models": [
+            "MY",
+            "M3",
+            "MS",
+            "MX"
+          ]
+        }
+      },
+      "last": "2026-11-02",
+      "seenIn": [
+        "US",
+        "CA"
+      ],
+      "note": "North America FSD dual. Refreshed 03-Nov-26. ~29.6% Tessie. Large rollout.",
+      "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite.",
+      "models": [
+        "MS",
+        "MX",
+        "M3",
+        "MY",
+        "CT"
+      ]
+    },
+    "2026.32.300": {
+      "created": "2026-10-26",
+      "needsMeta": true,
+      "metaChecked": "2026-10-29",
+      "note": "Feature branch. Refreshed 03-Nov-26. Seat heater timeout, Grok new countries, Powershare check. <0.1% Tessie.",
+      "last": "2026-11-02",
+      "hw": "HW3 + HW4",
+      "fsd": "none",
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-11-02",
+          "cc": [],
+          "models": [
+            "M3",
+            "MY",
+            "CT"
+          ]
+        },
+        "hw3": {
+          "last": "2026-11-02",
+          "cc": [],
+          "models": [
+            "MS",
+            "MX"
+          ]
+        }
+      }
+    },
+    "2026.38.3.2": {
+      "created": "2026-10-22",
+      "needsMeta": false,
+      "metaChecked": "2026-10-31",
+      "hw": "HW3 + HW4",
+      "installs": 5100,
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-10-30",
+          "countries": [
+            "US",
+            "GB",
+            "DE",
+            "FR",
+            "IT",
+            "JP",
+            "CA",
+            "NZ"
+          ],
+          "models": [
+            "MS",
+            "MX",
+            "M3",
+            "MY"
+          ]
+        },
+        "hw3": {
+          "last": "2026-10-30",
+          "countries": [
+            "US",
+            "GB",
+            "DE",
+            "AT",
+            "NL",
+            "CH",
+            "SE"
+          ],
+          "models": [
+            "MS",
+            "MX",
+            "M3",
+            "MY"
+          ]
+        }
+      },
+      "last": "2026-10-30",
+      "seenIn": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "AT",
+        "NL",
+        "IT",
+        "CA",
+        "NZ",
+        "JP",
+        "CH",
+        "SE"
+      ],
+      "note": "Security improvements. Wide rollout, ~5100 installs, HW3 and HW4, last wave 30-Oct-26.",
+      "models": [
+        "MS",
+        "MX",
+        "M3",
+        "MY"
+      ]
+    },
+    "2026.38.6": {
+      "created": "2026-10-29",
+      "needsMeta": false,
+      "metaChecked": "2026-11-02",
+      "hw": "HW3 + HW4",
+      "installs": 43,
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-11-02",
+          "cc": [
+            "BE",
+            "NL",
+            "US"
+          ],
+          "models": [
+            "MY",
+            "M3"
+          ]
+        },
+        "hw3": {
+          "last": "2026-11-02",
+          "cc": [
+            "NL"
+          ],
+          "models": [
+            "M3"
+          ]
+        }
+      },
+      "last": "2026-11-02",
+      "seenIn": [
+        "BE",
+        "NL",
+        "US"
+      ],
+      "note": "Point release HW3+HW4 Europe/US. Refreshed 03-
