@@ -1,4 +1,6 @@
-   "note": "AU/NZ FSD point. Teslascope first saw it 21 Oct on a Model 3 Performance in the ACT. 78 installs, all HW4, 95% Australia and 5% New Zealand, last wave 22 Oct. Most arrived from 2026.20.10 (74), a few from 2026.28.5 (4). FSD v14.3.12 for HW4. Includes Halloween Mode. This is the Australia and New Zealand build, not the earlier US 2026.38.5 point. Refreshed 26-Oct-26.",
+ions": "Australia, New Zealand",
+      "hw": "HW4",
+      "note": "AU/NZ FSD point. Teslascope first saw it 21 Oct on a Model 3 Performance in the ACT. 78 installs, all HW4, 95% Australia and 5% New Zealand, last wave 22 Oct. Most arrived from 2026.20.10 (74), a few from 2026.28.5 (4). FSD v14.3.12 for HW4. Includes Halloween Mode. This is the Australia and New Zealand build, not the earlier US 2026.38.5 point. Refreshed 26-Oct-26.",
       "last": "2026-10-24",
       "seenByHw": {
         "hw4": {
@@ -52,34 +54,35 @@
     "2026.38.5.11": {
       "created": "2026-10-24",
       "needsMeta": false,
-      "metaChecked": "2026-11-02",
+      "metaChecked": "2026-11-03",
       "hw": "HW3 + HW4",
-      "installs": 968,
+      "installs": 973,
       "seenByHw": {
         "hw4": {
-          "last": "2026-11-02",
-          "cc": [
+          "last": "2026-11-01",
+          "countries": [
             "US",
             "CA"
           ],
           "models": [
-            "MY",
-            "M3",
             "MS",
+            "MX",
+            "M3",
+            "MY",
             "CT"
           ]
         },
         "hw3": {
-          "last": "2026-11-02",
-          "cc": [
+          "last": "2026-11-01",
+          "countries": [
             "US",
             "CA"
           ],
           "models": [
-            "MY",
-            "M3",
             "MS",
-            "MX"
+            "MX",
+            "M3",
+            "MY"
           ]
         }
       },
@@ -88,7 +91,7 @@
         "US",
         "CA"
       ],
-      "note": "North America FSD dual. Refreshed 03-Nov-26. ~29.6% Tessie. Large rollout.",
+      "note": "North America. 968 installs (HW4 64%, HW3 36%), last wave 01-Nov-26.",
       "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite.",
       "models": [
         "MS",
@@ -102,29 +105,7 @@
       "created": "2026-10-26",
       "needsMeta": true,
       "metaChecked": "2026-10-29",
-      "note": "Feature branch. Refreshed 03-Nov-26. Seat heater timeout, Grok new countries, Powershare check. <0.1% Tessie.",
-      "last": "2026-11-02",
-      "hw": "HW3 + HW4",
-      "fsd": "none",
-      "seenByHw": {
-        "hw4": {
-          "last": "2026-11-02",
-          "cc": [],
-          "models": [
-            "M3",
-            "MY",
-            "CT"
-          ]
-        },
-        "hw3": {
-          "last": "2026-11-02",
-          "cc": [],
-          "models": [
-            "MS",
-            "MX"
-          ]
-        }
-      }
+      "note": "Factory or EU FSD build, still pending installs as of 29-Oct-26."
     },
     "2026.38.3.2": {
       "created": "2026-10-22",
@@ -197,36 +178,59 @@
     "2026.38.6": {
       "created": "2026-10-29",
       "needsMeta": false,
-      "metaChecked": "2026-11-02",
+      "metaChecked": "2026-11-03",
       "hw": "HW3 + HW4",
       "installs": 43,
       "seenByHw": {
         "hw4": {
-          "last": "2026-11-02",
-          "cc": [
-            "BE",
-            "NL",
-            "US"
+          "last": "2026-11-01",
+          "countries": [
+            "US",
+            "GB",
+            "DE",
+            "CH",
+            "AU"
           ],
           "models": [
-            "MY",
-            "M3"
+            "MS",
+            "MX",
+            "MY"
           ]
         },
         "hw3": {
-          "last": "2026-11-02",
-          "cc": [
-            "NL"
+          "last": "2026-11-01",
+          "countries": [
+            "US",
+            "GB",
+            "DE",
+            "CH"
           ],
           "models": [
-            "M3"
+            "MX",
+            "M3",
+            "MY"
           ]
         }
       },
-      "last": "2026-11-02",
+      "last": "2026-11-01",
       "seenIn": [
-        "BE",
-        "NL",
-        "US"
+        "US",
+        "GB",
+        "DE",
+        "CH",
+        "AU",
+        "IT",
+        "TR",
+        "TW"
       ],
-      "note": "Point release HW3+HW4 Europe/US. Refreshed 03-
+      "note": "Released 29-Oct-26. 43 installs HW3+HW4 Europe/US last wave 01-Nov-26.",
+      "fsd": "",
+      "models": [
+        "MS",
+        "MX",
+        "M3",
+        "MY"
+      ]
+    },
+    "2026.2.3.17": {
+ 

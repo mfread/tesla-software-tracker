@@ -1,32 +1,4 @@
-     "CO",
-      "CZ",
-      "DE",
-      "DK",
-      "ES",
-      "FR",
-      "GB",
-      "HK",
-      "HU",
-      "IE",
-      "IL",
-      "IT",
-      "MA",
-      "MY",
-      "NL",
-      "NO",
-      "PL",
-      "PT",
-      "QA",
-      "RO",
-      "SE",
-      "SG",
-      "SK",
-      "TR",
-      "TW",
-      "UA",
-      "US"
-    ],
-    "2026.38": [
+: [
       "AT",
       "AU",
       "CA",
@@ -279,4 +251,18 @@
     },
     "2026.27.6": {
       "created": "2026-09-08",
-      "nee
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.27.6.5": {
+      "created": "2026-09-23",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.27.6.15": {
+      "created": "2026-10-04",
+      "needsMeta": false,
+      "metaChecked": "2026-10-10"
+    },
+    "2026.27.300": {
+      "created": "2026-09
