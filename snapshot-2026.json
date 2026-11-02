@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-11-02",
+  "snapshot": "2026-11-03",
   "year": 2026,
   "live": true,
-  "note": "Daily snapshot 2026-11-02 06:06 AEDT. Live year. Refreshed recent leaves. 2026.38.6.1 59 installs all HW3 AU/NZ last wave 01-Nov-26. 2026.38.6 43 installs HW3+HW4 Europe/US last wave 01-Nov-26. 2026.39.6 27 installs all HW4 Europe last wave 01-Nov-26. 2026.38.5.11 968 installs North America last wave 01-Nov-26. Others stable.",
+  "note": "Daily snapshot 2026-11-03 06:06 AEDT. Live year. Added 2026.38.6.2 early rollout. Refreshed recent leaves. 2026.38.6.2 new point release 02-Nov-26 <0.1%. 2026.38.6.1 ~1% all HW3 AU/NZ. 2026.38.6 ~4.5% HW3+HW4. 2026.39.6 ~1.4% all HW4 Europe. 2026.38.5.11 ~29.6% North America. Others stable.",
   "source": "grok-automation",
-  "generatedAt": "2026-11-02T06:06:00+1100",
+  "generatedAt": "2026-11-03T06:06:00+1100",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -712,6 +712,11 @@
             "name": "2026.38.6.1",
             "type": "point",
             "version": "2026.38.6.1"
+          },
+          {
+            "name": "2026.38.6.2",
+            "type": "point",
+            "version": "2026.38.6.2"
           }
         ]
       },
@@ -1423,39 +1428,38 @@
       "installs": 968,
       "seenByHw": {
         "hw4": {
-          "last": "2026-11-01",
-          "countries": [
+          "last": "2026-11-02",
+          "cc": [
             "US",
             "CA"
           ],
           "models": [
-            "MS",
-            "MX",
-            "M3",
             "MY",
+            "M3",
+            "MS",
             "CT"
           ]
         },
         "hw3": {
-          "last": "2026-11-01",
-          "countries": [
+          "last": "2026-11-02",
+          "cc": [
             "US",
             "CA"
           ],
           "models": [
-            "MS",
-            "MX",
+            "MY",
             "M3",
-            "MY"
+            "MS",
+            "MX"
           ]
         }
       },
-      "last": "2026-11-01",
+      "last": "2026-11-02",
       "seenIn": [
         "US",
         "CA"
       ],
-      "note": "North America. 968 installs (HW4 64%, HW3 36%), last wave 01-Nov-26.",
+      "note": "North America FSD dual. Refreshed 03-Nov-26. ~29.6% Tessie. Large rollout.",
       "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite.",
       "models": [
         "MS",
@@ -1469,7 +1473,29 @@
       "created": "2026-10-26",
       "needsMeta": true,
       "metaChecked": "2026-10-29",
-      "note": "Factory or EU FSD build, still pending installs as of 29-Oct-26."
+      "note": "Feature branch. Refreshed 03-Nov-26. Seat heater timeout, Grok new countries, Powershare check. <0.1% Tessie.",
+      "last": "2026-11-02",
+      "hw": "HW3 + HW4",
+      "fsd": "none",
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-11-02",
+          "cc": [],
+          "models": [
+            "M3",
+            "MY",
+            "CT"
+          ]
+        },
+        "hw3": {
+          "last": "2026-11-02",
+          "cc": [],
+          "models": [
+            "MS",
+            "MX"
+          ]
+        }
+      }
     },
     "2026.38.3.2": {
       "created": "2026-10-22",
@@ -1547,48 +1573,35 @@
       "installs": 43,
       "seenByHw": {
         "hw4": {
-          "last": "2026-11-01",
-          "countries": [
-            "US",
-            "GB",
-            "DE",
-            "CH",
-            "AU"
+          "last": "2026-11-02",
+          "cc": [
+            "BE",
+            "NL",
+            "US"
           ],
           "models": [
-            "MS",
-            "MX",
-            "MY"
+            "MY",
+            "M3"
           ]
         },
         "hw3": {
-          "last": "2026-11-01",
-          "countries": [
-            "US",
-            "GB",
-            "DE",
-            "CH"
+          "last": "2026-11-02",
+          "cc": [
+            "NL"
           ],
           "models": [
-            "MX",
-            "M3",
-            "MY"
+            "M3"
           ]
         }
       },
-      "last": "2026-11-01",
+      "last": "2026-11-02",
       "seenIn": [
-        "US",
-        "GB",
-        "DE",
-        "CH",
-        "AU",
-        "IT",
-        "TR",
-        "TW"
+        "BE",
+        "NL",
+        "US"
       ],
-      "note": "Released 29-Oct-26. 43 installs HW3+HW4 Europe/US last wave 01-Nov-26.",
-      "fsd": "",
+      "note": "Point release HW3+HW4 Europe/US. Refreshed 03-Nov-26. ~4.5% Tessie.",
+      "fsd": "none",
       "models": [
         "MS",
         "MX",
@@ -1616,8 +1629,8 @@
       "installs": 59,
       "seenByHw": {
         "hw3": {
-          "last": "2026-11-01",
-          "countries": [
+          "last": "2026-11-02",
+          "cc": [
             "AU",
             "NZ"
           ],
@@ -1627,13 +1640,13 @@
           ]
         }
       },
-      "last": "2026-11-01",
+      "last": "2026-11-02",
       "seenIn": [
         "AU",
         "NZ"
       ],
-      "note": "Released 29-Oct-26. AU/NZ all HW3, 59 installs, last wave 01-Nov-26. Minor fixes.",
-      "fsd": "",
+      "note": "Point release all HW3 AU/NZ. Refreshed 03-Nov-26. ~1% Tessie.",
+      "fsd": "none",
       "models": [
         "M3",
         "MY"
@@ -1647,34 +1660,57 @@
       "installs": 27,
       "seenByHw": {
         "hw4": {
-          "last": "2026-11-01",
-          "countries": [
-            "NL",
-            "CZ",
-            "BE",
-            "DK"
+          "last": "2026-11-02",
+          "cc": [
+            "EU"
           ],
           "models": [
-            "MX",
+            "MS",
+            "M3",
             "MY"
           ]
         }
       },
-      "last": "2026-11-01",
+      "last": "2026-11-02",
       "seenIn": [
-        "NL",
-        "CZ",
-        "BE",
-        "DK",
-        "SK"
+        "EU"
       ],
-      "note": "Released 29-Oct-26. Europe all HW4, 27 installs, last wave 01-Nov-26.",
+      "note": "FSD branch Europe. Refreshed 03-Nov-26. ~1.4% Tessie.",
       "fsd": "HW4 has FSD v14.2.2.6.",
       "models": [
         "MX",
         "M3",
         "MY"
       ]
+    },
+    "2026.38.6.2": {
+      "first": "2026-11-02",
+      "last": "2026-11-02",
+      "hw": "HW3 + HW4",
+      "fsd": "none",
+      "fleet": "Tessie <0.1% rolling out",
+      "regions": "early",
+      "note": "New point release 02-Nov-26. Early rollout. Undocumented changes include FSD Streaks for legacy Intel HW3 S/X, Model Y L badge animation, Grok out of beta, service mode improvements, Halloween wraps for Intel.",
+      "models": [
+        "MS",
+        "MX",
+        "M3",
+        "MY",
+        "CT"
+      ],
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-11-02",
+          "cc": [],
+          "models": []
+        },
+        "hw3": {
+          "last": "2026-11-02",
+          "cc": [],
+          "models": []
+        }
+      },
+      "seenIn": []
     }
   },
   "seenIn": {
