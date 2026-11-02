@@ -1,4 +1,4 @@
-const APP_VERSION = "5.09";
+const APP_VERSION = "5.10";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -514,8 +514,9 @@ const APP_VERSION = "5.09";
         };
       }
       function phrase(label, d, cc, models) {
-        if (!cc.length && !models.length && !d) return "";
-        return label + " last seen" + (d ? " on " + d : "") + (cc.length ? " in " + cc.join(", ") : "") + (models.length ? " on " + models.join(", ") : "");
+        if (!cc.length && !models.length) return "";
+        const cars = models.length ? " on " + models.join(", ") : " (cars unknown)";
+        return label + " last seen" + (d ? " on " + d : "") + (cc.length ? " in " + cc.join(", ") : "") + cars;
       }
       const lines = [];
       if (has4 && has3) {
@@ -529,10 +530,14 @@ const APP_VERSION = "5.09";
         const sharedDate = (a.d && a.d === b.d) ? a.d : "";
         const shared = phrase("HW3+HW4", sharedDate, sharedCc, sharedModels);
         if (shared) lines.push(shared);
-        const l4 = phrase("HW4", a.d, only4cc, only4m);
-        if (l4) lines.push(l4);
-        const l3 = phrase("HW3", b.d, only3cc, only3m);
-        if (l3) lines.push(l3);
+        if (only4cc.length || only4m.length) {
+          const l4 = phrase("HW4", a.d, only4cc, only4m);
+          if (l4) lines.push(l4);
+        }
+        if (only3cc.length || only3m.length) {
+          const l3 = phrase("HW3", b.d, only3cc, only3m);
+          if (l3) lines.push(l3);
+        }
       } else if (has4 || has3) {
         const key = has4 ? "hw4" : "hw3";
         const p = pack(key);
