@@ -1106,9 +1106,21 @@
       "fleet": "Tessie 0.1%",
       "fsd": "none",
       "regions": "unknown",
-      "hw": "unknown",
+      "hw": "HW4",
       "note": "Factory/point. Stats still current on 2026-10-10. No new country published.",
-      "last": "2026-09-14"
+      "last": "2026-09-14",
+      "models": [
+        "M3",
+        "MY"
+      ],
+      "seenByHw": {
+        "hw4": {
+          "models": [
+            "M3",
+            "MY"
+          ]
+        }
+      }
     },
     "2026.27.300": {
       "first": "2026-09-15",
@@ -1323,9 +1335,28 @@
       "fleet": "Tessie <0.1% rolling out",
       "fsd": "none",
       "regions": "unknown",
-      "hw": "unknown",
+      "hw": "HW3 + HW4",
       "note": "Latest point. Released ~Oct 20.",
-      "last": "2026-10-20"
+      "last": "2026-10-20",
+      "models": [
+        "M3",
+        "MY",
+        "CT"
+      ],
+      "seenByHw": {
+        "hw3": {
+          "models": [
+            "M3",
+            "MY"
+          ]
+        },
+        "hw4": {
+          "models": [
+            "MY",
+            "CT"
+          ]
+        }
+      }
     },
     "2026.38.5.5": {
       "first": "2026-10-21",
