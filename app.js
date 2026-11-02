@@ -1,4 +1,4 @@
-const APP_VERSION = "5.08";
+const APP_VERSION = "5.09";
     const CALENDAR_YEAR = new Date().getFullYear();
     const AVAILABLE_YEARS = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
     function liveYears() { return [CALENDAR_YEAR, CALENDAR_YEAR - 1]; }
@@ -503,18 +503,42 @@ const APP_VERSION = "5.08";
       const codes = seenCodes(version);
       const hw = parseHw(m.hw);
       const by = m.seenByHw || {};
-      const lines = [];
-      function line(label, key, show) {
-        if (!show) return;
+      const has4 = !!(hw.hw4 || by.hw4);
+      const has3 = !!(hw.hw3 || by.hw3);
+      function pack(key) {
         const info = by[key] || {};
-        const cc = (info.countries && info.countries.length ? info.countries : codes).map(iso2).filter(c => c.length === 2);
-        const d = fmtDate(info.last || m.last || m.first);
-        if (!cc.length && !d) return;
-        const models = modelCodes(info.models || m.models);
-        lines.push(label + " last seen" + (d ? " on " + d : "") + (cc.length ? " in " + cc.join(", ") : "") + (models.length ? " on " + models.join(", ") : ""));
+        return {
+          cc: (info.countries && info.countries.length ? info.countries : codes).map(iso2).filter(c => c.length === 2),
+          models: modelCodes(info.models || m.models),
+          d: fmtDate(info.last || m.last || m.first)
+        };
       }
-      line("HW4", "hw4", hw.hw4 || by.hw4);
-      line("HW3", "hw3", hw.hw3 || by.hw3);
+      function phrase(label, d, cc, models) {
+        if (!cc.length && !models.length && !d) return "";
+        return label + " last seen" + (d ? " on " + d : "") + (cc.length ? " in " + cc.join(", ") : "") + (models.length ? " on " + models.join(", ") : "");
+      }
+      const lines = [];
+      if (has4 && has3) {
+        const a = pack("hw4"), b = pack("hw3");
+        const sharedCc = a.cc.filter(c => b.cc.includes(c));
+        const sharedModels = a.models.filter(c => b.models.includes(c));
+        const only4cc = a.cc.filter(c => !b.cc.includes(c));
+        const only3cc = b.cc.filter(c => !a.cc.includes(c));
+        const only4m = a.models.filter(c => !b.models.includes(c));
+        const only3m = b.models.filter(c => !a.models.includes(c));
+        const sharedDate = (a.d && a.d === b.d) ? a.d : "";
+        const shared = phrase("HW3+HW4", sharedDate, sharedCc, sharedModels);
+        if (shared) lines.push(shared);
+        const l4 = phrase("HW4", a.d, only4cc, only4m);
+        if (l4) lines.push(l4);
+        const l3 = phrase("HW3", b.d, only3cc, only3m);
+        if (l3) lines.push(l3);
+      } else if (has4 || has3) {
+        const key = has4 ? "hw4" : "hw3";
+        const p = pack(key);
+        const one = phrase(has4 ? "HW4" : "HW3", p.d, p.cc, p.models);
+        if (one) lines.push(one);
+      }
       if (!lines.length && (codes.length || m.last || m.first)) {
         const d = fmtDate(m.last || m.first);
         lines.push("Last seen" + (d ? " on " + d : "") + (codes.length ? " in " + codes.join(", ") : ""));
