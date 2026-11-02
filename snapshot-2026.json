@@ -918,9 +918,57 @@
       "fleet": "Teslascope 6 installs; TeslaFi 0.6% (9 today); Tessie 0.8% (rolling)",
       "fsd": "none",
       "regions": "DE IE GB TR IT; pending CH PL FR; first X notice CH; TeslaFi also AT. Not AU/NZ",
-      "hw": "HW4",
+      "hw": "HW3 + HW4",
       "note": "Announced on X via @teslascope (Model X AWD 2024, Ticino, Switzerland), then confirmed on Teslascope, NATA and Tessie. Rolling point under 2026.38 (Halloween Mode, security fixes). Teslascope 6 installs, all HW4, last wave 9 Oct. Previous versions: 2026.32.7 (3, 50%) and 2026.38 (3, 50%). Install countries Germany, Ireland, United Kingdom, Turkey, Italy. Pending 4 (DE, CH, PL, FR). Not an FSD build. not available in AU or NZ.",
-      "last": "2026-10-22"
+      "last": "2026-10-22",
+      "seenByHw": {
+        "hw4": {
+          "last": "2026-10-22",
+          "countries": [
+            "AT",
+            "CH",
+            "DE",
+            "FR",
+            "GB",
+            "IE",
+            "IT",
+            "PL",
+            "TR"
+          ],
+          "models": [
+            "MS",
+            "MX",
+            "M3",
+            "MY"
+          ]
+        },
+        "hw3": {
+          "last": "2026-10-22",
+          "countries": [
+            "AT",
+            "CH",
+            "DE",
+            "FR",
+            "GB",
+            "IE",
+            "IT",
+            "PL",
+            "TR"
+          ],
+          "models": [
+            "MS",
+            "MX",
+            "M3",
+            "MY"
+          ]
+        }
+      },
+      "models": [
+        "MS",
+        "MX",
+        "M3",
+        "MY"
+      ]
     },
     "2026.38.5": {
       "first": "2026-10-10",
@@ -1077,6 +1125,12 @@
             "JP",
             "CA",
             "NZ"
+          ],
+          "models": [
+            "MS",
+            "MX",
+            "M3",
+            "MY"
           ]
         },
         "hw3": {
@@ -1089,6 +1143,12 @@
             "NL",
             "CH",
             "SE"
+          ],
+          "models": [
+            "MS",
+            "MX",
+            "M3",
+            "MY"
           ]
         }
       },
@@ -1107,7 +1167,13 @@
         "CH",
         "SE"
       ],
-      "note": "Security improvements. Wide rollout, ~5100 installs, HW3 and HW4, last wave 30-Oct-26."
+      "note": "Security improvements. Wide rollout, ~5100 installs, HW3 and HW4, last wave 30-Oct-26.",
+      "models": [
+        "MS",
+        "MX",
+        "M3",
+        "MY"
+      ]
     },
     "2026.38.6": {
       "created": "2026-10-29",
