@@ -1,4 +1,13 @@
-     "created": "2026-10-28",
+ "",
+      "models": [
+        "MS",
+        "MX",
+        "M3",
+        "MY"
+      ]
+    },
+    "2026.2.3.17": {
+      "created": "2026-10-28",
       "needsMeta": true,
       "metaChecked": "2026-10-30",
       "hw": "",
@@ -14,7 +23,7 @@
       "needsMeta": false,
       "metaChecked": "2026-11-03",
       "hw": "HW3",
-      "installs": 59,
+      "installs": 200,
       "seenByHw": {
         "hw3": {
           "last": "2026-11-01",
@@ -33,7 +42,7 @@
         "AU",
         "NZ"
       ],
-      "note": "Released 29-Oct-26. AU/NZ all HW3, 59 installs, last wave 01-Nov-26. Minor fixes.",
+      "note": "Released 29-Oct-26. AU/NZ all HW3, ~200 installs, last wave 03-Nov-26. Minor fixes.",
       "fsd": "",
       "models": [
         "M3",
@@ -45,7 +54,7 @@
       "needsMeta": false,
       "metaChecked": "2026-11-03",
       "hw": "HW4",
-      "installs": 27,
+      "installs": 160,
       "seenByHw": {
         "hw4": {
           "last": "2026-11-01",
@@ -69,7 +78,7 @@
         "DK",
         "SK"
       ],
-      "note": "Released 29-Oct-26. Europe all HW4, 27 installs, last wave 01-Nov-26.",
+      "note": "Released 29-Oct-26. ~160 installs all HW4 Europe, last wave 03-Nov-26. FSD 14.2.2.6 Europe.",
       "fsd": "HW4 has FSD v14.2.2.6.",
       "models": [
         "MX",
@@ -86,7 +95,7 @@
       "seenByHw": {},
       "last": "2026-11-02",
       "seenIn": [],
-      "note": "Released 02-Nov-26. New build, 0 installs. Minor fixes and undocumented changes including FSD Streaks for legacy S/X, Model Y L badge animation, Grok out of beta.",
+      "note": "Released 02-Nov-26. Early, 0 installs as of 04-Nov-26. Undocumented changes: FSD Streaks for legacy S/X, Model Y L badge, Grok out of beta.",
       "fsd": "",
       "models": []
     }
@@ -316,14 +325,4 @@
       "NO",
       "PL",
       "PT",
-      "QA",
-      "RO",
-      "SE",
-      "SG",
-      "SK",
-      "TR",
-      "TW",
-      "UA",
-      "US"
-    ],
-    "2026.38"
+      "QA
