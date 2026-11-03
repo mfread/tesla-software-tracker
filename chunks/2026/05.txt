@@ -1,4 +1,4 @@
- 2026.27.11 (50), 2026.26.6.1 (13), 2026.26.6.5 (7), 2026.32.7 (1). not available in AU or NZ.",
+ US 97% (CA in pending). Previous: 2026.27.11 (50), 2026.26.6.1 (13), 2026.26.6.5 (7), 2026.32.7 (1). not available in AU or NZ.",
       "last": "2026-10-09",
       "models": [
         "MS",
@@ -176,5 +176,4 @@
     },
     "2026.20.10": {
       "first": "2026-07-27",
-      "fleet": "Teslascope 141 installs; Tessie 1.7%; AI4 v14.3.5",
-      "fsd": "HW4 h
+      "fleet": "Teslascope 141 installs; Tessie 1.7%;
