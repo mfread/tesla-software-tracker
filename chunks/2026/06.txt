@@ -1,4 +1,5 @@
-as FSD v14.3.5.",
+ AI4 v14.3.5",
+      "fsd": "HW4 has FSD v14.3.5.",
       "regions": "AU NZ",
       "hw": "HW4",
       "note": "AU/NZ HW4 FSD v14.3.5. Teslascope: 141 installs, all HW4, 96% Australia (NZ retained). Updated-to table: 2026.28.5 (2, 1.4%, HW4 AU) and 2025.32.100 (1). No wide next wave.",
@@ -198,5 +199,4 @@ as FSD v14.3.5.",
     "2026.38.5.5": {
       "first": "2026-10-21",
       "fleet": "Teslascope 78 installs, rolling (about 3%)",
-      "fsd": "HW4 has FSD v14.3.12.",
-      "reg
+      "fsd": "
