@@ -1,10 +1,10 @@
 {
-  "snapshot": "2026-11-03",
+  "snapshot": "2026-11-04",
   "year": 2026,
   "live": true,
-  "note": "Daily snapshot 2026-11-03 06:09 AEDT. Live year. Refreshed recent leaves. Added 2026.38.6.2. 2026.38.6.1 59 installs all HW3 AU/NZ last wave 01-Nov-26. 2026.38.6 43 installs HW3+HW4 Europe/US last wave 01-Nov-26. 2026.39.6 27 installs all HW4 Europe last wave 01-Nov-26. 2026.38.5.11 973 installs North America last wave 02-Nov-26. Others stable.",
+  "note": "Daily snapshot 2026-11-04 07:07 AEDT. Live year. Refreshed recent leaves. 2026.38.6.2 early release 02-Nov-26, 0 installs. 2026.38.6.1 ~200 installs all HW3 AU/NZ last wave 03-Nov-26. 2026.38.6 ~1300 installs HW3+HW4 wide last wave 03-Nov-26. 2026.39.6 ~160 installs all HW4 Europe last wave 03-Nov-26. 2026.38.5.11 ~4140 installs North America last wave 03-Nov-26. Others stable.",
   "source": "grok-automation",
-  "generatedAt": "2026-11-03T06:09:00+1100",
+  "generatedAt": "2026-11-04T07:07:00+1100",
   "sourcesUsed": [
     "teslascope",
     "tessie",
@@ -1425,7 +1425,7 @@
       "needsMeta": false,
       "metaChecked": "2026-11-03",
       "hw": "HW3 + HW4",
-      "installs": 973,
+      "installs": 4140,
       "seenByHw": {
         "hw4": {
           "last": "2026-11-01",
@@ -1460,7 +1460,7 @@
         "US",
         "CA"
       ],
-      "note": "North America. 968 installs (HW4 64%, HW3 36%), last wave 01-Nov-26.",
+      "note": "Released 24-Oct-26. ~4140 installs North America, last wave 03-Nov-26. FSD 14.3 Lite HW3 / 14.3.13 HW4.",
       "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite.",
       "models": [
         "MS",
@@ -1549,7 +1549,7 @@
       "needsMeta": false,
       "metaChecked": "2026-11-03",
       "hw": "HW3 + HW4",
-      "installs": 43,
+      "installs": 1300,
       "seenByHw": {
         "hw4": {
           "last": "2026-11-01",
@@ -1592,7 +1592,7 @@
         "TR",
         "TW"
       ],
-      "note": "Released 29-Oct-26. 43 installs HW3+HW4 Europe/US last wave 01-Nov-26.",
+      "note": "Released 29-Oct-26. ~1300 installs HW3+HW4 wide (NA/EU/AU), last wave 03-Nov-26. Minor fixes, Halloween Mode etc.",
       "fsd": "",
       "models": [
         "MS",
@@ -1618,7 +1618,7 @@
       "needsMeta": false,
       "metaChecked": "2026-11-03",
       "hw": "HW3",
-      "installs": 59,
+      "installs": 200,
       "seenByHw": {
         "hw3": {
           "last": "2026-11-01",
@@ -1637,7 +1637,7 @@
         "AU",
         "NZ"
       ],
-      "note": "Released 29-Oct-26. AU/NZ all HW3, 59 installs, last wave 01-Nov-26. Minor fixes.",
+      "note": "Released 29-Oct-26. AU/NZ all HW3, ~200 installs, last wave 03-Nov-26. Minor fixes.",
       "fsd": "",
       "models": [
         "M3",
@@ -1649,7 +1649,7 @@
       "needsMeta": false,
       "metaChecked": "2026-11-03",
       "hw": "HW4",
-      "installs": 27,
+      "installs": 160,
       "seenByHw": {
         "hw4": {
           "last": "2026-11-01",
@@ -1673,7 +1673,7 @@
         "DK",
         "SK"
       ],
-      "note": "Released 29-Oct-26. Europe all HW4, 27 installs, last wave 01-Nov-26.",
+      "note": "Released 29-Oct-26. ~160 installs all HW4 Europe, last wave 03-Nov-26. FSD 14.2.2.6 Europe.",
       "fsd": "HW4 has FSD v14.2.2.6.",
       "models": [
         "MX",
@@ -1690,7 +1690,7 @@
       "seenByHw": {},
       "last": "2026-11-02",
       "seenIn": [],
-      "note": "Released 02-Nov-26. New build, 0 installs. Minor fixes and undocumented changes including FSD Streaks for legacy S/X, Model Y L badge animation, Grok out of beta.",
+      "note": "Released 02-Nov-26. Early, 0 installs as of 04-Nov-26. Undocumented changes: FSD Streaks for legacy S/X, Model Y L badge, Grok out of beta.",
       "fsd": "",
       "models": []
     }
