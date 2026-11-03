@@ -1,4 +1,4 @@
-ined in seenIn. No FSD payload.",
+ HW split HW3 50 / HW4 17. AU retained in seenIn. No FSD payload.",
       "last": "2026-09-29",
       "models": [
         "MS",
@@ -179,4 +179,4 @@ ined in seenIn. No FSD payload.",
       "fsd": "HW4 has FSD v14.3.11. HW3 has FSD v14.3 Lite.",
       "regions": "US, N. America, not AU/NZ",
       "hw": "HW4 + HW3",
-      "note": "Confirmed on X via @teslascope (9 Oct wave ~2,750; V14.3.11 on 64% AI4, V14.3 Lite on 36% HW3) and @NotATeslaApp, then Teslascope and NATA. Status rolling, last wave 9 Oct. Teslascope 71 installs, HW4 50 / HW3 21, US 97% (CA in pending). Previous:
+      "note": "Confirmed on X via @teslascope (9 Oct wave ~2,750; V14.3.11 on 64% AI4, V14.3 Lite on 36% HW3) and @NotATeslaApp, then Teslascope and NATA. Status rolling, last wave 9 Oct. Teslascope 71 installs, HW4 50 / HW3 21,
