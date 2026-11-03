@@ -1,4 +1,5 @@
-ions": "Australia, New Zealand",
+HW4 has FSD v14.3.12.",
+      "regions": "Australia, New Zealand",
       "hw": "HW4",
       "note": "AU/NZ FSD point. Teslascope first saw it 21 Oct on a Model 3 Performance in the ACT. 78 installs, all HW4, 95% Australia and 5% New Zealand, last wave 22 Oct. Most arrived from 2026.20.10 (74), a few from 2026.28.5 (4). FSD v14.3.12 for HW4. Includes Halloween Mode. This is the Australia and New Zealand build, not the earlier US 2026.38.5 point. Refreshed 26-Oct-26.",
       "last": "2026-10-24",
@@ -56,7 +57,7 @@ ions": "Australia, New Zealand",
       "needsMeta": false,
       "metaChecked": "2026-11-03",
       "hw": "HW3 + HW4",
-      "installs": 973,
+      "installs": 4140,
       "seenByHw": {
         "hw4": {
           "last": "2026-11-01",
@@ -91,7 +92,7 @@ ions": "Australia, New Zealand",
         "US",
         "CA"
       ],
-      "note": "North America. 968 installs (HW4 64%, HW3 36%), last wave 01-Nov-26.",
+      "note": "Released 24-Oct-26. ~4140 installs North America, last wave 03-Nov-26. FSD 14.3 Lite HW3 / 14.3.13 HW4.",
       "fsd": "HW4 has FSD v14.3.13. HW3 has FSD v14.3 Lite.",
       "models": [
         "MS",
@@ -180,7 +181,7 @@ ions": "Australia, New Zealand",
       "needsMeta": false,
       "metaChecked": "2026-11-03",
       "hw": "HW3 + HW4",
-      "installs": 43,
+      "installs": 1300,
       "seenByHw": {
         "hw4": {
           "last": "2026-11-01",
@@ -223,14 +224,5 @@ ions": "Australia, New Zealand",
         "TR",
         "TW"
       ],
-      "note": "Released 29-Oct-26. 43 installs HW3+HW4 Europe/US last wave 01-Nov-26.",
-      "fsd": "",
-      "models": [
-        "MS",
-        "MX",
-        "M3",
-        "MY"
-      ]
-    },
-    "2026.2.3.17": {
- 
+      "note": "Released 29-Oct-26. ~1300 installs HW3+HW4 wide (NA/EU/AU), last wave 03-Nov-26. Minor fixes, Halloween Mode etc.",
+      "fsd":
